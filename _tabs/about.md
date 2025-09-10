@@ -1,9 +1,11 @@
 ---
-# the default layout is 'page'
 icon: fas fa-info-circle
 order: 4
 ---
-# Who, me?
+
+
+
+# About Me
 
 I am a third-year IT student at Tampere University of Applied Sciences, with a strong focus on telecommunications, computer networks, and cybersecurity.
 
@@ -22,5 +24,3 @@ My biggest point of pride is my ongoing thesis, which focuses on cybersecurity f
 I enjoy working on projects and in teams where I can apply analytics, problem-solving, and creative thinking.
 
 If you’d like to discuss cybersecurity, my projects, or **INTERNSHIP opportunities** — feel free to get in touch!
-
-
