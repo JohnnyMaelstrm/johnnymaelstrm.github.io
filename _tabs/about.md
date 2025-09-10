@@ -7,6 +7,11 @@ order: 4
 
 # Who, me?
 
+<p align="center">
+  <img src="{{ '/assets/img/web-app-manifest-192x192.png' | relative_url }}" alt="Author" width="200">
+</p>
+
+
 I am a third-year IT student at Tampere University of Applied Sciences, with a strong focus on telecommunications, computer networks, and cybersecurity.
 
 I am highly motivated by various cybersecurity and networking roles, such as:
