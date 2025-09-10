@@ -3,7 +3,7 @@ layout: page
 icon: fas fa-file-pdf
 order: 5
 categories: [summerintern]
-tags: sdr intern
+tags: sdr
 title: "Summer Intern"
 ---
 
