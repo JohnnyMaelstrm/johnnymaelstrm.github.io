@@ -14,7 +14,7 @@ I am highly motivated by various cybersecurity and networking roles, such as:
 - Ethical Hacking
 - SOC
 - Network Specialist
-- SDR
+  
 
 I develop my cybersecurity skills through Cisco badges and by completing hands-on hacking exercises in TAMK courses. I am eager to put these skills into practice in real-world projects and challenges. I also continuously improve by following the cybersecurity field closely and working on personal projects, all of which are available on my [GitHub profile](https://github.com/JohnnyMaelstrm) or here in my portfolio—they are basically the same thing 😄.
 
