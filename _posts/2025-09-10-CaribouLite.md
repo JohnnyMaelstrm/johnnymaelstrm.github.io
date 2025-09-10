@@ -7,7 +7,7 @@ tags: sdr
 title: "Summer Intern"
 ---
 
-# My Summer Inter Project at Tampere University of Applied sciences(Tamk
+# My Summer Inter Project at Tampere University of Applied sciences(Tamk)
 
 Here is my project that i did on summer -25 at Tamk.
 
