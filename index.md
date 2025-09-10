@@ -4,12 +4,22 @@ title: "Welcome"
 permalink: /
 ---
 
-## Hi 👋 Welcome to my portfolio!
+# Hi 👋 Welcome to my portfolio!
 
 I’m **Jaakko Oja**, a third-year IT student at Tampere University of Applied Sciences.  
 I specialize in telecommunications, computer networks, and cybersecurity.  
 
 This website serves as my portfolio, where I share projects, learning experiences, and research work.
+
+---
+
+## 🌟 Featured Project: CaribouLite and Raspberry Pi 4
+
+Check out my highlighted project below:
+
+<iframe src="{{ '/assets/docs/Project.pdf' | relative_url }}" width="100%" height="500px" style="border:none;"></iframe>
+
+[Download PDF]({{ '/assets/docs/Project.pdf' | relative_url }})
 
 ---
 
