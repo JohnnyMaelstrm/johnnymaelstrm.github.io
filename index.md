@@ -13,8 +13,9 @@ This website serves as my portfolio, where I share projects, learning experience
 
 ---
 
-## 🌟 Featured Project: CaribouLite and Raspberry Pi 4
+## 🌟 Summer25 Intern Project: CaribouLite and Raspberry Pi 4
 
+I contributed this project at my school (Tamk). Really fun and interesting project.
 Check out my highlighted project below:
 
 <iframe src="{{ '/assets/docs/Project.pdf' | relative_url }}" width="100%" height="500px" style="border:none;"></iframe>
