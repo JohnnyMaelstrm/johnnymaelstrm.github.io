@@ -5,7 +5,7 @@ permalink: /
 ---
 <img src="/assets/img/favicons/pexels-pixabay-207580.jpg" 
      alt="Banneri" 
-     style="width: 60%; max-height: 400px; object-fit: cover; display: block;">
+     style="width: 60%; object-fit: cover; display: block;">
 
 # Hi 👋 Welcome to my Portfolio | Website!
 
