@@ -1,11 +1,10 @@
 ---
 layout: page
-title: "Welcome!"
 permalink: /
 ---
 <img src="/assets/img/favicons/pexels-pixabay-207580.jpg" alt="Banneri" style="width: 50%; height: auto; display: block; margin: 0 auto;">
 
-# Hi 👋 Welcome to my portfolio!
+# Hi 👋 Welcome to my Portfolio | Website!
 
 I’m **Jaakko Oja**, a third-year IT student at **Tampere University of Applied Sciences**  
 I specialize in telecommunications, computer networks, and cybersecurity.  
