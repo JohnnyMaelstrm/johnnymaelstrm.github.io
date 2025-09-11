@@ -7,16 +7,16 @@ permalink: /
 
 # Hi 👋 Welcome to my portfolio!
 
-I’m **Jaakko Oja**, a third-year IT student at Tampere University of Applied Sciences.  
+I’m **Jaakko Oja**, a third-year IT student at **Tampere University of Applied Sciences**  
 I specialize in telecommunications, computer networks, and cybersecurity.  
 
-This website serves as my portfolio, where I share projects, learning experiences, and research work.
+This website serves as my portfolio, where I share my projects, learning experiences, and research work.
 
 ---
 
 ## 🌟 Summer25 Intern Project: CaribouLite and Raspberry Pi 4
 
-I contributed this project at my school (Tamk). Really fun and interesting project.
+I contributed this project at my school (Tamk). Really eye-opening project on the SDR-world and i enjoyed it very much.
 Check out my highlighted project below:
 
 <iframe src="{{ '/assets/docs/Project.pdf' | relative_url }}" width="100%" height="500px" style="border:none;"></iframe>
