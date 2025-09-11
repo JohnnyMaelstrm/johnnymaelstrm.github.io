@@ -40,7 +40,7 @@ Check out my highlighted project below:
 ---
 ## 🏅 Cisco Certifications
 
-<p align="center">
+<p align="left">
 
   <a href="https://www.credly.com/badges/d029163a-b59e-4365-a18f-705467e7e885" target="_blank">
     <img src="https://images.credly.com/images/af8c6b4e-fc31-47c4-8dcb-eb7a2065dc5b/I2CS__1_.png"
@@ -65,6 +65,6 @@ Check out my highlighted project below:
 </p>
 
 
-<p align="center">
+<p align="left">
   <img src="{{ '/assets/img/favicons/web-app-manifest-512x512.png' | relative_url }}" alt="Profile Picture" width="200">
 </p>
