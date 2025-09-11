@@ -31,6 +31,14 @@ Check out my highlighted project below:
 - Networking & SDR  
 
 ---
+## 🚀 Upcoming Projects
+Here are some projects I’m planning to work on next:  
+- **EvilGinx2** – Exploring advanced phishing techniques and how to bypass MFA!
+
+
+Stay tuned for updates!
+
+---
 
 ## 📌 Explore More
 - [About](/about/) – a more detailed introduction  
