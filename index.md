@@ -3,7 +3,9 @@ layout: page
 title: Welcome
 permalink: /
 ---
-<img src="/assets/img/favicons/pexels-pixabay-207580.jpg" alt="Banneri" style="width: 50%; height: auto; display: block; margin: 0 auto;">
+<img src="/assets/img/favicons/pexels-pixabay-207580.jpg" 
+     alt="Banneri" 
+     style="width: 100%; max-height: 400px; object-fit: cover; display: block;">
 
 # Hi 👋 Welcome to my Portfolio | Website!
 
