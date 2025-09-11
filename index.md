@@ -1,5 +1,6 @@
 ---
 layout: page
+title: Welcome
 permalink: /
 ---
 <img src="/assets/img/favicons/pexels-pixabay-207580.jpg" alt="Banneri" style="width: 50%; height: auto; display: block; margin: 0 auto;">
