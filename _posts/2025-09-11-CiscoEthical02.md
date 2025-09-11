@@ -19,7 +19,7 @@ I will also upload the Capstone project here!
 
 The PDF is embedded below so you can view it directly.
 
-<iframe src="{{ '/assets/docs/La02.pdf' | relative_url }}" width="100%" height="700px" style="border:none;"></iframe>
+<iframe src="{{ '/assets/docs/Lab02.pdf' | relative_url }}" width="100%" height="700px" style="border:none;"></iframe>
 
 ---
 
