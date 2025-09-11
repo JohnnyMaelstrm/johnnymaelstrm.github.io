@@ -22,4 +22,4 @@ The PDF is embedded below so you can view it directly.
 
 ---
 
-You can also [download the PDF]({{ '/assets/docs/Project.pdf' | relative_url }}) if you prefer.
+You can also [download the PDF]({{ '/assets/docs/Labra 01 Ethical Hacking.pdf.pdf' | relative_url }}) if you prefer.
