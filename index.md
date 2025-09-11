@@ -40,13 +40,32 @@ Check out my highlighted project below:
 ---
 ## 🏅 Cisco Certifications
 
-<a href="https://www.credly.com/badges/d029163a-b59e-4365-a18f-705467e7e885/public_url" target="_blank">
-  <img src="https://images.credly.com/images/af8c6b4e-fc31-47c4-8dcb-eb7a2065dc5b/I2CS__1_.png" alt="Cisco I2CS" width="130" style="float:left; margin-right:10px;" />
-</a>
+  <!-- I2CS -->
+  <a href="https://www.credly.com/badges/d029163a-b59e-4365-a18f-705467e7e885/public_url" target="_blank">
+    <img src="https://images.credly.com/images/af8c6b4e-fc31-47c4-8dcb-eb7a2065dc5b/I2CS__1_.png"
+         alt="Cisco I2CS" width="130" />
+  </a>
 
-<a href="https://www.credly.com/badges/fc86f74b-c531-45a6-8427-c29a8678e753/public_url" target="_blank">
-  <img src="https://images.credly.com/images/f4ccdba9-dd65-4349-baad-8f05df116443/CCNASRWE__1_.png" alt="CCNA SRWE" width="130" style="float:left; margin-right:10px;" />
-</a>
+  <!-- Badge 2 -->
+  <a href="https://www.credly.com/badges/fc86f74b-c531-45a6-8427-c29a8678e753/public_url" target="_blank">
+    <img src="https://images.credly.com/images/242902b5-f527-42ad-865e-977c9e1b5b58/image.png"
+         alt="Ethical Hacker" width="130" />
+  </a>
+
+  <!-- CCNA SRWE -->
+  <a href="https://www.credly.com/badges/27a5850d-bcf2-4937-9eb2-c5dbaef30fe1/public_url" target="_blank">
+    <img src="https://images.credly.com/images/f4ccdba9-dd65-4349-baad-8f05df116443/CCNASRWE__1_.png"
+         alt="CCNA SRWE" width="130" />
+  </a>
+
+  <!-- CCNA ENSA -->
+  <a href="https://www.credly.com/badges/624b96dd-cfe1-4605-a6a3-0b544c928757/public_url" target="_blank">
+    <img src="https://images.credly.com/images/0a6d331e-8abf-4272-a949-33f754569a76/CCNAENSA__1_.png"
+         alt="CCNA ENSA" width="130" />
+  </a>
+
+</p>
+
 
 
 
