@@ -2,7 +2,7 @@
 layout: post
 icon: fas fa-file-pdf
 order: 5
-title: "Lab11"
+title: "Lab12"
 categories: [Cisco, Ethical Hacking]
 tags: [pdf, portfolio, cisco, ciscohacking]
 ---
@@ -13,7 +13,7 @@ I applied to the course at Tampere University of Applied Sciences (TAMK).
 This is one of the “Lab” projects we completed during the course. The projects are in either Finnish or English.  
 I will also upload the Capstone project here!
 
-# This is the Lab number 11!
+# This is the Lab number 12!
 
 ---
 
