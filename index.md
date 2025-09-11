@@ -70,7 +70,3 @@ Check out my highlighted project below:
 </div>
 
 
-
-<p align="left">
-  <img src="{{ '/assets/img/favicons/web-app-manifest-512x512.png' | relative_url }}" alt="Profile Picture" width="200">
-</p>
