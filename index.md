@@ -64,7 +64,6 @@ Check out my highlighted project below:
          alt="CCNA ENSA" width="130" />
   </a>
 
-</p>
 
 
 
