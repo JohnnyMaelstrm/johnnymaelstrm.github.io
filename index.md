@@ -41,13 +41,15 @@ Check out my highlighted project below:
 ---
 ## 🏅 Cisco Certifications
 
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+
   <!-- I2CS -->
   <a href="https://www.credly.com/badges/d029163a-b59e-4365-a18f-705467e7e885/public_url" target="_blank">
     <img src="https://images.credly.com/images/af8c6b4e-fc31-47c4-8dcb-eb7a2065dc5b/I2CS__1_.png"
          alt="Cisco I2CS" width="130" />
   </a>
 
-  <!-- Badge 2 -->
+  <!-- Ethical Hacker -->
   <a href="https://www.credly.com/badges/fc86f74b-c531-45a6-8427-c29a8678e753/public_url" target="_blank">
     <img src="https://images.credly.com/images/242902b5-f527-42ad-865e-977c9e1b5b58/image.png"
          alt="Ethical Hacker" width="130" />
@@ -65,7 +67,7 @@ Check out my highlighted project below:
          alt="CCNA ENSA" width="130" />
   </a>
 
-
+</div>
 
 
 
