@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 icon: fas fa-file-pdf
 order: 5
 title: "Cisco Ethical Hacking"
