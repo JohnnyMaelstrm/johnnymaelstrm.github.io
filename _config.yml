@@ -162,6 +162,9 @@ collections:
   tabs:
     output: true
     sort_by: order
+   labs:
+    output: true       # Näytetään julkaisussa
+    permalink: /cisco/:title/  # URL-rakenne labroille
 
 defaults:
   - scope:
