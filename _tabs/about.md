@@ -6,6 +6,8 @@ order: 4
 
 # Who, me?
 
+![Kuva](assets/img/favicons/web-app-manifest-512x512.png)
+
 I am a third-year IT student at Tampere University of Applied Sciences, with a strong focus on telecommunications, computer networks, and cybersecurity.
 
 I am highly motivated by various cybersecurity and networking roles, such as:
