@@ -3,7 +3,8 @@ layout: page
 title: "Welcome"
 permalink: /
 ---
-![Banneri](/assets/img/favicons/pexels-pixabay-207580.jpg)
+<img src="/assets/img/favicons/pexels-pixabay-207580.jpg" alt="Banneri" style="width: 50%; height: auto; display: block; margin: 0 auto;">
+
 # Hi 👋 Welcome to my portfolio!
 
 I’m **Jaakko Oja**, a third-year IT student at Tampere University of Applied Sciences.  
