@@ -14,6 +14,8 @@ I specialize in telecommunications, computer networks, and cybersecurity.
 
 This website serves as my portfolio, where I share my projects, learning experiences, and research work.
 
+### Remember to check the Categories-section on the left. You can find everything there!
+
 ---
 
 ## 🌟 Summer25 Intern Project: CaribouLite and Raspberry Pi 4
