@@ -14,7 +14,11 @@ I specialize in telecommunications, computer networks, and cybersecurity.
 
 This website serves as my portfolio, where I share my projects, learning experiences, and research work.
 
+## **[You can find my ongoing Thesis here →]({{ '/mythic/' | relative_url }})**
+
+
 ### Remember to check the Categories-section on the left. You can find everything there!
+
 
 ---
 
