@@ -22,6 +22,9 @@ As part of my Bachelor's degree, I am required to complete a thesis — and what
 
 I chose Mythic C2, a modular and extensible command-and-control framework, as the focus of my thesis. I initially considered using Havoc for my thesis, but ultimately decided to focus on Mythic instead.
 
+Official Mythic C2 documentation: [Mythic C2 Docs](https://docs.mythic-c2.net/home)
+
+
 I try to update this page as my thesis work progresses. It is now being reviewed by my thesis supervisor.
 
 ## Updates
