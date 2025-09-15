@@ -8,7 +8,7 @@ order: 5
 .box {
   background-color: #282a36;
   color: #f8f8f2;
-  border: 2px solid #79ffbcff;
+  border: 2px solid #000000ff;
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
@@ -19,7 +19,7 @@ order: 5
   margin-top: 0;
   margin-bottom: 10px;
   font-size: 1.5em;
-  border-bottom: 2px solid #79ffbcff;
+  border-bottom: 2px solid #000000ff;
   padding-bottom: 5px;
 }
 
@@ -33,7 +33,7 @@ order: 5
 .header-box {
   background-color: #282a36;
   color: #f8f8f2;
-  border: 2px solid #79ffbcff;
+  border: 2px solid #000000ff;
   border-radius: 12px;
   padding: 30px;
   margin-bottom: 30px;
@@ -44,7 +44,7 @@ order: 5
 .header-box h1 {
   margin: 0;
   font-size: 2.2em;
-  border-bottom: 2px solid #79ffbcff;
+  border-bottom: 2px solid #000000ff;
   padding-bottom: 10px;
 }
 
