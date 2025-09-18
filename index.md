@@ -14,6 +14,7 @@ I specialize in telecommunications, computer networks, and cybersecurity.
 
 This website serves as my portfolio, where I share my projects, learning experiences, and research work.
 
+## [Read my Thesis on C2-Frameworks](/mythic/)
 
 ### Remember to check the Categories-section on the left. You can find everything there!
 
