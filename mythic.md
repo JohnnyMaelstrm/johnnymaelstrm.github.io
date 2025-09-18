@@ -25,8 +25,15 @@ I chose Mythic C2, a modular and extensible command-and-control framework, as th
 Official Mythic C2 documentation: [Mythic C2 Docs](https://docs.mythic-c2.net/home)
 
 
-I try to update this page as my thesis work progresses. It is now being reviewed by my thesis supervisor.
+I try to update this page as my thesis work progresses. 
 
 ## Updates
 
 14.09.2025 - First update and introduction to my thesis
+
+
+18.09.2025 - Second update
+![Book Image](assets/Thesis/image_34.png)
+
+
+In the final attack simulation of my thesis project, I successfully achieved what is known as fileless execution, as evidenced in the attached image. In short, this technique involves executing malicious code directly from memory without writing any files to disk. Practically, the attack payload was loaded, unpacked, and executed on the target system using Linux’s memfd_create function, which enables fully fileless operation—leaving no persistent traces on the system. This advanced attack method poses a significant challenge to traditional security mechanisms.
