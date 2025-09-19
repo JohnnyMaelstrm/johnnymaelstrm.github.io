@@ -51,7 +51,7 @@ Stay tuned for updates!
 ## 📌 Explore More
 - [About](/about/) – a more detailed introduction  
 - [Categories](/categories/) – all the posts and categories  
-- [GitHub Profile](https://github.com/JohnnyMaelstrm)  
+- [GitHub Profile](https://github.com/JohnnyMaelstrm) – My GitHub Profile
 
 ---
 ## 🏅 Cisco Certifications
