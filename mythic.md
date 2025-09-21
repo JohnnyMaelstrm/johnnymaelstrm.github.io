@@ -6,6 +6,7 @@ icon: fas fa-file-pdf
 order: 1
 categories: [Red teaming, C2]
 tags: [red teaming, c2, hacking, pentesting, malware]
+
 ---
 
 <p align="center">
