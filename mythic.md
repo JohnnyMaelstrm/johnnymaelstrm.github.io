@@ -38,3 +38,15 @@ I try to update this page as my thesis work progresses.
 
 
 One of the attack simulations of my thesis project, I successfully achieved what is known as fileless execution, as evidenced in the attached image. In short, this technique involves executing malicious code directly from memory without writing any files to disk. Practically, the attack payload was loaded, unpacked, and executed on the target system using Linux’s memfd_create function, which enables fully fileless operation—leaving no persistent traces on the system. This advanced attack method poses a significant challenge to traditional security mechanisms.
+
+
+21.09.2025 -  Third update
+
+![Book Image](assets/Thesis/image_33.png)
+
+[Bincrypter](https://github.com/hackerschoice/bincrypter?utm_source=chatgpt.com)
+
+I used Bincrypter in my thesis. The screenshot shows how Bincrypter compresses and encrypts the file "supersecret.bin"! Highly useful tool for red-teamers.
+
+
+
