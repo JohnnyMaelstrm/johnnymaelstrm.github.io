@@ -21,7 +21,12 @@ The challenges covered a wide range of Blue Team domains:
 - Malware analysis
 - Threat Intelligence
 
-We got hands-on experience analyzing .pcap files with Wireshark, investigating Windows logs via Event Viewer, and reverse-engineering real malware using Ghidra and much more! PDF-report of our findings is "being processed".
+We got hands-on experience analyzing .pcap files with Wireshark, investigating Windows logs via Event Viewer, and reverse-engineering real malware using Ghidra and much more! 
+
+Below is the .pdf-report of our findings!
+
+<iframe src="{{ '/assets/CTF/Hack%20the%20Box%20CTF%20.pdf' | relative_url }}" width="100%" height="700px" style="border:none;"></iframe>
+
 
 Many thanks to my team --> https://ctf.hackthebox.com/team/overview/270587
 
