@@ -77,3 +77,5 @@ Automatically identifies domain controllers, file servers, and other critical in
 
 
 Remember: Hayabusa is particularly powerful for detecting lateral movement, persistence mechanisms, and privilege escalation techniques commonly used by attackers.
+
+:)
