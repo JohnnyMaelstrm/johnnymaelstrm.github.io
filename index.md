@@ -12,7 +12,7 @@ permalink: /
 I’m **Jaakko Oja**, a third-year IT student at **Tampere University of Applied Sciences**  
 I specialize in telecommunications, computer networks, and cybersecurity.  
 
-This website serves as my portfolio, where I share my projects, learning experiences, and research work.
+This website serves as my portfolio, where I share my projects and learning experiences on the field of ICT. All things related, but mainly cybersecurity. 
 
 ## [Read my Thesis on C2-Frameworks](/mythic/)
 
@@ -43,6 +43,7 @@ Check out my highlighted project below:
 ## 🚀 Upcoming Projects
 Here are some projects I’m planning to work on next:  
 - **EvilGinx3** – Exploring advanced phishing techniques and how to bypass MFA!
+- **GOAD** - Game Of Active Directory. This project is planned for later in the upcoming spring or summer. I will need to build the entire thing on AWS or Azure.
 
 
 Stay tuned for updates!
@@ -53,6 +54,7 @@ Stay tuned for updates!
 - [About](/about/) – a more detailed introduction  
 - [Categories](/categories/) – all the posts and categories  
 - [GitHub Profile](https://github.com/JohnnyMaelstrm) – My GitHub Profile
+- [Linkedin](https://www.linkedin.com/in/jaakkooja) - Linkedin profile
 
 ---
 ## 🏅 Cisco Certifications
