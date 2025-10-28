@@ -49,5 +49,9 @@ One of the attack simulations of my thesis project, I successfully achieved what
 
 I used Bincrypter in my thesis. The screenshot shows how Bincrypter compresses and encrypts the file "supersecret.bin"! Highly useful tool for red-teamers.
 
+15.10.2025 - Fourth update
+
+Finishing touches for the thesis work. We have had course exams lately so the thesis work have slowed down a bit. 
+
 
 
