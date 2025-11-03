@@ -50,5 +50,5 @@ I believe curiosity is one of the best skills you can have in tech and I try to 
 
 
 
-If you’d like to talk about cybersecurity, my projects, or **INTERNSHIP opportunities**, feel free to reach out on [LinkedIn](your-link-here)!
+If you’d like to talk about cybersecurity, my projects, or **INTERNSHIP opportunities**, feel free to reach out on Linkedin!
 
