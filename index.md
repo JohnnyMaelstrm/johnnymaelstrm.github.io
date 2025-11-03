@@ -7,7 +7,7 @@ permalink: /
      alt="Banneri" 
      style="width: 60%; object-fit: cover; display: block;">
 
-# Hi 👋 Welcome to my Portfolio | Website!
+# Hi 👋 Welcome to my Portfolio!
 
 I’m **Jaakko Oja**, a third-year IT student at **Tampere University of Applied Sciences**  
 I specialize in telecommunications, computer networks, and cybersecurity.  

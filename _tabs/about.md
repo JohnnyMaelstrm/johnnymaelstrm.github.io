@@ -3,34 +3,52 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-
 # Who, me?
 
 ![Picture](assets/img/favicons/web-app-manifest-512x512.png)
 
-I am a third-year IT student at Tampere University of Applied Sciences, with a strong focus on telecommunications, computer networks, and cybersecurity.
+I’m a third-year IT student at Tampere University of Applied Sciences, focusing on telecommunications, computer networks, and cybersecurity.
 
-I am highly motivated by various cybersecurity and networking roles, such as:
+I’m highly motivated by roles related to:
 
-- Red Teaming
-- Ethical Hacking
-- SOC
-- Network Specialist
-  
+- Red Teaming  
+- Ethical Hacking  
+- SOC Operations  
+- Network Engineering  
 
-I develop my cybersecurity skills through Cisco badges and by completing hands-on hacking exercises in TAMK courses. I am eager to put these skills into practice in real-world projects and challenges. I also continuously improve by following the cybersecurity field closely and working on personal projects, all of which are available on my [GitHub profile](https://github.com/JohnnyMaelstrm) or here in my portfolio—they are basically the same thing 😄.
+I develop my cybersecurity skills through Cisco badges and hands-on hacking exercises in TAMK courses. I’m eager to put these skills into practice through real-world projects and challenges.  
+To stay sharp, I actively follow the cybersecurity field and work on personal projects, all of which can be found on my [GitHub profile](https://github.com/JohnnyMaelstrm) or right here in my portfolio (they’re basically the same thing 😄).
 
-My biggest point of pride is my ongoing thesis, which focuses on cybersecurity from an offensive perspective. The topic is C2-frameworks, allowing me to combine my key interests while diving deep into a fascinating area of research.
-
-
+My current point of pride is my ongoing **thesis**, which explores cybersecurity from an offensive perspective. The topic focuses on **C2 frameworks**, allowing me to combine my key interests while diving deep into a fascinating area of research.
 
 <figure style="text-align:center;">
   <img src="assets/Other/tessu.jpeg" alt="Tessu" width="250">
-  <figcaption><sub>My pride and joy, sphynx cat named Tessu!</sub></figcaption>
+  <figcaption><sub>My pride and joy: a sphynx cat named Tessu!</sub></figcaption>
 </figure>
 
+I enjoy working on projects and in teams where I can apply analytical thinking, creativity, and problem-solving.  
+I’m also proud of my several **upcoming projects**! They truly reflect what I can do and what I’m eager to learn next.  
+After all, *idle hands are the devil’s workshop.* 😉
 
 
-I enjoy working on projects and in teams where I can apply analytics, problem-solving, and creative thinking.
+---
 
-If you’d like to discuss cybersecurity, my projects, or **INTERNSHIP opportunities** — feel free to get in touch!
+### Outside of tech
+
+When I’m not studying or hacking away at a new project, I like to stay active: specimenfishing, hitting a gym, and long walks in a forest are my way to recharge.  
+I’m also into gaming, sci-fi, and learning new tools just for the fun of understanding how things work under the hood.  
+
+I believe curiosity is one of the best skills you can have in tech and I try to live by that every day.
+
+
+<figure style="text-align:center;">
+  <img src="assets/Other/kala1.jpeg" alt="Commoncarp" width="250">
+  <figcaption><sub>Biggest success in my specimenfishing, 17,6kg commoncarp from the Finnish lake(2025).</sub></figcaption>
+</figure>
+
+---
+
+
+
+If you’d like to talk about cybersecurity, my projects, or **INTERNSHIP opportunities**, feel free to reach out on [LinkedIn](your-link-here)!
+
