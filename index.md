@@ -85,6 +85,15 @@ Stay tuned for updates!
          alt="CCNA ENSA" width="130" />
   </a>
 
+  <!-- CCNA ENSA -->
+  <a href="https://openbadgefactory.com/obv3/credentials/e6a1584fac59c20eaa84f82a1fab045dc51bf7e1" target="_blank">
+    <img src="https://openbadgefactory.com/v1/badge/_/RR37SAa5V4a9XY.png?event=T5ETSZaNXGXaDGT"
+         alt="CCNA ENSA" width="130" />
+  </a>
+
+  
+
+
 </div>
 
 
