@@ -57,7 +57,7 @@ Stay tuned for updates!
 - [Linkedin](https://www.linkedin.com/in/jaakkooja) - Linkedin profile
 
 ---
-## 🏅 Cisco Certifications
+## 🏅 Certifications
 
 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
 
