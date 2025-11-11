@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 # Hi 👋 Welcome to my Portfolio!
 
-I’m **Jaakko Oja**, a third-year IT student at **Tampere University of Applied Sciences**  
+I’m **Jaakko Oja**, a third-year IT student at **Tampere University of Applied Sciences.**  
 I specialize in telecommunications, computer networks, and cybersecurity.  
 
 This website serves as my portfolio, where I share my projects and learning experiences on the field of ICT. All things related, but mainly cybersecurity. 
