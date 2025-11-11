@@ -3,7 +3,18 @@ layout: page
 title: Jaakko Oja | Red Team Apprentice | Network Security Enthusiast
 permalink: /
 ---
-<section id="terminal" style="background:black;color:#0f0;font-family:monospace;padding:1rem;border-radius:10px;">
+<section id="terminal" style="
+  background:black;
+  color:#0f0;
+  font-family:monospace;
+  font-size:1rem;
+  line-height:1.4;
+  padding:1rem;
+  border-radius:10px;
+  max-width:100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+">
   <div id="output">> initializing portfolio...<br/></div>
 </section>
 
@@ -19,7 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function typeLine() {
     if (i < lines.length) {
-      document.getElementById("output").innerHTML += lines[i] + "<br/>";
+      const output = document.getElementById("output");
+      output.innerHTML += lines[i] + "<br/>";
+      output.scrollTop = output.scrollHeight; // skrollaa automaattisesti
       i++;
       setTimeout(typeLine, 1000);
     }
