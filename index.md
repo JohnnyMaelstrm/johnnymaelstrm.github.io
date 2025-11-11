@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Welcome
+title: Jaakko Oja | Red Team Apprentice | Network Security Enthusiast
 permalink: /
 ---
 <section id="terminal" style="background:black;color:#0f0;font-family:monospace;padding:1rem;border-radius:10px;">
