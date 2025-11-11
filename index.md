@@ -10,7 +10,7 @@ permalink: /
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const lines = [
-    "> connecting to Jaakko Oja's Portfolio...",
+    "> connecting to portfolio...",
     "> verifying credentials...",
     "> access granted ✅"
   ];
