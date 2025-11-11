@@ -1,47 +1,21 @@
----
-layout: page
+--- 
+layout: page 
 title: Jaakko Oja | Red Team Apprentice | Network Security Enthusiast
 permalink: /
 ---
-<section id="terminal" style="
-  background:black;
-  color:#0f0;
-  font-family:monospace;
-  font-size:1rem;
-  line-height:1.4;
-  padding:1rem;
-  border-radius:10px;
-  max-width:100%;
-  overflow-wrap: break-word;
-  word-break: break-word;
-">
-  <div id="output">> initializing portfolio...<br/></div>
-</section>
-
+<section id="terminal" style="background:black;color:#0f0;font-family:monospace;padding:1rem;border-radius:10px;"> <div id="output">> initializing portfolio...<br/></div> </section>
+ 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const lines = [
-    "> connecting to portfolio...",
-    "> verifying credentials...",
-    "> access granted ✅"
-  ];
+document.addEventListener("DOMContentLoaded", () => { const lines = [ "> connecting to portfolio...", "> verifying credentials...", "> access granted ✅" ];
 
-  let i = 0;
+let i = 0;
 
-  function typeLine() {
-    if (i < lines.length) {
-      const output = document.getElementById("output");
-      output.innerHTML += lines[i] + "<br/>";
-      output.scrollTop = output.scrollHeight; // skrollaa automaattisesti
-      i++;
-      setTimeout(typeLine, 1000);
-    }
-  }
+function typeLine() { if (i < lines.length) { document.getElementById("output").innerHTML += lines[i] + "<br/>"; i++; setTimeout(typeLine, 1000); } } 
 
-  typeLine();
-});
+typeLine();
+}); 
+
 </script>
-
 
 # Hi 👋 Welcome to my Portfolio!
 
