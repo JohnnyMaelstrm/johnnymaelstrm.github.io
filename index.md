@@ -3,9 +3,32 @@ layout: page
 title: Welcome
 permalink: /
 ---
-<img src="/assets/img/favicons/pexels-pixabay-207580.jpg" 
-     alt="Banneri" 
-     style="width: 60%; object-fit: cover; display: block;">
+<section id="terminal" style="background:black;color:#0f0;font-family:monospace;padding:1rem;border-radius:10px;">
+  <div id="output">> initializing portfolio...<br/></div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const lines = [
+    "> connecting to Jaakko Oja's Portfolio...",
+    "> verifying credentials...",
+    "> access granted ✅"
+  ];
+
+  let i = 0;
+
+  function typeLine() {
+    if (i < lines.length) {
+      document.getElementById("output").innerHTML += lines[i] + "<br/>";
+      i++;
+      setTimeout(typeLine, 1000);
+    }
+  }
+
+  typeLine();
+});
+</script>
+
 
 # Hi 👋 Welcome to my Portfolio!
 
@@ -24,7 +47,7 @@ This website serves as my portfolio, where I share my projects and learning expe
 
 ## 🌟 Summer25 Intern Project: CaribouLite and Raspberry Pi 4
 
-I contributed this project at my school (Tamk). Really eye-opening project on the SDR-world and i enjoyed it very much.
+I contributed this project at my school (Tampere University of Applied Sciences). Really eye-opening project on the SDR-world and i enjoyed it very much.
 Check out my highlighted project below:
 
 <iframe src="{{ '/assets/docs/Project.pdf' | relative_url }}" width="100%" height="500px" style="border:none;"></iframe>
@@ -35,7 +58,8 @@ Check out my highlighted project below:
 
 ## 🔑 My Interests
 - Red Teaming  
-- Ethical Hacking  
+- Ethical Hacking 
+- Pentesting 
 - SOC Operations  
 - Networking & SDR  
 
@@ -51,10 +75,10 @@ Stay tuned for updates!
 ---
 
 ## 📌 Explore More
-- [About](/about/) – a more detailed introduction  
+- [About](/about/) – a more detailed introduction about me! 
 - [Categories](/categories/) – all the posts and categories  
 - [GitHub Profile](https://github.com/JohnnyMaelstrm) – My GitHub Profile
-- [Linkedin](https://www.linkedin.com/in/jaakkooja) - Linkedin profile
+- [Linkedin](https://www.linkedin.com/in/jaakkooja) - Linkedin profile, feel free to contact me!
 
 ---
 ## 🏅 Certifications
@@ -95,5 +119,6 @@ Stay tuned for updates!
 
 
 </div>
+
 
 
