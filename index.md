@@ -102,6 +102,23 @@ Stay tuned for updates!
          alt="CCNA ENSA" width="130" />
   </a>
 
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+
+  <!-- I2CS -->
+  <a href="https://www.credly.com/badges/d029163a-b59e-4365-a18f-705467e7e885/public_url" target="_blank">
+    <img src="https://images.credly.com/images/af8c6b4e-fc31-47c4-8dcb-eb7a2065dc5b/I2CS__1_.png"
+         alt="Cisco I2CS" width="130" />
+  </a>
+
+  <!-- ISC2 Candidate Badge -->
+  <a href="https://www.credly.com/badges/9f5d0c10-1f34-48b0-b352-b413a9ad1ada/public_url" target="_blank" rel="noopener noreferrer">
+    <img src="https://images.credly.com/size/220x220/images/9180921d-4a13-429e-9357-6f9706a554f0/image.png"
+         alt="ISC2 Candidate Badge"
+         width="130"
+         style="border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" />
+  </a>
+
+</div>
   
 
 
