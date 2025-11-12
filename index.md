@@ -102,7 +102,7 @@ Stay tuned for updates!
          alt="CCNA ENSA" width="130" />
   </a>
 
-<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
 
   <!-- I2CS -->
   <a href="https://www.credly.com/badges/d029163a-b59e-4365-a18f-705467e7e885/public_url" target="_blank">
@@ -119,10 +119,4 @@ Stay tuned for updates!
   </a>
 
 </div>
-  
-
-
-</div>
-
-
 
