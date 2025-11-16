@@ -4,8 +4,6 @@ order: 5
 ---
 
 <style>
-
-
 :root {
   --bg: #1e1f26;
   --card: #2a2c37;
@@ -13,31 +11,33 @@ order: 5
   --accent: #7aa2f7;
   --text: #e9e9e9;
   --muted: #b5b5b5;
-  --radius-lg: 14px;
-  --radius-sm: 10px;
-  --shadow: 0 6px 18px rgba(0,0,0,0.45);
+  --radius-lg: 16px;
+  --radius-sm: 12px;
+  --shadow: 0 6px 20px rgba(0,0,0,0.5);
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .resume-wrapper {
-  padding: 20px;
+  padding: 25px;
   font-family: var(--font);
   color: var(--text);
+  max-width: 900px;
+  margin: auto;
 }
 
 /* HEADER */
 .header-box {
   background: var(--card);
-  padding: 35px;
+  padding: 40px 30px;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   text-align: center;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
   box-shadow: var(--shadow);
 }
 
 .header-box h1 {
-  font-size: 2.4em;
+  font-size: 2.6em;
   margin: 0;
   color: var(--accent);
   letter-spacing: 1px;
@@ -45,7 +45,7 @@ order: 5
 }
 
 .header-box p {
-  margin-top: 12px;
+  margin-top: 10px;
   color: var(--muted);
   font-size: 1.1em;
 }
@@ -55,20 +55,20 @@ order: 5
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  padding: 25px;
+  padding: 25px 30px;
   margin-bottom: 25px;
   box-shadow: var(--shadow);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
 .skill-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   border-color: var(--accent);
 }
 
 .skill-card h3 {
-  font-size: 1.5em;
-  margin-bottom: 12px;
+  font-size: 1.55em;
+  margin-bottom: 15px;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--border);
   letter-spacing: 0.5px;
@@ -77,23 +77,23 @@ order: 5
 
 /* Lists */
 .skill-card ul {
-  padding-left: 20px;
+  padding-left: 22px;
   margin: 0;
 }
 
 .skill-card li {
-  margin-bottom: 6px;
-  line-height: 1.5;
+  margin-bottom: 8px;
+  line-height: 1.6;
   font-size: 1.05em;
 }
 
-/* Mobile Optimization */
-@media (max-width: 600px) {
+/* Responsive */
+@media (max-width: 700px) {
   .header-box h1 {
-    font-size: 1.9em;
+    font-size: 2em;
   }
   .skill-card h3 {
-    font-size: 1.3em;
+    font-size: 1.35em;
   }
 }
 </style>
@@ -101,8 +101,8 @@ order: 5
 <div class="resume-wrapper">
 
   <div class="header-box">
-    <h1>Resume</h1>
-    <p>Core skills that i have developed in the IT</p>
+    <h1>Jaakko Oja – IT & Cybersecurity Skills</h1>
+    <p>Core competencies in IT, Red Teaming, Networking, and Security Operations</p>
   </div>
 
   <!-- OFFENSIVE SECURITY -->
@@ -112,10 +112,10 @@ order: 5
       <li>Nmap & Network Reconnaissance</li>
       <li>AV/EDR Evasion Techniques</li>
       <li>Metasploit Framework</li>
-      <li>Burp Suite (Web App Testing)</li>
+      <li>Burp Suite (Web Application Testing)</li>
       <li>C2 Framework Operations</li>
       <li>Netcat & Reverse Shell Development</li>
-      <li>Privilege Escalation (Win & Linux)</li>
+      <li>Privilege Escalation (Windows & Linux)</li>
       <li>Password Cracking & Hash Analysis</li>
       <li>Social Engineering Fundamentals</li>
     </ul>

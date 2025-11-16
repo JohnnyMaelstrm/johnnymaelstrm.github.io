@@ -5,21 +5,22 @@ permalink: /
 ---
 
 <style>
+/* Kali Linux Terminal Style */
 .terminal-container {
-  background: #0a0a0a;
-  border: 1px solid #333;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 255, 0, 0.1);
+  background: #ff0000ff;
+  border: none;
+  border-radius: 6px;
+  box-shadow: none;
   overflow: hidden;
   margin: 2rem 0;
 }
 
 .terminal-header {
-  background: #1a1a1a;
+  background: #000000ff;
   padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #000000ff;
 }
 
 .terminal-buttons {
@@ -31,29 +32,44 @@ permalink: /
   width: 10px;
   height: 10px;
   border-radius: 50%;
+  border: 1px solid #0d0d0d;
 }
 
-.close { background: #ff5f56; }
-.minimize { background: #ffbd2e; }
-.maximize { background: #27ca3f; }
+/* Kali Linux button colors (blue theme) */
+.close { background: #020202ff; }
+.minimize { background: #000000ff; }
+.maximize { background: #000000ff; }
 
 .terminal-title {
-  color: #888;
+  color: #fd0303ff;
   font-size: 0.8rem;
   margin-left: auto;
   margin-right: auto;
+  font-family: "JetBrains Mono", monospace;
 }
 
 #terminal {
-  background: #0a0a0a;
-  color: #00ff00;
-  font-family: 'Courier New', monospace;
+  background: #0a0c0d;
+  color: #fd0303ff;
+  font-family: "JetBrains Mono", monospace;
   padding: 1.5rem;
-  min-height: 100px;
+  min-height: 120px;
   line-height: 1.5;
+  font-size: 0.95rem;
+  border-top: 1px solid #000000ff;
 }
 
-/* FIXED — continuing styles normally */
+/* Blinking cursor */
+.blinking-cursor {
+  animation: blink 1s infinite;
+  color: #fd0303ff;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Responsive grids and buttons (unchanged) */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -71,14 +87,14 @@ permalink: /
 
 .project-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  border-color: #00ff00;
+  box-shadow: none;
+  border-color: var(--border-color);
 }
 
 .project-tag {
   display: inline-block;
-  background: rgba(0, 255, 0, 0.1);
-  color: #00ff00;
+  background: rgba(30, 144, 255, 0.1);
+  color: #ffffffff;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -108,7 +124,7 @@ permalink: /
 
 .highlight-box {
   background: var(--card-bg);
-  border-left: 4px solid #0088ff;
+  border-left: 4px solid #1e90ff;
   padding: 1.5rem;
   margin: 1.5rem 0;
   border-radius: 0 8px 8px 0;
@@ -124,8 +140,8 @@ permalink: /
 .nav-button {
   display: inline-block;
   background: transparent;
-  color: #00ff00;
-  border: 1px solid #00ff00;
+  color: #1e90ff;
+  border: 1px solid #121213ff;
   padding: 0.75rem 1.5rem;
   border-radius: 4px;
   text-decoration: none;
@@ -133,32 +149,14 @@ permalink: /
 }
 
 .nav-button:hover {
-  background: rgba(0, 255, 0, 0.1);
+  background: rgba(30, 144, 255, 0.1);
   text-decoration: none;
 }
 
-.blinking-cursor {
-  animation: blink 1s infinite;
-  color: #00ff00;
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
 @media (max-width: 768px) {
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .certifications-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  }
-  
-  .nav-buttons {
-    flex-direction: column;
-  }
+  .project-grid { grid-template-columns: 1fr; }
+  .certifications-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+  .nav-buttons { flex-direction: column; }
 }
 </style>
 
@@ -169,7 +167,7 @@ permalink: /
       <div class="terminal-button minimize"></div>
       <div class="terminal-button maximize"></div>
     </div>
-    <div class="terminal-title">portfolio_terminal.exe</div>
+    <div class="terminal-title">portfolio.exe</div>
   </div>
 
   <section id="terminal">
@@ -345,13 +343,37 @@ My thesis research exploring modern C2 frameworks in red team operations.
   </div>
 </div>
 
----
-
 ## 🔗 Connect & Explore
 
 <div class="nav-buttons">
-  <a href="/about/" class="nav-button">📖 About Me</a>
-  <a href="/categories/" class="nav-button">📂 Categories</a>
-  <a href="https://github.com/JohnnyMaelstrm" target="_blank" class="nav-button">💻 GitHub</a>
-  <a href="https://www.linkedin.com/in/jaakkooja" target="_blank" class="nav-button">💼 LinkedIn</a>
+  <a href="/about/" class="nav-link">📖 About Me</a>
+  <a href="/categories/" class="nav-link">📂 Categories</a>
+  <a href="https://github.com/JohnnyMaelstrm" target="_blank" class="nav-link">💻 GitHub</a>
+  <a href="https://www.linkedin.com/in/jaakkooja" target="_blank" class="nav-link">💼 LinkedIn</a>
 </div>
+
+<style>
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem; /* smaller gap for compact look */
+  margin: 1.5rem 0;
+}
+
+.nav-link {
+  display: inline-block;
+  font-size: 0.9rem; /* small, neat */
+  color: #f8f8f2; /* light text for dark background */
+  background-color: #1f2026; /* subtle dark pill */
+  padding: 0.35rem 0.75rem; /* compact padding */
+  border-radius: 12px; /* rounded pill shape */
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  background-color: #3d3f4a; /* slightly lighter on hover */
+  color: #e2e8f0; /* slightly brighter text */
+  transform: translateY(-1px); /* subtle lift */
+}
+</style>
