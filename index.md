@@ -52,7 +52,8 @@ permalink: /
   min-height: 100px;
   line-height: 1.5;
 }
-<style>
+
+/* FIXED — continuing styles normally */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -170,6 +171,7 @@ permalink: /
     </div>
     <div class="terminal-title">portfolio_terminal.exe</div>
   </div>
+
   <section id="terminal">
     <div id="output">> initializing portfolio...<br/></div>
   </section>
@@ -193,7 +195,6 @@ document.addEventListener("DOMContentLoaded", () => {
       i++; 
       setTimeout(typeLine, 800); 
     } else {
-      // Add blinking cursor after typing is complete
       output.innerHTML += '<span class="blinking-cursor">_</span>';
     }
   } 
