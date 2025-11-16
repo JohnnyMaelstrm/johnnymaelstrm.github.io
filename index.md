@@ -52,7 +52,7 @@ permalink: /
   min-height: 100px;
   line-height: 1.5;
 }
-
+<style>
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
