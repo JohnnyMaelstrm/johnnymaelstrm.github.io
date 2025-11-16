@@ -124,7 +124,7 @@ permalink: /
 
 .highlight-box {
   background: var(--card-bg);
-  border-left: 4px solid #1e90ff;
+  border-left: 4px solid #ffffffff;
   padding: 1.5rem;
   margin: 1.5rem 0;
   border-radius: 0 8px 8px 0;
@@ -140,7 +140,7 @@ permalink: /
 .nav-button {
   display: inline-block;
   background: transparent;
-  color: #1e90ff;
+  color: #ffffffff;
   border: 1px solid #121213ff;
   padding: 0.75rem 1.5rem;
   border-radius: 4px;
