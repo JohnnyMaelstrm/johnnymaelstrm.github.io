@@ -30,10 +30,10 @@ I try to update this page as my thesis work progresses.
 
 ## Updates
 
-14.09.2025 - First update and introduction to my thesis
+14.09.2025 —— First update and introduction to my thesis
 
 
-18.09.2025 - Second update
+18.09.2025 —— Second update
 
 ![Book Image](assets/Thesis/image_34.png)
 
@@ -41,7 +41,7 @@ I try to update this page as my thesis work progresses.
 One of the attack simulations of my thesis project, I successfully achieved what is known as fileless execution, as evidenced in the attached image. In short, this technique involves executing malicious code directly from memory without writing any files to disk. Practically, the attack payload was loaded, unpacked, and executed on the target system using Linux’s memfd_create function, which enables fully fileless operation—leaving no persistent traces on the system. This advanced attack method poses a significant challenge to traditional security mechanisms.
 
 
-21.09.2025 -  Third update
+21.09.2025 ——  Third update
 
 ![Book Image](assets/Thesis/image_33.png)
 
@@ -49,9 +49,11 @@ One of the attack simulations of my thesis project, I successfully achieved what
 
 I used Bincrypter in my thesis. The screenshot shows how Bincrypter compresses and encrypts the file "supersecret.bin"! Highly useful tool for red-teamers.
 
-15.10.2025 - Fourth update
+15.10.2025 —— Fourth update
 
 Finishing touches for the thesis work. We have had course exams lately so the thesis work have slowed down a bit. 
 
+20.11.2025 —— FINAL UPDATE
 
+I have submitted my thesis for evaluation. I discussed it with my supervisor, and they recommended a grade of 5, the highest possible! This was a really interesting project for me and it has further increased my desire to learn more. Red teaming is truly my passion within cybersecurity.
 
