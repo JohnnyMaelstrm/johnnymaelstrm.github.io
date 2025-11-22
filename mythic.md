@@ -50,13 +50,16 @@ tags: [red teaming, c2, hacking, pentesting, malware]
 
 <p><strong>21.09.2025</strong> —— Third update</p>
 
-<p><img src="assets/Thesis/image_33.png" alt="Book Image" /></p>
+<p align="center">
+  <img src="{{ '/assets/Thesis/image_33.png' | relative_url }}" alt="Book Image" style="max-width:90%; height:auto;" />
+</p>
 
-<p><a href="https://github.com/hackerschoice/bincrypter?utm_source=chatgpt.com">Bincrypter</a></p>
+<p><a href="https://github.com/hackerschoice/bincrypter" target="_blank">Bincrypter</a></p>
 
 <p>I used Bincrypter in my thesis. The screenshot shows how Bincrypter compresses and encrypts the file "supersecret.bin"! Highly useful tool for red-teamers.</p>
 
 <p><strong>15.10.2025</strong> —— Fourth update</p>
+
 
 <p>Finishing touches for the thesis work. We have had course exams lately so the thesis work have slowed down a bit.</p>
 
