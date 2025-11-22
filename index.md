@@ -78,16 +78,16 @@ permalink: /
 }
 
 .status-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
+  width: 10px;
+  height: 10px;
+  background: var(--green-dim); /* vihreä vilkkuva */
   border-radius: 50%;
-  animation: pulse 2s infinite;
+  animation: pulse 1.7s infinite;
 }
 
 @keyframes pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  50% { opacity: 0.2; }
 }
 
 /* --- Section Headers --- */
@@ -140,6 +140,7 @@ permalink: /
 .timeline-item:nth-child(4) { animation-delay: 0.7s; }
 .timeline-item:nth-child(5) { animation-delay: 0.9s; }
 .timeline-item:nth-child(6) { animation-delay: 1.1s; }
+
 @keyframes fadeSlide {
   to { opacity: 1; transform: translateX(0); }
 }
@@ -247,7 +248,7 @@ permalink: /
 }
 
 .certification-item {
-  width: 100px;
+  width: 120px;
   text-align: center;
 }
 
@@ -256,7 +257,7 @@ permalink: /
   height: auto;
   object-fit: contain;
   border-radius: 4px;
-  border: 1px solid var(--border);
+  border: none;
   transition: transform 0.2s, border-color 0.2s, opacity 0.2s;
   opacity: 0.85;
 }
@@ -268,7 +269,7 @@ permalink: /
 }
 
 .certification-name {
-  font-size: 0.75rem;
+  font-size: 0.80rem;
   font-weight: 500;
   color: var(--text-dim);
   margin-top: 0.25rem;
@@ -393,11 +394,11 @@ permalink: /
       <div class="timeline-title">Tampere University of Applied Sciences</div>
       <p class="timeline-desc">Bachelor of Engineering —— Telecommunications and computer networks.</p>
     </div>
-  </div>
+  
 
-  <!-- Core Skills -->
-  <div class="section-header">Core Skills</div>
-  <div class="skills-grid">
+<!-- Core Skills -->
+<div class="section-header">Core Skills</div>
+<div class="skills-grid">
     <div class="skill-card">
       <h3>Red Teaming</h3>
       <p>Adversary simulation and offensive security operations</p>
@@ -426,23 +427,23 @@ permalink: /
 </div>
 
 
-
-## 🌟 Featured Project: CaribouLite & Raspberry Pi 4
+<div class="section-header">🌟 Featured Project: CaribouLite & Raspberry Pi 4</div>
 
 <div class="highlight-box">
   <h3>Summer 2025 Intern Project</h3>
-  <p>I contributed to this project at Tampere University of Applied Sciences. Really an eye-opening exploration into the world of Software-Defined Radio (SDR).</p>
+  <p>I contributed to this project at Tampere University of Applied Sciences. 
+  Really an eye-opening exploration into the world of Software-Defined Radio (SDR).</p>
   
   <div style="margin: 1.5rem 0;">
-    <iframe src="{{ '/assets/docs/Project.pdf' | relative_url }}" width="100%" height="500px" style="border: 1px solid #333; border-radius: 4px;"></iframe>
+    <iframe src="{{ '/assets/docs/Project.pdf' | relative_url }}" 
+            width="100%" height="500px" 
+            style="border: 1px solid #333; border-radius: 4px;"></iframe>
   </div>
   
   <a href="{{ '/assets/docs/Project.pdf' | relative_url }}" class="nav-button" download>
     📥 Download Project PDF
   </a>
 </div>
-
----
 
 <div class="section-header">🏅 Certifications</div>
 
@@ -496,11 +497,12 @@ permalink: /
   </div>
 </div>
 
-<div class="section-header">🔗 Connect & Explore</div>
-
+<div class="section-header">🔗 My links!</div>
 <div class="nav-buttons">
-  <a href="/about/" class="nav-link">📖 About Me</a>
-  <a href="/categories/" class="nav-link">📂 Categories</a>
-  <a href="https://github.com/JohnnyMaelstrm" target="_blank" class="nav-link">💻 GitHub</a>
-  <a href="https://www.linkedin.com/in/jaakkooja" target="_blank" class="nav-link">💼 LinkedIn</a>
+<a href="/about/" class="nav-link">📖 About Me</a>
+<a href="/categories/" class="nav-link">📂 Categories</a>
+<a href="https://github.com/JohnnyMaelstrm" target="_blank" class="nav-link">💻 GitHub</a>
+<a href="https://www.linkedin.com/in/jaakkooja" target="_blank" class="nav-link">💼 LinkedIn</a>
+</div>
+
 </div>
