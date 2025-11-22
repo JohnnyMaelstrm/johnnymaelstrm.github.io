@@ -364,12 +364,17 @@ permalink: /
       <div class="timeline-date">2026 · Planned</div>
       <div class="timeline-title">GOAD Lab Environment</div>
       <p class="timeline-desc">Game Of Active Directory — intern project at TAMK for practicing enterprise attack techniques.</p>
-    </div>
+    </div>  
   <div class="timeline-item">
   <div class="timeline-date">2025 · Planned</div>
   <div class="timeline-title">Evilginx</div>
-  <p class="timeline-desc"> Built a controlled Evilginx environment to experiment with reverse‑proxy phishing, session hijacking, and MFA bypass mechanisms.</p>
-</div>
+  <p class="timeline-desc"> Planning to build a controlled Evilginx environment to experiment with reverse‑proxy phishing, session hijacking, and MFA bypass mechanisms.</p>
+    </div>
+  <div class="timeline-item">
+  <div class="timeline-date">2026 · Planned</div>
+  <div class="timeline-title">Wazuh & Suricata —— SIEM Environment  </div>
+  <p class="timeline-desc">Open source SIEM environment with Wazuh and Suricata for monitoring and detecting network threats in real time.</p>
+    </div>
 
   <div class="timeline-item">
       <div class="timeline-date">Summer 2025</div>
