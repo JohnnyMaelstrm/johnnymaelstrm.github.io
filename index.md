@@ -139,7 +139,7 @@ permalink: /
 .timeline-item:nth-child(3) { animation-delay: 0.5s; }
 .timeline-item:nth-child(4) { animation-delay: 0.7s; }
 .timeline-item:nth-child(5) { animation-delay: 0.9s; }
-
+.timeline-item:nth-child(6) { animation-delay: 1.1s; }
 @keyframes fadeSlide {
   to { opacity: 1; transform: translateX(0); }
 }
