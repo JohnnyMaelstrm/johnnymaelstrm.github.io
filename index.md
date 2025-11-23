@@ -49,17 +49,27 @@ permalink: /
 }
 
 .hero-text h1 {
-  font-size: 2rem;
+  font-size: 4rem;
   font-weight: 700;
   color: var(--accent);
   margin: 0 0 0.25rem;
+  text-decoration: none;
+  border-bottom: none;
+  opacity: 0;
+  animation: fadeIn 1s ease-in 0.5s forwards;
 }
 
 .hero-text .tagline {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 500;
   color: var(--accent-dim);
   margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeIn 1.2s ease-in 2.5s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
 
 .hero-text .bio {
@@ -73,14 +83,14 @@ permalink: /
   align-items: center;
   gap: 0.5rem;
   margin-top: 1rem;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--green-dim);
 }
 
 .status-dot {
   width: 10px;
   height: 10px;
-  background: var(--green-dim); /* vihreä vilkkuva */
+  background: var(--green-dim);
   border-radius: 50%;
   animation: pulse 1.7s infinite;
 }
@@ -96,7 +106,7 @@ permalink: /
   align-items: center;
   gap: 0.75rem;
   margin: 2.5rem 0 1.5rem;
-  font-size: 0.85rem;
+  font-size: 1.2rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -158,7 +168,7 @@ permalink: /
 }
 
 .timeline-date {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-dim);
   text-transform: uppercase;
@@ -182,7 +192,7 @@ permalink: /
 }
 
 .timeline-desc {
-  font-size: 0.85rem;
+  font-size: 0.80rem;
   color: var(--text);
   line-height: 1.6;
   font-weight: 400;
@@ -198,7 +208,7 @@ permalink: /
 .skill-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  padding: 1.25rem;
+  padding: 1.5rem;
   position: relative;
   overflow: hidden;
 }
@@ -313,6 +323,30 @@ permalink: /
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+.highlight-box {
+  background: var(--bg-card);
+  border-left: 4px solid var(--accent-dim);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.nav-button {
+  display: inline-block;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  background: var(--accent-glow);
+  text-decoration: none;
+}
+
 @media (max-width: 600px) {
   .nav-link {
     width: 100%;
@@ -322,24 +356,14 @@ permalink: /
     grid-template-columns: 1fr;
   }
   .hero-section {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
+    flex-direction: column;
+    text-align: center;
+  }
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
 }
-
-.profile-pic {
-  width: 140px;               /* Circle size */
-  height: 140px;              /* Keep height = width */
-  border-radius: 50%;         /* Make circular */
-  border: 2px solid var(--border);
-  box-shadow: 0 0 30px var(--accent-glow);
-  object-fit: cover;          /* Fill circle */
-  flex-shrink: 0;             /* Prevent shrinking in flex */
-  display: block;             /* Ensure no inline spacing issues */
-}
-}
-
-
 </style>
 
 <div class="hacker-page">
@@ -372,7 +396,7 @@ permalink: /
   <p class="timeline-desc"> Planning to build a controlled Evilginx environment to experiment with reverse‑proxy phishing, session hijacking, and MFA bypass mechanisms.</p>
     </div>
   <div class="timeline-item">
-  <div class="timeline-date">2026 · Planned</div>
+  <div class="timeline-date">2025 · Planned</div>
   <div class="timeline-title">Wazuh & Suricata —— SIEM Environment  </div>
   <p class="timeline-desc">Open source SIEM environment with Wazuh and Suricata for monitoring and detecting network threats in real time.</p>
     </div>
