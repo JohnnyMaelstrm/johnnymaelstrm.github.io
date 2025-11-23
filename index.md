@@ -45,7 +45,9 @@ permalink: /
   border: 2px solid var(--border);
   box-shadow: 0 0 30px var(--accent-glow);
   object-fit: cover;
+  object-position: center top;
   flex-shrink: 0;
+  display: block;
 }
 
 .hero-text h1 {
@@ -106,7 +108,7 @@ permalink: /
   align-items: center;
   gap: 0.75rem;
   margin: 2.5rem 0 1.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -370,7 +372,7 @@ permalink: /
 
   <!-- Hero Section -->
   <div class="hero-section">
-    <img src="/assets/img/favicons/web-app-manifest-512x512.png" alt="Jaakko Oja" class="profile-pic">
+    <img src="/assets/img/favicons/roundpic.png" alt="Jaakko Oja" class="profile-pic">
     <div class="hero-text">
       <h1>Jaakko Oja</h1>
       <div class="tagline">Red Team Apprentice // Network Security Enthusiast</div>

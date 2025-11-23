@@ -105,10 +105,10 @@ order: 4
       <li>Network Engineering</li>
     </ul>
     <p>
-      I develop my cybersecurity skills through Cisco badges and hands-on hacking exercises in TAMK courses. I’m eager to put these skills into practice through real-world projects and challenges.  
+      I develop my cybersecurity skills through Cisco cources and hands-on hacking exercises in TAMK courses. I’m eager to put these skills into practice through real-world projects and challenges.  
       To stay sharp, I actively follow the cybersecurity field, attend <a href="https://ctf.hackthebox.com/user/profile/649858">CTF-challenges</a> and work on personal projects, all of which can be found on my <a href="https://github.com/JohnnyMaelstrm">GitHub profile</a> or right here in my portfolio (they’re basically the same thing 😄).
       <br><br>
-      My current point of pride is my ongoing <strong>thesis</strong>, which explores cybersecurity from an offensive perspective. The topic focuses on <strong>C2 frameworks</strong>, allowing me to combine my key interests while diving deep into a fascinating area of research.
+      My current point of pride is my finished <strong>thesis</strong>, which explores cybersecurity from an offensive perspective. The topic focuses on <strong>C2 frameworks</strong>, allowing me to combine my key interests while diving deep into a fascinating area of research.
       I enjoy working on projects and in teams where I can apply analytical thinking, creativity, and problem-solving.
       <br><br>  
       I’m also proud of my several <strong>upcoming projects</strong>! They truly reflect what I can do and what I’m eager to learn next.
