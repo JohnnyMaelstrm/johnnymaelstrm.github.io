@@ -393,7 +393,7 @@ permalink: /
       <p class="timeline-desc">Game Of Active Directory — intern project at TAMK for practicing enterprise attack techniques.</p>
     </div>  
   <div class="timeline-item">
-  <div class="timeline-date">2025 · Planned</div>
+  <div class="timeline-date">2026 · Planned</div>
   <div class="timeline-title">Evilginx</div>
   <p class="timeline-desc"> Planning to build a controlled Evilginx environment to experiment with reverse‑proxy phishing, session hijacking, and MFA bypass mechanisms.</p>
     </div>
@@ -411,7 +411,7 @@ permalink: /
 
   <div class="timeline-item">
       <div class="timeline-date">2025</div>
-      <div class="timeline-title"><a href="/mythic/">Command & Control Frameworks</a></div>
+      <div class="timeline-title"><a href="/mythic/">Thesis: Command & Control Frameworks</a></div>
       <p class="timeline-desc">Thesis research exploring modern C2 frameworks in red team operations.</p>
     </div>
 
