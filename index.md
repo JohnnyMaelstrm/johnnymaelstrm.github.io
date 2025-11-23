@@ -58,7 +58,7 @@ permalink: /
   text-decoration: none;
   border-bottom: none;
   opacity: 0;
-  animation: fadeIn 1s ease-in 0.5s forwards;
+  animation: fadeIn 0.9s ease-in 0.5s forwards;
 }
 
 .hero-text .tagline {
@@ -67,7 +67,7 @@ permalink: /
   color: var(--accent-dim);
   margin-bottom: 1rem;
   opacity: 0;
-  animation: fadeIn 1.2s ease-in 2.5s forwards;
+  animation: fadeIn 1.0s ease-in 1.5s forwards;
 }
 
 @keyframes fadeIn {
@@ -405,7 +405,7 @@ permalink: /
 
   <div class="timeline-item">
       <div class="timeline-date">Summer 2025</div>
-      <div class="timeline-title">CaribouLite SDR Research</div>
+      <div class="timeline-title"><a href="/posts/CaribouLite/">CaribouLite SDR Research</a>
       <p class="timeline-desc">Software-Defined Radio project using CaribouLite and Raspberry Pi 4 at TAMK.</p>
     </div>
 
