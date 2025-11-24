@@ -404,11 +404,10 @@ permalink: /
     </div>
 
   <div class="timeline-item">
-      <div class="timeline-date">Summer 2025</div>
-      <div class="timeline-title"><a href="/posts/CaribouLite/">CaribouLite SDR Research</a>
+      <div class="timeline-date">2025</div>
+      <div class="timeline-title">Intern project: CaribouLite & Raspberry Pi 4</div>
       <p class="timeline-desc">Software-Defined Radio project using CaribouLite and Raspberry Pi 4 at TAMK.</p>
     </div>
-
   <div class="timeline-item">
       <div class="timeline-date">2025</div>
       <div class="timeline-title"><a href="/mythic/">Thesis: Command & Control Frameworks</a></div>
