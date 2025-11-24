@@ -3,7 +3,7 @@ layout: post
 title: "CaribouLite SDR Research"
 date: 2025-09-10
 categories: [Projects, SDR]
-permalink: /posts/CaribouLite/
+permalink: /CaribouLite/
 tags: [sdr, raspberry-pi, internship, project]
 ---
 
