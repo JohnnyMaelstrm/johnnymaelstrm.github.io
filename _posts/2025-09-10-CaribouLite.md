@@ -15,7 +15,7 @@ tags: [sdr, raspberry-pi, internship, project]
   --bg-dark: #09090b;
   --border: rgba(255, 255, 255, 0.08);
   --text: #d4d4d8;
-  --text-dim: #52525b;
+  --text-dim: #cfcfcf;
 }
 
 .project-page {

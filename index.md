@@ -399,7 +399,7 @@ permalink: /
     </div>
   <div class="timeline-item">
   <div class="timeline-date">2025 · Planned</div>
-  <div class="timeline-title">Wazuh & Suricata —— SIEM Environment  </div>
+  <div class="timeline-title"><a href="/siem-wazuh-suricata/">Wazuh & Suricata —— SIEM Environment</a>
   <p class="timeline-desc">Open source SIEM environment with Wazuh and Suricata for monitoring and detecting network threats in real time.</p>
     </div>
 
@@ -451,7 +451,6 @@ permalink: /
   </div>
 
 </div>
-
 
 <div class="section-header">🌟 Featured Project: CaribouLite & Raspberry Pi 4</div>
 
