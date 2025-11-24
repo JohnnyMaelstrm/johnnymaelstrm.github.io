@@ -391,12 +391,14 @@ permalink: /
       <div class="timeline-date">2026 · Planned</div>
       <div class="timeline-title">GOAD Lab Environment</div>
       <p class="timeline-desc">Game Of Active Directory — intern project at TAMK for practicing enterprise attack techniques.</p>
-    </div>  
+    </div>
+
   <div class="timeline-item">
   <div class="timeline-date">2026 · Planned</div>
   <div class="timeline-title">Evilginx</div>
   <p class="timeline-desc"> Planning to build a controlled Evilginx environment to experiment with reverse‑proxy phishing, session hijacking, and MFA bypass mechanisms.</p>
     </div>
+
   <div class="timeline-item">
   <div class="timeline-date">2025 · Planned</div>
   <div class="timeline-title"><a href="/siem-wazuh-suricata/">Wazuh & Suricata —— SIEM Environment</a>
@@ -456,7 +458,7 @@ permalink: /
 
 <div class="highlight-box">
   <h3>Summer 2025 Intern Project</h3>
-  <p>I contributed to this project at Tampere University of Applied Sciences. 
+  <p>This was my intern project at Tampere University of Applied Sciences. 
   Really an eye-opening exploration into the world of Software-Defined Radio (SDR).</p>
   
   <div style="margin: 1.5rem 0;">
