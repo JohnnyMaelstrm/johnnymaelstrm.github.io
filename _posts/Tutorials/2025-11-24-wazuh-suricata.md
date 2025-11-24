@@ -3,7 +3,7 @@ layout: post
 date: 2025-11-24 08:27:00 +0300
 title: "SIEM Environment: Wazuh & Suricata"
 permalink: /siem-wazuh-suricata/
-order: 2
+order: 1
 categories: [SIEM, Wazuh, Suricata]
 tags: [SIEM, wazuh, suricata, blue team, malware, threatactor]
 ---
