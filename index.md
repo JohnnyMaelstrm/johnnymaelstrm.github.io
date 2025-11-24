@@ -385,43 +385,66 @@ permalink: /
   </div>
 
   <!-- Timeline -->
-  <div class="section-header">Timeline</div>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-date">2026 · Planned</div>
-      <div class="timeline-title">GOAD Lab Environment</div>
-      <p class="timeline-desc">Game Of Active Directory — intern project at TAMK for practicing enterprise attack techniques.</p>
-    </div>
+<div class="section-header">Timeline</div>
+
+<div class="timeline">
 
   <div class="timeline-item">
-  <div class="timeline-date">2026 · Planned</div>
-  <div class="timeline-title">Evilginx</div>
-  <p class="timeline-desc"> Planning to build a controlled Evilginx environment to experiment with reverse‑proxy phishing, session hijacking, and MFA bypass mechanisms.</p>
-    </div>
+    <div class="timeline-date">2026 · Planned</div>
+    <div class="timeline-title">GOAD Lab Environment</div>
+    <p class="timeline-desc">
+      Game Of Active Directory — intern project at TAMK for practicing enterprise attack techniques.
+    </p>
+  </div>
 
   <div class="timeline-item">
-  <div class="timeline-date">2025 · Planned</div>
-  <div class="timeline-title"><a href="/siem-wazuh-suricata/">Wazuh & Suricata —— SIEM Environment</a>
-  <p class="timeline-desc">Open source SIEM environment with Wazuh and Suricata for monitoring and detecting network threats in real time.</p>
-    </div>
+    <div class="timeline-date">2026 · Planned</div>
+    <div class="timeline-title">Evilginx</div>
+    <p class="timeline-desc">
+      Planning to build a controlled Evilginx environment to experiment with reverse‑proxy phishing, session hijacking, and MFA bypass mechanisms.
+    </p>
+  </div>
 
   <div class="timeline-item">
-      <div class="timeline-date">Summer 2025</div>
-      <div class="timeline-title">CaribouLite SDR Research
-      <p class="timeline-desc">Software-Defined Radio project using CaribouLite and Raspberry Pi 4 at TAMK.</p>
+    <div class="timeline-date">2025 · Planned</div>
+    <div class="timeline-title">
+      <a href="/siem-wazuh-suricata/">Wazuh & Suricata —— SIEM Environment</a>
     </div>
+    <p class="timeline-desc">
+      Open source SIEM environment with Wazuh and Suricata for monitoring and detecting network threats in real time.
+    </p>
+  </div>
 
   <div class="timeline-item">
-      <div class="timeline-date">2025</div>
-      <div class="timeline-title"><a href="/mythic/">Thesis: Command & Control Frameworks</a></div>
-      <p class="timeline-desc">Thesis research exploring modern C2 frameworks in red team operations.</p>
+    <div class="timeline-date">2025</div>
+    <div class="timeline-title">
+      <a href="/mythic/">Thesis: Command & Control Frameworks</a>
     </div>
+    <p class="timeline-desc">
+      Thesis research exploring modern C2 frameworks in red team operations.
+    </p>
+  </div>
 
-   <div class="timeline-item">
-      <div class="timeline-date">2022 - Present</div>
-      <div class="timeline-title">Tampere University of Applied Sciences</div>
-      <p class="timeline-desc">Bachelor of Engineering —— Telecommunications and computer networks.</p>
+  <div class="timeline-item">
+    <div class="timeline-date">2025</div>
+    <div class="timeline-title">
+      <a href="/CaribouLite/">CaribouLite SDR Research</a>
     </div>
+    <p class="timeline-desc">
+      Software-Defined Radio project using CaribouLite and Raspberry Pi 4 at TAMK.
+    </p>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-date">2022 - Present</div>
+    <div class="timeline-title">Tampere University of Applied Sciences</div>
+    <p class="timeline-desc">
+      Bachelor of Engineering —— ICT Telecommunications and Computer Networks.
+    </p>
+  </div>
+
+</div>
+
   
 
 <!-- Core Skills -->
