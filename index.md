@@ -405,7 +405,7 @@ permalink: /
 
   <div class="timeline-item">
       <div class="timeline-date">Summer 2025</div>
-      <div class="timeline-title"><a href="/CaribouLite/">CaribouLite SDR Research</a>
+      <div class="timeline-title">CaribouLite SDR Research
       <p class="timeline-desc">Software-Defined Radio project using CaribouLite and Raspberry Pi 4 at TAMK.</p>
     </div>
 

@@ -3,7 +3,7 @@ layout: post
 date: 2025-11-24 08:27:00 +0300
 title: "SIEM Environment: Wazuh & Suricata"
 permalink: /siem-wazuh-suricata/
-order: 1
+order: 2
 categories: [SIEM, Wazuh, Suricata]
 tags: [SIEM, wazuh, suricata, blue team, malware, threatactor]
 ---
@@ -138,7 +138,7 @@ tags: [SIEM, wazuh, suricata, blue team, malware, threatactor]
     <tr>
       <td>Kali VM</td>
       <td><span class="highlight">Threat actor</span></td>
-      <td>Simulates attacks on the network</td>
+      <td>Simulates threat actor on the network</td>
     </tr>
   </tbody>
 </table>
