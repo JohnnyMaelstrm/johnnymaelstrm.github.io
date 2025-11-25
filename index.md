@@ -366,6 +366,32 @@ permalink: /
     height: 120px;
   }
 }
+.role-badges {
+  margin: 0.75rem 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.role-pill {
+  padding: 0.25rem 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  transition: 0.2s ease;
+  backdrop-filter: blur(6px);
+}
+
+.role-pill:hover {
+  background: var(--accent-glow);
+  border-color: var(--accent-dim);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
 </style>
 
 <div class="hacker-page">
@@ -377,6 +403,12 @@ permalink: /
       <h1>Jaakko Oja</h1>
       <div class="tagline">Red Team Apprentice // Network Security Enthusiast</div>
       <p class="bio">Third-year IT student at Tampere University of Applied Sciences specializing in telecommunications, computer networks, and cybersecurity.</p>
+      <div class="role-badges">
+  <span class="role-pill">ICT Trainee</span>
+  <span class="role-pill">Cybersecurity Trainee</span>
+  <span class="role-pill">Red Team Trainee</span>
+  <span class="role-pill">Junior Network Specialist</span>
+</div>
       <div class="status-line">
         <span class="status-dot"></span>
         <span>Available for opportunities · Tampere, Finland</span>
