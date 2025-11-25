@@ -378,8 +378,8 @@ permalink: /
       <div class="tagline">Red Team Apprentice // Network Security Enthusiast</div>
       <p class="bio">Third-year IT student at Tampere University of Applied Sciences specializing in telecommunications, computer networks, and cybersecurity.</p>
       <p class="bio bio-small">
-  Currently open for: ICT Trainee · Cybersecurity Trainee · Red Team Trainee · Junior Networking roles
-</p>
+        Currently open for roles: ICT Trainee · Cybersecurity Trainee · SOC   Specialist · Junior Networking · Threat Hunter
+      </p>
       <div class="status-line">
         <span class="status-dot"></span>
         <span>Available for opportunities · Tampere, Finland</span>
