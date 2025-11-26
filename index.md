@@ -389,38 +389,79 @@ permalink: /
 
   <!-- Timeline -->
   <div class="section-header">Timeline</div>
-  <div class="timeline">
-  <div class="timeline-item">
-  <div class="timeline-date">2026 · Planned</div>
-  <div class="timeline-title">GOAD Lab Environment</div>
-  <p class="timeline-desc">Game Of Active Directory — intern project at TAMK for practicing enterprise attack techniques.</p>
-    </div>
-  <div class="timeline-item">
-  <div class="timeline-date">2026 · Planned</div>
-  <div class="timeline-title">Evilginx</div>
-  <p class="timeline-desc"> Planning to build a controlled Evilginx environment to experiment with reverse‑proxy phishing, session hijacking, and MFA bypass mechanisms.</p>
-    </div>
-  <div class="timeline-item">
-  <div class="timeline-date">2025 · Planned</div>
-  <div class="timeline-title"><a href="/siem-wazuh-suricata/">Wazuh & Suricata —— SIEM Environment</a>
-  <p class="timeline-desc">Open source SIEM environment with Wazuh and Suricata for monitoring and detecting network threats in real time.</p>
-    </div>
-  <div class="timeline-item">
-  <div class="timeline-date">2025</div>
-  <div class="timeline-title"><a href="/mythic/">Thesis: Command & Control Frameworks</a></div>
-  <p class="timeline-desc">Thesis research exploring modern C2 frameworks in red team operations.</p>
-    </div>
-  <div class="timeline-item">
-      <div class="timeline-date">2025</div>
-      <div class="timeline-title"><a href="/CaribouLite/">CaribouLite SDR Research</a>
-      <p class="timeline-desc">Software-Defined Radio project using CaribouLite and Raspberry Pi 4 at TAMK.</p>
-    </div>
+<div class="timeline">
 
-   <div class="timeline-item">
-      <div class="timeline-date">2022 - Present</div>
-      <div class="timeline-title">Tampere University of Applied Sciences</div>
-      <p class="timeline-desc">Bachelor of Engineering —— ICT Telecommunications and Computer Networks.</p>
+  <div class="timeline-item">
+    <div class="timeline-date">2026 · Planned</div>
+    <div class="timeline-title">Evilginx: Reverse-Proxy Phishing</div>
+    <p class="timeline-desc">
+      Researching and building a controlled lab to understand and demonstrate session hijacking and Multi-Factor Authentication (MFA) bypass mechanisms via reverse-proxy phishing attacks.
+    </p>
+    <div class="timeline-metadata">
+      <span class="timeline-keyword">Focus:</span> Web Security, Credential Harvesting, Session Management.
     </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-date">2026 · Planned (Q1 Goal)</div>
+    <div class="timeline-title">Game Of Active Directory</div>
+    <p class="timeline-desc">
+      Designing a challenging, vulnerable AD environment to simulate realistic red team exercises. Focusing on: Post-exploitation, lateral movement, and privilege escalation techniques.
+    </p>
+    <div class="timeline-metadata">
+      <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, Kerberoasting.
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-date">2025 · Planned (Q4 Goal)</div>
+    <div class="timeline-title">
+        <a href="/siem-wazuh-suricata/">SIEM Environment: Wazuh & Suricata</a>
+    </div>
+    <p class="timeline-desc">
+      Implementing a Security Information and Event Management (SIEM) solution using Wazuh and Suricata for real-time monitoring, alerting, and security incident response practice.
+    </p>
+    <div class="timeline-metadata">
+      <span class="timeline-keyword">Concepts:</span> Log Analysis, IDS/IPS Configuration, Incident Response.
+    </div>
+  </div>
+  
+  <div class="timeline-item">
+    <div class="timeline-date">Summer 2025 · Project</div>
+    <div class="timeline-title">
+        <a href="/CaribouLite/">Software-Defined Radio (SDR) with CaribouLite</a>
+    </div>
+    <p class="timeline-desc">
+      Completed a practical SDR project using CaribouLite and Raspberry Pi 4. Focused on configuring and utilizing open-source tools to analyze and interact with the SDR world.
+    </p>
+    <div class="timeline-metadata">
+      <span class="timeline-keyword">Tools:</span> GNURadio, Python, SDR#, Linux.
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-date">2025 · Thesis Research</div>
+    <div class="timeline-title">
+        <a href="/mythic/">Thesis: Command & Control Frameworks</a>
+    </div>
+    <p class="timeline-desc">
+      In-depth thesis research exploring modern Command & Control (C2) frameworks (with Mythic) used in red team operations.
+    </p>
+    <div class="timeline-metadata">
+      <span class="timeline-keyword">Domain:</span> Offensive / Defensive Security, Threat Hunting, Network Forensics.
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-date">2022 - Present</div>
+    <div class="timeline-title">Tampere University of Applied Sciences</div>
+    <p class="timeline-desc">
+      Bachelor of Engineering in ICT Telecommunications and Computer Networks. Core focus on network security, infrastructure, and protocol analysis.
+    </p>
+    <div class="timeline-metadata">
+      <span class="timeline-keyword">Foundations:</span> CCNA, Routing/Switching, OSI Model.
+    </div>
+  </div>
   
 
 <!-- Core Skills -->
