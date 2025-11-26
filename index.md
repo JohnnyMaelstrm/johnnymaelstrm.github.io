@@ -199,6 +199,32 @@ permalink: /
   line-height: 1.6;
   font-weight: 400;
 }
+.timeline-keywords {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.timeline-keyword-tag {
+  display: inline-block;
+  padding: 3px 8px;
+  margin: 2px 4px 0 0;
+  font-size: 0.70rem;
+  font-weight: 500;
+  background: var(--bg-card);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
+}
+
+.timeline-keyword-tag:hover {
+  background: var(--accent-glow);
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
 
 /* --- Skills Grid --- */
 .skills-grid {
@@ -366,6 +392,7 @@ permalink: /
     height: 120px;
   }
 }
+
 </style>
 
 <div class="hacker-page">
@@ -386,9 +413,9 @@ permalink: /
       </div>
     </div>
   </div>
-
-  <!-- Timeline -->
-  <div class="section-header">Timeline</div>
+  
+<!-- Timeline -->
+<div class="section-header">Timeline</div>
 <div class="timeline">
 
   <div class="timeline-item">
@@ -397,8 +424,12 @@ permalink: /
     <p class="timeline-desc">
       Researching and building a controlled lab to understand and demonstrate session hijacking and Multi-Factor Authentication (MFA) bypass mechanisms via reverse-proxy phishing attacks.
     </p>
-    <div class="timeline-metadata">
-      <span class="timeline-keyword">Focus:</span> Web Security, Credential Harvesting, Session Management.
+
+    <div class="timeline-keywords">
+      <span class="timeline-keyword-tag">Web Security</span>
+      <span class="timeline-keyword-tag">Credential Harvesting</span>
+      <span class="timeline-keyword-tag">Session Management</span>
+      <span class="timeline-keyword-tag">MFA Bypass</span>
     </div>
   </div>
 
@@ -408,47 +439,70 @@ permalink: /
     <p class="timeline-desc">
       Designing a challenging, vulnerable AD environment to simulate realistic red team exercises. Focusing on: Post-exploitation, lateral movement, and privilege escalation techniques.
     </p>
-    <div class="timeline-metadata">
-      <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, Kerberoasting.
+
+    <div class="timeline-keywords">
+      <span class="timeline-keyword-tag">Impacket</span>
+      <span class="timeline-keyword-tag">BloodHound</span>
+      <span class="timeline-keyword-tag">Kerberoasting</span>
+      <span class="timeline-keyword-tag">Post-Exploitation</span>
+      <span class="timeline-keyword-tag">Lateral Movement</span>
+      <span class="timeline-keyword-tag">Privilege Escalation</span>
     </div>
   </div>
 
   <div class="timeline-item">
     <div class="timeline-date">2025 · Planned (Q4 Goal)</div>
     <div class="timeline-title">
-        <a href="/siem-wazuh-suricata/">SIEM Environment: Wazuh & Suricata</a>
+      <a href="/siem-wazuh-suricata/">SIEM Environment: Wazuh & Suricata</a>
     </div>
     <p class="timeline-desc">
       Implementing a Security Information and Event Management (SIEM) solution using Wazuh and Suricata for real-time monitoring, alerting, and security incident response practice.
     </p>
-    <div class="timeline-metadata">
-      <span class="timeline-keyword">Concepts:</span> Log Analysis, IDS/IPS Configuration, Incident Response.
+
+    <div class="timeline-keywords">
+      <span class="timeline-keyword-tag">Log Analysis</span>
+      <span class="timeline-keyword-tag">IDS/IPS</span>
+      <span class="timeline-keyword-tag">Incident Response</span>
+      <span class="timeline-keyword-tag">Wazuh</span>
+      <span class="timeline-keyword-tag">Suricata</span>
     </div>
   </div>
-  
+
   <div class="timeline-item">
     <div class="timeline-date">Summer 2025 · Project</div>
     <div class="timeline-title">
-        <a href="/CaribouLite/">Software-Defined Radio (SDR) with CaribouLite</a>
+      <a href="/CaribouLite/">Software-Defined Radio (SDR) with CaribouLite</a>
     </div>
     <p class="timeline-desc">
       Completed a practical SDR project using CaribouLite and Raspberry Pi 4. Focused on configuring and utilizing open-source tools to analyze and interact with the SDR world.
     </p>
-    <div class="timeline-metadata">
-      <span class="timeline-keyword">Tools:</span> RaspberryPi4, Python, SDR++, SDRAngel, SoapySDR Linux.
+
+    <div class="timeline-keywords">
+      <span class="timeline-keyword-tag">Raspberry Pi 4</span>
+      <span class="timeline-keyword-tag">Python</span>
+      <span class="timeline-keyword-tag">SDR++</span>
+      <span class="timeline-keyword-tag">SDRAngel</span>
+      <span class="timeline-keyword-tag">SoapySDR</span>
+      <span class="timeline-keyword-tag">CaribouLite</span>
     </div>
   </div>
 
   <div class="timeline-item">
     <div class="timeline-date">2025 · Thesis Research</div>
     <div class="timeline-title">
-        <a href="/mythic/">Thesis: Command & Control Frameworks</a>
+      <a href="/mythic/">Thesis: Command & Control Frameworks</a>
     </div>
     <p class="timeline-desc">
       In-depth thesis research exploring modern Command & Control (C2) frameworks (with Mythic) used in red team operations.
     </p>
-    <div class="timeline-metadata">
-      <span class="timeline-keyword">Domain:</span> Offensive / Defensive Security, Threat Hunting, Network Forensics.
+
+    <div class="timeline-keywords">
+      <span class="timeline-keyword-tag">Offensive Security</span>
+      <span class="timeline-keyword-tag">Defensive Security</span>
+      <span class="timeline-keyword-tag">Threat Hunting</span>
+      <span class="timeline-keyword-tag">Network Forensics</span>
+      <span class="timeline-keyword-tag">Mythic</span>
+      <span class="timeline-keyword-tag">C2</span>
     </div>
   </div>
 
@@ -458,11 +512,18 @@ permalink: /
     <p class="timeline-desc">
       Bachelor of Engineering in ICT Telecommunications and Computer Networks. Core focus on network security, infrastructure, and protocol analysis.
     </p>
-    <div class="timeline-metadata">
-      <span class="timeline-keyword">Foundations:</span> Networking, Routing/Switching, OSI Model, Telecommunications.
+
+    <div class="timeline-keywords">
+      <span class="timeline-keyword-tag">Networking</span>
+      <span class="timeline-keyword-tag">Routing</span>
+      <span class="timeline-keyword-tag">Switching</span>
+      <span class="timeline-keyword-tag">OSI Model</span>
+      <span class="timeline-keyword-tag">Telecommunications</span>
     </div>
   </div>
-  
+
+</div>
+
 
 <!-- Core Skills -->
 <div class="section-header">Core Skills</div>
