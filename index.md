@@ -404,9 +404,7 @@ permalink: /
       <p class="bio bio-small">
         Currently open for roles: ICT Trainee · Cybersecurity Trainee · SOC Specialist · Junior Networking · Threat Hunter ·
       </p>
-      <p class="summary">
-        Call-to-Action? Sure thing! You can contact me on <a href="https://www.linkedin.com/in/jaakkooja/" target="_blank" rel="noopener noreferrer">LinkedIn</a> or by <a href="mailto:jaakko.oja029@hotmail.com">email!</a>
-      </p>
+    <div class="summary">Call-to-Action? Sure thing! You can contact me on <a href="https://www.linkedin.com/in/jaakkooja/" target="_blank" rel="noopener noreferrer">LinkedIn</a> or by <a href="mailto:jaakko.oja029@hotmail.com">email!</a></div>
       <div class="status-line">
         <span class="status-dot"></span>
         <span>Available for opportunities · Tampere, Finland</span>
