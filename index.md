@@ -394,7 +394,7 @@ permalink: /
 
 <div class="hacker-page">
 
-  <!-- Hero Section -->
+ <!-- Hero Section -->
   <div class="hero-section">
     <img src="/assets/img/favicons/roundpic.png" alt="Jaakko Oja" class="profile-pic">
     <div class="hero-text">
@@ -403,6 +403,9 @@ permalink: /
       <p class="bio">Third-year IT student at Tampere University of Applied Sciences specializing in telecommunications, computer networks, and cybersecurity.</p>
       <p class="bio bio-small">
         Currently open for roles: ICT Trainee · Cybersecurity Trainee · SOC Specialist · Junior Networking · Threat Hunter ·
+      </p>
+      <p class="summary">
+        Call-to-Action? Sure thing! You can contact me on <a href="https://www.linkedin.com/in/jaakkooja/" target="_blank" rel="noopener noreferrer">LinkedIn</a> or by <a href="mailto:jaakko.oja029@hotmail.com">email!</a>
       </p>
       <div class="status-line">
         <span class="status-dot"></span>
