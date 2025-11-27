@@ -17,7 +17,7 @@ order: 5
   --text: #d4d4d8;
   --text-dim: #52525b;
   --highlight-color: #60a5fa; 
-  --date-color: #facc15; /* A subtle gold/yellow for dates */
+  --date-color: #22c55e; /* A subtle green for dates */
 }
 
 /* BASE RESUME STYLES (font-size corrected) */
