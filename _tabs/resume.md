@@ -221,8 +221,8 @@ order: 5
     Third-year IT student specializing in telecommunications and networking. Hands-on experience with offensive security, C2 frameworks, and SOC operations. Actively pursuing opportunities in cybersecurity.
   </p>
   <p class="summary">
-        Call-to-Action? Sure thing! You can contact me on <a href="https://www.linkedin.com/in/jaakkooja/" target="_blank" rel="noopener noreferrer">LinkedIn</a> or by <a href="mailto:jaakko.oja029@hotmail.com">email!</a>
-      </p>
+    Call-to-Action? Sure thing! You can contact me on Linkedin or by email.
+  </p>
 </div>
 
 <div class="section-header">Education</div>
