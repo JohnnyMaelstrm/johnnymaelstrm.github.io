@@ -393,12 +393,13 @@ permalink: /
 /* 1. Force the wrapper to hug the text tightly */
 .email-copy-wrapper {
   position: relative;
-  display: inline-block; /* <--- THIS IS THE CRITICAL FIX */
+  display: inline-block;
   cursor: pointer;
   color: var(--green-dim);
   border-bottom: 1px dashed var(--green-dim);
   transition: all 0.2s;
   margin-left: 5px;
+  user-select: none; /* Prevent text selection on click */
 }
 
 .email-copy-wrapper:hover {
@@ -690,58 +691,75 @@ permalink: /
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 1. Find the button by its ID
   var btn = document.getElementById('emailBtn');
   var tooltip = document.getElementById('copyTooltip');
   var email = "jaakko.oja029@gmail.com";
 
-  // 2. Check if button was found
-  if (!btn) {
-    console.error("Could not find element with id 'emailBtn'");
+  if (!btn || !tooltip) {
+    console.error("Could not find email button or tooltip");
     return;
   }
 
-  // 3. Add the click listener
-  btn.addEventListener('click', function() {
-    console.log("Button clicked!"); // Debugging
-
-    // Try modern copy, fail over to old way
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(email).then(onSuccess).catch(onFallback);
-    } else {
-      onFallback();
-    }
-
-    function onFallback() {
-      try {
-        var textArea = document.createElement("textarea");
-        textArea.value = email;
-        textArea.style.position = "fixed";
-        textArea.style.left = "-9999px";
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-        
-        var successful = document.execCommand('copy');
-        document.body.removeChild(textArea);
-        
-        if (successful) onSuccess();
-        else console.error("Fallback failed");
-      } catch (err) {
-        console.error("Fallback error", err);
-      }
-    }
-
-    function onSuccess() {
-      if (!tooltip) return;
-      tooltip.innerHTML = "Copied!";
-      tooltip.style.color = "var(--green-dim)";
-      
-      setTimeout(function() {
-        tooltip.innerHTML = "Copy?";
-        tooltip.style.color = "var(--text)";
-      }, 2000);
+  // Prevent the hover tooltip from interfering
+  btn.addEventListener('mouseenter', function() {
+    if (tooltip.innerHTML !== "Copied!") {
+      tooltip.innerHTML = "Copy?";
     }
   });
+
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    console.log("Button clicked!");
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(email)
+        .then(function() {
+          showCopied();
+        })
+        .catch(function() {
+          fallbackCopy();
+        });
+    } else {
+      fallbackCopy();
+    }
+  });
+
+  function fallbackCopy() {
+    var textArea = document.createElement("textarea");
+    textArea.value = email;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    textArea.style.top = "0";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+      var successful = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      if (successful) {
+        showCopied();
+      } else {
+        console.error("Copy command failed");
+      }
+    } catch (err) {
+      console.error("Fallback copy error:", err);
+      document.body.removeChild(textArea);
+    }
+  }
+
+  function showCopied() {
+    tooltip.innerHTML = "Copied!";
+    tooltip.style.color = "var(--green-dim)";
+    tooltip.style.visibility = "visible";
+    tooltip.style.opacity = "1";
+    
+    setTimeout(function() {
+      tooltip.innerHTML = "Copy?";
+      tooltip.style.color = "var(--text)";
+    }, 2000);
+  }
 });
 </script>
