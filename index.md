@@ -489,7 +489,7 @@ permalink: /
   Call-to-Action? Sure thing! Contact me on 
   <a href="https://www.linkedin.com/in/jaakkooja/" target="_blank">LinkedIn</a> 
   or by email:
-  <span class="email-copy-wrapper" id="emailBtn">
+  <span class="email-copy-wrapper" onclick="copyEmail()">
     <span class="email-text">jaakko.oja029@gmail.com</span>
     <span class="copy-tooltip" id="copyTooltip">Copy?</span>
   </span>
@@ -689,55 +689,58 @@ permalink: /
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 1. Find the elements safely
+  // 1. Find the button by its ID
   var btn = document.getElementById('emailBtn');
   var tooltip = document.getElementById('copyTooltip');
   var email = "jaakko.oja029@gmail.com";
 
-  // 2. Only run if the button exists
-  if (btn) {
-    btn.addEventListener('click', function() {
-      
-      // Try to copy using the modern API, fall back if it fails
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(email).then(showSuccess).catch(runFallback);
-      } else {
-        runFallback();
-      }
-
-      function runFallback() {
-        try {
-          var textArea = document.createElement("textarea");
-          textArea.value = email;
-          
-          // Ensure it's not visible
-          textArea.style.position = "fixed";
-          textArea.style.left = "-9999px";
-          textArea.style.top = "0";
-          
-          document.body.appendChild(textArea);
-          textArea.focus();
-          textArea.select();
-          
-          document.execCommand('copy');
-          document.body.removeChild(textArea);
-          showSuccess();
-        } catch (err) {
-          console.error('Fallback failed', err);
-        }
-      }
-
-      function showSuccess() {
-        if (!tooltip) return;
-        tooltip.innerHTML = "Copied!";
-        tooltip.style.color = "var(--green-dim)";
-        
-        setTimeout(function() {
-          tooltip.innerHTML = "Copy?";
-          tooltip.style.color = "var(--text)";
-        }, 2000);
-      }
-    });
+  // 2. Check if button was found
+  if (!btn) {
+    console.error("Could not find element with id 'emailBtn'");
+    return;
   }
+
+  // 3. Add the click listener
+  btn.addEventListener('click', function() {
+    console.log("Button clicked!"); // Debugging
+
+    // Try modern copy, fail over to old way
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(email).then(onSuccess).catch(onFallback);
+    } else {
+      onFallback();
+    }
+
+    function onFallback() {
+      try {
+        var textArea = document.createElement("textarea");
+        textArea.value = email;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        var successful = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        if (successful) onSuccess();
+        else console.error("Fallback failed");
+      } catch (err) {
+        console.error("Fallback error", err);
+      }
+    }
+
+    function onSuccess() {
+      if (!tooltip) return;
+      tooltip.innerHTML = "Copied!";
+      tooltip.style.color = "var(--green-dim)";
+      
+      setTimeout(function() {
+        tooltip.innerHTML = "Copy?";
+        tooltip.style.color = "var(--text)";
+      }, 2000);
+    }
+  });
 });
 </script>
