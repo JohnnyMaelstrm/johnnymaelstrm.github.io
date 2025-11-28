@@ -509,7 +509,7 @@ permalink: /
     <div class="timeline-date">2026 · Planned</div>
     <div class="timeline-title">Evilginx: Reverse-Proxy Phishing</div>
     <p class="timeline-desc">
-      Researching and building a controlled lab to understand and demonstrate session hijacking and Multi-Factor Authentication (MFA) bypass mechanisms via reverse-proxy phishing attacks.
+      Researching and building a controlled lab to understand and demonstrate session hijacking and Multi-Factor Authentication (MFA) bypass mechanisms via reverse-proxy phishing attacks!
     </p>
     <div class="timeline-metadata">
       <span class="timeline-keyword">Focus:</span> Web Security, Credential Harvesting, Session Management.
@@ -576,7 +576,7 @@ permalink: /
       <span class="timeline-keyword">Foundations:</span> Networking, Routing/Switching, OSI Model, Telecommunications.
     </div>
   </div>
-  
+
   </div>
 
 <!-- Core Skills -->
