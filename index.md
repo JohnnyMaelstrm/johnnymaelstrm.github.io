@@ -695,20 +695,53 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (emailBtn) {
     emailBtn.addEventListener('click', function() {
-      // The Clipboard API
-      navigator.clipboard.writeText(email).then(() => {
-        // Success feedback
+      
+      // 1. Try the Modern Way (Navigator API)
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email).then(showSuccess).catch(tryFallback);
+      } else {
+        // 2. If that fails, use the Fallback Method
+        tryFallback();
+      }
+
+      function tryFallback() {
+        try {
+          // Create a temporary text area
+          const textArea = document.createElement("textarea");
+          textArea.value = email;
+          
+          // Ensure it's not visible on screen
+          textArea.style.position = "fixed";
+          textArea.style.left = "-9999px";
+          textArea.style.top = "0";
+          
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+          
+          // Execute the "copy" command
+          const successful = document.execCommand('copy');
+          document.body.removeChild(textArea);
+          
+          if (successful) {
+            showSuccess();
+          } else {
+            console.error('Fallback copy failed.');
+          }
+        } catch (err) {
+          console.error('Fallback error:', err);
+        }
+      }
+
+      function showSuccess() {
         tooltip.innerHTML = "Copied!";
         tooltip.style.color = "var(--green-dim)";
         
-        // Reset after 2 seconds
         setTimeout(() => {
           tooltip.innerHTML = "Copy?";
           tooltip.style.color = "var(--text)";
         }, 2000);
-      }).catch(err => {
-        console.error('Failed to copy: ', err);
-      });
+      }
     });
   }
 });
