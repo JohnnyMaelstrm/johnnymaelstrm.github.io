@@ -512,7 +512,7 @@ permalink: /
       Researching and building a controlled lab to understand and demonstrate session hijacking and Multi-Factor Authentication (MFA) bypass mechanisms via reverse-proxy phishing attacks.
     </p>
     <div class="timeline-metadata">
-      <span class="timeline-keyword">Focus:</span> Web Security, Credential Harvesting, Session Management.
+      <span class="timeline-keyword">Focus:</span> Web Security, Credential Harvesting, Session Management. Höödi Sköögi
     </div>
   </div>
 
