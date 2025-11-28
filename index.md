@@ -3,9 +3,475 @@ layout: page
 title: Home
 permalink: /
 ---
-<link rel="stylesheet" href="/assets/css/mainpage.css">
-<script src="/assets/js/copy.js" defer></script>
 
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --accent: #e4e4e7;
+  --accent-dim: #a1a1aa;
+  --accent-glow: rgba(255, 255, 255, 0.05);
+  --bg-dark: #09090b;
+  --bg-card: rgba(255, 255, 255, 0.02);
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #d4d4d8;
+  --text-dim: #52525b;
+  --green-dim: #22c55e;
+}
+
+/* --- Overall Page --- */
+.hacker-page {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text);
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-pic {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  box-shadow: 0 0 30px var(--accent-glow);
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+  display: block;
+}
+
+.hero-text h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 0 0.25rem;
+  text-decoration: none;
+  border-bottom: none;
+  opacity: 0;
+  animation: fadeIn 0.9s ease-in 0.5s forwards;
+}
+
+.hero-text .tagline {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--accent-dim);
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeIn 1.0s ease-in 1.5s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.hero-text .bio {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.status-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--green-dim);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--green-dim);
+  border-radius: 50%;
+  animation: pulse 1.7s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* --- Section Headers --- */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 2.5rem 0 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-dim);
+}
+
+.section-header::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+
+/* --- Timeline --- */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 1.8rem;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: fadeSlide 0.5s forwards;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.3s; }
+.timeline-item:nth-child(3) { animation-delay: 0.5s; }
+.timeline-item:nth-child(4) { animation-delay: 0.7s; }
+.timeline-item:nth-child(5) { animation-delay: 0.9s; }
+.timeline-item:nth-child(6) { animation-delay: 1.1s; }
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+@keyframes fadeSlide {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -2rem;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  background: var(--bg-dark);
+  border: 2px solid var(--accent-dim);
+  border-radius: 50%;
+}
+
+.timeline-date {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.3rem;
+}
+
+.timeline-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.timeline-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.timeline-title a:hover {
+  text-decoration: underline;
+}
+
+.timeline-desc {
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.6;
+  font-weight: 400;
+  margin-bottom: 0.6rem;
+}
+.timeline-metadata {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: var(--text);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--green-dim);
+  padding: 0.5rem 0.85rem;
+  border-radius: 3px;
+  margin-top: 0.6rem;
+}
+
+.timeline-keyword {
+  color: var(--green-dim);
+  font-weight: 600;
+}
+
+/* --- Skills Grid --- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.skill-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--accent-dim);
+}
+
+.skill-card h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
+
+.skill-card p {
+  font-size: 0.85rem;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.skill-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.5rem;
+  margin-top: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Certifications --- */
+.certifications-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.certification-item {
+  width: 120px;
+  text-align: center;
+}
+
+.certification-item img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+  border: none;
+  transition: transform 0.2s, border-color 0.2s, opacity 0.2s;
+  opacity: 0.85;
+}
+
+.certification-item img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+  border-color: var(--accent-dim);
+}
+
+.certification-name {
+  font-size: 0.80rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  margin-top: 0.25rem;
+}
+
+/* --- Navigation Links --- */
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-link:hover {
+  background: var(--accent-glow);
+  border-color: var(--accent-dim);
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.nav-link:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.highlight-box {
+  background: var(--bg-card);
+  border-left: 4px solid var(--accent-dim);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.nav-button {
+  display: inline-block;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  background: var(--accent-glow);
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .nav-link {
+    width: 100%;
+    justify-content: center;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+}
+/* 1. Force the wrapper to hug the text tightly */
+.email-copy-wrapper {
+  position: relative;
+  display: inline-block; /* <--- THIS IS THE CRITICAL FIX */
+  cursor: pointer;
+  color: var(--green-dim);
+  border-bottom: 1px dashed var(--green-dim);
+  transition: all 0.2s;
+  margin-left: 5px;
+}
+
+.email-copy-wrapper:hover {
+  background: rgba(34, 197, 94, 0.1);
+}
+
+/* 2. Position the tooltip centered ABOVE the text */
+.copy-tooltip {
+  visibility: hidden;
+  width: 70px;
+  background-color: var(--bg-dark);
+  color: var(--text);
+  text-align: center;
+  border: 1px solid var(--green-dim);
+  border-radius: 4px;
+  padding: 4px 0;
+  
+  /* POSITIONING: Moves it UP */
+  position: absolute;
+  z-index: 100;
+  bottom: 100%; /* Align to the top of the email */
+  left: 50%;    /* Center horizontally */
+  transform: translateX(-50%) translateY(-8px); /* Center align + move up slightly */
+  
+  font-size: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  pointer-events: none; /* Prevents tooltip from flickering if cursor hits it */
+}
+
+/* 3. The little arrow pointing down */
+.copy-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--green-dim) transparent transparent transparent;
+}
+
+/* 4. Hover State */
+.email-copy-wrapper:hover .copy-tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px); /* Slight float-up animation */
+}
+
+.skill-card {
+  /* Keep your existing styles, but add transition */
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.skill-card:hover {
+  border-color: var(--green-dim);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.15); /* Green glow using your var color */
+  transform: translateY(-3px);
+}
+
+.skill-card:hover h3 {
+  color: var(--green-dim); /* Turn the title green on hover */
+}
+
+.skill-card:hover::before {
+  background: var(--green-dim);
+  box-shadow: 0 0 10px var(--green-dim);
+}
+
+
+</style>
 
 <div class="hacker-page">
 
@@ -221,3 +687,60 @@ permalink: /
 </div>
 
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 1. Find the button by its ID
+  var btn = document.getElementById('emailBtn');
+  var tooltip = document.getElementById('copyTooltip');
+  var email = "jaakko.oja029@gmail.com";
+
+  // 2. Check if button was found
+  if (!btn) {
+    console.error("Could not find element with id 'emailBtn'");
+    return;
+  }
+
+  // 3. Add the click listener
+  btn.addEventListener('click', function() {
+    console.log("Button clicked!"); // Debugging
+
+    // Try modern copy, fail over to old way
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(email).then(onSuccess).catch(onFallback);
+    } else {
+      onFallback();
+    }
+
+    function onFallback() {
+      try {
+        var textArea = document.createElement("textarea");
+        textArea.value = email;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        var successful = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        if (successful) onSuccess();
+        else console.error("Fallback failed");
+      } catch (err) {
+        console.error("Fallback error", err);
+      }
+    }
+
+    function onSuccess() {
+      if (!tooltip) return;
+      tooltip.innerHTML = "Copied!";
+      tooltip.style.color = "var(--green-dim)";
+      
+      setTimeout(function() {
+        tooltip.innerHTML = "Copy?";
+        tooltip.style.color = "var(--text)";
+      }, 2000);
+    }
+  });
+});
+</script>
