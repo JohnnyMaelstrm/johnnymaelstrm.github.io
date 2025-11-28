@@ -489,10 +489,10 @@ permalink: /
   Call-to-Action? Sure thing! Contact me on 
   <a href="https://www.linkedin.com/in/jaakkooja/" target="_blank">LinkedIn</a> 
   or by email:
-  <span class="email-copy-wrapper" onclick="copyEmail()">
-    <span class="email-text">jaakko.oja029@gmail.com</span>
-    <span class="copy-tooltip" id="copyTooltip">Copy?</span>
-  </span>
+  <span id="emailBtn" class="email-copy-wrapper">
+  <span class="email-text">jaakko.oja029@gmail.com</span>
+  <span class="copy-tooltip" id="copyTooltip">Copy?</span>
+</span>
 </div>
       <div class="status-line">
         <span class="status-dot"></span>
