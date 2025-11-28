@@ -657,22 +657,57 @@ permalink: /
       <span class="skill-tag">Networking</span>
     </div>
   </div>
-
 </div>
 
-<div class="section-header">🌟 Featured Project: CaribouLite & Raspberry Pi 4</div>
+<!-- Thesis and Intern Project -->
+
+<div class="section-header">Thesis: Command & Control Frameworks</div>
+
+<div class="highlight-box">
+  <h3>Bachelor's Thesis</h3>
+  <p>
+    My deep dive into the <strong>Mythic C2 Framework</strong> for Red Team operations. 
+    I researched modular command-and-control architectures and successfully demonstrated 
+    <strong>fileless execution</strong> (using Linux’s <code>memfd_create</code>) to bypass traditional security mechanisms.
+  </p>
+  <p>
+    The project also utilized <strong>Bincrypter</strong> for payload encryption.
+  </p>
+  
+  <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.5rem; font-style: italic;">
+    * Note: The attached thesis document is currently in Finnish.
+  </p>
+  
+  <a href="{{ '/assets/Thesis/Opinnaytetyo_Oja_Jaakko_2025.pdf' | relative_url }}" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 1rem; background: rgba(0,0,0,0.2); padding: 1rem; border: 1px solid var(--border); border-radius: 4px; margin: 1rem 0;">
+    <div style="font-size: 2rem;">📄</div> 
+    <div>
+      <div style="color: var(--accent); font-weight: 600;">Click here for the Thesis Research!</div>
+      <div style="color: var(--text-dim); font-size: 0.8rem;">PDF • Research Paper</div>
+    </div>
+  </a>
+</div>
+
+
+ <br>
+
+
+<div class="section-header">🌟 Intern Project: CaribouLite & Raspberry Pi 4</div>
 
 <div class="highlight-box">
   <h3>Summer 2025 Intern Project</h3>
-  <p>This was my intern project at Tampere University of Applied Sciences. 
-  Really an eye-opening exploration into the world of Software-Defined Radio (SDR).</p>
+  <p>
+    This was my intern project at Tampere University of Applied Sciences. 
+    Really an eye-opening exploration into the world of Software-Defined Radio (SDR).
+  </p>
   
- <a href="{{ '/assets/docs/Project.pdf' | relative_url }}" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 1rem; background: rgba(0,0,0,0.2); padding: 1rem; border: 1px solid var(--border); border-radius: 4px; margin: 1rem 0;">
-    <div style="font-size: 2rem;">📄</div> <div>
+  <a href="{{ '/assets/docs/Project.pdf' | relative_url }}" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 1rem; background: rgba(0,0,0,0.2); padding: 1rem; border: 1px solid var(--border); border-radius: 4px; margin: 1rem 0;">
+    <div style="font-size: 2rem;">📄</div> 
+    <div>
       <div style="color: var(--accent); font-weight: 600;">Click here for the official project report!</div>
       <div style="color: var(--text-dim); font-size: 0.8rem;">PDF • 2.5 MB</div>
     </div>
   </a>
+
   <a href="{{ '/assets/docs/Project.pdf' | relative_url }}" class="nav-button" download>
     📥 Download PDF
   </a>
