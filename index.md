@@ -687,10 +687,6 @@ permalink: /
   </a>
 </div>
 
-
- <br>
-
-
 <div class="section-header">🌟 Intern Project: CaribouLite & Raspberry Pi 4</div>
 
 <div class="highlight-box">
