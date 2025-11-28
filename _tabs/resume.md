@@ -211,6 +211,88 @@ order: 5
     grid-template-columns: 1fr;
   }
 }
+
+
+/* 1. Force the wrapper to hug the text tightly */
+.email-copy-wrapper {
+  position: relative;
+  display: inline-block; /* <--- THIS IS THE CRITICAL FIX */
+  cursor: pointer;
+  color: var(--green-dim);
+  border-bottom: 1px dashed var(--green-dim);
+  transition: all 0.2s;
+  margin-left: 5px;
+}
+
+.email-copy-wrapper:hover {
+  background: rgba(34, 197, 94, 0.1);
+}
+
+/* 2. Position the tooltip centered ABOVE the text */
+.copy-tooltip {
+  visibility: hidden;
+  width: 70px;
+  background-color: var(--bg-dark);
+  color: var(--text);
+  text-align: center;
+  border: 1px solid var(--green-dim);
+  border-radius: 4px;
+  padding: 4px 0;
+  
+  /* POSITIONING: Moves it UP */
+  position: absolute;
+  z-index: 100;
+  bottom: 100%; /* Align to the top of the email */
+  left: 50%;    /* Center horizontally */
+  transform: translateX(-50%) translateY(-8px); /* Center align + move up slightly */
+  
+  font-size: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  pointer-events: none; /* Prevents tooltip from flickering if cursor hits it */
+}
+
+/* 3. The little arrow pointing down */
+.copy-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--green-dim) transparent transparent transparent;
+}
+
+/* 4. Hover State */
+.email-copy-wrapper:hover .copy-tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px); /* Slight float-up animation */
+}
+
+.skill-card {
+  /* Keep your existing styles, but add transition */
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.skill-card:hover {
+  border-color: var(--green-dim);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.15); /* Green glow using your var color */
+  transform: translateY(-3px);
+}
+
+.skill-card:hover h3 {
+  color: var(--green-dim); /* Turn the title green on hover */
+}
+
+.skill-card:hover::before {
+  background: var(--green-dim);
+  box-shadow: 0 0 10px var(--green-dim);
+}
+
 </style>
 
 <div class="resume-page">
@@ -320,4 +402,19 @@ order: 5
   <div class="cert-badge">Cisco: Introduction to Cybersecurity</div>
 </div>
 
-</div>
+<script>
+function copyEmail() {
+  const email = "jaakko.oja029@gmail.com";
+  navigator.clipboard.writeText(email).then(() => {
+    const tooltip = document.getElementById("copyTooltip");
+    tooltip.innerHTML = "Copied!";
+    tooltip.style.color = "var(--green-dim)";
+    
+    // Reset after 2 seconds
+    setTimeout(() => {
+      tooltip.innerHTML = "Copy?";
+      tooltip.style.color = "var(--text)";
+    }, 2000);
+  });
+}
+</script>

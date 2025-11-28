@@ -489,7 +489,7 @@ permalink: /
   Call-to-Action? Sure thing! Contact me on 
   <a href="https://www.linkedin.com/in/jaakkooja/" target="_blank">LinkedIn</a> 
   or by email:
-  <span class="email-copy-wrapper" onclick="copyEmail()">
+  <span class="email-copy-wrapper" id="emailBtn">
     <span class="email-text">jaakko.oja029@gmail.com</span>
     <span class="copy-tooltip" id="copyTooltip">Copy?</span>
   </span>
@@ -688,18 +688,28 @@ permalink: /
 
 
 <script>
-function copyEmail() {
+document.addEventListener('DOMContentLoaded', function() {
+  const emailBtn = document.getElementById('emailBtn');
+  const tooltip = document.getElementById('copyTooltip');
   const email = "jaakko.oja029@gmail.com";
-  navigator.clipboard.writeText(email).then(() => {
-    const tooltip = document.getElementById("copyTooltip");
-    tooltip.innerHTML = "Copied!";
-    tooltip.style.color = "var(--green-dim)";
-    
-    // Reset after 2 seconds
-    setTimeout(() => {
-      tooltip.innerHTML = "Copy?";
-      tooltip.style.color = "var(--text)";
-    }, 2000);
-  });
-}
+
+  if (emailBtn) {
+    emailBtn.addEventListener('click', function() {
+      // The Clipboard API
+      navigator.clipboard.writeText(email).then(() => {
+        // Success feedback
+        tooltip.innerHTML = "Copied!";
+        tooltip.style.color = "var(--green-dim)";
+        
+        // Reset after 2 seconds
+        setTimeout(() => {
+          tooltip.innerHTML = "Copy?";
+          tooltip.style.color = "var(--text)";
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    });
+  }
+});
 </script>
