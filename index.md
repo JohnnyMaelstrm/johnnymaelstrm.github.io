@@ -393,13 +393,12 @@ permalink: /
 /* 1. Force the wrapper to hug the text tightly */
 .email-copy-wrapper {
   position: relative;
-  display: inline-block;
+  display: inline-block; /* <--- THIS IS THE CRITICAL FIX */
   cursor: pointer;
   color: var(--green-dim);
   border-bottom: 1px dashed var(--green-dim);
   transition: all 0.2s;
   margin-left: 5px;
-  user-select: none; /* Prevent text selection on click */
 }
 
 .email-copy-wrapper:hover {
@@ -492,7 +491,7 @@ permalink: /
   or by email:
   <span id="emailBtn" class="email-copy-wrapper">
   <span class="email-text">jaakko.oja029@gmail.com</span>
-  <span class="copy-tooltip" id="copyTooltip">Copy?</span>
+  <span class="copy-tooltip" id="copyTooltip">Email!</span>
 </span>
 </div>
       <div class="status-line">
@@ -510,7 +509,7 @@ permalink: /
     <div class="timeline-date">2026 · Planned</div>
     <div class="timeline-title">Evilginx: Reverse-Proxy Phishing</div>
     <p class="timeline-desc">
-      Researching and building a controlled lab to understand and demonstrate session hijacking and Multi-Factor Authentication (MFA) bypass mechanisms via reverse-proxy phishing attacks!
+      Researching and building a controlled lab to understand and demonstrate session hijacking and Multi-Factor Authentication (MFA) bypass mechanisms via reverse-proxy phishing attacks.
     </p>
     <div class="timeline-metadata">
       <span class="timeline-keyword">Focus:</span> Web Security, Credential Harvesting, Session Management.
@@ -619,7 +618,7 @@ permalink: /
   
  <a href="{{ '/assets/docs/Project.pdf' | relative_url }}" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 1rem; background: rgba(0,0,0,0.2); padding: 1rem; border: 1px solid var(--border); border-radius: 4px; margin: 1rem 0;">
     <div style="font-size: 2rem;">📄</div> <div>
-      <div style="color: var(--accent); font-weight: 600;">Read Project Report</div>
+      <div style="color: var(--accent); font-weight: 600;">Click here for the official project report!</div>
       <div style="color: var(--text-dim); font-size: 0.8rem;">PDF • 2.5 MB</div>
     </div>
   </a>
@@ -689,93 +688,3 @@ permalink: /
 </div>
 
 
-<script>
-(function() {
-  'use strict';
-  
-  // Wait for DOM to be fully ready
-  var initEmailCopy = function() {
-    var btn = document.getElementById('emailBtn');
-    var tooltip = document.getElementById('copyTooltip');
-    var emailText = 'jaakko.oja029@gmail.com';
-    
-    // Safety check
-    if (!btn || !tooltip) {
-      console.warn('Email copy elements not found');
-      return;
-    }
-    
-    // Main click handler
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      // Copy the email
-      copyEmail(emailText);
-    });
-    
-    // Copy function
-    function copyEmail(text) {
-      // Modern clipboard API (HTTPS only)
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text)
-          .then(function() {
-            showSuccess();
-          })
-          .catch(function(err) {
-            console.warn('Clipboard API failed, using fallback:', err);
-            fallbackCopy(text);
-          });
-      } else {
-        // Fallback for older browsers
-        fallbackCopy(text);
-      }
-    }
-    
-    // Fallback copy method
-    function fallbackCopy(text) {
-      var textarea = document.createElement('textarea');
-      textarea.value = text;
-      textarea.style.position = 'fixed';
-      textarea.style.opacity = '0';
-      textarea.style.left = '-999999px';
-      textarea.style.top = '-999999px';
-      document.body.appendChild(textarea);
-      
-      textarea.focus();
-      textarea.select();
-      
-      try {
-        var successful = document.execCommand('copy');
-        if (successful) {
-          showSuccess();
-        }
-      } catch (err) {
-        console.error('Copy failed:', err);
-      }
-      
-      document.body.removeChild(textarea);
-    }
-    
-    // Show success message
-    function showSuccess() {
-      tooltip.textContent = 'Copied!';
-      tooltip.style.visibility = 'visible';
-      tooltip.style.opacity = '1';
-      
-      setTimeout(function() {
-        tooltip.textContent = 'Copy?';
-      }, 2000);
-    }
-  };
-  
-  // Initialize when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initEmailCopy);
-  } else {
-    // DOM already loaded
-    initEmailCopy();
-  }
-})();
-
-</script>
