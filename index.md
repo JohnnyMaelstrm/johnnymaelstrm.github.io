@@ -489,7 +489,7 @@ permalink: /
   Call-to-Action? Sure thing! Contact me on 
   <a href="https://www.linkedin.com/in/jaakkooja/" target="_blank">LinkedIn</a> 
   or by email:
-  <span class="email-copy-wrapper" id="emailBtn">
+  <span class="email-copy-wrapper" onclick="copyEmail()">
     <span class="email-text">jaakko.oja029@gmail.com</span>
     <span class="copy-tooltip" id="copyTooltip">Copy?</span>
   </span>
@@ -688,61 +688,63 @@ permalink: /
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const emailBtn = document.getElementById('emailBtn');
-  const tooltip = document.getElementById('copyTooltip');
+// Define the function globally so the HTML onclick can find it
+function copyEmail() {
   const email = "jaakko.oja029@gmail.com";
+  const tooltip = document.getElementById("copyTooltip");
 
-  if (emailBtn) {
-    emailBtn.addEventListener('click', function() {
-      
-      // 1. Try the Modern Way (Navigator API)
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(email).then(showSuccess).catch(tryFallback);
-      } else {
-        // 2. If that fails, use the Fallback Method
-        tryFallback();
-      }
-
-      function tryFallback() {
-        try {
-          // Create a temporary text area
-          const textArea = document.createElement("textarea");
-          textArea.value = email;
-          
-          // Ensure it's not visible on screen
-          textArea.style.position = "fixed";
-          textArea.style.left = "-9999px";
-          textArea.style.top = "0";
-          
-          document.body.appendChild(textArea);
-          textArea.focus();
-          textArea.select();
-          
-          // Execute the "copy" command
-          const successful = document.execCommand('copy');
-          document.body.removeChild(textArea);
-          
-          if (successful) {
-            showSuccess();
-          } else {
-            console.error('Fallback copy failed.');
-          }
-        } catch (err) {
-          console.error('Fallback error:', err);
-        }
-      }
-
-      function showSuccess() {
-        tooltip.innerHTML = "Copied!";
-        tooltip.style.color = "var(--green-dim)";
-        
-        setTimeout(() => {
-          tooltip.innerHTML = "Copy?";
-          tooltip.style.color = "var(--text)";
-        }, 2000);
-      }
-    });
+  // 1. Try the Modern Way (Navigator API)
+  // We check if the browser supports it and if we are in a Secure Context (HTTPS or Localhost)
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(email).then(onSuccess).catch(onFallback);
+  } else {
+    // 2. If modern way fails, use the Fallback Method
+    onFallback();
   }
-});
+
+  function onSuccess() {
+    showTooltip();
+  }
+
+  function onFallback() {
+    try {
+      // Create a temporary text area to select and copy from
+      const textArea = document.createElement("textarea");
+      textArea.value = email;
+      
+      // Ensure it's not visible on screen
+      textArea.style.position = "fixed";
+      textArea.style.left = "-9999px";
+      textArea.style.top = "0";
+      
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      // Execute the "copy" command
+      const successful = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      
+      if (successful) {
+        showTooltip();
+      } else {
+        console.error('Fallback copy failed.');
+      }
+    } catch (err) {
+      console.error('Fallback error:', err);
+    }
+  }
+
+  function showTooltip() {
+    if (!tooltip) return;
+    tooltip.innerHTML = "Copied!";
+    tooltip.style.color = "var(--green-dim)";
+    
+    // Reset after 2 seconds
+    setTimeout(() => {
+      tooltip.innerHTML = "Copy?";
+      tooltip.style.color = "var(--text)";
+    }, 2000);
+  }
+}
 </script>
