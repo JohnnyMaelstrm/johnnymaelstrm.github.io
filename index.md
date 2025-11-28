@@ -98,8 +98,9 @@ permalink: /
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.2; }
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
 }
 
 /* --- Section Headers --- */
@@ -526,14 +527,14 @@ permalink: /
   <p>This was my intern project at Tampere University of Applied Sciences. 
   Really an eye-opening exploration into the world of Software-Defined Radio (SDR).</p>
   
-  <div style="margin: 1.5rem 0;">
-    <iframe src="{{ '/assets/docs/Project.pdf' | relative_url }}" 
-            width="100%" height="500px" 
-            style="border: 1px solid #333; border-radius: 4px;"></iframe>
-  </div>
-  
+ <a href="{{ '/assets/docs/Project.pdf' | relative_url }}" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 1rem; background: rgba(0,0,0,0.2); padding: 1rem; border: 1px solid var(--border); border-radius: 4px; margin: 1rem 0;">
+    <div style="font-size: 2rem;">📄</div> <div>
+      <div style="color: var(--accent); font-weight: 600;">Read Project Report</div>
+      <div style="color: var(--text-dim); font-size: 0.8rem;">PDF • 2.5 MB</div>
+    </div>
+  </a>
   <a href="{{ '/assets/docs/Project.pdf' | relative_url }}" class="nav-button" download>
-    📥 Download Project PDF
+    📥 Download PDF
   </a>
 </div>
 
