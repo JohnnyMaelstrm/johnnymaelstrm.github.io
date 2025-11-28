@@ -690,76 +690,92 @@ permalink: /
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  var btn = document.getElementById('emailBtn');
-  var tooltip = document.getElementById('copyTooltip');
-  var email = "jaakko.oja029@gmail.com";
-
-  if (!btn || !tooltip) {
-    console.error("Could not find email button or tooltip");
-    return;
-  }
-
-  // Prevent the hover tooltip from interfering
-  btn.addEventListener('mouseenter', function() {
-    if (tooltip.innerHTML !== "Copied!") {
-      tooltip.innerHTML = "Copy?";
-    }
-  });
-
-  btn.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
+(function() {
+  'use strict';
+  
+  // Wait for DOM to be fully ready
+  var initEmailCopy = function() {
+    var btn = document.getElementById('emailBtn');
+    var tooltip = document.getElementById('copyTooltip');
+    var emailText = 'jaakko.oja029@gmail.com';
     
-    console.log("Button clicked!");
-
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(email)
-        .then(function() {
-          showCopied();
-        })
-        .catch(function() {
-          fallbackCopy();
-        });
-    } else {
-      fallbackCopy();
+    // Safety check
+    if (!btn || !tooltip) {
+      console.warn('Email copy elements not found');
+      return;
     }
-  });
-
-  function fallbackCopy() {
-    var textArea = document.createElement("textarea");
-    textArea.value = email;
-    textArea.style.position = "fixed";
-    textArea.style.left = "-9999px";
-    textArea.style.top = "0";
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
     
-    try {
-      var successful = document.execCommand('copy');
-      document.body.removeChild(textArea);
-      if (successful) {
-        showCopied();
+    // Main click handler
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Copy the email
+      copyEmail(emailText);
+    });
+    
+    // Copy function
+    function copyEmail(text) {
+      // Modern clipboard API (HTTPS only)
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text)
+          .then(function() {
+            showSuccess();
+          })
+          .catch(function(err) {
+            console.warn('Clipboard API failed, using fallback:', err);
+            fallbackCopy(text);
+          });
       } else {
-        console.error("Copy command failed");
+        // Fallback for older browsers
+        fallbackCopy(text);
       }
-    } catch (err) {
-      console.error("Fallback copy error:", err);
-      document.body.removeChild(textArea);
     }
-  }
-
-  function showCopied() {
-    tooltip.innerHTML = "Copied!";
-    tooltip.style.color = "var(--green-dim)";
-    tooltip.style.visibility = "visible";
-    tooltip.style.opacity = "1";
     
-    setTimeout(function() {
-      tooltip.innerHTML = "Copy?";
-      tooltip.style.color = "var(--text)";
-    }, 2000);
+    // Fallback copy method
+    function fallbackCopy(text) {
+      var textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      textarea.style.left = '-999999px';
+      textarea.style.top = '-999999px';
+      document.body.appendChild(textarea);
+      
+      textarea.focus();
+      textarea.select();
+      
+      try {
+        var successful = document.execCommand('copy');
+        if (successful) {
+          showSuccess();
+        }
+      } catch (err) {
+        console.error('Copy failed:', err);
+      }
+      
+      document.body.removeChild(textarea);
+    }
+    
+    // Show success message
+    function showSuccess() {
+      tooltip.textContent = 'Copied!';
+      tooltip.style.visibility = 'visible';
+      tooltip.style.opacity = '1';
+      
+      setTimeout(function() {
+        tooltip.textContent = 'Copy?';
+      }, 2000);
+    }
+  };
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEmailCopy);
+  } else {
+    // DOM already loaded
+    initEmailCopy();
   }
-});
+})();
+
 </script>
