@@ -123,9 +123,15 @@ permalink: /
   background: linear-gradient(90deg, var(--border), transparent);
 }
 
+
 /* --- Timeline --- */
 .timeline {
   position: relative;
+  /* NEW: Reset list styles */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* Padding left creates space for the line */
   padding-left: 2rem;
 }
 
@@ -147,6 +153,7 @@ permalink: /
   animation: fadeSlide 0.5s forwards;
 }
 
+/* Staggered Animations */
 .timeline-item:nth-child(1) { animation-delay: 0.1s; }
 .timeline-item:nth-child(2) { animation-delay: 0.3s; }
 .timeline-item:nth-child(3) { animation-delay: 0.5s; }
@@ -165,13 +172,24 @@ permalink: /
 .timeline-item::before {
   content: "";
   position: absolute;
-  left: -2rem;
+  /* Adjusts the dot position relative to the new UL padding */
+  left: -2rem; 
   top: 4px;
   width: 10px;
   height: 10px;
   background: var(--bg-dark);
   border: 2px solid var(--accent-dim);
   border-radius: 50%;
+  /* Ensure the dot sits on top of the line */
+  z-index: 1; 
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+/* Interactive Hover Effect for Timeline Dots */
+.timeline-item:hover::before {
+    background: var(--green-dim);
+    border-color: var(--green-dim);
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
 }
 
 .timeline-date {
@@ -194,10 +212,12 @@ permalink: /
 .timeline-title a {
   color: inherit;
   text-decoration: none;
+  transition: color 0.2s;
 }
 
 .timeline-title a:hover {
   text-decoration: underline;
+  color: var(--green-dim);
 }
 
 .timeline-desc {
@@ -207,6 +227,7 @@ permalink: /
   font-weight: 400;
   margin-bottom: 0.6rem;
 }
+
 .timeline-metadata {
   display: inline-block;
   font-size: 0.75rem;
@@ -222,6 +243,36 @@ permalink: /
 .timeline-keyword {
   color: var(--green-dim);
   font-weight: 600;
+}
+
+/* Updated Mobile Media Query */
+@media (max-width: 600px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+  .nav-link {
+    width: 100%;
+    justify-content: center;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Timeline Adjustments for Mobile */
+  .timeline {
+      padding-left: 1.5rem; /* Tighten padding */
+  }
+  .timeline::before {
+      left: 0; /* Move line to edge */
+  }
+  .timeline-item::before {
+      left: -1.5rem; /* Re-align dot with line */
+  }
 }
 
 /* --- Skills Grid --- */
@@ -502,10 +553,10 @@ permalink: /
   </div>
 
   <!-- Timeline -->
-  <div class="section-header">Timeline</div>
-<div class="timeline">
+ <div class="section-header">Timeline</div>
+<ul class="timeline">
 
-  <div class="timeline-item">
+  <li class="timeline-item">
     <div class="timeline-date">2026 · Planned</div>
     <div class="timeline-title">Evilginx: Reverse-Proxy Phishing</div>
     <p class="timeline-desc">
@@ -514,9 +565,9 @@ permalink: /
     <div class="timeline-metadata">
       <span class="timeline-keyword">Focus:</span> Web Security, Credential Harvesting, Session Management.
     </div>
-  </div>
+  </li>
 
-  <div class="timeline-item">
+  <li class="timeline-item">
     <div class="timeline-date">2026 · Planned (Q1 Goal)</div>
     <div class="timeline-title">Game Of Active Directory</div>
     <p class="timeline-desc">
@@ -525,9 +576,9 @@ permalink: /
     <div class="timeline-metadata">
       <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, Kerberoasting.
     </div>
-  </div>
+  </li>
 
-  <div class="timeline-item">
+  <li class="timeline-item">
     <div class="timeline-date">2025 · Planned (Q4 Goal)</div>
     <div class="timeline-title">
         <a href="/siem-wazuh-suricata/">SIEM Environment: Wazuh & Suricata</a>
@@ -538,9 +589,9 @@ permalink: /
     <div class="timeline-metadata">
       <span class="timeline-keyword">Concepts:</span> Log Analysis, IDS/IPS Configuration, Incident Response.
     </div>
-  </div>
+  </li>
   
-  <div class="timeline-item">
+  <li class="timeline-item">
     <div class="timeline-date">Summer 2025 · Project</div>
     <div class="timeline-title">
         <a href="/CaribouLite/">Software-Defined Radio (SDR) with CaribouLite</a>
@@ -551,9 +602,9 @@ permalink: /
     <div class="timeline-metadata">
       <span class="timeline-keyword">Tools:</span> RaspberryPi4, Python, SDR++, SDRAngel, SoapySDR Linux.
     </div>
-  </div>
+  </li>
 
-  <div class="timeline-item">
+  <li class="timeline-item">
     <div class="timeline-date">2025 · Thesis Research</div>
     <div class="timeline-title">
         <a href="/mythic/">Thesis: Command & Control Frameworks</a>
@@ -564,9 +615,9 @@ permalink: /
     <div class="timeline-metadata">
       <span class="timeline-keyword">Domain:</span> Offensive / Defensive Security, Threat Hunting, Network Forensics.
     </div>
-  </div>
+  </li>
 
-  <div class="timeline-item">
+  <li class="timeline-item">
     <div class="timeline-date">2022 - Present</div>
     <div class="timeline-title">Tampere University of Applied Sciences</div>
     <p class="timeline-desc">
@@ -575,9 +626,9 @@ permalink: /
     <div class="timeline-metadata">
       <span class="timeline-keyword">Foundations:</span> Networking, Routing/Switching, OSI Model, Telecommunications.
     </div>
-  </div>
+  </li>
 
-  </div>
+</ul>
 
 <!-- Core Skills -->
 <div class="section-header">Core Skills</div>
