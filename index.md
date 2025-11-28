@@ -567,13 +567,14 @@ permalink: /
     </div>
   </li>
 
-  <li class="timeline-item">
-    <div class="timeline-date">2026 · Planned (Q1 Goal)</div>
-    <div class="timeline-title">Game Of Active Directory</div>
+ <li class="timeline-item">
+    <div class="timeline-date">2025 · Present</div>
+    <div class="timeline-title">Active Directory: Red Team Labs & OSCP</div>
     <p class="timeline-desc">
-      Designing a challenging, vulnerable AD environment to simulate realistic red team exercises. Focusing on: Post-exploitation, lateral movement, and privilege escalation techniques.
+      A dual-focus project: 1) Using the "Game of Active Directory" environment to master AD architecture's standard attack vectors, and 2) Executing full kill-chain attacks on Hack Academy's custom OSCP VMs.
     </p>
     <div class="timeline-metadata">
+      <span class="timeline-keyword">Focus:</span> Post-exploitation, Lateral Movement, Domain Dominance. <br>
       <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, Kerberoasting.
     </div>
   </li>
