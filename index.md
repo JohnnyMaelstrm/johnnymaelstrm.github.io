@@ -577,6 +577,7 @@ permalink: /
     </div>
   </div>
   
+  </div>
 
 <!-- Core Skills -->
 <div class="section-header">Core Skills</div>

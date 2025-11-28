@@ -401,20 +401,3 @@ order: 5
   <div class="cert-badge">ISC2 Candidate</div>
   <div class="cert-badge">Cisco: Introduction to Cybersecurity</div>
 </div>
-
-<script>
-function copyEmail() {
-  const email = "jaakko.oja029@gmail.com";
-  navigator.clipboard.writeText(email).then(() => {
-    const tooltip = document.getElementById("copyTooltip");
-    tooltip.innerHTML = "Copied!";
-    tooltip.style.color = "var(--green-dim)";
-    
-    // Reset after 2 seconds
-    setTimeout(() => {
-      tooltip.innerHTML = "Copy?";
-      tooltip.style.color = "var(--text)";
-    }, 2000);
-  });
-}
-</script>
