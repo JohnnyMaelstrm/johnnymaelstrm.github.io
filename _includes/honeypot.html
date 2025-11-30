@@ -84,36 +84,43 @@
 </style>
 
 <script>
-    // --- FINAL CONFIGURATION ---
-    // notice: I removed the commit hash from the URL so it always gets the NEWEST data
+    // --- DEBUG MODE ---
+    // Try using the URL EXACTLY as it appears when you click "Raw" in your browser
     const GIST_URL = 'https://gist.githubusercontent.com/JohnnyMaelstrm/264b6727308ea84e7f447e21b2b466ae/raw/attacks.json'; 
 
     async function fetchHoneypotData() {
         const container = document.getElementById('honeypot-log');
         
         try {
-            // ?t=... forces the browser to ignore cache and get new data
+            console.log("Fetching from:", GIST_URL);
+            
+            // Fetch with cache busting
             const response = await fetch(GIST_URL + '?t=' + new Date().getTime());
             
             if (!response.ok) {
-                throw new Error(`Network Error: ${response.status}`);
+                // PRINT THIS ERROR TO THE SCREEN
+                throw new Error(`HTTP Error: ${response.status} (Page not found?)`);
             }
             
-            const data = await response.json();
+            const text = await response.text(); // Get text first to check if it's HTML
             
-            // Clear "Initializing..." text
+            try {
+                var data = JSON.parse(text); // Try to parse as JSON
+            } catch (e) {
+                throw new Error("Received HTML instead of JSON. Check your URL!");
+            }
+
             container.innerHTML = ''; 
 
             data.forEach(attack => {
-                // Parse timestamp to look cleaner
                 const dateObj = new Date(attack.timestamp);
                 const timeStr = dateObj.toLocaleTimeString();
 
                 const html = `
                     <div class="hp-entry">
                         <span class="hp-time">[${timeStr}]</span>
-                        INTRUSION DETECTED: <span class="hp-ip">${attack.src_ip}</span><br>
-                        Auth Attempt: <span class="hp-user">${attack.username}</span> 
+                        INTRUSION: <span class="hp-ip">${attack.src_ip}</span><br>
+                        User: <span class="hp-user">${attack.username}</span> 
                         // <span class="hp-pass">${attack.password}</span>
                     </div>
                 `;
@@ -121,14 +128,11 @@
             });
 
         } catch (error) {
-            console.error('Honeypot Error:', error);
-            // Show error on screen so we know if it breaks
-            container.innerHTML = `<span style="color:red;">// CONNECTION ERROR: ${error.message}</span>`;
+            console.error(error);
+            // This puts the error right on your webpage so you can see it
+            container.innerHTML = `<p style="color:red; font-weight:bold;">// ERROR: ${error.message}</p>`;
         }
     }
 
-    // Load immediately
     fetchHoneypotData();
-    // Refresh every 30 seconds
-    setInterval(fetchHoneypotData, 30000);
 </script>
