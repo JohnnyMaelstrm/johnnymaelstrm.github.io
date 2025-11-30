@@ -1,112 +1,46 @@
-<script>
-alert("SCRIPT LOADED");
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Cowrie Live Feed</title>
+</head>
+<body style="background:black;color:#0f0;font-family:monospace;padding:20px;">
 
-
-<div class="hp-container">
-    <div class="hp-header">
-        <span class="hp-dot red"></span>
-        <span class="hp-dot yellow"></span>
-        <span class="hp-dot green"></span>
-        <span class="hp-title">🔴 LIVE THREAT INTEL (COWRIE)</span>
-    </div>
-
-    <div class="hp-terminal" id="honeypot-log">
-        <span class="hp-cursor">Initializing uplink to secure server...</span>
-    </div>
-
-    <div class="hp-footer">
-        Data source: <a href="https://github.com/JohnnyMaelstrm" target="_blank">Private VPS Node</a>
-    </div>
-</div>
-
-<style>
-.hp-container {
-    width: 90%;
-    margin: 20px auto;
-    background: #000;
-    color: #00ff00;
-    font-family: "Consolas", monospace;
-    border-radius: 10px;
-    border: 2px solid #222;
-    overflow: hidden;
-}
-
-.hp-header {
-    padding: 10px;
-    background: #111;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: bold;
-}
-
-.hp-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    display: inline-block;
-}
-.red { background: #ff5f56; }
-.yellow { background: #ffbd2e; }
-.green { background: #27c93f; }
-
-.hp-terminal {
-    background: #000;
-    padding: 15px;
-    height: 400px;
-    overflow-y: auto;
-    white-space: pre-wrap;
-    font-size: 14px;
-}
-
-.hp-cursor {
-    animation: blink 1s step-end infinite;
-}
-@keyframes blink { 50% { opacity: 0; } }
-
-.hp-footer {
-    padding: 8px;
-    background: #111;
-    color: #888;
-    text-align: right;
-    font-size: 12px;
-}
-</style>
+<h2>Live Cowrie Logs</h2>
+<pre id="honeypot-log">Loading...</pre>
 
 <script>
-const GIST_ID = "264b6727308ea84e7f447e21b2b466ae";    // <-- SINUN GIST ID
-const FILE_NAME = "attacks.json";                       // <-- SINUN tiedoston nimi
-const API_URL = `https://api.github.com/gists/${GIST_ID}`;
+const API_URL = "https://api.github.com/gists/264b6727308ea84e7f447e21b2b466ae";
+const FILE = "attacks.json";
 
-async function loadLogs() {
+async function load() {
     try {
-        const response = await fetch(API_URL + "?cache=" + Date.now());
-        const data = await response.json();
+        console.log("Fetching gist...");
 
-        const file = data.files[FILE_NAME];
+        const res = await fetch(API_URL + "?t=" + Date.now());
+        console.log("Status:", res.status);
+
+        const data = await res.json();
+        console.log("Files:", data.files);
+
+        const file = data.files[FILE];
+
         if (!file) {
-            document.getElementById("honeypot-log").innerText =
-                "ERROR: Gist file '" + FILE_NAME + "' not found.";
+            document.getElementById("honeypot-log").innerText = "File missing in Gist";
             return;
         }
 
-        // Replace content
-        const logElement = document.getElementById("honeypot-log");
-        logElement.innerText = file.content;
-
-        // Auto-scroll to bottom
-        logElement.scrollTop = logElement.scrollHeight;
+        document.getElementById("honeypot-log").innerText = file.content;
 
     } catch (err) {
         console.error(err);
-        document.getElementById("honeypot-log").innerText = 
-            "ERROR: Could not load live threat feed.";
+        document.getElementById("honeypot-log").innerText = "Fetch error";
     }
 }
 
-// Load immediately + refresh each 5 seconds
-loadLogs();
-setInterval(loadLogs, 5000);
+load();
+setInterval(load, 5000);
 </script>
+
+</body>
+</html>
