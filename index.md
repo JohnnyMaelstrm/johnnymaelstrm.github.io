@@ -553,7 +553,8 @@ permalink: /
   </div>
 
   
-{% include honeypot.html %}
+
+
 
   <!-- Timeline -->
  <div class="section-header">Timeline</div>
