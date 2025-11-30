@@ -5,129 +5,103 @@
         <span class="hp-dot green"></span>
         <span class="hp-title">🔴 LIVE THREAT INTEL (COWRIE)</span>
     </div>
+
     <div class="hp-terminal" id="honeypot-log">
         <span class="hp-cursor">Initializing uplink to secure server...</span>
     </div>
+
     <div class="hp-footer">
         Data source: <a href="https://github.com/JohnnyMaelstrm" target="_blank">Private VPS Node</a>
     </div>
 </div>
 
 <style>
-/* Force Dark Mode for Terminal regardless of Theme */
 .hp-container {
-    background: #101010;
-    border: 1px solid #333;
-    border-radius: 8px;
-    margin: 2rem 0;
-    font-family: 'Courier New', Courier, monospace;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    width: 90%;
+    margin: 20px auto;
+    background: #000;
+    color: #00ff00;
+    font-family: "Consolas", monospace;
+    border-radius: 10px;
+    border: 2px solid #222;
     overflow: hidden;
 }
 
 .hp-header {
-    background: #1f1f1f;
-    padding: 8px 12px;
-    border-bottom: 1px solid #333;
+    padding: 10px;
+    background: #111;
+    color: #fff;
     display: flex;
     align-items: center;
+    gap: 10px;
+    font-weight: bold;
 }
 
 .hp-dot {
-    height: 10px;
-    width: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    margin-right: 6px;
     display: inline-block;
 }
-.red { background-color: #ff5f56; }
-.yellow { background-color: #ffbd2e; }
-.green { background-color: #27c93f; }
-
-.hp-title {
-    color: #888;
-    font-size: 0.75rem;
-    margin-left: 10px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
 
 .hp-terminal {
+    background: #000;
     padding: 15px;
-    min-height: 180px;
-    max-height: 300px;
+    height: 400px;
     overflow-y: auto;
-    color: #33ff00; /* Hacker Green */
-    font-size: 0.85rem;
-    line-height: 1.4;
+    white-space: pre-wrap;
+    font-size: 14px;
 }
+
+.hp-cursor {
+    animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
 
 .hp-footer {
-    padding: 5px 15px;
-    background: #1f1f1f;
-    border-top: 1px solid #333;
-    font-size: 0.7rem;
-    color: #666;
+    padding: 8px;
+    background: #111;
+    color: #888;
     text-align: right;
+    font-size: 12px;
 }
-
-/* Custom log styling */
-.hp-entry { margin-bottom: 8px; border-bottom: 1px solid #222; padding-bottom: 4px; }
-.hp-time { color: #666; margin-right: 8px; }
-.hp-ip { color: #ff5555; font-weight: bold; }
-.hp-user { color: #50fa7b; }
-.hp-pass { color: #f1fa8c; font-style: italic; }
-
-/* Blink animation */
-@keyframes blink { 50% { opacity: 0; } }
-.hp-cursor { animation: blink 1s step-start infinite; }
 </style>
 
 <script>
-    // --- LIVE CONFIGURATION ---
-    const GIST_URL = 'https://api.github.com/gists/264b6727308ea84e7f447e21b2b466ae';
+const GIST_ID = "264b6727308ea84e7f447e21b2b466ae";    // <-- SINUN GIST ID
+const FILE_NAME = "attacks.json";                       // <-- SINUN tiedoston nimi
+const API_URL = `https://api.github.com/gists/${GIST_ID}`;
 
-    async function fetchHoneypotData() {
-        const container = document.getElementById('honeypot-log');
-        
-        try {
-            // ?t=... prevents caching
-            const response = await fetch(GIST_URL + '?t=' + new Date().getTime());
-            
-            if (!response.ok) throw new Error('Network response was not ok');
-            
-            const data = await response.json();
-            
-            // Clear loading text
-            container.innerHTML = ''; 
+async function loadLogs() {
+    try {
+        const response = await fetch(API_URL + "?cache=" + Date.now());
+        const data = await response.json();
 
-            data.forEach(attack => {
-                const dateObj = new Date(attack.timestamp);
-                const timeStr = dateObj.toLocaleTimeString();
-
-                const html = `
-                    <div class="hp-entry">
-                        <span class="hp-time">[${timeStr}]</span>
-                        INTRUSION: <span class="hp-ip">${attack.src_ip}</span><br>
-                        Auth: <span class="hp-user">${attack.username}</span> 
-                        // <span class="hp-pass">${attack.password}</span>
-                    </div>
-                `;
-                container.innerHTML += html;
-            });
-
-        } catch (error) {
-            console.error('Honeypot Fetch Error:', error);
-            // Don't show scary errors to visitors, just a retry message
-            if (container.innerHTML === '') {
-                 container.innerHTML = '<span style="color:#555;">// Uplink offline. Retrying...</span>';
-            }
+        const file = data.files[FILE_NAME];
+        if (!file) {
+            document.getElementById("honeypot-log").innerText =
+                "ERROR: Gist file '" + FILE_NAME + "' not found.";
+            return;
         }
-    }
 
-    // Load immediately
-    fetchHoneypotData();
-    
-    // Refresh every 30 seconds
-    setInterval(fetchHoneypotData, 30000);
+        // Replace content
+        const logElement = document.getElementById("honeypot-log");
+        logElement.innerText = file.content;
+
+        // Auto-scroll to bottom
+        logElement.scrollTop = logElement.scrollHeight;
+
+    } catch (err) {
+        console.error(err);
+        document.getElementById("honeypot-log").innerText = 
+            "ERROR: Could not load live threat feed.";
+    }
+}
+
+// Load immediately + refresh each 5 seconds
+loadLogs();
+setInterval(loadLogs, 5000);
 </script>
