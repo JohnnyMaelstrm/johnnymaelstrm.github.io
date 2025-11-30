@@ -1,45 +1,127 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Cowrie Live Feed</title>
+<meta charset="utf-8">
+<title>Cowrie Live Feed</title>
+<style>
+
+/* -------- TERMINAL ULKOASU -------- */
+.hp-container {
+    width: 90%;
+    margin: 20px auto;
+    background: #000;
+    color: #00ff00;
+    font-family: "Consolas", monospace;
+    border-radius: 10px;
+    border: 2px solid #222;
+    overflow: hidden;
+}
+
+.hp-header {
+    padding: 10px;
+    background: #111;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.hp-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.hp-terminal {
+    background: #000;
+    padding: 15px;
+    height: 400px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    font-size: 14px;
+}
+
+.hp-cursor {
+    animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.hp-footer {
+    padding: 8px;
+    background: #111;
+    color: #888;
+    text-align: right;
+    font-size: 12px;
+}
+
+</style>
 </head>
-<body style="background:black;color:#0f0;font-family:monospace;padding:20px;">
 
-<h2>Live Cowrie Logs</h2>
-<pre id="honeypot-log">Loading...</pre>
+<body>
 
+<!-- ------- TERMINAALISI UI ------- -->
+<div class="hp-container">
+    <div class="hp-header">
+        <span class="hp-dot red"></span>
+        <span class="hp-dot yellow"></span>
+        <span class="hp-dot green"></span>
+        <span class="hp-title">🔴 LIVE THREAT INTEL (COWRIE)</span>
+    </div>
+
+    <div class="hp-terminal" id="honeypot-log">
+        <span class="hp-cursor">Initializing uplink to secure server...</span>
+    </div>
+
+    <div class="hp-footer">
+        Data source: <a href="https://github.com/JohnnyMaelstrm" target="_blank">Private VPS Node</a>
+    </div>
+</div>
+
+
+<!-- ----------- DATA FETCHING LOGIIKKA ----------- -->
 <script>
 const API_URL = "https://api.github.com/gists/264b6727308ea84e7f447e21b2b466ae";
 const FILE = "attacks.json";
 
-async function load() {
+async function loadLogs() {
     try {
-        console.log("Fetching gist...");
-
         const res = await fetch(API_URL + "?t=" + Date.now());
-        console.log("Status:", res.status);
+        console.log("STATUS:", res.status);
 
         const data = await res.json();
-        console.log("Files:", data.files);
+        console.log("FILES:", data.files);
 
         const file = data.files[FILE];
 
         if (!file) {
-            document.getElementById("honeypot-log").innerText = "File missing in Gist";
+            document.getElementById("honeypot-log").innerText =
+                "File '" + FILE + "' not found in Gist.";
             return;
         }
 
-        document.getElementById("honeypot-log").innerText = file.content;
+        // Näytetään sisältö terminaalissa
+        const terminal = document.getElementById("honeypot-log");
+        terminal.innerText = file.content;
+
+        // Scrollaa viimeisimpään logiin
+        terminal.scrollTop = terminal.scrollHeight;
 
     } catch (err) {
-        console.error(err);
-        document.getElementById("honeypot-log").innerText = "Fetch error";
+        console.error("Fetch failed:", err);
+        document.getElementById("honeypot-log").innerText =
+            "Error loading live data.";
     }
 }
 
-load();
-setInterval(load, 5000);
+// Lataa heti + päivitys 5 sek välein
+loadLogs();
+setInterval(loadLogs, 5000);
 </script>
 
 </body>
