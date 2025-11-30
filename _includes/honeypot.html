@@ -84,32 +84,21 @@
 </style>
 
 <script>
-    // --- DEBUG MODE ---
-    // Try using the URL EXACTLY as it appears when you click "Raw" in your browser
+    // --- LIVE CONFIGURATION ---
     const GIST_URL = 'https://gist.githubusercontent.com/JohnnyMaelstrm/264b6727308ea84e7f447e21b2b466ae/raw/attacks.json'; 
 
     async function fetchHoneypotData() {
         const container = document.getElementById('honeypot-log');
         
         try {
-            console.log("Fetching from:", GIST_URL);
-            
-            // Fetch with cache busting
+            // ?t=... prevents caching
             const response = await fetch(GIST_URL + '?t=' + new Date().getTime());
             
-            if (!response.ok) {
-                // PRINT THIS ERROR TO THE SCREEN
-                throw new Error(`HTTP Error: ${response.status} (Page not found?)`);
-            }
+            if (!response.ok) throw new Error('Network response was not ok');
             
-            const text = await response.text(); // Get text first to check if it's HTML
+            const data = await response.json();
             
-            try {
-                var data = JSON.parse(text); // Try to parse as JSON
-            } catch (e) {
-                throw new Error("Received HTML instead of JSON. Check your URL!");
-            }
-
+            // Clear loading text
             container.innerHTML = ''; 
 
             data.forEach(attack => {
@@ -120,7 +109,7 @@
                     <div class="hp-entry">
                         <span class="hp-time">[${timeStr}]</span>
                         INTRUSION: <span class="hp-ip">${attack.src_ip}</span><br>
-                        User: <span class="hp-user">${attack.username}</span> 
+                        Auth: <span class="hp-user">${attack.username}</span> 
                         // <span class="hp-pass">${attack.password}</span>
                     </div>
                 `;
@@ -128,11 +117,17 @@
             });
 
         } catch (error) {
-            console.error(error);
-            // This puts the error right on your webpage so you can see it
-            container.innerHTML = `<p style="color:red; font-weight:bold;">// ERROR: ${error.message}</p>`;
+            console.error('Honeypot Fetch Error:', error);
+            // Don't show scary errors to visitors, just a retry message
+            if (container.innerHTML === '') {
+                 container.innerHTML = '<span style="color:#555;">// Uplink offline. Retrying...</span>';
+            }
         }
     }
 
+    // Load immediately
     fetchHoneypotData();
+    
+    // Refresh every 30 seconds
+    setInterval(fetchHoneypotData, 30000);
 </script>
