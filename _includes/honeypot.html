@@ -84,26 +84,28 @@
 </style>
 
 <script>
-    // --- CONFIGURATION ---
-    // REPLACE THIS URL BELOW WITH YOUR GIST RAW URL
-    const GIST_URL = 'https://gist.githubusercontent.com/JohnnyMaelstrm/264b6727308ea84e7f447e21b2b466ae/raw/3379c5f68c59d868cde1a01b97d2b4b9a94de94d/attacks.json'; 
+    // --- FINAL CONFIGURATION ---
+    // notice: I removed the commit hash from the URL so it always gets the NEWEST data
+    const GIST_URL = 'https://gist.githubusercontent.com/JohnnyMaelstrm/264b6727308ea84e7f447e21b2b466ae/raw/attacks.json'; 
 
     async function fetchHoneypotData() {
         const container = document.getElementById('honeypot-log');
         
         try {
-            // Add cache-busting timestamp to prevent showing old data
+            // ?t=... forces the browser to ignore cache and get new data
             const response = await fetch(GIST_URL + '?t=' + new Date().getTime());
             
-            if (!response.ok) throw new Error('Network response was not ok');
+            if (!response.ok) {
+                throw new Error(`Network Error: ${response.status}`);
+            }
             
             const data = await response.json();
             
-            // Clear current content
+            // Clear "Initializing..." text
             container.innerHTML = ''; 
 
             data.forEach(attack => {
-                // Parse timestamp to look cleaner (optional)
+                // Parse timestamp to look cleaner
                 const dateObj = new Date(attack.timestamp);
                 const timeStr = dateObj.toLocaleTimeString();
 
@@ -119,15 +121,14 @@
             });
 
         } catch (error) {
-            console.error('Honeypot Fetch Error:', error);
-            // Don't show error to user, just keep the "initializing" text or show offline
-            container.innerHTML = '<span style="color:#555;">// Uplink offline. Retrying...</span>';
+            console.error('Honeypot Error:', error);
+            // Show error on screen so we know if it breaks
+            container.innerHTML = `<span style="color:red;">// CONNECTION ERROR: ${error.message}</span>`;
         }
     }
 
     // Load immediately
     fetchHoneypotData();
-    
     // Refresh every 30 seconds
     setInterval(fetchHoneypotData, 30000);
 </script>
