@@ -552,8 +552,6 @@ permalink: /
     </div>
   </div>
 
-  
-{% include honeypot.html %}
 
   <!-- Timeline -->
  <div class="section-header">Timeline</div>
@@ -633,6 +631,14 @@ permalink: /
   </li>
 
 </ul>
+
+<!-- HONEYPOT WIDGET: Live Feed -->
+<div style="margin: 2rem 0;">
+    <iframe src="/test.html" 
+            style="width: 100%; height: 420px; border: none; overflow: hidden; background: #09090b; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    </iframe>
+</div>
+
 
 <!-- Core Skills -->
 <div class="section-header">Core Skills</div>

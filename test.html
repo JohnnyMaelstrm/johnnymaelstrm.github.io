@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Threat Intel</title>
+    <!-- JetBrains Mono for that clean developer look -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- PROFESSIONAL TERMINAL THEME (Matched to Portfolio) --- */
+        :root {
+            /* Portfolio: --bg-dark */
+            --bg-color: #09090b;        
+            /* Portfolio: --bg-card (used for header background) */
+            --header-bg: rgba(255, 255, 255, 0.02);       
+            /* Portfolio: --border */
+            --border-color: rgba(255, 255, 255, 0.08);    
+            /* Portfolio: --text */
+            --text-primary: #d4d4d8;    
+            /* Portfolio: --accent-dim */
+            --text-secondary: #a1a1aa;  
+            
+            /* Syntax Highlighting Colors */
+            --accent-red: #ff7b72;      /* Breaches/Errors */
+            --accent-green: #22c55e;    /* Success/Live (Matched to --green-dim) */
+            --accent-blue: #58a6ff;     /* Users/Info */
+            --accent-purple: #d2a8ff;   /* IPs */
+            --accent-orange: #d19a66;   /* Warnings */
+            --cmd-color: #a5d6ff;       /* Commands */
+        }
+
+        /* GLOBAL RESET for perfect sizing */
+        * { box-sizing: border-box; }
+
+        body { 
+            margin: 0; padding: 0; 
+            background-color: var(--bg-color); 
+            font-family: 'JetBrains Mono', monospace;
+            overflow: hidden; 
+            display: flex;           /* Flex layout for vertical stacking */
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Main Window Frame */
+        .terminal-window {
+            display: flex;
+            flex-direction: column;
+            flex: 1;                 /* Take up remaining height */
+            min-height: 0;           /* CRITICAL: Allows flex child to shrink properly */
+            border-bottom: 1px solid var(--border-color); /* Separator */
+        }
+
+        /* Header Bar - Compact */
+        .header {
+            background-color: var(--header-bg);
+            padding: 6px 12px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+
+        /* Left Side: Title Only (Removed Traffic Lights) */
+        .header-left { display: flex; align-items: center; gap: 12px; }
+
+        .title {
+            color: var(--text-secondary);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Icon for title (optional simpler dot) */
+        .title::before {
+            content: ">_";
+            color: var(--accent-green);
+            font-weight: bold;
+            margin-right: 4px;
+        }
+
+        /* Right Side: Live Indicator */
+        .live-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+            color: var(--accent-green);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.4); /* Green glow matched */
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        /* Content Area - Compact Padding */
+        .terminal-content {
+            flex: 1;
+            padding: 8px 12px;
+            overflow-y: auto;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        /* Log Entry Layout - Compact */
+        .log-entry {
+            display: grid;
+            /* Layout: Time | Status | IP | Details */
+            grid-template-columns: 65px 90px 110px 1fr; 
+            gap: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Lighter separator for dark theme */
+            padding: 3px 0;
+            align-items: start;
+        }
+        .log-entry:last-child { border-bottom: none; }
+
+        /* Typography & Colors */
+        .time { color: var(--text-secondary); }
+        .ip { color: var(--accent-purple); font-weight: 500; }
+        .user { color: var(--accent-blue); }
+        .pass { color: var(--text-secondary); font-style: italic; opacity: 0.7; }
+        .cmd { color: var(--cmd-color); font-weight: 500; }
+        
+        /* Status Badges */
+        .badge { font-weight: 600; letter-spacing: 0.5px; font-size: 10px; }
+        .badge-cmd { color: var(--accent-blue); }
+        .badge-breach { color: var(--accent-red); text-shadow: 0 0 10px rgba(255, 123, 114, 0.2); }
+        .badge-fail { color: var(--accent-orange); }
+
+        /* Status Line (Cursor) - Moved to TOP styling */
+        .status-line {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed var(--border-color);
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 10px;
+        }
+        .cursor {
+            display: inline-block;
+            width: 6px;
+            height: 12px;
+            background-color: var(--accent-blue);
+            vertical-align: middle;
+            margin-left: 6px;
+            animation: blink 1s step-end infinite;
+        }
+
+        /* Summary Text Styling (Matched to Footer) */
+        .summary-text {
+            padding: 10px 12px;
+            color: var(--text-secondary);
+            font-size: 10px;
+            text-align: center;
+            background-color: var(--bg-color);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.4;
+            flex-shrink: 0; /* CRITICAL: Prevents text from being squashed */
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+        @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+        /* Responsive Fix for Mobile */
+        @media (max-width: 600px) {
+            .log-entry {
+                grid-template-columns: 60px 1fr; /* Stack layout */
+                grid-template-areas: 
+                    "time status"
+                    "ip ip"
+                    "details details";
+                gap: 2px;
+                padding: 8px 0;
+            }
+            .time { grid-area: time; }
+            .badge { grid-area: status; text-align: right; }
+            .ip { grid-area: ip; font-size: 11px; opacity: 0.8; }
+            .details { grid-area: details; margin-top: 2px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="terminal-window">
+        <div class="header">
+            <div class="header-left">
+                <!-- Removed Traffic Lights & Controls div -->
+                <div class="title">🛡 Honeypot Attacks (Live Data)</div>
+            </div>
+            <div class="live-status">
+                <div class="pulse-dot"></div> Live
+            </div>
+        </div>
+        
+        <div class="terminal-content" id="terminal-logs">
+            <div class="status-line">
+                Establishing uplink to sensor node...<span class="cursor"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary / Footer Text -->
+    <div class="summary-text">
+        This feed streams real-time SSH attacks captured by my private Cowrie honeypot hosted on Linode. <br>
+        Watch in real-time as automated bots attempt to breach a decoy SSH server.
+    </div>
+
+    <script>
+        // LIVE URL: Points to the raw file without the commit hash so it gets NEW data
+        const GIST_URL = 'https://gist.githubusercontent.com/JohnnyMaelstrm/264b6727308ea84e7f447e21b2b466ae/raw/attacks.json'; 
+
+        async function fetchLogs() {
+            const container = document.getElementById('terminal-logs');
+            
+            try {
+                // Fetch with cache busting
+                const response = await fetch(GIST_URL + '?t=' + new Date().getTime());
+                if (!response.ok) throw new Error('Connection failed');
+                
+                const data = await response.json();
+                
+                container.innerHTML = ''; 
+
+                // 1. Add active cursor line at the TOP (New position)
+                const status = document.createElement('div');
+                status.className = 'status-line';
+                status.innerHTML = 'Monitoring active session...<span class="cursor"></span>';
+                container.appendChild(status);
+
+                // 2. Add the logs below it
+                data.forEach(item => {
+                    // FILTER: Skip "SUCCESSFUL BREACH" events
+                    if (item.type === 'SUCCESSFUL BREACH') return;
+
+                    const dateObj = new Date(item.timestamp);
+                    const timeStr = dateObj.toLocaleTimeString('en-GB', { hour12: false });
+
+                    // Logic to determine labels and content
+                    let statusHtml = '';
+                    let detailsHtml = '';
+
+                    if (item.type === 'COMMAND') {
+                        statusHtml = `<span class="badge badge-cmd">EXEC_CMD</span>`;
+                        // Show command execution style
+                        detailsHtml = `<span class="details">user:<span class="user">${item.username}</span> <span style="color:#666">$</span> <span class="cmd">${item.password}</span></span>`;
+                    } else {
+                        // Default to AUTH_FAIL
+                        statusHtml = `<span class="badge badge-fail">AUTH_FAIL</span>`;
+                        detailsHtml = `<span class="details">user:<span class="user">${item.username}</span> pass:<span class="pass">${item.password}</span></span>`;
+                    }
+
+                    const row = document.createElement('div');
+                    row.className = 'log-entry';
+                    row.innerHTML = `
+                        <div class="time">${timeStr}</div>
+                        <div class="status">${statusHtml}</div>
+                        <div class="ip">${item.src_ip}</div>
+                        ${detailsHtml}
+                    `;
+                    container.appendChild(row);
+                });
+
+            } catch (err) {
+                console.error(err);
+                container.innerHTML = `<div style="color:#ff7b72; padding:10px;">// CONNECTION ERROR: ${err.message}</div>`;
+            }
+        }
+
+        // Run immediately
+        fetchLogs();
+        
+        // Auto-refresh every 30 seconds
+        setInterval(fetchLogs, 30000);
+    </script>
+
+</body>
+</html>
