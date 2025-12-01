@@ -601,7 +601,7 @@ permalink: /
       Completed a practical SDR project using CaribouLite and Raspberry Pi 4. Focused on configuring and utilizing open-source tools to analyze and interact with the SDR world.
     </p>
     <div class="timeline-metadata">
-      <span class="timeline-keyword">Tools:</span> Raspberry Pi 4, Python, SDR++, SDRAngel, SoapySDR Linux.
+      <span class="timeline-keyword">Tools:</span> Raspberry Pi 4, Python, SDR++, SDRAngel, SoapySDR, Linux.
     </div>
   </li>
 
@@ -634,7 +634,7 @@ permalink: /
 <!-- HONEYPOT WIDGET: Live Feed -->
 <div style="margin: 2rem 0;">
     <iframe src="/test.html" 
-            style="width: 100%; height: 420px; border: none; overflow: hidden; background: #09090b; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            style="width: 100%; height: 340px; border: none; overflow: hidden; background: #09090b; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
     </iframe>
 </div>
 
