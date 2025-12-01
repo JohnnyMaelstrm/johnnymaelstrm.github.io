@@ -110,9 +110,22 @@
         .log-entry:last-child { border-bottom: none; }
 
         .time { color: var(--text-secondary); }
-        .ip-cell { display: flex; align-items: center; gap: 6px; }
+        .ip-cell { 
+            display: flex; 
+            align-items: center; 
+            gap: 6px; 
+        }
         .ip { color: var(--accent-purple); font-weight: 500; }
-        .flag { font-size: 1.1em; opacity: 0.9; }
+        
+        /* Flag images */
+        .flag-img { 
+            width: 18px;
+            height: 14px;
+            border-radius: 2px;
+            opacity: 0.9;
+            vertical-align: middle;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
         
         .user { color: var(--accent-blue); }
         .pass { color: var(--text-secondary); font-style: italic; opacity: 0.7; }
@@ -182,8 +195,7 @@
     <div class="terminal-window">
         <div class="header">
             <div class="header-left">
-                <div class="title">🛡 Honeypot Attacks (Live Data)
-</div>
+                <div class="title">🛡 Honeypot Attacks (Live Data)</div>
             </div>
             <div class="live-status">
                 <div class="pulse-dot"></div> Live
@@ -199,19 +211,20 @@
 
     <div class="summary-text">
         This feed captures live attacks on my private honeypot in Cloud. <br>
-        All data is sanitized (IPs masked, payloads hidden) for responsible disclosure(GDPR).
+        All data is sanitized (IPs masked, payloads hidden) for responsible disclosure (GDPR).
     </div>
 
     <script>
-        // Use your LIVE URL (no commit hash) so new data flows in automatically
         const GIST_URL = 'https://gist.githubusercontent.com/JohnnyMaelstrm/264b6727308ea84e7f447e21b2b466ae/raw/attacks.json'; 
 
-        // Helper: Convert "US" -> 🇺🇸
-        function getFlagEmoji(countryCode) {
-            if (!countryCode || countryCode === 'UNK') return '🌐'; 
-            return countryCode.toUpperCase().replace(/./g, char => 
-                String.fromCodePoint(char.charCodeAt(0) + 127397)
-            );
+        // Use flag images from CDN for reliable cross-platform display
+        function getFlag(countryCode) {
+            if (!countryCode || countryCode === 'UNK') {
+                return '<img src="https://flagcdn.com/20x15/xx.png" class="flag-img" alt="Unknown" onerror="this.style.display=\'none\'">';
+            }
+            
+            const code = countryCode.toLowerCase();
+            return `<img src="https://flagcdn.com/20x15/${code}.png" class="flag-img" alt="${countryCode}" onerror="this.style.display='none'">`;
         }
 
         async function fetchLogs() {
@@ -233,7 +246,7 @@
                 data.forEach(item => {
                     const dateObj = new Date(item.timestamp);
                     const timeStr = dateObj.toLocaleTimeString('en-GB', { hour12: false });
-                    const flag = getFlagEmoji(item.country);
+                    const flag = getFlag(item.country);
 
                     let statusHtml = '';
                     let detailsHtml = '';
@@ -243,7 +256,7 @@
                         statusHtml = `<span class="badge badge-cmd">EXEC_CMD</span>`;
                         detailsHtml = `<span class="details">user:<span class="user">${item.username}</span> <span style="color:#666">$</span> <span class="cmd">${item.password}</span></span>`;
                     
-                    // 2. System Breach (Red) - Showing sanitized notification
+                    // 2. System Breach (Red)
                     } else if (item.type === 'SYSTEM_BREACH') {
                         statusHtml = `<span class="badge badge-breach">BREACH</span>`;
                         detailsHtml = `<span class="details">user:<span class="user">${item.username}</span> status:<span style="color:#ff7b72">ACCESS_LOGGED</span></span>`;
@@ -259,7 +272,7 @@
                     row.innerHTML = `
                         <div class="time">${timeStr}</div>
                         <div class="status">${statusHtml}</div>
-                        <div class="ip-cell"><span class="flag">${flag}</span> <span class="ip">${item.src_ip}</span></div>
+                        <div class="ip-cell">${flag} <span class="ip">${item.src_ip}</span></div>
                         ${detailsHtml}
                     `;
                     container.appendChild(row);
