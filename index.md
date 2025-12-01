@@ -552,7 +552,6 @@ permalink: /
     </div>
   </div>
 
-
   <!-- Timeline -->
  <div class="section-header">Timeline</div>
 <ul class="timeline">

@@ -1,3 +1,71 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cowrie Live Feed</title>
+<style>
+
+/* -------- TERMINAL ULKOASU -------- */
+.hp-container {
+    width: 90%;
+    margin: 20px auto;
+    background: #000;
+    color: #00ff00;
+    font-family: "Consolas", monospace;
+    border-radius: 10px;
+    border: 2px solid #222;
+    overflow: hidden;
+}
+
+.hp-header {
+    padding: 10px;
+    background: #111;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.hp-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.hp-terminal {
+    background: #000;
+    padding: 15px;
+    height: 400px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    font-size: 14px;
+}
+
+.hp-cursor {
+    animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.hp-footer {
+    padding: 8px;
+    background: #111;
+    color: #888;
+    text-align: right;
+    font-size: 12px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ------- TERMINAALISI UI ------- -->
 <div class="hp-container">
     <div class="hp-header">
         <span class="hp-dot red"></span>
@@ -5,129 +73,56 @@
         <span class="hp-dot green"></span>
         <span class="hp-title">🔴 LIVE THREAT INTEL (COWRIE)</span>
     </div>
+
     <div class="hp-terminal" id="honeypot-log">
         <span class="hp-cursor">Initializing uplink to secure server...</span>
     </div>
+
     <div class="hp-footer">
         Data source: <a href="https://github.com/JohnnyMaelstrm" target="_blank">Private VPS Node</a>
     </div>
 </div>
 
-<style>
-/* Force Dark Mode for Terminal regardless of Theme */
-.hp-container {
-    background: #101010;
-    border: 1px solid #333;
-    border-radius: 8px;
-    margin: 2rem 0;
-    font-family: 'Courier New', Courier, monospace;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    overflow: hidden;
-}
 
-.hp-header {
-    background: #1f1f1f;
-    padding: 8px 12px;
-    border-bottom: 1px solid #333;
-    display: flex;
-    align-items: center;
-}
-
-.hp-dot {
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
-    margin-right: 6px;
-    display: inline-block;
-}
-.red { background-color: #ff5f56; }
-.yellow { background-color: #ffbd2e; }
-.green { background-color: #27c93f; }
-
-.hp-title {
-    color: #888;
-    font-size: 0.75rem;
-    margin-left: 10px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.hp-terminal {
-    padding: 15px;
-    min-height: 180px;
-    max-height: 300px;
-    overflow-y: auto;
-    color: #33ff00; /* Hacker Green */
-    font-size: 0.85rem;
-    line-height: 1.4;
-}
-
-.hp-footer {
-    padding: 5px 15px;
-    background: #1f1f1f;
-    border-top: 1px solid #333;
-    font-size: 0.7rem;
-    color: #666;
-    text-align: right;
-}
-
-/* Custom log styling */
-.hp-entry { margin-bottom: 8px; border-bottom: 1px solid #222; padding-bottom: 4px; }
-.hp-time { color: #666; margin-right: 8px; }
-.hp-ip { color: #ff5555; font-weight: bold; }
-.hp-user { color: #50fa7b; }
-.hp-pass { color: #f1fa8c; font-style: italic; }
-
-/* Blink animation */
-@keyframes blink { 50% { opacity: 0; } }
-.hp-cursor { animation: blink 1s step-start infinite; }
-</style>
-
+<!-- ----------- DATA FETCHING LOGIIKKA ----------- -->
 <script>
-    // --- LIVE CONFIGURATION ---
-    const GIST_URL = 'https://gist.githubusercontent.com/JohnnyMaelstrm/264b6727308ea84e7f447e21b2b466ae/raw/a337aa68aafe6862ef2432d6b80d56410de0d336/attacks.json'; 
+const API_URL = "https://api.github.com/gists/264b6727308ea84e7f447e21b2b466ae";
+const FILE = "attacks.json";
 
-    async function fetchHoneypotData() {
-        const container = document.getElementById('honeypot-log');
-        
-        try {
-            // ?t=... prevents caching
-            const response = await fetch(GIST_URL + '?t=' + new Date().getTime());
-            
-            if (!response.ok) throw new Error('Network response was not ok');
-            
-            const data = await response.json();
-            
-            // Clear loading text
-            container.innerHTML = ''; 
+async function loadLogs() {
+    try {
+        const res = await fetch(API_URL + "?t=" + Date.now());
+        console.log("STATUS:", res.status);
 
-            data.forEach(attack => {
-                const dateObj = new Date(attack.timestamp);
-                const timeStr = dateObj.toLocaleTimeString();
+        const data = await res.json();
+        console.log("FILES:", data.files);
 
-                const html = `
-                    <div class="hp-entry">
-                        <span class="hp-time">[${timeStr}]</span>
-                        INTRUSION: <span class="hp-ip">${attack.src_ip}</span><br>
-                        Auth: <span class="hp-user">${attack.username}</span> 
-                        // <span class="hp-pass">${attack.password}</span>
-                    </div>
-                `;
-                container.innerHTML += html;
-            });
+        const file = data.files[FILE];
 
-        } catch (error) {
-            console.error('Honeypot Fetch Error:', error);
-            // Don't show scary errors to visitors, just a retry message
-            if (container.innerHTML === '') {
-                 container.innerHTML = '<span style="color:#555;">// Uplink offline. Retrying...</span>';
-            }
+        if (!file) {
+            document.getElementById("honeypot-log").innerText =
+                "File '" + FILE + "' not found in Gist.";
+            return;
         }
-    }
 
-    // Load immediately
-    fetchHoneypotData();
-    
-    // Refresh every 30 seconds
-    setInterval(fetchHoneypotData, 30000);
+        // Näytetään sisältö terminaalissa
+        const terminal = document.getElementById("honeypot-log");
+        terminal.innerText = file.content;
+
+        // Scrollaa viimeisimpään logiin
+        terminal.scrollTop = terminal.scrollHeight;
+
+    } catch (err) {
+        console.error("Fetch failed:", err);
+        document.getElementById("honeypot-log").innerText =
+            "Error loading live data.";
+    }
+}
+
+// Lataa heti + päivitys 5 sek välein
+loadLogs();
+setInterval(loadLogs, 5000);
 </script>
+
+</body>
+</html>
