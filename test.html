@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Threat Intel</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Chart.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
@@ -35,7 +34,6 @@
             height: 100vh;
         }
 
-        /* --- CHART SECTION --- */
         .chart-container {
             height: 120px;
             width: 100%;
@@ -46,7 +44,6 @@
             flex-shrink: 0;
         }
 
-        /* --- TERMINAL SECTION --- */
         .terminal-window {
             display: flex;
             flex-direction: column;
@@ -100,7 +97,6 @@
             line-height: 1.5;
         }
 
-        /* Logs */
         .log-entry {
             display: grid;
             grid-template-columns: 65px 100px 140px 1fr; 
@@ -113,13 +109,13 @@
         .ip-cell { display: flex; align-items: center; gap: 8px; }
         .ip { color: var(--accent-purple); font-weight: 500; }
         
-        /* Flag Images Style */
         .flag-img { 
-            width: 16px; 
-            height: 12px; 
+            width: 18px; 
+            height: 14px; 
             border-radius: 2px; 
             opacity: 0.8; 
             display: inline-block;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .user { color: var(--accent-blue); }
@@ -159,20 +155,24 @@
 
         @media (max-width: 600px) {
             .chart-container { display: none; } 
-            .log-entry { grid-template-columns: 60px 1fr; grid-template-areas: "time status" "ip ip" "details details"; gap: 2px; padding: 8px 0; }
-            .time { grid-area: time; } .badge { grid-area: status; text-align: right; }
-            .ip-cell { grid-area: ip; } .details { grid-area: details; }
+            .log-entry { 
+                grid-template-columns: 60px 1fr; 
+                grid-template-areas: "time status" "ip ip" "details details"; 
+                gap: 2px; padding: 8px 0; 
+            }
+            .time { grid-area: time; } 
+            .badge { grid-area: status; text-align: right; }
+            .ip-cell { grid-area: ip; } 
+            .details { grid-area: details; }
         }
     </style>
 </head>
 <body>
 
-    <!-- GRAPH SECTION -->
     <div class="chart-container">
         <canvas id="attackChart"></canvas>
     </div>
 
-    <!-- TERMINAL SECTION -->
     <div class="terminal-window">
         <div class="header">
             <div class="header-left">
@@ -200,13 +200,31 @@
         const GIST_URL = 'https://gist.githubusercontent.com/JohnnyMaelstrm/264b6727308ea84e7f447e21b2b466ae/raw/attacks.json'; 
         let attackChart = null; 
 
-        // Use FlagCDN images instead of emojis for Windows compatibility
         function getFlag(countryCode) {
             if (!countryCode || countryCode === 'UNK') {
                 return '<img src="https://flagcdn.com/20x15/xx.png" class="flag-img" alt="Unknown" onerror="this.style.display=\'none\'">';
             }
             const code = countryCode.toLowerCase();
             return `<img src="https://flagcdn.com/20x15/${code}.png" class="flag-img" alt="${countryCode}" onerror="this.style.display='none'">`;
+        }
+
+        // Generate chart data from logs
+        function generateChartData(logs) {
+            const now = new Date();
+            const hourCounts = Array(24).fill(0);
+            
+            logs.forEach(log => {
+                const logTime = new Date(log.timestamp);
+                const hoursDiff = Math.floor((now - logTime) / (1000 * 60 * 60));
+                
+                // Only count attacks from last 24 hours
+                if (hoursDiff >= 0 && hoursDiff < 24) {
+                    const index = 23 - hoursDiff; // Reverse order (oldest to newest)
+                    hourCounts[index]++;
+                }
+            });
+            
+            return hourCounts;
         }
 
         function initChart(dataPoints) {
@@ -273,17 +291,21 @@
                 const json = await response.json();
                 
                 let logs = [];
-                let chartData = Array(24).fill(0); 
+                let chartData = [];
 
+                // Handle both formats: array or object with logs property
                 if (Array.isArray(json)) {
-                    logs = json; 
-                } else {
+                    logs = json;
+                    chartData = generateChartData(logs); // Generate from logs
+                } else if (json.logs) {
                     logs = json.logs;
-                    chartData = json.chart_data;
+                    chartData = json.chart_data || generateChartData(logs);
                 }
 
+                // Initialize chart with data
                 initChart(chartData);
 
+                // Display logs
                 container.innerHTML = ''; 
                 const status = document.createElement('div');
                 status.className = 'status-line';
@@ -291,12 +313,11 @@
                 container.appendChild(status);
 
                 logs.forEach(item => {
-                    if (item.type === 'SUCCESSFUL BREACH') return;
+                    // Skip successful breaches if you don't want to show them
+                    if (item.type === 'SUCCESSFUL_BREACH') return;
 
                     const dateObj = new Date(item.timestamp);
                     const timeStr = dateObj.toLocaleTimeString('en-GB', { hour12: false });
-                    
-                    // Use Image Flag function
                     const flag = getFlag(item.country);
 
                     let statusHtml = '', detailsHtml = '';
@@ -324,24 +345,12 @@
                 });
 
             } catch (err) {
-                console.error(err);
+                console.error('Error fetching logs:', err);
+                container.innerHTML = `<div style="color:#ff7b72; padding:10px;">// CONNECTION ERROR: ${err.message}</div>`;
             }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // SAFE Service Worker Cleanup (Wrapped in try-catch to prevent errors)
-            if ('serviceWorker' in navigator) {
-                try {
-                    navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                        for(let registration of registrations) {
-                            registration.unregister().catch(e => console.log("SW unregister skip"));
-                        } 
-                    }).catch(e => console.log("SW access denied"));
-                } catch (e) {
-                    console.log("SW cleanup skipped entirely");
-                }
-            }
-            
             fetchLogs();
             setInterval(fetchLogs, 30000);
         });
