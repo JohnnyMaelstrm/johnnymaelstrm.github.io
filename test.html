@@ -35,23 +35,27 @@
             height: 100vh;
         }
 
-        /* --- TERMINAL WINDOW CONTAINER --- */
+        /* --- CHART SECTION --- */
+        .chart-container {
+            height: 120px; /* Korkeus kuvaajalle */
+            width: 100%;
+            background-color: var(--header-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 10px;
+            position: relative;
+        }
+
+        /* --- TERMINAL SECTION --- */
         .terminal-window {
             display: flex;
             flex-direction: column;
             flex: 1;                 
             min-height: 0;
-            border: 1px solid var(--border-color); /* Border around the whole window */
-            border-radius: 6px; /* Rounded corners for the main window */
-            margin: 10px; /* Small margin from the iframe edges */
-            overflow: hidden; /* Clip content to rounded corners */
-            background-color: var(--bg-color);
         }
 
-        /* --- HEADER SECTION (Top Bar) --- */
         .header {
-            background-color: var(--header-bg);
-            padding: 8px 12px;
+            background-color: var(--bg-color); /* Erotetaan graafista */
+            padding: 6px 12px;
             border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: center;
@@ -87,18 +91,6 @@
             animation: pulse 2s infinite ease-in-out;
         }
 
-        /* --- CHART SECTION (Middle) --- */
-        .chart-container {
-            height: 100px; /* Compact height */
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.01); /* Very subtle background difference */
-            border-bottom: 1px solid var(--border-color);
-            padding: 10px 10px 0 10px;
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        /* --- LOGS SECTION (Bottom) --- */
         .terminal-content {
             flex: 1;
             padding: 8px 12px;
@@ -107,7 +99,7 @@
             line-height: 1.5;
         }
 
-        /* Log Entry Styling */
+        /* Logs */
         .log-entry {
             display: grid;
             grid-template-columns: 65px 100px 140px 1fr; 
@@ -144,10 +136,8 @@
         .summary-text {
             padding: 8px 12px;
             color: var(--text-secondary); font-size: 10px; text-align: center;
-            /* background-color: var(--bg-color); */ /* Removed bg to blend with body */
-            /* border-top: 1px solid var(--border-color); */ /* Removed border for cleaner look */
+            background-color: var(--bg-color); border-top: 1px solid var(--border-color);
             line-height: 1.4; flex-shrink: 0; 
-            margin-bottom: 5px;
         }
 
         @keyframes blink { 50% { opacity: 0; } }
@@ -167,10 +157,13 @@
 </head>
 <body>
 
-    <!-- Main Window Container -->
+    <!-- GRAPH SECTION -->
+    <div class="chart-container">
+        <canvas id="attackChart"></canvas>
+    </div>
+
+    <!-- TERMINAL SECTION -->
     <div class="terminal-window">
-        
-        <!-- 1. HEADER (Top) -->
         <div class="header">
             <div class="header-left">
                 <div class="title">🛡 Honeypot Attacks (Live Data)</div>
@@ -179,23 +172,16 @@
                 <div class="pulse-dot"></div> Live
             </div>
         </div>
-
-        <!-- 2. GRAPH SECTION (Middle) -->
-        <div class="chart-container">
-            <canvas id="attackChart"></canvas>
-        </div>
         
-        <!-- 3. TERMINAL LOGS (Bottom) -->
         <div class="terminal-content" id="terminal-logs">
             <div class="status-line">
                 Establishing uplink to sensor node...<span class="cursor"></span>
             </div>
         </div>
-
     </div>
 
    <div class="summary-text">
-        This feed captures live attacks on my private honeypot in Cloud. <br>
+        This feed captures live attacks on my private honeypot in Cloud! The chart shows how many attacks are per hour. <br>
         All data is sanitized (IPs masked, payloads hidden) for responsible disclosure (GDPR).
     </div>
 
@@ -335,13 +321,22 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            // Aggressively unregister Service Workers to fix Chirpy caching
+            // WRAPPED IN TRY-CATCH to prevent InvalidStateError
             if ('serviceWorker' in navigator) {
                 try {
-                    navigator.serviceWorker.getRegistrations().then(r => r.forEach(sw => sw.unregister())).catch(err => console.log('SW clear skipped'));
+                    navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                        for(let registration of registrations) {
+                            registration.unregister();
+                        } 
+                    }).catch(function(err) {
+                        console.log('SW cleanup skipped (non-fatal)');
+                    });
                 } catch (e) {
-                    console.log('SW clear skipped');
+                    console.log('SW cleanup skipped (non-fatal)');
                 }
             }
+            
             fetchLogs();
             setInterval(fetchLogs, 30000);
         });
