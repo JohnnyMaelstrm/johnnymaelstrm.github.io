@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Threat Intel</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
-        /* --- PROFESSIONAL TERMINAL THEME (Matched to Portfolio) --- */
         :root {
             --bg-color: #09090b;        
             --header-bg: rgba(255, 255, 255, 0.02);       
             --border-color: rgba(255, 255, 255, 0.08);    
             --text-primary: #d4d4d8;    
             --text-secondary: #a1a1aa;  
-            
-            --accent-red: #ff7b72;      /* Breaches/Errors */
-            --accent-green: #22c55e;    /* Success/Live */
-            --accent-blue: #58a6ff;     /* Users */
-            --accent-purple: #d2a8ff;   /* IPs */
-            --accent-orange: #d19a66;   /* Warnings */
-            --cmd-color: #a5d6ff;       /* Commands */
+            --accent-green: #22c55e;
+            --accent-red: #ff7b72;
+            --accent-blue: #58a6ff;
+            --accent-purple: #d2a8ff;
+            --accent-orange: #d19a66;
+            --cmd-color: #a5d6ff;
         }
 
         * { box-sizing: border-box; }
@@ -34,17 +35,23 @@
             height: 100vh;
         }
 
+        /* --- TERMINAL WINDOW CONTAINER --- */
         .terminal-window {
             display: flex;
             flex-direction: column;
             flex: 1;                 
-            min-height: 0;           
-            border-bottom: 1px solid var(--border-color); 
+            min-height: 0;
+            border: 1px solid var(--border-color); /* Border around the whole window */
+            border-radius: 6px; /* Rounded corners for the main window */
+            margin: 10px; /* Small margin from the iframe edges */
+            overflow: hidden; /* Clip content to rounded corners */
+            background-color: var(--bg-color);
         }
 
+        /* --- HEADER SECTION (Top Bar) --- */
         .header {
             background-color: var(--header-bg);
-            padding: 6px 12px;
+            padding: 8px 12px;
             border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: center;
@@ -58,37 +65,40 @@
             color: var(--text-secondary);
             font-size: 11px;
             font-weight: 500;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            display: flex; align-items: center; gap: 8px;
         }
         
         .title::before {
             content: ">_";
             color: var(--accent-green);
             font-weight: bold;
-            margin-right: 4px;
         }
 
         .live-status {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 10px;
-            color: var(--accent-green);
-            font-weight: 600;
+            display: flex; align-items: center; gap: 6px;
+            font-size: 10px; color: var(--accent-green); font-weight: 600;
             text-transform: uppercase;
         }
         .pulse-dot {
-            width: 6px;
-            height: 6px;
+            width: 6px; height: 6px;
             background-color: var(--accent-green);
             border-radius: 50%;
             box-shadow: 0 0 8px rgba(34, 197, 94, 0.4); 
             animation: pulse 2s infinite ease-in-out;
         }
 
+        /* --- CHART SECTION (Middle) --- */
+        .chart-container {
+            height: 100px; /* Compact height */
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.01); /* Very subtle background difference */
+            border-bottom: 1px solid var(--border-color);
+            padding: 10px 10px 0 10px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        /* --- LOGS SECTION (Bottom) --- */
         .terminal-content {
             flex: 1;
             padding: 8px 12px;
@@ -97,36 +107,19 @@
             line-height: 1.5;
         }
 
-        /* Grid Layout */
+        /* Log Entry Styling */
         .log-entry {
             display: grid;
-            /* Time | Status | IP (with flag) | Details */
             grid-template-columns: 65px 100px 140px 1fr; 
             gap: 8px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
             padding: 3px 0;
             align-items: start;
         }
-        .log-entry:last-child { border-bottom: none; }
-
         .time { color: var(--text-secondary); }
-        .ip-cell { 
-            display: flex; 
-            align-items: center; 
-            gap: 6px; 
-        }
+        .ip-cell { display: flex; align-items: center; gap: 6px; }
         .ip { color: var(--accent-purple); font-weight: 500; }
-        
-        /* Flag images */
-        .flag-img { 
-            width: 18px;
-            height: 14px;
-            border-radius: 2px;
-            opacity: 0.9;
-            vertical-align: middle;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        }
-        
+        .flag { font-size: 1.1em; opacity: 0.9; }
         .user { color: var(--accent-blue); }
         .pass { color: var(--text-secondary); font-style: italic; opacity: 0.7; }
         .cmd { color: var(--cmd-color); font-weight: 500; letter-spacing: -0.5px;}
@@ -137,62 +130,47 @@
         .badge-fail { color: var(--accent-orange); }
 
         .status-line {
-            margin-bottom: 10px;
-            padding-bottom: 10px;
+            margin-bottom: 10px; padding-bottom: 10px;
             border-bottom: 1px dashed var(--border-color);
-            color: var(--text-secondary);
-            font-style: italic;
-            font-size: 10px;
+            color: var(--text-secondary); font-style: italic; font-size: 10px;
         }
         .cursor {
-            display: inline-block;
-            width: 6px;
-            height: 12px;
+            display: inline-block; width: 6px; height: 12px;
             background-color: var(--accent-blue);
-            vertical-align: middle;
-            margin-left: 6px;
+            vertical-align: middle; margin-left: 6px;
             animation: blink 1s step-end infinite;
         }
 
         .summary-text {
-            padding: 10px 12px;
-            color: var(--text-secondary);
-            font-size: 10px;
-            text-align: center;
-            background-color: var(--bg-color);
-            border-top: 1px solid var(--border-color);
-            line-height: 1.4;
-            flex-shrink: 0; 
+            padding: 8px 12px;
+            color: var(--text-secondary); font-size: 10px; text-align: center;
+            /* background-color: var(--bg-color); */ /* Removed bg to blend with body */
+            /* border-top: 1px solid var(--border-color); */ /* Removed border for cleaner look */
+            line-height: 1.4; flex-shrink: 0; 
+            margin-bottom: 5px;
         }
 
         @keyframes blink { 50% { opacity: 0; } }
         @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
-
+        
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
 
         @media (max-width: 600px) {
-            .log-entry {
-                grid-template-columns: 60px 1fr; 
-                grid-template-areas: 
-                    "time status"
-                    "ip ip"
-                    "details details";
-                gap: 2px;
-                padding: 8px 0;
-            }
-            .time { grid-area: time; }
-            .badge { grid-area: status; text-align: right; }
-            .ip-cell { grid-area: ip; font-size: 11px; opacity: 0.8; }
-            .details { grid-area: details; margin-top: 2px; }
+            .chart-container { display: none; } /* Hide chart on mobile to save space */
+            .log-entry { grid-template-columns: 60px 1fr; grid-template-areas: "time status" "ip ip" "details details"; gap: 2px; padding: 8px 0; }
+            .time { grid-area: time; } .badge { grid-area: status; text-align: right; }
+            .ip-cell { grid-area: ip; } .details { grid-area: details; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Main Window Container -->
     <div class="terminal-window">
+        
+        <!-- 1. HEADER (Top) -->
         <div class="header">
             <div class="header-left">
                 <div class="title">🛡 Honeypot Attacks (Live Data)</div>
@@ -201,30 +179,93 @@
                 <div class="pulse-dot"></div> Live
             </div>
         </div>
+
+        <!-- 2. GRAPH SECTION (Middle) -->
+        <div class="chart-container">
+            <canvas id="attackChart"></canvas>
+        </div>
         
+        <!-- 3. TERMINAL LOGS (Bottom) -->
         <div class="terminal-content" id="terminal-logs">
             <div class="status-line">
                 Establishing uplink to sensor node...<span class="cursor"></span>
             </div>
         </div>
+
     </div>
 
-    <div class="summary-text">
+   <div class="summary-text">
         This feed captures live attacks on my private honeypot in Cloud. <br>
         All data is sanitized (IPs masked, payloads hidden) for responsible disclosure (GDPR).
     </div>
 
     <script>
         const GIST_URL = 'https://gist.githubusercontent.com/JohnnyMaelstrm/264b6727308ea84e7f447e21b2b466ae/raw/attacks.json'; 
+        let attackChart = null; // Store chart instance
 
-        // Use flag images from CDN for reliable cross-platform display
-        function getFlag(countryCode) {
-            if (!countryCode || countryCode === 'UNK') {
-                return '<img src="https://flagcdn.com/20x15/xx.png" class="flag-img" alt="Unknown" onerror="this.style.display=\'none\'">';
-            }
+        function getFlagEmoji(countryCode) {
+            if (!countryCode || countryCode === 'UNK') return '🌐'; 
+            return countryCode.toUpperCase().replace(/./g, char => 
+                String.fromCodePoint(char.charCodeAt(0) + 127397)
+            );
+        }
+
+        function initChart(dataPoints) {
+            const ctx = document.getElementById('attackChart').getContext('2d');
             
-            const code = countryCode.toLowerCase();
-            return `<img src="https://flagcdn.com/20x15/${code}.png" class="flag-img" alt="${countryCode}" onerror="this.style.display='none'">`;
+            // Create labels for last 24h (e.g., "-24h", "-23h"...)
+            const labels = Array.from({length: 24}, (_, i) => i === 23 ? 'Now' : `-${23-i}h`);
+
+            if (attackChart) {
+                attackChart.data.datasets[0].data = dataPoints;
+                attackChart.update();
+                return;
+            }
+
+            attackChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Attacks / Hour',
+                        data: dataPoints,
+                        borderColor: '#22c55e', // Green
+                        backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.3, // Smooth curves
+                        fill: true,
+                        pointRadius: 0,
+                        pointHitRadius: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            backgroundColor: '#161b22',
+                            titleColor: '#8b949e',
+                            bodyColor: '#d4d4d8',
+                            borderColor: '#30363d',
+                            borderWidth: 1
+                        }
+                    },
+                    scales: {
+                        x: { 
+                            display: false // Hide X axis labels for clean look
+                        },
+                        y: {
+                            display: true,
+                            grid: { color: '#30363d', drawBorder: false },
+                            ticks: { color: '#8b949e', font: { size: 9 } },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
         }
 
         async function fetchLogs() {
@@ -234,34 +275,44 @@
                 const response = await fetch(GIST_URL + '?t=' + new Date().getTime());
                 if (!response.ok) throw new Error('Connection failed');
                 
-                const data = await response.json();
-                container.innerHTML = ''; 
+                const json = await response.json();
+                
+                // --- HANDLE DATA STRUCTURE CHANGE ---
+                let logs = [];
+                let chartData = Array(24).fill(0); 
 
-                // Cursor at Top
+                if (Array.isArray(json)) {
+                    logs = json; // Old format
+                } else {
+                    logs = json.logs;
+                    chartData = json.chart_data;
+                }
+
+                // Render Chart
+                initChart(chartData);
+
+                // Render Logs
+                container.innerHTML = ''; 
                 const status = document.createElement('div');
                 status.className = 'status-line';
                 status.innerHTML = 'Monitoring active session...<span class="cursor"></span>';
                 container.appendChild(status);
 
-                data.forEach(item => {
+                logs.forEach(item => {
+                    if (item.type === 'SUCCESSFUL BREACH') return;
+
                     const dateObj = new Date(item.timestamp);
                     const timeStr = dateObj.toLocaleTimeString('en-GB', { hour12: false });
-                    const flag = getFlag(item.country);
+                    const flag = getFlagEmoji(item.country);
 
-                    let statusHtml = '';
-                    let detailsHtml = '';
+                    let statusHtml = '', detailsHtml = '';
 
-                    // 1. Command Execution (Blue)
                     if (item.type === 'CMD_EXEC') {
                         statusHtml = `<span class="badge badge-cmd">EXEC_CMD</span>`;
                         detailsHtml = `<span class="details">user:<span class="user">${item.username}</span> <span style="color:#666">$</span> <span class="cmd">${item.password}</span></span>`;
-                    
-                    // 2. System Breach (Red)
                     } else if (item.type === 'SYSTEM_BREACH') {
                         statusHtml = `<span class="badge badge-breach">BREACH</span>`;
                         detailsHtml = `<span class="details">user:<span class="user">${item.username}</span> status:<span style="color:#ff7b72">ACCESS_LOGGED</span></span>`;
-
-                    // 3. Failed Login (Orange)
                     } else {
                         statusHtml = `<span class="badge badge-fail">AUTH_FAIL</span>`;
                         detailsHtml = `<span class="details">user:<span class="user">${item.username}</span> pass:<span class="pass">${item.password}</span></span>`;
@@ -272,7 +323,7 @@
                     row.innerHTML = `
                         <div class="time">${timeStr}</div>
                         <div class="status">${statusHtml}</div>
-                        <div class="ip-cell">${flag} <span class="ip">${item.src_ip}</span></div>
+                        <div class="ip-cell"><span class="flag">${flag}</span> <span class="ip">${item.src_ip}</span></div>
                         ${detailsHtml}
                     `;
                     container.appendChild(row);
@@ -280,13 +331,20 @@
 
             } catch (err) {
                 console.error(err);
-                container.innerHTML = `<div style="color:#ff7b72; padding:10px;">// CONNECTION ERROR: ${err.message}</div>`;
             }
         }
 
-        fetchLogs();
-        setInterval(fetchLogs, 30000);
+        document.addEventListener('DOMContentLoaded', () => {
+            if ('serviceWorker' in navigator) {
+                try {
+                    navigator.serviceWorker.getRegistrations().then(r => r.forEach(sw => sw.unregister())).catch(err => console.log('SW clear skipped'));
+                } catch (e) {
+                    console.log('SW clear skipped');
+                }
+            }
+            fetchLogs();
+            setInterval(fetchLogs, 30000);
+        });
     </script>
-
 </body>
 </html>
