@@ -37,12 +37,13 @@
 
         /* --- CHART SECTION --- */
         .chart-container {
-            height: 120px; /* Korkeus kuvaajalle */
+            height: 120px;
             width: 100%;
             background-color: var(--header-bg);
             border-bottom: 1px solid var(--border-color);
             padding: 10px;
             position: relative;
+            flex-shrink: 0;
         }
 
         /* --- TERMINAL SECTION --- */
@@ -54,7 +55,7 @@
         }
 
         .header {
-            background-color: var(--bg-color); /* Erotetaan graafista */
+            background-color: var(--bg-color);
             padding: 6px 12px;
             border-bottom: 1px solid var(--border-color);
             display: flex;
@@ -109,9 +110,18 @@
             align-items: start;
         }
         .time { color: var(--text-secondary); }
-        .ip-cell { display: flex; align-items: center; gap: 6px; }
+        .ip-cell { display: flex; align-items: center; gap: 8px; }
         .ip { color: var(--accent-purple); font-weight: 500; }
-        .flag { font-size: 1.1em; opacity: 0.9; }
+        
+        /* Flag Images Style */
+        .flag-img { 
+            width: 16px; 
+            height: 12px; 
+            border-radius: 2px; 
+            opacity: 0.8; 
+            display: inline-block;
+        }
+
         .user { color: var(--accent-blue); }
         .pass { color: var(--text-secondary); font-style: italic; opacity: 0.7; }
         .cmd { color: var(--cmd-color); font-weight: 500; letter-spacing: -0.5px;}
@@ -136,8 +146,6 @@
         .summary-text {
             padding: 8px 12px;
             color: var(--text-secondary); font-size: 10px; text-align: center;
-            /* background-color: var(--bg-color); */ /* Removed bg to blend with body */
-            /* border-top: 1px solid var(--border-color); */ /* Removed border for cleaner look */
             line-height: 1.4; flex-shrink: 0; 
             margin-bottom: 5px;
         }
@@ -150,7 +158,7 @@
         ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
 
         @media (max-width: 600px) {
-            .chart-container { display: none; } /* Hide chart on mobile to save space */
+            .chart-container { display: none; } 
             .log-entry { grid-template-columns: 60px 1fr; grid-template-areas: "time status" "ip ip" "details details"; gap: 2px; padding: 8px 0; }
             .time { grid-area: time; } .badge { grid-area: status; text-align: right; }
             .ip-cell { grid-area: ip; } .details { grid-area: details; }
@@ -168,7 +176,6 @@
     <div class="terminal-window">
         <div class="header">
             <div class="header-left">
-                <!-- Sinun muokkaamasi otsikko -->
                 <div class="title">🛡 Honeypot Attacks (Live Data)</div>
             </div>
             <div class="live-status">
@@ -183,27 +190,27 @@
         </div>
     </div>
 
-    <!-- Sinun muokkaamasi teksti -->
     <div class="summary-text">
-        This feed captures live attacks on my private honeypot in Cloud! The chart shows how many attacks are per hour. <br>
+        This feed captures live attacks on my private honeypot in Cloud. <br>
+        The chart above visualizes the intensity of incoming attacks per hour over the last 24 hours. <br>
         All data is sanitized (IPs masked, payloads hidden) for responsible disclosure (GDPR).
     </div>
 
     <script>
         const GIST_URL = 'https://gist.githubusercontent.com/JohnnyMaelstrm/264b6727308ea84e7f447e21b2b466ae/raw/attacks.json'; 
-        let attackChart = null; // Store chart instance
+        let attackChart = null; 
 
-        function getFlagEmoji(countryCode) {
-            if (!countryCode || countryCode === 'UNK') return '🌐'; 
-            return countryCode.toUpperCase().replace(/./g, char => 
-                String.fromCodePoint(char.charCodeAt(0) + 127397)
-            );
+        // Use FlagCDN images instead of emojis for Windows compatibility
+        function getFlag(countryCode) {
+            if (!countryCode || countryCode === 'UNK') {
+                return '<img src="https://flagcdn.com/20x15/xx.png" class="flag-img" alt="Unknown" onerror="this.style.display=\'none\'">';
+            }
+            const code = countryCode.toLowerCase();
+            return `<img src="https://flagcdn.com/20x15/${code}.png" class="flag-img" alt="${countryCode}" onerror="this.style.display='none'">`;
         }
 
         function initChart(dataPoints) {
             const ctx = document.getElementById('attackChart').getContext('2d');
-            
-            // Create labels for last 24h (e.g., "-24h", "-23h"...)
             const labels = Array.from({length: 24}, (_, i) => i === 23 ? 'Now' : `-${23-i}h`);
 
             if (attackChart) {
@@ -219,10 +226,10 @@
                     datasets: [{
                         label: 'Attacks / Hour',
                         data: dataPoints,
-                        borderColor: '#22c55e', // Green
+                        borderColor: '#22c55e', 
                         backgroundColor: 'rgba(34, 197, 94, 0.1)',
                         borderWidth: 2,
-                        tension: 0.3, // Smooth curves
+                        tension: 0.3, 
                         fill: true,
                         pointRadius: 0,
                         pointHitRadius: 10
@@ -244,9 +251,7 @@
                         }
                     },
                     scales: {
-                        x: { 
-                            display: false // Hide X axis labels for clean look
-                        },
+                        x: { display: false },
                         y: {
                             display: true,
                             grid: { color: '#30363d', drawBorder: false },
@@ -267,21 +272,18 @@
                 
                 const json = await response.json();
                 
-                // --- HANDLE DATA STRUCTURE CHANGE ---
                 let logs = [];
                 let chartData = Array(24).fill(0); 
 
                 if (Array.isArray(json)) {
-                    logs = json; // Old format
+                    logs = json; 
                 } else {
                     logs = json.logs;
                     chartData = json.chart_data;
                 }
 
-                // Render Chart
                 initChart(chartData);
 
-                // Render Logs
                 container.innerHTML = ''; 
                 const status = document.createElement('div');
                 status.className = 'status-line';
@@ -293,7 +295,9 @@
 
                     const dateObj = new Date(item.timestamp);
                     const timeStr = dateObj.toLocaleTimeString('en-GB', { hour12: false });
-                    const flag = getFlagEmoji(item.country);
+                    
+                    // Use Image Flag function
+                    const flag = getFlag(item.country);
 
                     let statusHtml = '', detailsHtml = '';
 
@@ -313,7 +317,7 @@
                     row.innerHTML = `
                         <div class="time">${timeStr}</div>
                         <div class="status">${statusHtml}</div>
-                        <div class="ip-cell"><span class="flag">${flag}</span> <span class="ip">${item.src_ip}</span></div>
+                        <div class="ip-cell">${flag} <span class="ip">${item.src_ip}</span></div>
                         ${detailsHtml}
                     `;
                     container.appendChild(row);
@@ -325,8 +329,19 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Poistin tästä sen välimuistin puhdistuskoodin, joka aiheutti InvalidStateError-virheen.
-            // Datan haku käynnistyy nyt puhtaasti.
+            // SAFE Service Worker Cleanup (Wrapped in try-catch to prevent errors)
+            if ('serviceWorker' in navigator) {
+                try {
+                    navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                        for(let registration of registrations) {
+                            registration.unregister().catch(e => console.log("SW unregister skip"));
+                        } 
+                    }).catch(e => console.log("SW access denied"));
+                } catch (e) {
+                    console.log("SW cleanup skipped entirely");
+                }
+            }
+            
             fetchLogs();
             setInterval(fetchLogs, 30000);
         });
