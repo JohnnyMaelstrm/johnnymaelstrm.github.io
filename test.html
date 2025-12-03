@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Threat Intel</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
     <style>
-        /* --- PROFESSIONAL TERMINAL THEME --- */
         :root {
             --bg-color: #09090b;        
             --header-bg: rgba(255, 255, 255, 0.02);       
@@ -33,16 +33,16 @@
             height: 100vh;
         }
 
+        /* --- TERMINAL SECTION --- */
         .terminal-window {
             display: flex;
             flex-direction: column;
             flex: 1;                 
             min-height: 0;
-            border-bottom: 1px solid var(--border-color); 
         }
 
         .header {
-            background-color: var(--header-bg);
+            background-color: var(--bg-color);
             padding: 8px 16px;
             border-bottom: 1px solid var(--border-color);
             display: flex;
@@ -64,7 +64,6 @@
             content: ">_";
             color: var(--accent-green);
             font-weight: bold;
-            margin-right: 4px;
         }
 
         .live-status {
@@ -82,7 +81,7 @@
 
         .terminal-content {
             flex: 1;
-            padding: 12px 16px;
+            padding: 8px 16px;
             overflow-y: auto;
             font-size: 11px;
             line-height: 1.6;
@@ -91,29 +90,29 @@
         .log-entry {
             display: grid;
             /* Aika | Status | IP+Lippu | Details */
-            grid-template-columns: 65px 100px 140px 1fr; 
-            gap: 10px;
+            grid-template-columns: 65px 100px 160px 1fr; 
+            gap: 12px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
             padding: 4px 0;
             align-items: start;
         }
-
         .time { color: var(--text-secondary); }
-        .ip-cell { display: flex; align-items: center; gap: 6px; }
+        .ip-cell { display: flex; align-items: center; gap: 8px; }
         .ip { color: var(--accent-purple); font-weight: 500; }
         
+        /* Flag Images Style */
         .flag-img { 
             width: 16px; height: 12px; 
             border-radius: 2px; opacity: 0.8; 
             display: inline-block;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .user { color: var(--accent-blue); }
         .pass { color: var(--text-secondary); font-style: italic; opacity: 0.7; }
-        .cmd { color: var(--cmd-color); font-weight: 500; }
+        .cmd { color: var(--cmd-color); font-weight: 500; letter-spacing: -0.5px;}
         
-        .badge { font-weight: 600; font-size: 10px; letter-spacing: 0.5px; }
+        .badge { font-weight: 600; letter-spacing: 0.5px; font-size: 10px; }
         .badge-cmd { color: var(--accent-blue); }
         .badge-breach { color: var(--accent-red); text-shadow: 0 0 10px rgba(255, 123, 114, 0.2); }
         .badge-fail { color: var(--accent-orange); }
@@ -131,10 +130,10 @@
         }
 
         .summary-text {
-            padding: 10px 16px;
+            padding: 12px 16px;
             color: var(--text-secondary); font-size: 10px; text-align: center;
-            background-color: var(--bg-color); border-top: 1px solid var(--border-color);
             line-height: 1.4; flex-shrink: 0; 
+            margin-bottom: 5px;
         }
 
         @keyframes blink { 50% { opacity: 0; } }
@@ -170,10 +169,9 @@
         </div>
     </div>
 
-     <div class="summary-text">
-        This feed captures live attacks on my private honeypot in Cloud.<br>
-	The chart above visualizes the intensity of incoming attacks per hour over the last 24 hours.<br>
-	All data is sanitized (IPs masked, payloads hidden) for responsible disclosure (GDPR).
+    <div class="summary-text">
+        This feed captures live attacks on my private honeypot in Cloud. <br>
+        All data is sanitized (IPs masked, payloads hidden) for responsible disclosure (GDPR).
     </div>
 
     <script>
@@ -181,10 +179,10 @@
 
         function getFlag(countryCode) {
             if (!countryCode || countryCode === 'UNK') {
-                return '<img src="https://flagcdn.com/20x15/xx.png" class="flag-img" alt="Unknown">';
+                return '<img src="https://flagcdn.com/20x15/xx.png" class="flag-img" alt="Unknown" onerror="this.style.display=\'none\'">';
             }
             const code = countryCode.toLowerCase();
-            return `<img src="https://flagcdn.com/20x15/${code}.png" class="flag-img" alt="${countryCode}">`;
+            return `<img src="https://flagcdn.com/20x15/${code}.png" class="flag-img" alt="${countryCode}" onerror="this.style.display='none'">`;
         }
 
         async function fetchLogs() {
@@ -194,10 +192,15 @@
                 const response = await fetch(GIST_URL + '?t=' + new Date().getTime());
                 if (!response.ok) throw new Error('Connection failed');
                 
-                const data = await response.json();
+                const json = await response.json();
                 
-                // Koska palautimme vanhan Python-skriptin, data on suora lista (Array), ei olio.
-                let logs = Array.isArray(data) ? data : (data.logs || []);
+                // Ota vain lokitiedot talteen, jätä kuvaajadata huomiotta
+                let logs = [];
+                if (json.logs) {
+                    logs = json.logs;
+                } else if (Array.isArray(json)) {
+                    logs = json;
+                }
 
                 container.innerHTML = ''; 
                 const status = document.createElement('div');
@@ -206,10 +209,19 @@
                 container.appendChild(status);
 
                 logs.forEach(item => {
-                    if (item.type === 'SUCCESSFUL BREACH') return;
+                    if (item.type === 'SUCCESSFUL_BREACH') return;
 
                     const dateObj = new Date(item.timestamp);
-                    const timeStr = dateObj.toLocaleTimeString('en-GB', { hour12: false });
+                    
+                    // Pakotetaan Suomen aika (Helsinki)
+                    const timeStr = dateObj.toLocaleTimeString('fi-FI', { 
+                        timeZone: 'Europe/Helsinki',
+                        hour: '2-digit', 
+                        minute: '2-digit',
+                        second: '2-digit',
+                        hour12: false 
+                    });
+                    
                     const flag = getFlag(item.country);
 
                     let statusHtml = '', detailsHtml = '';
@@ -237,14 +249,14 @@
                 });
 
             } catch (err) {
-                console.error(err);
+                console.error('Fetch error:', err);
             }
         }
 
-        // Ei Service Worker -säätöjä, vain suora haku
-        fetchLogs();
-        setInterval(fetchLogs, 30000);
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchLogs();
+            setInterval(fetchLogs, 30000);
+        });
     </script>
-
 </body>
 </html>
