@@ -632,11 +632,19 @@ permalink: /
 </ul>
 
 <!-- HONEYPOT WIDGET: Live Feed -->
+
+
+
+
 <div class="section-header">🛡 Honeypot</div>
 <div style="margin: 2rem 0;">
     <iframe src="/test.html" 
             style="width: 100%; height: 420px; border: none; overflow: hidden; background: #09090b; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
     </iframe>
+    <!-- Upota kuvaaja -->
+<iframe src="/chart_widget.html" 
+        style="width: 100%; height: 200px; border: 1px solid #333; border-radius: 8px; background: #09090b;">
+</iframe>
 </div>
 
 
