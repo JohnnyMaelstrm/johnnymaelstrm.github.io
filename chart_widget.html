@@ -1,128 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Threat Graph</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body { 
-            margin: 0; padding: 0; 
-            background-color: #09090b; 
-            font-family: 'JetBrains Mono', monospace;
-            color: #d4d4d8;
-            overflow: hidden;
-        }
-        .container {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        .header {
-            padding: 8px 12px;
-            font-size: 10px;
-            color: #a1a1aa;
-            text-transform: uppercase;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            display: flex; justify-content: space-between;
-        }
-        .live-dot {
-            width: 6px; height: 6px; background: #22c55e; border-radius: 50%;
-            box-shadow: 0 0 5px #22c55e; display: inline-block; margin-right: 4px;
-        }
-        .chart-wrapper {
-            flex: 1;
-            position: relative;
-            padding: 10px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Threat Graph</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body { margin:0; padding:0; background:#09090b; font-family:'JetBrains Mono', monospace; color:#d4d4d8; overflow:hidden;}
+.container { position:relative; height:100vh; width:100%; display:flex; flex-direction:column;}
+.header { padding:8px 12px; font-size:10px; color:#a1a1aa; text-transform:uppercase; border-bottom:1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between;}
+.live-dot { width:6px; height:6px; background:#22c55e; border-radius:50%; box-shadow:0 0 5px #22c55e; display:inline-block; margin-right:4px; }
+.chart-wrapper { flex:1; position:relative; padding:10px; }
+.stats-summary { padding:4px 12px; font-size:10px; color:#a1a1aa; display:flex; justify-content:space-between; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <span><span class="live-dot"></span>Attack Volume (24h)</span>
-            <span id="last-updated">Syncing...</span>
-        </div>
-        <div class="chart-wrapper">
-            <canvas id="threatChart"></canvas>
-        </div>
+<div class="container">
+    <div class="header">
+        <span><span class="live-dot"></span>Attack Volume</span>
+        <span id="last-updated">Syncing...</span>
     </div>
+    <div class="stats-summary">
+        <span id="total-attacks">Total attacks: 0</span>
+        <span id="unique-ips">Unique IPs: 0</span>
+    </div>
+    <div class="chart-wrapper">
+        <canvas id="threatChart"></canvas>
+    </div>
+</div>
 
-    <script>
-        // Huom: Osoittaa stats.json tiedostoon!
-        const DATA_URL = 'https://gist.githubusercontent.com/JohnnyMaelstrm/264b6727308ea84e7f447e21b2b466ae/raw/stats.json';
-        
-        let myChart = null;
+<script>
+const DATA_URL = 'https://gist.githubusercontent.com/JohnnyMaelstrm/8b63d0a4b2d162b5aaceef0ad57d76b0/raw/stats.json';
+let myChart = null;
 
-        async function loadData() {
-            try {
-                const res = await fetch(DATA_URL + '?t=' + Date.now());
-                if(!res.ok) throw new Error("Fetch failed");
-                const json = await res.json();
-                
-                renderChart(json.labels, json.data);
-                document.getElementById('last-updated').innerText = "Updated: " + json.updated_at;
-                
-            } catch(e) {
-                console.error(e);
+async function loadData() {
+    try {
+        const res = await fetch(DATA_URL + '?t=' + Date.now());
+        if(!res.ok) throw new Error("Fetch failed");
+        const json = await res.json();
+
+        renderChart(json.labels, json.data);
+        document.getElementById('last-updated').innerText = "Updated: " + json.updated_at;
+        document.getElementById('total-attacks').innerText = "Total attacks: " + json.total_attacks;
+        document.getElementById('unique-ips').innerText = "Unique IPs: " + json.unique_ips;
+
+    } catch(e) {
+        console.error(e);
+    }
+}
+
+function renderChart(labels, dataPoints) {
+    const ctx = document.getElementById('threatChart').getContext('2d');
+
+    if(myChart){
+        myChart.data.labels = labels;
+        myChart.data.datasets[0].data = dataPoints;
+        myChart.update();
+        return;
+    }
+
+    const gradient = ctx.createLinearGradient(0,0,0,400);
+    gradient.addColorStop(0,'rgba(34,197,94,0.2)');
+    gradient.addColorStop(1,'rgba(34,197,94,0)');
+
+    myChart = new Chart(ctx,{
+        type:'line',
+        data:{
+            labels: labels,
+            datasets:[{
+                label:'Attacks',
+                data: dataPoints,
+                borderColor:'#22c55e',
+                backgroundColor: gradient,
+                borderWidth:2,
+                tension:0.4,
+                fill:true,
+                pointRadius:0,
+                pointHitRadius:20
+            }]
+        },
+        options:{
+            responsive:true,
+            maintainAspectRatio:false,
+            plugins:{ legend:{ display:false } },
+            scales:{
+                x:{ grid:{ display:false }, ticks:{ color:'#52525b', font:{ size:9 }, maxTicksLimit:6 } },
+                y:{ grid:{ color:'rgba(255,255,255,0.05)' }, ticks:{ color:'#52525b', font:{ size:9 } }, beginAtZero:true }
             }
         }
+    });
+}
 
-        function renderChart(labels, dataPoints) {
-            const ctx = document.getElementById('threatChart').getContext('2d');
-            
-            if (myChart) {
-                myChart.data.labels = labels;
-                myChart.data.datasets[0].data = dataPoints;
-                myChart.update();
-                return;
-            }
-
-            // Gradientti vihreälle
-            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, 'rgba(34, 197, 94, 0.2)');
-            gradient.addColorStop(1, 'rgba(34, 197, 94, 0)');
-
-            myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Attacks',
-                        data: dataPoints,
-                        borderColor: '#22c55e',
-                        backgroundColor: gradient,
-                        borderWidth: 2,
-                        tension: 0.4,
-                        fill: true,
-                        pointRadius: 0,
-                        pointHitRadius: 20
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        x: { 
-                            grid: { display: false },
-                            ticks: { color: '#52525b', font: { size: 9 }, maxTicksLimit: 6 }
-                        },
-                        y: { 
-                            grid: { color: 'rgba(255,255,255,0.05)' },
-                            ticks: { color: '#52525b', font: { size: 9 } },
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        }
-
-        loadData();
-        setInterval(loadData, 60000); // Päivitä minuutin välein
-    </script>
+loadData();
+setInterval(loadData, 60000);
+</script>
 </body>
 </html>
