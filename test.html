@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -208,13 +209,13 @@
             return `<img src="https://flagcdn.com/20x15/${code}.png" class="flag-img" alt="${countryCode}" onerror="this.style.display='none'">`;
         }
 
-        // Generate fallback chart data if not provided by backend
+        // Generate chart data from logs if not provided
         function generateChartData(logs) {
             const now = new Date();
             const hourCounts = Array(24).fill(0);
             const hourLabels = [];
             
-            // Generate labels for last 24 hours in local timezone
+            // Generate labels for last 24 hours in Finnish time
             for (let i = 23; i >= 0; i--) {
                 const time = new Date(now.getTime() - (i * 60 * 60 * 1000));
                 hourLabels.push(time.toLocaleTimeString('fi-FI', { hour: '2-digit', minute: '2-digit' }));
@@ -330,20 +331,23 @@
                 let chartData = [];
                 let chartLabels = [];
 
-                // Handle format from your Python script
+                // Handle both formats properly
                 if (json.logs && json.chart_data) {
+                    // New format with chart data
                     logs = json.logs;
                     chartData = json.chart_data;
                     chartLabels = json.chart_labels || [];
                 } else if (Array.isArray(json)) {
-                    // Fallback: if only array is provided
+                    // Old format: just array, generate chart data
                     logs = json;
                     const generated = generateChartData(logs);
                     chartData = generated.data;
                     chartLabels = generated.labels;
+                } else {
+                    throw new Error('Invalid JSON structure');
                 }
 
-                // Initialize chart with actual time labels
+                // Initialize chart
                 initChart(chartData, chartLabels);
 
                 // Display logs
@@ -357,7 +361,6 @@
                     if (item.type === 'SUCCESSFUL_BREACH') return;
 
                     const dateObj = new Date(item.timestamp);
-                    // Show in user's local timezone (Finland EET/EEST)
                     const timeStr = dateObj.toLocaleTimeString('fi-FI', { 
                         hour: '2-digit', 
                         minute: '2-digit',
