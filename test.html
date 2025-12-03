@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,6 +109,7 @@
         .ip-cell { display: flex; align-items: center; gap: 8px; }
         .ip { color: var(--accent-purple); font-weight: 500; }
         
+        /* Flag Images Style */
         .flag-img { 
             width: 18px; 
             height: 14px; 
@@ -156,20 +156,20 @@
 
         @media (max-width: 600px) {
             .chart-container { display: none; } 
-            .log-entry { 
-                grid-template-columns: 60px 1fr; 
-                grid-template-areas: "time status" "ip ip" "details details"; 
-                gap: 2px; padding: 8px 0; 
-            }
-            .time { grid-area: time; } 
-            .badge { grid-area: status; text-align: right; }
-            .ip-cell { grid-area: ip; } 
-            .details { grid-area: details; }
+            .log-entry { grid-template-columns: 60px 1fr; grid-template-areas: "time status" "ip ip" "details details"; gap: 2px; padding: 8px 0; }
+            .time { grid-area: time; } .badge { grid-area: status; text-align: right; }
+            .ip-cell { grid-area: ip; } .details { grid-area: details; }
         }
     </style>
 </head>
 <body>
 
+    <!-- GRAPH SECTION -->
+    <div class="chart-container">
+        <canvas id="attackChart"></canvas>
+    </div>
+
+    <!-- TERMINAL SECTION -->
     <div class="terminal-window">
         <div class="header">
             <div class="header-left">
@@ -178,10 +178,6 @@
             <div class="live-status">
                 <div class="pulse-dot"></div> Live
             </div>
-        </div>
-        
-        <div class="chart-container">
-            <canvas id="attackChart"></canvas>
         </div>
         
         <div class="terminal-content" id="terminal-logs">
@@ -201,6 +197,15 @@
         const GIST_URL = 'https://gist.githubusercontent.com/JohnnyMaelstrm/264b6727308ea84e7f447e21b2b466ae/raw/attacks.json'; 
         let attackChart = null; 
 
+        // TÄMÄ FUNKTIO ON PALAUTETTU VÄLIAIKAISESTI EMOJEIHIN, mutta muutetaan kuviin alhaalla
+        function getFlagEmoji(countryCode) {
+            if (!countryCode || countryCode === 'UNK') return '🌐'; 
+            return countryCode.toUpperCase().replace(/./g, char => 
+                String.fromCodePoint(char.charCodeAt(0) + 127397)
+            );
+        }
+        
+        // UUSI: Käytetään kuvia emojeiden sijaan (Koska Windows ei näytä emojeita)
         function getFlag(countryCode) {
             if (!countryCode || countryCode === 'UNK') {
                 return '<img src="https://flagcdn.com/20x15/xx.png" class="flag-img" alt="Unknown" onerror="this.style.display=\'none\'">';
@@ -209,37 +214,16 @@
             return `<img src="https://flagcdn.com/20x15/${code}.png" class="flag-img" alt="${countryCode}" onerror="this.style.display='none'">`;
         }
 
-        // Generate chart data from logs if not provided
-        function generateChartData(logs) {
-            const now = new Date();
-            const hourCounts = Array(24).fill(0);
-            const hourLabels = [];
-            
-            // Generate labels for last 24 hours in Finnish time
-            for (let i = 23; i >= 0; i--) {
-                const time = new Date(now.getTime() - (i * 60 * 60 * 1000));
-                hourLabels.push(time.toLocaleTimeString('fi-FI', { hour: '2-digit', minute: '2-digit' }));
-            }
-            
-            logs.forEach(log => {
-                const logTime = new Date(log.timestamp);
-                const hoursDiff = Math.floor((now - logTime) / (1000 * 60 * 60));
-                
-                if (hoursDiff >= 0 && hoursDiff < 24) {
-                    const index = 23 - hoursDiff;
-                    hourCounts[index]++;
-                }
-            });
-            
-            return { data: hourCounts, labels: hourLabels };
-        }
 
         function initChart(dataPoints, labels) {
             const ctx = document.getElementById('attackChart').getContext('2d');
+            
+            // Use provided labels OR fallback to generated ones if missing
+            const chartLabels = labels || Array.from({length: 24}, (_, i) => i === 23 ? 'Now' : `-${23-i}h`);
 
             if (attackChart) {
-                attackChart.data.labels = labels;
                 attackChart.data.datasets[0].data = dataPoints;
+                attackChart.data.labels = chartLabels; // Update labels dynamically
                 attackChart.update();
                 return;
             }
@@ -247,7 +231,7 @@
             attackChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: labels,
+                    labels: chartLabels,
                     datasets: [{
                         label: 'Attacks / Hour',
                         data: dataPoints,
@@ -256,10 +240,8 @@
                         borderWidth: 2,
                         tension: 0.3, 
                         fill: true,
-                        pointRadius: 2,
-                        pointHoverRadius: 4,
-                        pointBackgroundColor: '#22c55e',
-                        pointBorderColor: '#22c55e'
+                        pointRadius: 0,
+                        pointHitRadius: 10
                     }]
                 },
                 options: {
@@ -274,43 +256,23 @@
                             titleColor: '#8b949e',
                             bodyColor: '#d4d4d8',
                             borderColor: '#30363d',
-                            borderWidth: 1,
-                            callbacks: {
-                                title: function(context) {
-                                    return 'Time: ' + context[0].label;
-                                },
-                                label: function(context) {
-                                    return 'Attacks: ' + context.parsed.y;
-                                }
-                            }
+                            borderWidth: 1
                         }
                     },
                     scales: {
                         x: { 
-                            display: true,
-                            grid: { 
-                                color: 'rgba(255, 255, 255, 0.05)',
-                                drawBorder: false 
-                            },
+                            display: true, 
+                            grid: { display: false },
                             ticks: { 
-                                color: '#6c757d',
+                                color: '#8b949e', 
                                 font: { size: 9 },
-                                maxRotation: 0,
-                                autoSkip: true,
                                 maxTicksLimit: 8
                             }
                         },
                         y: {
                             display: true,
-                            grid: { 
-                                color: 'rgba(255, 255, 255, 0.05)',
-                                drawBorder: false 
-                            },
-                            ticks: { 
-                                color: '#8b949e',
-                                font: { size: 9 },
-                                precision: 0
-                            },
+                            grid: { color: '#30363d', drawBorder: false },
+                            ticks: { color: '#8b949e', font: { size: 9 } },
                             beginAtZero: true
                         }
                     }
@@ -328,29 +290,23 @@
                 const json = await response.json();
                 
                 let logs = [];
-                let chartData = [];
+                let chartData = []; 
                 let chartLabels = [];
 
-                // Handle both formats properly
-                if (json.logs && json.chart_data) {
-                    // New format with chart data
+                if (Array.isArray(json)) {
+                    logs = json; 
+                } else if (json.logs) {
                     logs = json.logs;
                     chartData = json.chart_data;
-                    chartLabels = json.chart_labels || [];
-                } else if (Array.isArray(json)) {
-                    // Old format: just array, generate chart data
-                    logs = json;
-                    const generated = generateChartData(logs);
-                    chartData = generated.data;
-                    chartLabels = generated.labels;
+                    chartLabels = json.chart_labels; 
                 } else {
-                    throw new Error('Invalid JSON structure');
+                     throw new Error('Invalid JSON structure or missing logs data.');
                 }
 
-                // Initialize chart
+                // Render Chart with Time Labels
                 initChart(chartData, chartLabels);
 
-                // Display logs
+                // Render Logs
                 container.innerHTML = ''; 
                 const status = document.createElement('div');
                 status.className = 'status-line';
@@ -361,12 +317,16 @@
                     if (item.type === 'SUCCESSFUL_BREACH') return;
 
                     const dateObj = new Date(item.timestamp);
+                    
+                    // Muunnetaan UTC-aika Suomen ajaksi näytöllä
                     const timeStr = dateObj.toLocaleTimeString('fi-FI', { 
                         hour: '2-digit', 
                         minute: '2-digit',
                         second: '2-digit',
                         hour12: false 
                     });
+                    
+                    // KÄYTETÄÄN KUVA-LIPPUJA
                     const flag = getFlag(item.country);
 
                     let statusHtml = '', detailsHtml = '';
@@ -394,8 +354,9 @@
                 });
 
             } catch (err) {
-                console.error('Error fetching logs:', err);
-                container.innerHTML = `<div style="color:#ff7b72; padding:10px;">// CONNECTION ERROR: ${err.message}</div>`;
+                console.error('Fetch error:', err);
+                // Vianetsintä: Näytä virhe terminaalissa
+                container.innerHTML = `<div style="color:#ff7b72; padding:10px;">// CONNECTION ERROR: ${err.message}. Check Gist format.</div>`;
             }
         }
 
