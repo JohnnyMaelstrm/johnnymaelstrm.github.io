@@ -613,7 +613,7 @@ permalink: /
         <a href="/mythic/">Thesis: Command & Control Frameworks</a>
     </div>
     <p class="timeline-desc">
-      In-depth thesis research exploring modern Command & Control (C2) frameworks (with Mythic) used in red team operations.
+      In-depth thesis research exploring modern Command & Control (C2) frameworks (with Mythic) used in Red Team operations.
     </p>
     <div class="timeline-metadata">
       <span class="timeline-keyword">Domain:</span> Offensive / Defensive Security, Threat Hunting, Network Forensics.
