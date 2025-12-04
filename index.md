@@ -686,12 +686,10 @@ permalink: /
 <div class="highlight-box">
   <h3>Bachelor's Thesis</h3>
   <p>
-    My deep dive into the <strong>Mythic C2 Framework</strong> for Red Team operations. 
-    I researched modular command-and-control architectures and successfully demonstrated 
-    <strong>fileless execution</strong> (using Linux’s <code>memfd_create</code>) to bypass traditional security mechanisms.
+    My deep dive into the <strong>Mythic C2 Framework</strong>. I constructed a complete attack infrastructure from scratch to simulate modern adversary tradecraft against both Windows and Linux targets.
   </p>
   <p>
-    The project also utilized <strong>Bincrypter</strong> for payload encryption.
+    The research focused on <strong>evasion techniques</strong>. I successfully demonstrated <strong>fileless execution</strong> on Linux by deploying the <strong>Poseidon agent</strong> via <strong>Bincrypter</strong>. This method utilized the <code>memfd_create</code> syscall to execute the payload directly from RAM, effectively bypassing disk-based detection mechanisms.
   </p>
   
   <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.5rem; font-style: italic;">
