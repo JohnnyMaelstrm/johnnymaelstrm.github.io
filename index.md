@@ -547,7 +547,7 @@ permalink: /
 </div>
       <div class="status-line">
         <span class="status-dot"></span>
-        <span>Available for opportunities · Tampere, Finland</span>
+        <span>· Available for opportunities · Tampere, Finland · </span>
       </div>
     </div>
   </div>
@@ -563,7 +563,8 @@ permalink: /
       Researching and building a controlled lab to understand and demonstrate session hijacking and Multi-Factor Authentication (MFA) bypass mechanisms via reverse-proxy phishing attacks.
     </p>
     <div class="timeline-metadata">
-      <span class="timeline-keyword">Focus:</span> Web Security, Credential Harvesting, Session Management.
+      <span class="timeline-keyword">Focus:</span> Web Security, Credential Harvesting, Session Management. <br>
+      <span class="timeline-keyword">Tools:</span> Evilginx
     </div>
   </li>
 
@@ -575,7 +576,7 @@ permalink: /
     </p>
     <div class="timeline-metadata">
       <span class="timeline-keyword">Focus:</span> Post-exploitation, Lateral Movement, Domain Dominance. <br>
-      <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, Kerberoasting.
+      <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, NetExec.
     </div>
   </li>
 
@@ -588,7 +589,8 @@ permalink: /
       Implementing a Security Information and Event Management (SIEM) solution using Wazuh and Suricata for real-time monitoring, alerting, and security incident response practice.
     </p>
     <div class="timeline-metadata">
-      <span class="timeline-keyword">Concepts:</span> Log Analysis, IDS/IPS Configuration, Incident Response.
+      <span class="timeline-keyword">Concepts:</span> Log Analysis, IDS/IPS Configuration, Incident Response. <br>
+      <span class="timeline-keyword">Tools:</span> Wazuh, Suricata, Mythic C2, Metasploit.
     </div>
   </li>
   
