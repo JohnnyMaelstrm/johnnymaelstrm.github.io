@@ -45,12 +45,13 @@ tags: [active directory, lab, virtualbox, hacking, pentesting]
     <span class="ps-cmd">Get-VM | Just-Simple-View </span>
   </div>
   <div class="ps-output">
-Name           State             NetworkAdapters
-----           -----             ---------------
-DC01           Running           {NAT-Network}
-Client01       Running           {NAT-Network}
-Client02       Running           {NAT-Network}
+Name            State             NetworkAdapters
+----            -----             ---------------
+DC01            Running           {NAT-Network}
+Client01        Running           {NAT-Network}
+Client02        Running           {NAT-Network}
   </div>
+</div>
 
 
 <p>With the infrastructure booting up, the next step is to verify the domain connectivity and begin enumerating the environment.</p>

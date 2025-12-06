@@ -595,18 +595,31 @@
 .ps-console {
   background: #0c0c0c;
   border: 1px solid #333;
-  border-radius: 4px;
-  padding: 1rem;
-  margin: 1.5rem 0;
+  border-radius: 6px; /* Hieman pyöristetympi */
+  padding: 1.5rem;    /* Enemmän tilaa sisällölle */
+  margin: 2rem 0;
   font-family: 'Consolas', 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-  overflow-x: auto;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+  font-size: 0.9rem;  /* Hieman isompi fontti */
+  overflow-x: auto;   /* Sallii rullauksen sivusuunnassa jos rivi on pitkä */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Syvempi varjo */
+  
+  /* Varmistaa leveyden */
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+/* TÄMÄ ON SE KIKKA: "Cinematic Breakout" */
+/* Jos näyttö on tarpeeksi iso, levitä konsoli tekstin ulkopuolelle */
+@media (min-width: 1000px) {
+  .ps-console {
+    width: 110%;       /* 10% leveämpi kuin tekstialue */
+    margin-left: -5%;  /* Vedetään 5% vasemmalle, jotta se keskittyy */
+  }
 }
 
 .ps-prompt {
   color: var(--text);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem; /* Lisää ilmaa komennon ja tulosteen väliin */
 }
 
 .ps-path {
@@ -615,15 +628,17 @@
 
 .ps-cmd {
   color: var(--accent);
+  font-weight: bold; /* Lihavoidaan komento */
 }
 
 .ps-output {
   color: var(--green-dim);
-  opacity: 0.9;
-  white-space: pre;
+  opacity: 0.95;
+  white-space: pre; /* Pitää rivitykset ja välilyönnit kurissa */
   margin-top: 0.5rem;
-  border-left: 2px solid var(--border);
-  padding-left: 1rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid rgba(34, 197, 94, 0.3); /* Himmeämpi viiva reunassa */
+  line-height: 1.4; /* Parantaa luettavuutta */
 }
 
 @media (max-width: 600px) {
