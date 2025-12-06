@@ -1,0 +1,13 @@
+<h3>Environment Check</h3>
+  <div class="ps-console">
+    <div class="ps-prompt">
+      <span class="ps-path">PS C:\Users\Administrator></span> 
+      <span class="ps-cmd">Get-ADDomain</span>
+    </div>
+    <div class="ps-output">
+DomainSID     : S-1-5-21-198237-28374-123
+Name          : johnny.local
+NetBIOSName   : JOHNNY
+Mode          : Windows2016Domain
+    </div>
+  </div>
