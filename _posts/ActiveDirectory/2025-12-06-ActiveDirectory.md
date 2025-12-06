@@ -42,15 +42,15 @@ tags: [active directory, lab, virtualbox, hacking, pentesting]
 <div class="ps-console">
   <div class="ps-prompt">
     <span class="ps-path">PS C:\Lab-Setup></span> 
-    <span class="ps-cmd">Get-VM | Just-Simple-View </span>
+    <span class="ps-cmd">Get-VM | Select-Object Name, State, NetworkAdapters</span>
   </div>
-  <div class="ps-output">
-Name            State             NetworkAdapters
-----            -----             ---------------
-DC01            Running           {NAT-Network}
-Client01        Running           {NAT-Network}
-Client02        Running           {NAT-Network}
-  </div>
+  
+  <pre class="ps-output">
+Name           State    NetworkAdapters
+----           -----    ---------------
+AD-DC-01       Running  {NAT-Network-01}
+AD-Workstation Running  {NAT-Network-01}
+  </pre>
 </div>
 
 
