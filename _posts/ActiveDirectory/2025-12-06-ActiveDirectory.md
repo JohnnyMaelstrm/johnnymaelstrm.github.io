@@ -48,8 +48,9 @@ tags: [active directory, lab, virtualbox, hacking, pentesting]
   <pre class="ps-output">
 Name           State    NetworkAdapters
 ----           -----    ---------------
-AD-DC-01       Running  {NAT-Network-01}
-AD-Workstation Running  {NAT-Network-01}
+DC01           Running  {NATNetwork}
+Client01       Running  {NATNetwork}
+Client02       Running  {NATNetwork}
   </pre>
 </div>
 
