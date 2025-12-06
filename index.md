@@ -547,7 +547,7 @@ permalink: /
 </div>
       <div class="status-line">
         <span class="status-dot"></span>
-        <span>· Available for opportunities · Tampere, Finland · </span>
+        <span> Available for opportunities · Tampere, Finland </span>
       </div>
     </div>
   </div>
@@ -570,7 +570,9 @@ permalink: /
 
  <li class="timeline-item">
     <div class="timeline-date">2025 · Present</div>
-    <div class="timeline-title">Active Directory: Red Team Labs & OSCP</div>
+    <div class="timeline-title">
+    <a href="/activedirectory/">Active Directory: Red Team Labs & OSCP</a>
+    </div>
     <p class="timeline-desc">
       A dual-focus project: 1) Using the "Game of Active Directory" environment to master AD architecture's standard attack vectors, and 2) Executing full kill-chain attacks on Hack Academy's custom OSCP VMs.
     </p>
