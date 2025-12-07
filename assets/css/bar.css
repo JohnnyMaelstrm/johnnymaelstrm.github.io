@@ -33,22 +33,25 @@
 
 /* Itse palkki (liikkuva osa) */
 .progress-bar {
-  /* Vihreä väri ja hehku */
-  background: #4ade80;
-  box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
-
+  background-color: transparent; /* Läpinäkyvä pohja */
+  
+  /* Luodaan palikat toistuvalla gradientilla */
+  background-image: repeating-linear-gradient(
+    90deg,
+    #4ade80,             /* Palikan väri */
+    #4ade80 4px,         /* Palikan leveys */
+    transparent 4px,     /* Välin alku */
+    transparent 6px      /* Välin loppu (2px väli) */
+  );
+  
   height: 100%;
-  border-radius: 5px;
-  
-  /* Hakee leveyden HTML:stä */
+  border-radius: 2px;
   width: var(--target-width, 0%);
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
   
-  /* Animaatio */
-  animation: growBar 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  transform-origin: left;
+  animation: growBar 2.0s steps(40) forwards; /* steps() tekee liikkeestä "tökkivän" robottimaisen */
 }
 
-/* Animaation määrittely */
 @keyframes growBar {
   from { width: 0; }
   to { width: var(--target-width); }
