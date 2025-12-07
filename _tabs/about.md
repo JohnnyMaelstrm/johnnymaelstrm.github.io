@@ -131,7 +131,7 @@ order: 4
   <div class="section-header">Outside of tech</div>
   <p>
     When I’m not studying or hacking away at a new project, I like to stay active: specimenfishing, hitting a gym, and long walks in a forest are my way to recharge.  
-    I’m also into gaming, sci-fi, and learning new tools just for the fun of understanding how things work under the hood.  
+    I’m also into gaming, sci-fi, and horrormovies.  
     <br><br>
     I believe curiosity is one of the best skills you can have in tech and I try to live by that every day.
   </p>
