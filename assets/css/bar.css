@@ -1,0 +1,62 @@
+/* assets/css/progressbar.css */
+
+/* Pääkontti */
+.progress-wrapper {
+  margin: 1.5rem 0;
+  width: 100%;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+/* Tekstit (Otsikko ja prosentti) */
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #e4e4e7;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Palkin tausta (kisko) */
+.progress-bg {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  height: 12px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Itse palkki (liikkuva osa) */
+.progress-bar {
+  /* Vihreä väri ja hehku */
+  background: #4ade80;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+
+  height: 100%;
+  border-radius: 5px;
+  
+  /* Hakee leveyden HTML:stä */
+  width: var(--target-width, 0%);
+  
+  /* Animaatio */
+  animation: growBar 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  transform-origin: left;
+}
+
+/* Animaation määrittely */
+@keyframes growBar {
+  from { width: 0; }
+  to { width: var(--target-width); }
+}
+
+/* Mobiilioptimointi */
+@media (max-width: 768px) {
+  .progress-info {
+    font-size: 0.8rem;
+  }
+}
