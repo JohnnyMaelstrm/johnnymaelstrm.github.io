@@ -21,12 +21,10 @@
   line-height: 1.6;
 }
 
-
-
 /* Hero Section */
 .hero-section {
   display: flex;
-  align-items: flex-start; /* Aligns text to top of image */
+  align-items: flex-start;
   gap: 2.5rem;
   padding: 3rem 0;
   border-bottom: 1px solid var(--border);
@@ -48,6 +46,24 @@
   font-weight: 700;
   color: var(--accent);
   margin: 0 0 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+/* Glitch Effect */
+.hero-text h1:hover {
+  animation: glitch-skew 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  color: var(--green-dim);
+  text-shadow: 2px 0 var(--accent-dim), -2px 0 #ff00c1;
+}
+
+@keyframes glitch-skew {
+  0% { transform: skew(0deg); }
+  20% { transform: skew(-2deg); }
+  40% { transform: skew(2deg); }
+  60% { transform: skew(-1deg); }
+  80% { transform: skew(1deg); }
+  100% { transform: skew(0deg); }
 }
 
 .hero-text .bio {
@@ -84,7 +100,7 @@
   100% { opacity: 1; transform: scale(1); }
 }
 
-/* Focus List styling */
+/* Tech Focus List */
 .tech-focus-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -97,7 +113,7 @@
   color: var(--accent);
 }
 
-/* Gallery for personal photos */
+/* Gallery */
 .gallery-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -139,23 +155,7 @@ figcaption sub {
   padding-left: 1rem;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .hero-section {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .tech-focus-list {
-    text-align: left;
-    display: block; /* Stack list items on very small screens */
-  }
-
-  .gallery-grid {
-    grid-template-columns: 1fr; /* Stack images vertically on mobile */
-  }
-}
+/* Arsenal Badges */
 .arsenal-grid {
   display: flex;
   flex-wrap: wrap;
@@ -181,7 +181,7 @@ figcaption sub {
   transform: translateY(-2px);
 }
 
-/* --- TERMINAL FOOTER STYLES --- */
+/* Terminal Footer */
 .terminal-card {
   background: #18181b;
   border: 1px solid #27272a;
@@ -216,23 +216,58 @@ figcaption sub {
 }
 @keyframes blink { 50% { opacity: 0; } }
 
-/* Glitch Effect for the Name */
-.hero-text h1 {
-  position: relative;
-  display: inline-block;
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .tech-focus-list {
+    text-align: left;
+    display: block;
+  }
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-.hero-text h1:hover {
-  animation: glitch-skew 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
-  color: var(--green-dim); /* Changes color on hover */
-  text-shadow: 2px 0 var(--accent-dim), -2px 0 #ff00c1;
+/* --- PROGRESS BAR STYLES (KORJATTU) --- */
+.progress-wrapper {
+  margin: 20px 0;
+  font-family: inherit;
 }
 
-@keyframes glitch-skew {
-  0% { transform: skew(0deg); }
-  20% { transform: skew(-2deg); }
-  40% { transform: skew(2deg); }
-  60% { transform: skew(-1deg); }
-  80% { transform: skew(1deg); }
-  100% { transform: skew(0deg); }
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 0.9em;
+  color: var(--accent);
+}
+
+.progress-bg {
+  background-color: #3b3f4e;
+  border-radius: 10px;
+  height: 20px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #00b4db, #0083b0);
+  height: 100%;
+  border-radius: 10px 0 0 10px;
+  box-shadow: 0 0 10px rgba(0, 180, 219, 0.5);
+  
+  /* TÄRKEÄ: Käytetään muuttujaa, joka asetetaan HTML:ssä */
+  width: var(--target-width);
+  animation: loadProgress 2s ease-out forwards;
+}
+
+@keyframes loadProgress {
+  from { width: 0; }
+  to { width: var(--target-width); }
 }

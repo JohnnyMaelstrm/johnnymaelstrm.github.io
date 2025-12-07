@@ -1,6 +1,8 @@
 ---
 icon: fas fa-info-circle
 order: 4
+credits_done: 154  
+credits_total: 240 
 ---
 <link rel="stylesheet" href="{{ '/assets/css/about.css' | relative_url }}">
 <div class="hacker-page">
@@ -79,5 +81,15 @@ order: 4
       > Contact: <a href="https://www.linkedin.com/in/jaakkooja/" style="color: var(--accent); text-decoration: underline;">LinkedIn Profile</a><span class="cursor"></span>
     </div>
   </div>
+  
+{% assign percent = page.credits_done | times: 100.0 | divided_by: page.credits_total | round: 1 %}
 
+<div class="progress-wrapper">
+  <div class="progress-info">
+    <span>Degree Progress (TAMK)</span>
+    <span>{{ page.credits_done }} / {{ page.credits_total }} ECTS ({{ percent }}%)</span>
+  </div>
+  <div class="progress-bg">
+    <div class="progress-bar" style="--target-width: {{ percent }}%;"></div>
+  </div>
 </div>
