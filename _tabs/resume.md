@@ -359,7 +359,7 @@ order: 5
   <div class="skill-item">Privilege Escalation (Windows & Linux)</div>
   <div class="skill-item">Netcat & Reverse Shell Development</div>
   <div class="skill-item">Password Cracking & Hash Analysis</div>
-  <div class="skill-item">SecurityOnion & Kibana</div>
+  <div class="skill-item">SecurityOnion & Kibana & Suricata Rules</div>
   
 </div>
 
