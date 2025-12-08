@@ -2,7 +2,7 @@
 layout: page
 title: Home
 permalink: /
-credits_done: 154
+credits_done: 156
 credits_total: 240
 ---
 <link rel="stylesheet" href="/assets/css/mainpage.css">
@@ -91,7 +91,7 @@ credits_total: 240
     </p>
     <div class="timeline-metadata">
       <span class="timeline-keyword">Concepts:</span> Log Analysis, IDS/IPS Configuration, Incident Response. <br>
-      <span class="timeline-keyword">Tools:</span> Wazuh, Suricata, Mythic C2, Metasploit, more?.
+      <span class="timeline-keyword">Tools:</span> Wazuh, Suricata, Mythic C2, Metasploit.
     </div>
   </li>
   
