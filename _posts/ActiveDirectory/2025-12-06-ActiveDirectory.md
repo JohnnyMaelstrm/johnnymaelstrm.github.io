@@ -21,7 +21,7 @@ tags: [active directory, lab, virtualbox, hacking, pentesting]
   <div class="ad-card" style="margin-bottom: 2rem;">
     <div class="ad-card-header">
       <span class="ad-card-title">:: PROJECT OBJECTIVES</span>
-      <span class="ad-badge">STATUS: IN PROGRESS HEAVILY!</span>
+      <span class="ad-badge">STATUS: IN PROGRESS</span>
     </div>
     <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text);">
       <p style="margin-top: 0.5rem;"><strong>Goal:</strong> Construct a high-fidelity target range for adversary simulation.</p>
