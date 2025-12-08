@@ -26,7 +26,7 @@ tags: [active directory, lab, virtualbox, hacking, pentesting]
     <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text);">
       <p style="margin-top: 0.5rem;"><strong>Goal:</strong> Construct a high-fidelity target range for adversary simulation.</p>
       <ul style="list-style: none; padding-left: 0; margin-bottom: 0;">
-        <li style="margin-bottom: 5px;"><span style="color: var(--green-dim); margin-right: 8px;">[+]</span> <strong>Infrastructure:</strong> Deploy Domain Controller & Workstations on virtualized environments.</li>
+        <li style="margin-bottom: 5px;"><span style="color: var(--green-dim); margin-right: 8px;">[+]</span> <strong>Infrastructure:</strong> Deploy Domain Controller & Workstations on virtualized environment.</li>
         <li style="margin-bottom: 5px;"><span style="color: var(--green-dim); margin-right: 8px;">[+]</span> <strong>Red Teaming:</strong> Simulate attack scenarios and master standard AD attack vectors.</li>
         <li style="margin-bottom: 5px;"><span style="color: var(--green-dim); margin-right: 8px;">[+]</span> <strong>Verification:</strong> Validate domain connectivity and replication services.</li>
       </ul>
