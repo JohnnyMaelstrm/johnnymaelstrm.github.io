@@ -14,7 +14,7 @@ credits_total: 240
     <img src="/assets/img/favicons/roundpic.png" alt="Jaakko Oja" class="profile-pic">
     <div class="hero-text">
       <h1>Jaakko Oja</h1>
-      <div class="tagline">Red Team Apprentice // Network Security Enthusiast</div>
+      <div class="tagline">Purple Team Mindset// Network Security Enthusiast</div>
       <p class="bio">Third-year IT engineering student at Tampere University of Applied Sciences specializing in telecommunications, computer networks, and cybersecurity.</p>
       <p class="bio bio-small">
         Currently open for roles: ICT Trainee · Cybersecurity Trainee · SOC Specialist · Junior Networking · Threat Hunter ·
