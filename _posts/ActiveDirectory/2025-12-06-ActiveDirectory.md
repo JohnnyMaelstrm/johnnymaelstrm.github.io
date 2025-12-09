@@ -1,21 +1,113 @@
 ---
 layout: post
-title: "Building an Active Directory Lab"
+title: "Phase I: Deploying the Active Directory Target"
 permalink: /activedirectory/
 icon: fas fa-network-wired
 order: 1
 date: 2025-12-06 13:27:00 +0300
 categories: [Active Directory, Lab-Setup]
-tags: [active directory, lab, virtualbox, hacking, pentesting]
+tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhound, impacket, networking, nat]
 ---
 <link rel="stylesheet" href="{{ '/assets/css/ad.css' | relative_url }}">
 
 <div class="hacker-page">
 
+  <div style="border: 1px solid #d8b4fe; margin-bottom: 2rem; background: rgba(0,0,0,0.2); box-shadow: 0 0 15px rgba(216, 180, 254, 0.05);">
+    <div style="background: #d8b4fe; color: #000; padding: 4px 10px; font-weight: bold; font-size: 0.75rem; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace;">
+        <span>:: SYSTEM_BROADCAST ::</span>
+        <span>[MSG_ID: 0X99]</span>
+    </div>
+    <div style="padding: 1rem; color: var(--text);">
+        <p style="margin: 0; line-height: 1.6; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">
+            <strong style="color: #d8b4fe;">DEPLOYMENT CONFIRMED:</strong> Hack Academy's OSCP Active Directory Chain Practice Lab.
+            <br>
+            <span style="display: inline-block; margin-top: 8px;">
+                > ACTIVE VERSION: <span style="background: #d8b4fe; color: #000; padding: 2px 6px; font-weight: bold;">CHAIN #2</span>
+            </span>
+            <span style="display: inline-block; margin-left: 0.5rem;">
+                > QUEUED: <span style="border: 1px solid #d8b4fe; color: #d8b4fe; padding: 1px 5px; opacity: 0.7;">CHAIN #3</span>
+            </span>
+        </p>
+    </div>
+  </div>
+
   <div class="hero-section" style="padding: 1rem 0; border: none;">
       <div class="hero-text">
-          <h1>Infrastructure Setup</h1>
+          <h1>System Deployment</h1>
       </div>
+  </div>
+
+  <p>Although this project was originally scheduled to begin in January, I felt a strong urge to dive in early. I simply couldn't wait to start deploying and pentesting Active Directory environments. I am currently deeply fascinated by the entire AD ecosystem and my goal is to learn as much as possible. After all, it remains the industry standard for enterprise identity management, making it a critical area of study.</p>
+
+  <div class="ad-card" style="margin-bottom: 2rem;">
+    <div class="ad-card-header">
+      <span class="ad-card-title">:: TARGET INTELLIGENCE: ACTIVE DIRECTORY</span>
+      <span class="ad-badge" style="border-color: #facc15; color: #facc15;">PRIORITY: HIGH</span>
+    </div>
+    
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text);">
+      <p style="margin-top: 0.5rem;"><strong>Definition:</strong> Microsoft's proprietary directory service acting as the centralized database for network identity, authentication, and policy management.</p>
+      
+      <p><strong>Why is this critical for Red Teaming?</strong></p>
+      <ul style="list-style: none; padding-left: 0; margin-bottom: 0;">
+        <li style="margin-bottom: 8px;">
+            <span style="color: #facc15; margin-right: 8px;">[!]</span> 
+            <strong>The Standard:</strong> Used by 95% of Fortune 500 companies. To hack enterprise networks, you must speak AD.
+        </li>
+        <li style="margin-bottom: 8px;">
+            <span style="color: #facc15; margin-right: 8px;">[!]</span> 
+            <strong>Keys to the Kingdom:</strong> AD controls "who can do what." Compromising a Domain Admin account grants total control over every server, workstation, and user in the environment.
+        </li>
+        <li style="margin-bottom: 8px;">
+            <span style="color: #facc15; margin-right: 8px;">[!]</span> 
+            <strong>Attack Surface:</strong> It relies on legacy protocols (Kerberos, NTLM, LDAP) which are often misconfigured. This allows for attacks like <em>Kerberoasting</em>, <em>DCSync</em>, and <em>Pass-the-Hash</em>.
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ad-card" style="margin-bottom: 2rem; border-left: 3px solid #d8b4fe;">
+    <div class="ad-card-header">
+      <span class="ad-card-title">:: MISSION RESOURCE: HACK ACADEMY</span>
+      <span class="ad-badge" style="border-color: #d8b4fe; color: #d8b4fe;">TARGET: OSCP EXAM</span>
+    </div>
+    
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text);">
+      <p style="margin-top: 0.5rem;">
+        <strong style="color: #d8b4fe;">Asset Acquired:</strong> OSCP Active Directory Chain Practice Lab
+      </p>
+      
+      <p>This is not a random setup. This lab is a downloadable VM pack purpose-built to replicate an <strong>OSCP-style Active Directory environment</strong>. It simulates real attack chains, forcing us to move beyond simple exploits and practice the full lifecycle:</p>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 1rem 0;">
+        <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+          <span style="color: #d8b4fe;">[>]</span> <strong>Discovery:</strong><br>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Initial enumeration & footing.</span>
+        </div>
+        <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+           <span style="color: #d8b4fe;">[>]</span> <strong>PrivEsc:</strong><br>
+           <span style="color: var(--text-dim); font-size: 0.8rem;">Vertical movement to Admin.</span>
+        </div>
+        <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+           <span style="color: #d8b4fe;">[>]</span> <strong>Lateral Move:</strong><br>
+           <span style="color: var(--text-dim); font-size: 0.8rem;">Pivot between workstations.</span>
+        </div>
+        <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+           <span style="color: #d8b4fe;">[>]</span> <strong>Dominance:</strong><br>
+           <span style="color: var(--text-dim); font-size: 0.8rem;">Full Post-Exploitation.</span>
+        </div>
+      </div>
+
+      <blockquote>
+        <p style="border-left: 2px solid #d8b4fe; padding-left: 1rem; color: var(--text-dim); font-style: italic;">
+          "The network topology, host roles, and vulnerabilities are arranged so you practice the same steps you will encounter during exam-style AD challenges. Everything is designed for learning by doing, not just reading."
+        </p>
+      </blockquote>
+      
+      <p style="margin-bottom: 0;">
+        <span style="color: #d8b4fe;">>></span> <strong>Objective:</strong> Use this high-fidelity simulation to build the confidence needed to crush the exam.
+      </p>
+    </div>
   </div>
 
   <div class="ad-card" style="margin-bottom: 2rem;">
@@ -32,35 +124,92 @@ tags: [active directory, lab, virtualbox, hacking, pentesting]
       </ul>
     </div>
   </div>
-<p>Although this project was originally scheduled to begin in January, I felt a strong urge to dive in early. I simply couldn't wait to start deploying and pentesting Active Directory environments. I am currently deeply fascinated by the entire AD ecosystem and my goal is to learn as much as possible. After all, it remains the industry standard for enterprise identity management, making it a critical area of study.</p>
 
-<p>Hack-Academy offered some intriguing Active Directory virtual machine packages, so I decided to acquire two of them. While all the VMs are primarily designed for VirtualBox, they can also be utilized with VMware.</p>
-
-<p>For this lab environment, I chose to import the appliances directly. The setup consists of a Windows Server acting as the Domain Controller (DC01) and two Windows 10 client workstations.</p>
- My priority was to establish a realistic but isolated network; I configured the network adapters to use an internal "NAT Network." This ensures the machines can communicate with each other and reach the internet for necessary updates, while keeping the vulnerable Active Directory services segregated from my main home network.
-
-<div class="ps-console">
-  <div class="ps-prompt">
-    <span class="ps-path">PS C:\Lab-Setup></span> 
-    <span class="ps-cmd">Get-VM | Select-Object Name, State, NetworkAdapters</span>
-  </div>
+  <p>For this lab environment, I chose to import the appliances directly. The setup consists of a Windows Server acting as the Domain Controller (DC01) and two Windows 10 client workstations.</p>
   
-  <pre class="ps-output">
+  <p>My priority was to establish a realistic but isolated network; I configured the network adapters to use an internal "NAT Network." This ensures the machines can communicate with each other and reach the internet for necessary updates, while keeping the vulnerable Active Directory services segregated from my main home network.</p>
+
+  <div class="ps-console">
+    <div class="ps-prompt">
+      <span class="ps-path">PS C:\Lab-Setup></span> 
+      <span class="ps-cmd">Get-VM | Select-Object Name, State, NetworkAdapters</span>
+    </div>
+    
+    <pre class="ps-output">
 Name           State    NetworkAdapters
 ----           -----    ---------------
 DC01           Running  {NATNetwork}
 Client01       Running  {NATNetwork}
 Client02       Running  {NATNetwork}
-  </pre>
-</div>
+    </pre>
+  </div>
 
+  <p>With the infrastructure booting up, the next step is to verify the domain connectivity and begin enumerating the environment.</p>
 
-<p>With the infrastructure booting up, the next step is to verify the domain connectivity and begin enumerating the environment.</p>
+  <div class="section-header">:: MISSION ARSENAL</div>
 
+  <p>To successfully compromise and audit the domain, we need a specific set of tooling. This lab relies on standard offensive security tools found in Kali Linux, with a focus on network enumeration and protocol abuse.</p>
 
+  <div class="skills-grid" style="margin-bottom: 2rem;">
 
+    <div class="skill-card">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3>NetExec (NXC)</h3>
+        <span style="color: var(--green-dim); font-size: 0.8rem;">v1.4.0</span>
+      </div>
+      <p>The "Smooth Operator." The modern fork of CrackMapExec. It is the swiss-army knife for enumerating AD protocols (SMB, LDAP, MSSQL, WinRM).</p>
+      <span class="skill-tag">ENUMERATION</span>
+      <span class="skill-tag">SPRAYING</span>
+    </div>
 
+    <div class="skill-card">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3>Impacket</h3>
+        <span style="color: var(--text-dim); font-size: 0.8rem;">LIBRARY</span>
+      </div>
+      <p>A collection of Python classes for working with network protocols. Essential for executing attacks like <em>SecretsDump</em>, <em>GetNPUsers</em>, and <em>SMBRelay</em>.</p>
+      <span class="skill-tag">EXPLOITATION</span>
+      <span class="skill-tag">KERBEROS</span>
+    </div>
 
+    <div class="skill-card">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3>BloodHound</h3>
+        <span style="color: var(--text-dim); font-size: 0.8rem;">VISUALIZATION</span>
+      </div>
+      <p>Uses graph theory to reveal hidden relationships and attack paths within an Active Directory environment (e.g., shortest path to Domain Admin).</p>
+      <span class="skill-tag">AUDIT</span>
+      <span class="skill-tag">MAPPING</span>
+    </div>
 
+    <div class="skill-card">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3>VirtualBox</h3>
+        <span style="color: var(--text-dim); font-size: 0.8rem;">HYPERVISOR</span>
+      </div>
+      <p>Hosting the infrastructure. Configured with "NAT Network" to allow internal routing between the DC and Clients while maintaining internet access.</p>
+      <span class="skill-tag">INFRASTRUCTURE</span>
+    </div>
+
+  </div>
+
+  <div class="ad-card">
+    <div class="ad-card-header">
+      <span class="ad-card-title">:: TOOL VERIFICATION</span>
+      <span class="ad-badge">CHECK: PASS</span>
+    </div>
+    <div style="padding: 1rem;">
+      <p style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--text);">
+        Verifying the installation of <strong>NetExec</strong> on the attack box (Kali Linux). The tool is initialized and ready for SMB protocol database interactions.
+      </p>
+      
+      <img src="/assets/Active_Directory/netexec.png" alt="NetExec Terminal Output" style="width: 100%; border: 1px solid var(--border); border-radius: 4px; opacity: 0.9;">
+      
+      <div style="margin-top: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim);">
+        <span style="color: var(--green-dim);">root@kali:~$</span> nxc --version <br>
+        <span style="color: var(--accent);">Codename: SmoothOperator</span>
+      </div>
+    </div>
+  </div>
 
 </div>

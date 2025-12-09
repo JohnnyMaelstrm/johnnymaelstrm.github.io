@@ -2,14 +2,13 @@
 layout: page
 title: Home
 permalink: /
-credits_done: 156
+credits_done: 173
 credits_total: 240
 ---
 <link rel="stylesheet" href="/assets/css/mainpage.css">
 
 <div class="hacker-page">
 
- <!-- Hero Section -->
   <div class="hero-section">
     <img src="/assets/img/favicons/roundpic.png" alt="Jaakko Oja" class="profile-pic">
     <div class="hero-text">
@@ -51,8 +50,7 @@ credits_total: 240
 </div>
 
 
-  <!-- Timeline -->
- <div class="section-header">Timeline</div>
+  <div class="section-header">Timeline</div>
 <ul class="timeline">
 
   <li class="timeline-item">
@@ -77,7 +75,7 @@ credits_total: 240
     </p>
     <div class="timeline-metadata">
       <span class="timeline-keyword">Focus:</span> Post-exploitation, Lateral Movement, Domain Dominance. <br>
-      <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, NetExec.
+      <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, NetExec, more?.
     </div>
   </li>
 
@@ -114,7 +112,7 @@ credits_total: 240
         <a href="/mythic/">Thesis: Command & Control Frameworks</a>
     </div>
     <p class="timeline-desc">
-      In-depth thesis research exploring modern Command & Control (C2) frameworks (with Mythic) used in Red Team operations.
+      In-depth thesis research exploring modern Command & Control (C2) frameworks (with Mythic) used in Red Team Operations.
     </p>
     <div class="timeline-metadata">
       <span class="timeline-keyword">Domain:</span> Offensive / Defensive Security, Threat Hunting, Network Forensics.
@@ -134,24 +132,17 @@ credits_total: 240
 
 </ul>
 
-<!-- HONEYPOT WIDGET: Live Feed -->
-
-
-
-
 <div class="section-header">🛡 Honeypot</div>
 <div style="margin: 2rem 0;">
     <iframe src="/test.html" 
             style="width: 100%; height: 420px; border: none; overflow: hidden; background: #09090b; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
     </iframe>
-    <!-- Upota kuvaaja -->
-<iframe src="/chart_widget.html" 
+    <iframe src="/chart_widget.html" 
         style="width: 100%; height: 200px; border: 1px solid #333; border-radius: 8px; background: #09090b;">
 </iframe>
 </div>
 
 
-<!-- Core Skills -->
 <div class="section-header">Core Skills</div>
 <div class="skills-grid">
     <div class="skill-card">
@@ -172,15 +163,12 @@ credits_total: 240
     </div>
     <div class="skill-card">
       <h3>Networking & SDR</h3>
-      <p>Network security, protocols, and software-defined radio</p>
+      <p>Network security, protocols, and software-defined radio(SDR)</p>
       <span class="skill-tag">Infrastructure</span>
       <span class="skill-tag">SDR</span>
       <span class="skill-tag">Networking</span>
     </div>
-  </div>
 </div>
-
-<!-- Thesis and Intern Project -->
 
 <div class="section-header">Thesis: Command & Control Frameworks</div>
 
@@ -194,7 +182,7 @@ credits_total: 240
   </p>
   
   <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.5rem; font-style: italic;">
-    * Note: The attached thesis document is currently in Finnish. Maybe later in English.
+    * Note: The attached thesis document is currently in Finnish.
   </p>
   
   <a href="{{ '/assets/Thesis/Opinnaytetyo_Oja_Jaakko_2025.pdf' | relative_url }}" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 1rem; background: rgba(0,0,0,0.2); padding: 1rem; border: 1px solid var(--border); border-radius: 4px; margin: 1rem 0;">
@@ -237,6 +225,14 @@ credits_total: 240
            alt="Introduction to Cybersecurity" />
     </a>
     <div class="certification-name">Introduction to Cybersecurity</div>
+  </div>
+
+  <div class="certification-item">
+    <a href="https://www.credly.com/badges/d79047ca-3792-4a12-ad5e-90127e202eff/public_url" target="_blank">
+      <img src="https://images.credly.com/images/53f37f83-04a1-4935-9b1e-21a99cc6e1b2/CyberOpsAssoc.png" 
+           alt="CyberOps Associate" />
+    </a>
+    <div class="certification-name">CyberOps Associate</div>
   </div>
 
   <div class="certification-item">
@@ -288,4 +284,4 @@ credits_total: 240
 <a href="https://www.linkedin.com/in/jaakkooja" target="_blank" class="nav-link">💼 LinkedIn</a>
 </div>
 
-
+</div>
