@@ -62,7 +62,7 @@ credits_total: 240
     </p>
     <div class="timeline-metadata">
       <span class="timeline-keyword">Focus:</span> Post-exploitation, Lateral Movement, Domain Dominance. <br>
-      <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, NetExec, more?.
+      <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, NetExec.
     </div>
   </li>
 
