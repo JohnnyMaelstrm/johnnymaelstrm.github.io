@@ -35,19 +35,6 @@ credits_total: 240
     
   </div>
 
-<link rel="stylesheet" href="/assets/css/bar.css">
-
-{% assign percent = page.credits_done | times: 100.0 | divided_by: page.credits_total | round: 1 %}
-
-<div class="progress-wrapper">
-  <div class="progress-info">
-    <span>Degree Progress (TAMK)</span>
-    <span>{{ page.credits_done }} / {{ page.credits_total }} ECTS ({{ percent }}%)</span>
-  </div>
-  <div class="progress-bg">
-    <div class="progress-bar" style="--target-width: {{ percent }}%;"></div>
-  </div>
-</div>
 
 
   <div class="section-header">Timeline</div>
