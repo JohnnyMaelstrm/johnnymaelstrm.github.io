@@ -194,7 +194,7 @@ credits_total: 240
   </p>
   
   <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.5rem; font-style: italic;">
-    * Note: The attached thesis document is currently in Finnish.
+    * Note: The attached thesis document is currently in Finnish. Maybe later in English.
   </p>
   
   <a href="{{ '/assets/Thesis/Opinnaytetyo_Oja_Jaakko_2025.pdf' | relative_url }}" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 1rem; background: rgba(0,0,0,0.2); padding: 1rem; border: 1px solid var(--border); border-radius: 4px; margin: 1rem 0;">
