@@ -250,7 +250,9 @@ order: 5
       <span>•</span>
       <span>Tampere, Finland</span>
   </div>
-
+<a href="/assets/pdf/Jaakko oja.pdf" class="download-btn" target="_blank">
+    <i class="fas fa-file-pdf"></i> Download Resume (PDF)
+  </a>
   
 </div>
 
