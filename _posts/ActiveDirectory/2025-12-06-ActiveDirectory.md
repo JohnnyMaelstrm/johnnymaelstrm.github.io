@@ -129,6 +129,17 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
   
   <p>My priority was to establish a realistic but isolated network; I configured the network adapters to use an internal "NAT Network." This ensures the machines can communicate with each other and reach the internet for necessary updates, while keeping the vulnerable Active Directory services segregated from my main home network.</p>
 
+  <div class="ad-card" style="margin-bottom: 2rem; border: 1px solid #d8b4fe; padding: 5px;">
+    <div class="ad-card-header" style="background: rgba(216, 180, 254, 0.1); margin-bottom: 0;">
+      <span class="ad-card-title">:: NETWORK TOPOLOGY</span>
+      <span class="ad-badge" style="background: #d8b4fe; color: black;">VISUALIZATION</span>
+    </div>
+    <img src="/assets/Active_Directory/topology1.png" alt="Active Directory Network Topology" style="width: 100%; display: block; border-radius: 0 0 4px 4px;">
+    <div style="padding: 8px; font-size: 0.75rem; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; text-align: center; border-top: 1px solid rgba(255,255,255,0.1);">
+       FIGURE 1.0: Virtualized Attack Surface Configuration. The Lab is configured in VirtualBox.
+    </div>
+  </div>
+
   <div class="ps-console">
     <div class="ps-prompt">
       <span class="ps-path">PS C:\Lab-Setup></span> 
