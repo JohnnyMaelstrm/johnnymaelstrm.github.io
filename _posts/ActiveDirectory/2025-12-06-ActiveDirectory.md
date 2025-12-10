@@ -133,21 +133,40 @@ FIGURE 1.0: Virtualized Attack Surface Configuration. The Lab is configured in V
 </div>
 </div>
 
+<p>With the network configured, the next step is to verify that our Attack Box (Kali) can communicate with the target domain. I used tool called <strong>NetExec</strong> on this part.</p>
+
+<div class="section-header">:: INFRASTRUCTURE STATUS</div>
+
+<div style="margin-bottom: 1.5rem;">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); margin-bottom: 5px;">
+<span style="color: #3b82f6;">[CLIENT01]</span> Internal Domain Connectivity Check
+</div>
 <div class="ps-console">
 <div class="ps-prompt">
-<span class="ps-path">PS C:\Lab-Setup></span> 
-<span class="ps-cmd">Get-VM | Select-Object Name, State, NetworkAdapters</span>
+<span class="ps-path">PS C:\Users\Administrator></span> 
+<span class="ps-cmd">Test-NetConnection -ComputerName DC01 -CommonTCPPort SMB</span>
 </div>
 <pre class="ps-output">
-Name           State    NetworkAdapters
-----           -----    ---------------
-DC01           Running  {NATNetwork}
-Client01       Running  {NATNetwork}
-Client02       Running  {NATNetwork}
+ComputerName     : DC01
+RemoteAddress    : 10.0.2.4
+RemotePort       : 445
+InterfaceAlias   : Ethernet
+SourceAddress    : 10.0.2.5
+TcpTestSucceeded : True
 </pre>
 </div>
+</div>
 
-<p>With the infrastructure booting up, the next step is to verify the domain connectivity and begin enumerating the environment.</p>
+<div style="margin-bottom: 2rem;">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); margin-bottom: 5px;">
+<span style="color: #a3e635;">[ATTACKER VM]</span> Connectivity Check (NetExec)
+</div>
+<div class="ad-card" style="padding: 0; border: 1px solid var(--border); overflow: hidden;">
+<img src="/assets/Active_Directory/netexec2.png" alt="NetExec SMB Scan Results" style="width: 100%; display: block;">
+</div>
+</div>
+
+<p>With connectivity established and services responding, the environment is ready for the enumeration phase.</p>
 
 <div class="section-header">:: MISSION ARSENAL</div>
 
