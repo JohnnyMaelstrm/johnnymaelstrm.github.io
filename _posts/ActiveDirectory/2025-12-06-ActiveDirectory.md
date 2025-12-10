@@ -208,4 +208,50 @@ Verifying the installation of <strong>NetExec</strong> on the attack box (Kali L
 </div>
 </div>
 
+<div class="ad-card" style="margin-top: 3rem; margin-bottom: 2rem; border: 1px dashed rgba(216, 180, 254, 0.4);">
+<div class="ad-card-header" style="background: rgba(0,0,0,0.3);">
+<span class="ad-card-title">:: OPERATION ROADMAP</span>
+<span class="ad-badge" style="background: transparent; border: 1px solid var(--text-dim); color: var(--text-dim);">SYNCING...</span>
+</div>
+
+<div style="padding: 0 1rem;">
+<div style="padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; opacity: 0.5;">
+<span style="color: var(--green); margin-right: 15px; font-family: 'JetBrains Mono', monospace;">[COMPLETE]</span>
+<div>
+<strong style="display: block; color: var(--text);">Phase I: Infrastructure Deployment</strong>
+<span style="font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;">Target Deployment & Connectivity Verification</span>
+</div>
+</div>
+
+<div style="padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center;">
+<span style="color: #facc15; margin-right: 15px; min-width: 85px; font-family: 'JetBrains Mono', monospace;">[QUEUED]</span>
+<div>
+<strong style="display: block; color: #d8b4fe; font-size: 1.1rem;">Phase II: Foothold & Enumeration</strong>
+<p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text);">
+Objective: Exploit misconfigurations to gain initial domain user access.
+<br>
+<span style="color: var(--text-dim); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">
+> LLMNR/NBT-NS Poisoning | SMB Relay | AS-REP Roasting | IPv6 attacks (mitm6)
+</span>
+</p>
+</div>
+</div>
+
+<div style="padding: 1rem 0; display: flex; align-items: center; opacity: 0.7;">
+<span style="color: #f87171; margin-right: 15px; min-width: 85px; font-family: 'JetBrains Mono', monospace;">[LOCKED]</span>
+<div>
+<strong style="display: block; color: var(--text); font-size: 1rem;">Phase III: Lateral Movement & Dominance</strong>
+<p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text);">
+Objective: Escalate privileges to Domain Admin via protocol abuse.
+<br>
+<span style="color: var(--text-dim); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">
+> Kerberoasting | Silver/Golden Tickets | MSSQL Links | DCSync
+</span>
+</p>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
