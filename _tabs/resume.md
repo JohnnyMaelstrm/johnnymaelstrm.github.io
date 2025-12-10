@@ -285,11 +285,15 @@ order: 5
         <p class="description">Led a technical research project on <strong>Software-Defined Radio</strong>. Configured Raspberry Pi hardware and utilized tools like SDR++ and SDRAngel to produce comprehensive technical documentation.</p>
     </div>
     <div class="entry-card">
-        <span class="title">Shift Supervisor & Field Manager</span>
-        <span class="institution">Securitas Oy</span>
-        <span class="dates">2018 - 2023</span>
-        <p class="description">Managed personnel and security operations, demonstrating leadership and critical problem-solving in high-pressure situations.</p>
-    </div>
+    <span class="title">Shift Supervisor & Field Manager</span>
+    <span class="institution">Securitas Oy</span>
+    <span class="dates">2018 - 2023</span>
+    <p class="description">
+        Directed security operations and <strong>incident response</strong> protocols. 
+        Acted as the primary point of contact for threat assessment, authored detailed incident reports for <strong>compliance</strong>, 
+        and led field teams through high-pressure crisis scenarios.
+    </p>
+</div>
 </div>
 
 <div class="section-header">Education</div>
