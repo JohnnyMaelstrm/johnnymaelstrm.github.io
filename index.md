@@ -265,6 +265,14 @@ credits_total: 240
     </a>
     <div class="certification-name">Azure Fundamentals</div>
   </div>
+  
+  <div class="certification-item">
+    <a href="https://openbadgefactory.com/obv3/credentials/25a27f05984e8c036363f1114b46cb32964f20c5" target="_blank">
+      <img src="https://openbadgefactory.com/obv3/images/badge/60914b21cb1a436c419324c7dc9f3115a809348bfb97d6426d9a310890afcb40" 
+           alt="Azure Fundamentals" />
+    </a>
+    <div class="certification-name">Cybersecurity Architect</div>
+  </div>
 
   <div class="certification-item">
     <a href="https://www.credly.com/badges/9f5d0c10-1f34-48b0-b352-b413a9ad1ada/public_url" target="_blank">
