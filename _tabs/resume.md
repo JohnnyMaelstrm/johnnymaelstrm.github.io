@@ -240,7 +240,7 @@ order: 5
 <div class="page-header">
   <h1>Jaakko Oja</h1>
   <p class="summary">
-    Third-year ICT student specializing in Telecommunications, Networking and Cybersecurity. Red Teamer with a Purple Team mindset by combining offensive knowledge with defensive monitoring. Currently building home-lab environments to simulate enterprise attacks.
+    Third-year ICT student specializing in Telecommunications, Networking and Cybersecurity. Red Teamer with a Purple Team-mindset by combining offensive knowledge with defensive monitoring. Currently building home-lab environments to simulate enterprise attacks.
   </p>
   
   <div class="contact-bar">
