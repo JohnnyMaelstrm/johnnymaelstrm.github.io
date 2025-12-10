@@ -246,11 +246,12 @@ order: 5
   <div class="contact-bar">
       <a href="https://linkedin.com/in/jaakkooja" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
       <span>•</span>
-      <a href="mailto:jaakko.Oja029@gmail.com"><i class="fas fa-envelope"></i> jaakko.oja029@gmail.com</a>
+      <a href="mailto:jaakko.oja029@gmail.com"><i class="fas fa-envelope"></i> jaakko.oja029@gmail.com</a>
       <span>•</span>
       <span>Tampere, Finland</span>
   </div>
-<a href="/assets/pdf/Jaakko oja.pdf" class="download-btn" target="_blank">
+
+  <a href="/assets/pdf/Jaakko_oja.pdf" class="download-btn" target="_blank">
     <i class="fas fa-file-pdf"></i> Download Resume (PDF)
   </a>
   
@@ -372,6 +373,7 @@ order: 5
 <div class="skill-grid">
   <div class="skill-item">Finnish (Native)</div>
   <div class="skill-item">English (Professional Proficiency)</div>
+  <div class="skill-item">Swedish (Basic)</div>
   
 </div>
 
