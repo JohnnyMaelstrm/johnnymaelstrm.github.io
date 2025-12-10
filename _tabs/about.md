@@ -1,7 +1,7 @@
 ---
 icon: fas fa-info-circle
 order: 4
-credits_done: 154  
+credits_done: 173  
 credits_total: 240 
 ---
 <link rel="stylesheet" href="{{ '/assets/css/about.css' | relative_url }}">
