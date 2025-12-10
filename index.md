@@ -13,7 +13,7 @@ credits_total: 240
     <img src="/assets/img/favicons/roundpic.png" alt="Jaakko Oja" class="profile-pic">
     <div class="hero-text">
       <h1>Jaakko Oja</h1>
-      <div class="tagline">Purple Team Mindset// Network Security Enthusiast</div>
+      <div class="tagline">Purple Team Mindset // Network Security Enthusiast</div>
       <p class="bio">Third-year IT engineering student at Tampere University of Applied Sciences specializing in telecommunications, computer networks, and cybersecurity.</p>
       <p class="bio bio-small">
         Currently open for roles: ICT Trainee · Cybersecurity Trainee · SOC Specialist · Junior Networking · Threat Hunter ·
@@ -265,11 +265,11 @@ credits_total: 240
     </a>
     <div class="certification-name">Azure Fundamentals</div>
   </div>
-  
+
   <div class="certification-item">
     <a href="https://openbadgefactory.com/obv3/credentials/25a27f05984e8c036363f1114b46cb32964f20c5" target="_blank">
       <img src="https://openbadgefactory.com/obv3/images/badge/60914b21cb1a436c419324c7dc9f3115a809348bfb97d6426d9a310890afcb40" 
-           alt="Azure Fundamentals" />
+           alt="Cybersecurity Architect" />
     </a>
     <div class="certification-name">Cybersecurity Architect</div>
   </div>
