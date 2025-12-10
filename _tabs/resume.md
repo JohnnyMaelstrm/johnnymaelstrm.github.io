@@ -246,7 +246,7 @@ order: 5
   <div class="contact-bar">
       <a href="https://linkedin.com/in/jaakkooja" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
       <span>•</span>
-      <a href="mailto:Jaakko.Oja029@hotmail.com"><i class="fas fa-envelope"></i> Jaakko.Oja029@gmail.com</a>
+      <a href="mailto:Jaakko.Oja029@gmail.com"><i class="fas fa-envelope"></i> Jaakko.Oja029@gmail.com</a>
       <span>•</span>
       <span>Tampere, Finland</span>
   </div>
