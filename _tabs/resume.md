@@ -10,28 +10,26 @@ order: 5
 :root {
   --accent: #e4e4e7;
   --accent-dim: #a1a1aa;
-  --accent-glow: rgba(255, 255, 255, 0.05);
   --bg-dark: #09090b;
-  --bg-card: rgba(255, 255, 255, 0.02); /* Used for the new cards */
+  --bg-card: rgba(255, 255, 255, 0.02);
   --border: rgba(255, 255, 255, 0.08);
   --text: #d4d4d8;
   --text-dim: #52525b;
   --highlight-color: #60a5fa; 
-  --date-color: #22c55e; /* A subtle green for dates */
+  --date-color: #22c55e;
 }
 
-/* BASE RESUME STYLES (font-size corrected) */
+/* BASE RESUME STYLES */
 .resume-page {
   font-family: 'JetBrains Mono', monospace;
   color: var(--text);
   max-width: 900px;
   margin: 0 auto;
-  font-size: 1.05rem; /* Corrected base font size */
+  font-size: 1.05rem;
   line-height: 1.6;
 }
 
-
-/* HEADER AND ANIMATIONS (Kept the same) */
+/* HEADER */
 .page-header {
   text-align: center;
   padding-bottom: 2rem;
@@ -61,7 +59,47 @@ order: 5
   line-height: 1.7;
 }
 
-/* SECTION HEADER STYLES (Kept the same) */
+/* CONTACT LINKS */
+.contact-bar {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+.contact-bar a {
+    color: var(--highlight-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.contact-bar a:hover {
+    color: var(--date-color);
+}
+
+/* DOWNLOAD BUTTON */
+.download-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  border: 1px solid var(--date-color);
+  color: var(--date-color);
+  background: rgba(34, 197, 94, 0.05);
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+  background: rgba(34, 197, 94, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+  color: var(--date-color);
+  text-decoration: none;
+}
+
+/* SECTION HEADERS */
 .section-header {
   display: flex;
   align-items: center;
@@ -81,11 +119,11 @@ order: 5
   background: linear-gradient(90deg, var(--border), transparent);
 }
 
-/* --- NEW: CARD GRID STYLES FOR EXPERIENCE/EDUCATION --- */
+/* CARD GRID */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem; /* Space between cards */
+    gap: 1.5rem;
     margin-bottom: 3rem;
 }
 
@@ -95,7 +133,6 @@ order: 5
     padding: 1rem;
     border-radius: 6px;
     transition: all 0.3s ease;
-    /* Animation for fade in */
     opacity: 0;
     transform: translateY(10px);
     animation: fadeSlideUp 0.6s ease-out forwards;
@@ -133,7 +170,7 @@ order: 5
     line-height: 1.4;
 }
 
-/* SKILL GRID STYLES (Kept the same, simplified animations) */
+/* SKILL GRID */
 .skill-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -155,8 +192,7 @@ order: 5
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: none !important;
-  background-color: transparent !important;
+  background: transparent !important;
 }
 
 .skill-item::before {
@@ -170,7 +206,7 @@ order: 5
   font-weight: 500;
 }
 
-/* CERTIFICATION STYLES (Kept the same) */
+/* CERTIFICATION BADGES */
 .cert-list {
   display: flex;
   flex-wrap: wrap;
@@ -193,106 +229,10 @@ order: 5
   transform: translateY(-2px);
 }
 
-/* MEDIA QUERIES (Updated for new grid) */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  .card-grid {
-    grid-template-columns: 1fr; /* Stack cards vertically on small screens */
-  }
+  .card-grid { grid-template-columns: 1fr; }
 }
-
-@media (max-width: 600px) {
-  .page-header h1 {
-    font-size: 1.5rem;
-  }
-  .section-header {
-    font-size: 0.95rem;
-  }
-  .skill-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-/* 1. Force the wrapper to hug the text tightly */
-.email-copy-wrapper {
-  position: relative;
-  display: inline-block; /* <--- THIS IS THE CRITICAL FIX */
-  cursor: pointer;
-  color: var(--green-dim);
-  border-bottom: 1px dashed var(--green-dim);
-  transition: all 0.2s;
-  margin-left: 5px;
-}
-
-.email-copy-wrapper:hover {
-  background: rgba(34, 197, 94, 0.1);
-}
-
-/* 2. Position the tooltip centered ABOVE the text */
-.copy-tooltip {
-  visibility: hidden;
-  width: 70px;
-  background-color: var(--bg-dark);
-  color: var(--text);
-  text-align: center;
-  border: 1px solid var(--green-dim);
-  border-radius: 4px;
-  padding: 4px 0;
-  
-  /* POSITIONING: Moves it UP */
-  position: absolute;
-  z-index: 100;
-  bottom: 100%; /* Align to the top of the email */
-  left: 50%;    /* Center horizontally */
-  transform: translateX(-50%) translateY(-8px); /* Center align + move up slightly */
-  
-  font-size: 0.75rem;
-  opacity: 0;
-  transition: opacity 0.2s, transform 0.2s;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-  pointer-events: none; /* Prevents tooltip from flickering if cursor hits it */
-}
-
-/* 3. The little arrow pointing down */
-.copy-tooltip::after {
-  content: "";
-  position: absolute;
-  top: 100%; /* At the bottom of the tooltip */
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: var(--green-dim) transparent transparent transparent;
-}
-
-/* 4. Hover State */
-.email-copy-wrapper:hover .copy-tooltip {
-  visibility: visible;
-  opacity: 1;
-  transform: translateX(-50%) translateY(-10px); /* Slight float-up animation */
-}
-
-.skill-card {
-  /* Keep your existing styles, but add transition */
-  transition: all 0.3s ease;
-  cursor: default;
-}
-
-.skill-card:hover {
-  border-color: var(--green-dim);
-  box-shadow: 0 0 15px rgba(34, 197, 94, 0.15); /* Green glow using your var color */
-  transform: translateY(-3px);
-}
-
-.skill-card:hover h3 {
-  color: var(--green-dim); /* Turn the title green on hover */
-}
-
-.skill-card:hover::before {
-  background: var(--green-dim);
-  box-shadow: 0 0 10px var(--green-dim);
-}
-
 </style>
 
 <div class="resume-page">
@@ -300,9 +240,56 @@ order: 5
 <div class="page-header">
   <h1>Jaakko Oja</h1>
   <p class="summary">
-    Third-year IT student specializing in telecommunications and networking. Hands-on experience with offensive security, C2 frameworks, and SOC operations. Actively pursuing opportunities in cybersecurity.
+    Third-year ICT student specializing in Telecommunications, Networking and Cybersecurity. Red Teamer with a Purple Team mindset by combining offensive knowledge with defensive monitoring. Currently building home-lab environments to simulate enterprise attacks.
   </p>
-  <div class="summary">Call-to-Action? Sure thing! You can contact me on <a href="https://www.linkedin.com/in/jaakkooja/" target="_blank" rel="noopener noreferrer">LinkedIn</a> or by <a href="mailto:jaakko.oja029@gmail.com">email!</a></div>
+  
+  <div class="contact-bar">
+      <a href="https://linkedin.com/in/jaakkooja" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <span>•</span>
+      <a href="mailto:Jaakko.Oja029@hotmail.com"><i class="fas fa-envelope"></i> Jaakko.Oja029@gmail.com</a>
+      <span>•</span>
+      <span>Tampere, Finland</span>
+  </div>
+
+  
+</div>
+
+<div class="section-header">Technical Projects & Labs</div>
+<div class="card-grid">
+    <div class="entry-card">
+        <span class="title">Active Directory Penetration Testing (OSCP Focus)</span>
+        <span class="institution">Independent Training Lab</span>
+        <span class="dates">2025</span>
+        <p class="description">Building and exploiting a controlled environment aligned with <strong>Offensive Security (OSCP)</strong> standards. Focusing on <strong>manual exploitation techniques</strong>, lateral movement, and privilege escalation to master the core methodology required for certification.</p>
+    </div>
+    <div class="entry-card">
+        <span class="title">SIEM & Threat Detection (Wazuh)</span>
+        <span class="institution">Blue Team Operations</span>
+        <span class="dates">2025</span>
+        <p class="description">Implementing <strong>Wazuh and Suricata</strong> to monitor network traffic and system logs.</p>
+    </div>
+    <div class="entry-card">
+        <span class="title">Thesis: C2 Frameworks (Mythic)</span>
+        <span class="institution">Tampere University of Applied Sciences</span>
+        <span class="dates">2025</span>
+        <p class="description">Researched modern adversary tradecraft. Demonstrated <strong>fileless malware execution</strong> on Linux using <code>memfd_create</code> to bypass disk-based detection mechanisms.</p>
+    </div>
+</div>
+
+<div class="section-header">Professional Experience</div>
+<div class="card-grid">
+    <div class="entry-card">
+        <span class="title">Intern (SDR Project)</span>
+        <span class="institution">Tampere University of Applied Sciences</span>
+        <span class="dates">Summer 2025</span>
+        <p class="description">Led a technical research project on <strong>Software-Defined Radio</strong>. Configured Raspberry Pi hardware and utilized tools like SDR++ and SDRAngel to produce comprehensive technical documentation.</p>
+    </div>
+    <div class="entry-card">
+        <span class="title">Shift Supervisor & Field Manager</span>
+        <span class="institution">Securitas Oy</span>
+        <span class="dates">2018 - 2023</span>
+        <p class="description">Managed personnel and security operations, demonstrating leadership and critical problem-solving in high-pressure situations.</p>
+    </div>
 </div>
 
 <div class="section-header">Education</div>
@@ -310,75 +297,47 @@ order: 5
     <div class="entry-card">
         <span class="degree">Bachelor of Engineering, ICT</span>
         <span class="institution">Tampere University of Applied Sciences</span>
-        <span class="dates">2022-2027</span>
-        <p class="description">Core focus on <strong>Computer Networks, Cybersecurity, and Telecommunications</strong>. Finished Thesis on offensive security and <strong>C2 frameworks</strong>.</p>
+        <span class="dates">2022 - 2027</span>
+        <p class="description">Focus: Computer Networks, Cybersecurity, Telecommunications. Thesis: Offensive Security & C2 Frameworks.</p>
     </div>
     <div class="entry-card">
         <span class="degree">Further Vocational Qualification</span>
         <span class="institution">Turun aikuiskoulutuskeskus</span>
-        <span class="dates">2018-2019</span>
-        <p class="description">Qualification in Safety/Security, establishing a foundation in organizational security protocols.</p>
-    </div>
-    <div class="entry-card">
-        <span class="degree">Matriculation Examination</span>
-        <span class="institution">Ylöjärven lukio (Ylöjärvi Upper Secondary School)</span>
-        <span class="dates">2011-2014</span>
-        <p class="description">Completed upper secondary studies.</p>
+        <span class="dates">2018 - 2019</span>
+        <p class="description">Safety and Security Operations.</p>
     </div>
 </div>
 
-<div class="section-header">Relevant Experience</div>
-<div class="card-grid">
-    <div class="entry-card">
-        <span class="title">Summer Intern</span>
-        <span class="institution">Tampere University of Applied Sciences</span>
-        <span class="dates">Summer 2025</span>
-        <p class="description">Completed a practical <strong>Software-Defined Radio (SDR) project</strong>; utilized open-source tools (SDR++, SDRAngel) and delivered <strong>skilled technical documentation</strong>.</p>
-    </div>
-    <div class="entry-card">
-        <span class="title">Shift Supervisor </span>
-        <span class="institution">Securitas Oy</span>
-        <span class="dates">2021-2023</span>
-        <p class="description">Managed personnel and security operations, demonstrating <strong>leadership and critical problem-solving</strong> in high-pressure situations.</p>
-    </div>
-    <div class="entry-card">
-        <span class="title">Field Manager</span>
-        <span class="institution">Securitas Oy</span>
-        <span class="dates">2021-2023</span>
-        <p class="description">Responsible for territory management and client relations; focused on <strong>process optimization</strong> and maintaining high service standards.</p>
-    </div>
-</div>
 <div class="section-header">Offensive | Defensive Security</div>
 <div class="skill-grid">
   <div class="skill-item highlight">Metasploit Framework</div>
-  <div class="skill-item highlight">C2 Framework Operations (Mythic)</div>
-  <div class="skill-item highlight">Burp Suite (Web App Testing)</div>
-  <div class="skill-item highlight">Nmap & Network Reconnaissance</div>
-  <div class="skill-item highlight">HackTheBox (CTF Practice)</div>
+  <div class="skill-item highlight">C2 Operations (Mythic)</div>
+  <div class="skill-item">Burp Suite (Web App Testing)</div>
+  <div class="skill-item">Nmap & Reconnaissance</div>
+  <div class="skill-item">HackTheBox (CTF Practice)</div>
   <div class="skill-item">AV/EDR Evasion Techniques</div>
-  <div class="skill-item">Privilege Escalation (Windows & Linux)</div>
-  <div class="skill-item">Netcat & Reverse Shell Development</div>
-  <div class="skill-item">Password Cracking & Hash Analysis</div>
-  <div class="skill-item">SecurityOnion & Kibana & Suricata Rules</div>
-  
+  <div class="skill-item">Privilege Escalation (Win/Lin)</div>
+  <div class="skill-item">Netcat & Reverse Shells</div>
+  <div class="skill-item">Password Cracking & Hashes</div>
+  <div class="skill-item highlight">Wazuh, SecurityOnion, Suricata</div>
 </div>
 
 <div class="section-header">Operating Systems & Infrastructure</div>
 <div class="skill-grid">
   <div class="skill-item highlight">Windows Administration</div>
   <div class="skill-item highlight">Git & GitHub</div>
-  <div class="skill-item highlight">Linux Server Management (Debian/Ubuntu)</div>
-  <div class="skill-item">Virtualization (VMware, VirtualBox)</div>
+  <div class="skill-item highlight">Linux Server Mgmt (Debian)</div>
+  <div class="skill-item">Virtualization (VMware/VBox)</div>
   <div class="skill-item">Container Basics (Docker)</div>
-  
+  <div class="skill-item">Azure Fundamentals</div>
 </div>
 
 <div class="section-header">Networking & Defense</div>
 <div class="skill-grid">
-  <div class="skill-item highlight">Routing & Switching (Layer 2 & 3)</div>
-  <div class="skill-item highlight">Wireshark & Protocol Analysis</div>
+  <div class="skill-item highlight">Routing & Switching (L2/L3)</div>
+  <div class="skill-item">Wireshark & Protocol Analysis</div>
   <div class="skill-item">TCP/IP, DNS, DHCP, VLANs, VPN</div>
-  <div class="skill-item">Network Security & Troubleshooting</div>
+  <div class="skill-item">Network Security & Troubleshoot</div>
   <div class="skill-item">Software-Defined Radio (SDR)</div>
 </div>
 
@@ -386,18 +345,28 @@ order: 5
 <div class="skill-grid">
   <div class="skill-item">C++ / C# Programming</div>
   <div class="skill-item">PowerShell</div>
-  <div class="skill-item">Python (Scripting for Security)</div>
-  <div class="skill-item highlight">SQL & Database Queries</div>
+  <div class="skill-item">Python (Security Scripting)</div>
+  <div class="skill-item">SQL & Database Queries</div>
   <div class="skill-item">Bash/Linux Scripting</div>
   <div class="skill-item">VS Code</div>
 </div>
 
 <div class="section-header">Certifications</div>
 <div class="cert-list">
+  <div class="cert-badge">CyberOps Associate</div>
   <div class="cert-badge">Cisco Ethical Hacker</div>
-  <div class="cert-badge">CCNA: Switching, Routing & Wireless Essentials</div>
-  <div class="cert-badge">CCNA: Enterprise Networking, Security & Automation</div>
-  <div class="cert-badge">Azure Fundamentals</div>
-  <div class="cert-badge">ISC2 Candidate</div>
-  <div class="cert-badge">Cisco: Introduction to Cybersecurity</div>
+  <div class="cert-badge">CCNA: Switching, Routing & Wireless</div>
+  <div class="cert-badge">CCNA: Enterprise Networking & Security</div>
+  <div class="cert-badge">Microsoft: Azure Fundamentals</div>
+  <div class="cert-badge">Cybersecurity Architect</div>
+  <div class="cert-badge">Introduction to Cybersecurity</div>
+</div>
+
+<div class="section-header">Languages</div>
+<div class="skill-grid">
+  <div class="skill-item">Finnish (Native)</div>
+  <div class="skill-item">English (Professional Proficiency)</div>
+  
+</div>
+
 </div>
