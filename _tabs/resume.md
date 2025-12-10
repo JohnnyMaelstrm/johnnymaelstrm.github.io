@@ -240,7 +240,7 @@ order: 5
 <div class="page-header">
   <h1>Jaakko Oja</h1>
   <p class="summary">
-    Third-year ICT student specializing in Telecommunications, Networking and Cybersecurity. Red Teamer with a Purple Team-mindset by combining offensive knowledge with defensive monitoring. Currently building home-lab environments to simulate enterprise attacks.
+    Third-year ICT student specializing in Telecommunications, Networking and Cybersecurity. Red Teamer with a Purple Team mindset by combining offensive knowledge with defensive monitoring. Currently building home-lab environments to simulate enterprise attacks.
   </p>
   
   <div class="contact-bar">
@@ -304,7 +304,7 @@ order: 5
     <div class="entry-card">
         <span class="degree">Bachelor of Engineering, ICT</span>
         <span class="institution">Tampere University of Applied Sciences</span>
-        <span class="dates">2022 - 2027</span>
+        <span class="dates">2023 - 2027</span>
         <p class="description">Focus: Computer Networks, Cybersecurity, Telecommunications. Thesis: Offensive Security & C2 Frameworks.</p>
     </div>
     <div class="entry-card">
