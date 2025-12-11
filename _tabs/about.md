@@ -22,12 +22,12 @@ credits_total: 240
         </p>
         
         <p>
-          After several years managing operational security and handling crises in the field, I decided to shift my focus entirely to the digital side of protection. My background in high-pressure environments and strategic risk management gives me a unique perspective: cybersecurity isn't just about code; it's about **processes, people, and resilience.**
+          After several years managing operational security and handling crises in the field, I decided to shift my focus entirely to the digital side of protection. My background in high-pressure environments and strategic risk management gives me a unique perspective: cybersecurity isn't just about code; it's about <strong>processes, people, and resilience.</strong>
         </p>
 
         <p>I am highly motivated by roles related to:</p>
         <ul class="tech-focus-list">
-          <li>Red Teaming</li>
+          <li>Purple Teaming</li>
           <li>Ethical Hacking</li>
           <li>SOC Operations</li>
           <li>Network Engineering</li>
