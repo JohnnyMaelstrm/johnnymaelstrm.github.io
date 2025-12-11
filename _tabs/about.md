@@ -50,11 +50,11 @@ credits_total: 240
   <div class="section-header">Outside of the Terminal</div>
   
 <p>
-    When I need to step away from the screens, I focus on physical and mental recovery: <strong>hitting the gym and taking long forest walks</strong> are my way to recharge. 
+    Outside of technology, I focus on physical and mental recovery: <strong>hitting the gym and taking long forest walks</strong> are my way to recharge. 
 </p>
 
 <p>
-    Outside of technology, I have a deep commitment to <strong>specimen fishing</strong>, specializing in carp angling. As one of the few dedicated carp anglers in Finland, I hold a <span style="color: var(--accent);">personal record for a fish weighing over 17kg</span>. This dedication extends to an international scale, as I plan to attend the <strong>Carp Den Bosch 2026 expo</strong> in the Netherlands this coming January. It is the world's largest carp fishing event, gathering enthusiasts from around the globe.
+    I have a deep commitment to <strong>specimen fishing</strong>, specializing in carp angling. As one of the few dedicated carp anglers in Finland, I hold a <span style="color: var(--accent);">personal record for a fish weighing over 17kg</span>. This dedication extends to an international scale, as I plan to attend the <strong>Carp Den Bosch 2026 expo</strong> in the Netherlands this coming January. It is the world's largest carp fishing event, gathering enthusiasts from around the globe.
 </p>
 
 <p>
