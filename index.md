@@ -287,6 +287,7 @@ credits_total: 240
 <div class="nav-buttons">
 <a href="/about/" class="nav-link">📖 About Me</a>
 <a href="/categories/" class="nav-link">📂 Categories</a>
+<a href="/resume/" class="nav-link">💼 Resume</a>
 <a href="https://github.com/JohnnyMaelstrm" target="_blank" class="nav-link">💻 GitHub</a>
 <a href="https://www.linkedin.com/in/jaakkooja" target="_blank" class="nav-link">💼 LinkedIn</a>
 </div>
