@@ -153,6 +153,8 @@
 .timeline-item:nth-child(4) { animation-delay: 0.7s; }
 .timeline-item:nth-child(5) { animation-delay: 0.9s; }
 .timeline-item:nth-child(6) { animation-delay: 1.1s; }
+.timeline-item:nth-child(7) { animation-delay: 1.3s; }
+.timeline-item:nth-child(8) { animation-delay: 1.5s; }
 
 .timeline-item:last-child {
   padding-bottom: 0;

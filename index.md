@@ -64,19 +64,33 @@ credits_total: 240
     </div>
   </li>
 
+  <li class="timeline-item">
+    <div class="timeline-date" style="color: #a1a1aa;">2025 · Planned (Spring)</div>
+    <div class="timeline-title">
+        <span>Enterprise Sim: Game of Active Directory (GOAD)</span>
+    </div>
+    <p class="timeline-desc">
+        Applying my established toolset to a massive, vulnerable enterprise environment. The goal is to practice Red Team operations across a complex network featuring multiple forests, child domains, and advanced security configurations.
+    </p>
+    <div class="timeline-metadata">
+        <span class="timeline-keyword">Focus:</span> Multi-Forest Pivoting, Domain Trusts, Advanced Lateral Movement. <br>
+        <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, NetExec, Proxychains.
+    </div>
+</li>
+
  <li class="timeline-item">
     <div class="timeline-date">2025 · Present</div>
     <div class="timeline-title">
-    <a href="/activedirectory/">Active Directory: Red Team Labs & OSCP</a>
+        <a href="/activedirectory/">Active Directory: OSCP Kill-Chain Lab</a>
     </div>
     <p class="timeline-desc">
-      A dual-focus project: 1) Using the "Game of Active Directory" environment to master AD architecture's standard attack vectors, and 2) Executing full kill-chain attacks on Hack Academy's custom OSCP VMs.
+        Executing full kill-chain attacks on Hack Academy's custom VMs. Focusing strictly on <strong>manual exploitation techniques</strong> (avoiding automation) to master the enumeration and lateral movement methodology required for the OSCP certification.
     </p>
     <div class="timeline-metadata">
-      <span class="timeline-keyword">Focus:</span> Post-exploitation, Lateral Movement, Domain Dominance. <br>
-      <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, NetExec.
+        <span class="timeline-keyword">Focus:</span> Manual Exploitation, OSCP Prep, Post-Exploitation. <br>
+        <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, NetExec, Ligolo-ng.
     </div>
-  </li>
+</li>
 
   <li class="timeline-item">
     <div class="timeline-date">2025 · Planned (Q4 Goal)</div>
