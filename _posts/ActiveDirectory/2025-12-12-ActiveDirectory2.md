@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Phase II: Foothold & Enumeration"
+title: "Phase II: ENUMERATION & FOOTHOLD"
 permalink: /activedirectory/phase2/
 icon: fas fa-network-wired
 order: 2
@@ -84,7 +84,7 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
         </p>
         <div style="background: rgba(255, 255, 255, 0.05); padding: 8px; border-left: 2px solid #facc15; margin-bottom: 1rem;">
             <span style="color: #facc15;">[CREDENTIALS]:</span><br>
-            User: <strong>hack-academy\egreen</strong><br>
+            User: <strong>egreen</strong><br>
             Pass: <strong>!!pLaYa!!90</strong>
         </div>
         <ul style="list-style: none; padding-left: 0; margin-bottom: 0;">
@@ -106,7 +106,7 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
 
 <h2>The Silence Before the Storm</h2>
 <p>
-    With credentials in hand, we bypass the initial "blind" exploitation phase. However, noise discipline is still key. We need to verify where these credentials work without triggering excessive authentication failure alerts.
+    With credentials in hand(provided by HA), we bypass the initial "blind" exploitation phase. However, noise discipline is still key. We need to verify where these credentials work without triggering excessive authentication failure alerts.
 </p>
 
 <div class="section-header" style="margin-top: 3rem;">:: INTEL LOG: NETWORK MAPPING</div>
