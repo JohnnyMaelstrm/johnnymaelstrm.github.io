@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Phase II: ENUMERATION & FOOTHOLD"
+title: "Phase II: Enumeration & Foothold"
 permalink: /activedirectory/phase2/
 icon: fas fa-network-wired
 order: 2
@@ -229,6 +229,8 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
         </div>
     </div>
 </div>
+
+<div class="section-header" style="margin-top: 3rem;">:: INTEL LOG: CONTINUING ACTIVELY.....</div>
 
 <div class="ad-card" style="margin-top: 3rem; margin-bottom: 2rem; border: 1px dashed rgba(216, 180, 254, 0.4);">
     <div class="ad-card-header" style="background: rgba(0,0,0,0.3);">
