@@ -123,7 +123,7 @@ credits_total: 240
   <li class="timeline-item">
     <div class="timeline-date">2025 · Thesis Research</div>
     <div class="timeline-title">
-        <a href="/mythic/">Thesis: Command & Control Frameworks</a>
+        <a href="/mythic/">Thesis: Command & Control Frameworks (Grade 5/5)</a>
     </div>
     <p class="timeline-desc">
       In-depth thesis research exploring modern Command & Control (C2) frameworks (with Mythic) used in Red Team Operations.
