@@ -60,7 +60,7 @@ credits_total: 240
     </p>
     <div class="timeline-metadata">
       <span class="timeline-keyword">Focus:</span> Web Security, Credential Harvesting, Session Management. <br>
-      <span class="timeline-keyword">Tools:</span> Evilginx
+      <span class="timeline-keyword">Tools:</span> Evilginx.
     </div>
   </li>
 
@@ -88,6 +88,7 @@ credits_total: 240
     </p>
     <div class="timeline-metadata">
         <span class="timeline-keyword">Focus:</span> Manual Exploitation, OSCP Prep, Post-Exploitation. <br>
+        <span class="timeline-keyword">Framework:</span> MITRE ATT&CK. <br>
         <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, NetExec, Ligolo-ng.
     </div>
 </li>
