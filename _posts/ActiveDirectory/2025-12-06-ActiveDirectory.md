@@ -281,7 +281,7 @@ TcpTestSucceeded : True
             <div style="padding: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
                 <div>
                     <strong style="display: block; color: #d8b4fe; font-size: 1.2rem; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;">
-                        INITIATE PHASE II: FOOTHOLD && ENUMERATION
+                        INITIATE PHASE II: ENUMERATION & FOOTHOLD
                     </strong>
                     <p style="margin: 0; font-size: 0.9rem; color: var(--text-dim); font-family: 'JetBrains Mono', monospace;">
                         Infrastructure deployed. Proceed to Enumeration & Initial Access operations.
