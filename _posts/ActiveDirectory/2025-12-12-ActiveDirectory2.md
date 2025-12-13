@@ -45,15 +45,23 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
             </div>
             <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
                 <span style="color: #facc15;">[T1046]</span><br>
-                <span style="color: var(--text-dim); font-size: 0.75rem;">Network Service Discovery</span>
+                <span style="color: var(--text-dim); font-size: 0.75rem;">Service Discovery</span>
             </div>
             <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
                 <span style="color: #facc15;">[T1087]</span><br>
                 <span style="color: var(--text-dim); font-size: 0.75rem;">Account Discovery</span>
             </div>
              <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
-                <span style="color: #facc15;">[T1135]</span><br>
-                <span style="color: var(--text-dim); font-size: 0.75rem;">Network Share Discovery</span>
+                <span style="color: #facc15;">[T1558.004]</span><br>
+                <span style="color: var(--text-dim); font-size: 0.75rem;">AS-REP Roasting</span>
+            </div>
+             <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+                <span style="color: #facc15;">[T1110]</span><br>
+                <span style="color: var(--text-dim); font-size: 0.75rem;">Brute Force</span>
+            </div>
+             <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+                <span style="color: #facc15;">[T1069]</span><br>
+                <span style="color: var(--text-dim); font-size: 0.75rem;">Group Discovery</span>
             </div>
         </div>
     </div>
@@ -194,25 +202,6 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
 
 <div class="ad-card" style="margin-bottom: 2rem;">
     <div class="ad-card-header">
-        <span class="ad-card-title">:: DOMAIN USER LISTING <span style="color: #a1a1aa; font-weight: normal; margin-left: 8px;">[T1087.002]</span></span>
-        <span class="ad-badge">List Users</span>
-    </div>
-    <div style="padding: 1rem;">
-        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text);">
-            <strong>Objective:</strong> Retrieve the complete list of domain users for targeting.
-        </p>
-        
-        <img src="/assets/Active_Directory/Phase2/nxc_users.png" alt="NetExec User List" style="width: 100%; border: 1px solid var(--border); margin-bottom: 0.5rem;">
-        
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); background: rgba(0,0,0,0.3); padding: 10px; border-left: 2px solid #d8b4fe;">
-            <span style="color: #d8b4fe;">[INTEL]:</span> 
-            Explicit user enumeration confirms active accounts (mjohnson, lbennett, etc.) and their password last set dates. This list is the primary target for Phase III attacks.
-        </div>
-    </div>
-</div>
-
-<div class="ad-card" style="margin-bottom: 2rem;">
-    <div class="ad-card-header">
         <span class="ad-card-title">:: SHARE ENUMERATION <span style="color: #a1a1aa; font-weight: normal; margin-left: 8px;">[T1135]</span></span>
         <span class="ad-badge">Permissions: READ</span>
     </div>
@@ -230,6 +219,113 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
     </div>
 </div>
 
+<div class="ad-card" style="margin-bottom: 2rem;">
+    <div class="ad-card-header">
+        <span class="ad-card-title">:: DOMAIN CARTOGRAPHY <span style="color: #a1a1aa; font-weight: normal; margin-left: 8px;">[T1069]</span></span>
+        <span class="ad-badge">BloodHound</span>
+    </div>
+    <div style="padding: 1rem;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text);">
+            <strong>Objective:</strong> Collect all domain data (users, groups, sessions, trusts) using NetExec for visualization in BloodHound.
+        </p>
+        
+        <img src="/assets/Active_Directory/Phase2/bloodhound.png" alt="BloodHound Collection" style="width: 100%; border: 1px solid var(--border); margin-bottom: 0.5rem;">
+        
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); background: rgba(0,0,0,0.3); padding: 10px; border-left: 2px solid #d8b4fe;">
+            <span style="color: #d8b4fe;">[INTEL]:</span> 
+            Using <code>--bloodhound --collection All</code>, we extracted the full domain schema. This zip file was then ingested into the Dockerized BloodHound CE instance for path analysis.
+        </div>
+    </div>
+</div>
+
+<h2>The Attack Chain: AS-REP Roasting</h2>
+<p>
+    Following the enumeration, we pivot to exploitation. The previous scans revealed a list of domain users. We can now filter this data to generate a clean target list and attempt <strong>AS-REP Roasting</strong>, a technique that exploits users who have "Do not require Kerberos preauthentication" enabled.
+</p>
+
+<div class="ad-card" style="margin-bottom: 2rem;">
+    <div class="ad-card-header">
+        <span class="ad-card-title">:: TARGET LIST REFINEMENT <span style="color: #a1a1aa; font-weight: normal; margin-left: 8px;">[T1087]</span></span>
+        <span class="ad-badge">Tradecraft</span>
+    </div>
+    <div style="padding: 1rem;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text);">
+            <strong>Objective:</strong> Parse the NetExec output to create a clean list of usernames for use with Impacket.
+        </p>
+        
+        <img src="/assets/Active_Directory/Phase2/netexec_ldap.png" alt="NetExec User Filtering" style="width: 100%; border: 1px solid var(--border); margin-bottom: 0.5rem;">
+        
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); background: rgba(0,0,0,0.3); padding: 10px; border-left: 2px solid #d8b4fe;">
+            <span style="color: #d8b4fe;">[TRADE]:</span> 
+            Using <code>grep</code> and <code>awk</code> to strip away logs and table formatting, isolating just the usernames into a <code>users</code> file. This file is now weaponized for the next stage.
+        </div>
+    </div>
+</div>
+
+<div class="ad-card" style="margin-bottom: 2rem;">
+    <div class="ad-card-header">
+        <span class="ad-card-title">:: AS-REP ROASTING <span style="color: #a1a1aa; font-weight: normal; margin-left: 8px;">[T1558.004]</span></span>
+        <span class="ad-badge" style="border-color: #f87171; color: #f87171;">HASH CAPTURED</span>
+    </div>
+    <div style="padding: 1rem;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text);">
+            <strong>Objective:</strong> Query the KDC for users with pre-auth disabled and capture the TGT hash.
+        </p>
+        
+        <img src="/assets/Active_Directory/Phase2/as_rep_roast.png" alt="Impacket GetNPUsers" style="width: 100%; border: 1px solid var(--border); margin-bottom: 0.5rem;">
+        
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); background: rgba(0,0,0,0.3); padding: 10px; border-left: 2px solid #f87171;">
+            <span style="color: #f87171;">[VULNERABILITY]:</span> 
+            User <code>clee</code> is vulnerable! The Domain Controller responded with an encrypted TGT hash because Pre-Authentication is disabled for this account.
+        </div>
+    </div>
+</div>
+
+<div class="ad-card" style="margin-bottom: 2rem;">
+    <div class="ad-card-header">
+        <span class="ad-card-title">:: CRACKING THE HASH <span style="color: #a1a1aa; font-weight: normal; margin-left: 8px;">[T1110]</span></span>
+        <span class="ad-badge" style="border-color: #f87171; color: #f87171;">PWNED</span>
+    </div>
+    <div style="padding: 1rem;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text);">
+            <strong>Objective:</strong> Offline cracking of the captured krb5asrep hash using John the Ripper.
+        </p>
+        
+        <img src="/assets/Active_Directory/Phase2/kerb_krack.png" alt="John the Ripper Cracking" style="width: 100%; border: 1px solid var(--border); margin-bottom: 0.5rem;">
+        
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); background: rgba(0,0,0,0.3); padding: 10px; border-left: 2px solid #f87171;">
+            <span style="color: #f87171;">[CRITICAL]:</span> 
+            The password was weak and found in the RockYou-wordlist.
+            <br>User: <strong>clee</strong>
+            <br>Password: <strong>!! XzUfrog69</strong>
+           
+        </div>
+    </div>
+</div>
+
+<div class="ad-card" style="margin-bottom: 2rem;">
+    <div class="ad-card-header">
+        <span class="ad-card-title">:: ACCESS VERIFICATION <span style="color: #a1a1aa; font-weight: normal; margin-left: 8px;">[T1078]</span></span>
+        <span class="ad-badge" style="border-color: var(--green); color: var(--green);">PRIVILEGE CHECK</span>
+    </div>
+    <div style="padding: 1rem;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text);">
+            <strong>Step 5:</strong> We verify the cracked credentials against the network. NetExec differentiates between standard user access (marked with <span style="color: var(--green);">[+]</span>) and administrative access.
+        </p>
+        
+        <img src="/assets/Active_Directory/Phase2/cleepawn.png" alt="NetExec Pwn3d" style="width: 100%; border: 1px solid var(--border); margin-bottom: 0.5rem;">
+        
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); background: rgba(0,0,0,0.3); padding: 10px; border-left: 2px solid var(--green);">
+            <span style="color: var(--green);">[RESULT]:</span> 
+            NetExec returns the <strong style="color: #facc15;">(Pwn3d!)</strong> flag. 
+            <br>
+            In NetExec terminology, this confirms <strong>administrative privileges</strong> on the target (typically <strong>Local Administrator</strong>), which include access to the <strong>ADMIN$</strong> share and the ability to perform admin-level actions. 
+            A standard user would only be marked with a green plus sign.
+        </div>
+    </div>
+</div>
+
+
 <div class="ad-card" style="margin-top: 3rem; margin-bottom: 2rem; border: 1px dashed rgba(216, 180, 254, 0.4);">
     <div class="ad-card-header" style="background: rgba(0,0,0,0.3);">
         <span class="ad-card-title">:: OPERATION ROADMAP</span>
@@ -242,7 +338,7 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
             <div>
                 <strong style="display: block; color: #d8b4fe; font-size: 1.1rem;">Phase II: Foothold & Enumeration</strong>
                 <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text);">
-                    Current Objective: Map the attack surface and exploit misconfigurations (LLMNR, SMB) for initial access.
+                    Current Objective: Map the attack surface and exploit users for initial access.
                     <br>
                     <span style="color: var(--text-dim); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">
                     > Responder | IPv6 | BloodHound | SMB Relay
