@@ -70,11 +70,11 @@ credits_total: 240
         <span>Enterprise Sim: Game of Active Directory (GOAD)</span>
     </div>
     <p class="timeline-desc">
-        Applying my established toolset to a massive, vulnerable enterprise environment. The goal is to practice Red Team operations across a complex network featuring multiple forests, child domains, and advanced security configurations.
+        Applying my established skills(OSCP LAB) to a massive, vulnerable enterprise environment. The goal is to practice Red Team operations across a complex network featuring multiple forests, child domains, and advanced security configurations.
     </p>
     <div class="timeline-metadata">
         <span class="timeline-keyword">Focus:</span> Multi-Forest Pivoting, Domain Trusts, Advanced Lateral Movement. <br>
-        <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, NetExec, Proxychains.
+        <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, NetExec.
     </div>
 </li>
 
@@ -84,12 +84,12 @@ credits_total: 240
         <a href="/activedirectory/">Active Directory: OSCP Kill-Chain Lab</a>
     </div>
     <p class="timeline-desc">
-        Executing full kill-chain attacks on Hack Academy's custom VMs. Focusing strictly on <strong>manual exploitation techniques</strong> (avoiding automation) to master the enumeration and lateral movement methodology required for the OSCP certification.
+        Executing full kill-chain attacks on Hack Academy's custom VMs. Focusing strictly on <strong>manual exploitation techniques</strong> to master the enumeration and lateral movement methodology required for the OSCP certification.
     </p>
     <div class="timeline-metadata">
         <span class="timeline-keyword">Focus:</span> Manual Exploitation, OSCP Prep, Post-Exploitation. <br>
         <span class="timeline-keyword">Framework:</span> MITRE ATT&CK. <br>
-        <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, NetExec, Ligolo-ng.
+        <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, NetExec.
     </div>
 </li>
 
@@ -99,7 +99,7 @@ credits_total: 240
         <a href="/mythic/">Thesis: Command & Control Frameworks (Grade 5/5)</a>
     </div>
     <p class="timeline-desc">
-      In-depth thesis research exploring modern Command & Control (C2) frameworks (with Mythic) used in Red Team Operations.
+      In-depth thesis research exploring modern Command & Control (C2) Frameworks (with Mythic) used in Red Team Operations, receiving the highest possible grade (5/5).
     </p>
     <div class="timeline-metadata">
       <span class="timeline-keyword">Domain:</span> Offensive / Defensive Security, Threat Hunting, Network Forensics.
@@ -187,7 +187,9 @@ credits_total: 240
 <div class="section-header">Thesis: Command & Control Frameworks</div>
 
 <div class="highlight-box">
-  <h3>Bachelor's Thesis</h3>
+  <h3>Bachelor's Thesis<span style="font-size: 0.7em; background-color: #28a745; color: white; padding: 2px 8px; border-radius: 4px; vertical-align: middle; margin-left: 10px;">
+      Grade: 5/5
+    </span></h3>
   <p>
     My deep dive into the <strong>Mythic C2 Framework</strong>. I constructed a complete attack infrastructure from scratch to simulate modern adversary tradecraft against both Windows and Linux targets.
   </p>
