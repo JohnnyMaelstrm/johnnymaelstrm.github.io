@@ -65,7 +65,7 @@ credits_total: 240
   </li>
 
   <li class="timeline-item">
-    <div class="timeline-date" style="color: #a1a1aa;">2025 · Planned (Spring)</div>
+    <div class="timeline-date" style="color: #a1a1aa;">2026 · Planned (Spring)</div>
     <div class="timeline-title">
         <span>Enterprise Sim: Game of Active Directory (GOAD)</span>
     </div>
@@ -93,6 +93,19 @@ credits_total: 240
     </div>
 </li>
 
+<li class="timeline-item">
+    <div class="timeline-date">2025 · Thesis Research</div>
+    <div class="timeline-title">
+        <a href="/mythic/">Thesis: Command & Control Frameworks (Grade 5/5)</a>
+    </div>
+    <p class="timeline-desc">
+      In-depth thesis research exploring modern Command & Control (C2) frameworks (with Mythic) used in Red Team Operations.
+    </p>
+    <div class="timeline-metadata">
+      <span class="timeline-keyword">Domain:</span> Offensive / Defensive Security, Threat Hunting, Network Forensics.
+    </div>
+  </li>
+
   <li class="timeline-item">
     <div class="timeline-date">2025 · Planned (Q4 Goal)</div>
     <div class="timeline-title">
@@ -117,19 +130,6 @@ credits_total: 240
     </p>
     <div class="timeline-metadata">
       <span class="timeline-keyword">Tools:</span> Raspberry Pi 4, Python, SDR++, SDRAngel, SoapySDR, Linux.
-    </div>
-  </li>
-
-  <li class="timeline-item">
-    <div class="timeline-date">2025 · Thesis Research</div>
-    <div class="timeline-title">
-        <a href="/mythic/">Thesis: Command & Control Frameworks (Grade 5/5)</a>
-    </div>
-    <p class="timeline-desc">
-      In-depth thesis research exploring modern Command & Control (C2) frameworks (with Mythic) used in Red Team Operations.
-    </p>
-    <div class="timeline-metadata">
-      <span class="timeline-keyword">Domain:</span> Offensive / Defensive Security, Threat Hunting, Network Forensics.
     </div>
   </li>
 
