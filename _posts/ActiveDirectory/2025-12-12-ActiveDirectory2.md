@@ -238,6 +238,27 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
     </div>
 </div>
 
+<div class="ad-card" style="margin-bottom: 2rem;">
+    <div class="ad-card-header">
+        <span class="ad-card-title">:: VULNERABILITY ANALYSIS <span style="color: #a1a1aa; font-weight: normal; margin-left: 8px;">[T1087]</span></span>
+        <span class="ad-badge">BloodHound GUI</span>
+    </div>
+    <div style="padding: 1rem;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text);">
+            <strong>Objective:</strong> Analyze the collected graph data to identify specific user misconfigurations using BloodHound's built-in queries.
+        </p>
+        
+        <img src="/assets/Active_Directory/Phase2/bloodhound3.png" alt="BloodHound AS-REP Query" style="width: 100%; border: 1px solid var(--border); margin-bottom: 0.5rem;">
+        
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); background: rgba(0,0,0,0.3); padding: 10px; border-left: 2px solid #d8b4fe;">
+            <span style="color: #d8b4fe;">[INTEL]:</span> 
+            By running the <em>"AS-REP Roastable Users (DontReqPreAuth)"</em> query, we instantly filter the noise.
+            <br>
+            <strong>Result:</strong> The user <code>CLEE@HACK-ACADEMY.LOCAL</code> is flagged as vulnerable. This specific finding authorizes the execution of the AS-REP Roasting attack in the next phase.
+        </div>
+    </div>
+</div>
+
 <h2>The Attack Chain: AS-REP Roasting</h2>
 <p>
     Following the enumeration, we pivot to exploitation. The previous scans revealed a list of domain users. We can now filter this data to generate a clean target list and attempt <strong>AS-REP Roasting</strong>, a technique that exploits users who have "Do not require Kerberos preauthentication" enabled.
