@@ -6,7 +6,7 @@ icon: fas fa-network-wired
 order: 2
 date: 2025-12-12 13:27:00 +0300
 categories: [Active Directory, Lab-Setup]
-tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhound, impacket, networking, nat, kerberoasting, silverticket, goldenticket, dsync]
+tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhound, impacket, networking, nat, kerberoasting]
 ---
 
 <link rel="stylesheet" href="{{ '/assets/css/ad.css' | relative_url }}">
@@ -114,7 +114,7 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
 
 <h2>The Silence Before the Storm</h2>
 <p>
-    With credentials in hand(provided by HA), we bypass the initial "blind" exploitation phase. However, noise discipline is still key. We need to verify where these credentials work without triggering excessive authentication failure alerts.
+    With credentials in hand (provided by Hack Academy), we bypass the initial "blind" exploitation phase. However, noise discipline is still key. We need to verify where these credentials work without triggering excessive authentication failure alerts.
 </p>
 
 <div class="section-header" style="margin-top: 3rem;">:: INTEL LOG: NETWORK MAPPING</div>
@@ -316,10 +316,10 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
         
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); background: rgba(0,0,0,0.3); padding: 10px; border-left: 2px solid #f87171;">
             <span style="color: #f87171;">[CRITICAL]:</span> 
-            The password was weak and found in the RockYou-wordlist.
+            The password was weak and found in the RockYou wordlist.
             <br>User: <strong>clee</strong>
             <br>Password: <strong>!! XzUfrog69</strong>
-           
+            
         </div>
     </div>
 </div>
@@ -350,49 +350,51 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
 <div class="ad-card" style="margin-top: 3rem; margin-bottom: 2rem; border: 1px dashed rgba(216, 180, 254, 0.4);">
     <div class="ad-card-header" style="background: rgba(0,0,0,0.3);">
         <span class="ad-card-title">:: OPERATION ROADMAP</span>
-        <span class="ad-badge" style="background: transparent; border: 1px solid var(--text-dim); color: var(--text-dim);">LIVE FEED...</span>
+        <span class="ad-badge" style="background: transparent; border: 1px solid var(--text-dim); color: var(--text-dim);">STATUS: UPDATED</span>
     </div>
 
     <div style="padding: 0 1rem;">
-        <div style="padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; background: rgba(216, 180, 254, 0.05);">
-            <span style="color: #facc15; margin-right: 15px; min-width: 85px; font-family: 'JetBrains Mono', monospace;">[ACTIVE]</span>
+        <div style="padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; opacity: 0.5;">
+            <span style="color: var(--green); margin-right: 15px; min-width: 85px; font-family: 'JetBrains Mono', monospace;">[COMPLETE]</span>
+            <div>
+                <strong style="display: block; color: var(--text);">Phase I: Infrastructure Deployment</strong>
+                <span style="font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;">Target Deployment & Connectivity Verification</span>
+            </div>
+        </div>
+
+        <div style="padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center;">
+            <span style="color: var(--green); margin-right: 15px; min-width: 85px; font-family: 'JetBrains Mono', monospace;">[COMPLETE]</span>
             <div>
                 <strong style="display: block; color: #d8b4fe; font-size: 1.1rem;">Phase II: Foothold & Enumeration</strong>
                 <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text);">
-                    Current Objective: Map the attack surface and exploit users for initial access.
+                    Objective Achieved: Mapped domain, exploited AS-REP Roasting, and compromised Local Admin account on Client-2.
                     <br>
                     <span style="color: var(--text-dim); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">
-                    > Responder | IPv6 | BloodHound | SMB Relay
+                    > BloodHound Analysis | JohnTheRipper | Pwn3d!
                     </span>
                 </p>
             </div>
         </div>
-
-        <div style="padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; opacity: 0.8;">
-            <span style="color: #3b82f6; margin-right: 15px; min-width: 85px; font-family: 'JetBrains Mono', monospace;">[QUEUED]</span>
+        
+        <div style="padding: 1rem 0; display: flex; align-items: center;">
+            <span style="color: #3b82f6; margin-right: 15px; min-width: 85px; font-family: 'JetBrains Mono', monospace;">[ACTIVE]</span>
             <div>
                 <strong style="display: block; color: var(--text); font-size: 1rem;">Phase III: Lateral Movement</strong>
                 <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text);">
-                    Objective: Escalate privileges to Domain Admin via protocol abuse.
+                    Current Objective: Use Local Admin access to dump credentials and pivot towards the Domain Controller.
                     <br>
                     <span style="color: var(--text-dim); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">
-                    > Kerberoasting | Golden Tickets | DCSync
+                    > Mimikatz | Token Impersonation | PsExec | Pass-the-Hash
                     </span>
                 </p>
             </div>
         </div>
-
+        
         <div style="padding: 1rem 0; display: flex; align-items: center; opacity: 0.5;">
             <span style="color: #f87171; margin-right: 15px; min-width: 85px; font-family: 'JetBrains Mono', monospace;">[LOCKED]</span>
             <div>
                 <strong style="display: block; color: var(--text); font-size: 1rem;">Phase IV: Persistence & Exfiltration</strong>
-                <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text);">
-                    Objective: Extract domain hashes and maintain access.
-                    <br>
-                    <span style="color: var(--text-dim); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">
-                    > Silver Tickets | NTDS Dumping | Mimikatz
-                    </span>
-                </p>
+                <span style="font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; color: var(--text-dim);">Waiting for Domain Admin privileges...</span>
             </div>
         </div>
     </div>

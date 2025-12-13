@@ -133,7 +133,7 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
         </div>
     </div>
 
-    <p>With the network configured, the next step is to verify that our Attack Box (Kali) can communicate with the target domain. I used tool called <strong>NetExec</strong> on this part.</p>
+    <p>With the network configured, the next step is to verify that our Attack Box (Kali) can communicate with the target domain. I used a tool called <strong>NetExec</strong> on this part.</p>
 
     <div class="section-header">:: INFRASTRUCTURE STATUS</div>
 
@@ -147,11 +147,11 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
                 <span class="ps-cmd">Test-NetConnection -ComputerName DC01 -CommonTCPPort SMB</span>
             </div>
             <pre class="ps-output">
-ComputerName     : DC01
-RemoteAddress    : 10.0.2.4
-RemotePort       : 445
-InterfaceAlias   : Ethernet
-SourceAddress    : 10.0.2.5
+ComputerName     : DC01
+RemoteAddress    : 10.0.2.4
+RemotePort       : 445
+InterfaceAlias   : Ethernet
+SourceAddress    : 10.0.2.5
 TcpTestSucceeded : True
             </pre>
         </div>
@@ -250,7 +250,7 @@ TcpTestSucceeded : True
                         Objective: Exploit misconfigurations to gain initial domain user access.
                         <br>
                         <span style="color: var(--text-dim); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">
-                        > LLMNR/NBT-NS Poisoning | SMB Relay | AS-REP Roasting | IPv6 attacks (mitm6)
+                        > Enumeration | AS-REP Roasting | Password Cracking | Local Admin
                         </span>
                     </p>
                 </div>
@@ -264,7 +264,7 @@ TcpTestSucceeded : True
                         Objective: Escalate privileges to Domain Admin via protocol abuse.
                         <br>
                         <span style="color: var(--text-dim); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">
-                        > Kerberoasting | Silver/Golden Tickets | MSSQL Links | DCSync
+                        > Kerberoasting | Golden Tickets | DCSync
                         </span>
                     </p>
                 </div>
