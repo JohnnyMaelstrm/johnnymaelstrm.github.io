@@ -358,7 +358,7 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
             <span style="color: var(--green); margin-right: 15px; min-width: 85px; font-family: 'JetBrains Mono', monospace;">[COMPLETE]</span>
             <div>
                 <strong style="display: block; color: var(--text);">Phase I: Infrastructure Deployment</strong>
-                <span style="font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;">Target Deployment & Connectivity Verification</span>
+                <span style="font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; color: var(--text-dim);">System Initialization</span>
             </div>
         </div>
 
@@ -367,24 +367,24 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
             <div>
                 <strong style="display: block; color: #d8b4fe; font-size: 1.1rem;">Phase II: Foothold & Enumeration</strong>
                 <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text);">
-                    Objective Achieved: Mapped domain, exploited AS-REP Roasting, and compromised Local Admin account on Client-2.
+                    Objective Achieved: Initial compromise of domain user and local administrative access.
                     <br>
                     <span style="color: var(--text-dim); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">
-                    > BloodHound Analysis | JohnTheRipper | Pwn3d!
+                    > Enumeration | AS-REP Roasting | Local Privilege Escalation
                     </span>
                 </p>
             </div>
         </div>
         
-        <div style="padding: 1rem 0; display: flex; align-items: center;">
+        <div style="padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center;">
             <span style="color: #3b82f6; margin-right: 15px; min-width: 85px; font-family: 'JetBrains Mono', monospace;">[ACTIVE]</span>
             <div>
                 <strong style="display: block; color: var(--text); font-size: 1rem;">Phase III: Lateral Movement</strong>
                 <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text);">
-                    Current Objective: Use Local Admin access to dump credentials and pivot towards the Domain Controller.
+                    Current Objective: Utilize local administrative access to pivot laterally and compromise the Domain Controller.
                     <br>
                     <span style="color: var(--text-dim); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">
-                    > Mimikatz | Token Impersonation | PsExec | Pass-the-Hash
+                    > Credential Dumping | Identity Attacks | Network Pivoting
                     </span>
                 </p>
             </div>
@@ -394,7 +394,7 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
             <span style="color: #f87171; margin-right: 15px; min-width: 85px; font-family: 'JetBrains Mono', monospace;">[LOCKED]</span>
             <div>
                 <strong style="display: block; color: var(--text); font-size: 1rem;">Phase IV: Persistence & Exfiltration</strong>
-                <span style="font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; color: var(--text-dim);">Waiting for Domain Admin privileges...</span>
+                <span style="font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; color: var(--text-dim);">Classified: Pending Domain Admin Access...</span>
             </div>
         </div>
     </div>
