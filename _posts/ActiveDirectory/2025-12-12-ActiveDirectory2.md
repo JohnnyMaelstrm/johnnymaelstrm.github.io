@@ -345,7 +345,34 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
         </div>
     </div>
 </div>
-
+<div class="ad-card" style="margin-bottom: 2rem; border-left: 3px solid #3b82f6;">
+    <div class="ad-card-header">
+        <span class="ad-card-title">:: DEFENSIVE RECOMMENDATIONS</span>
+        <span class="ad-badge" style="border-color: #3b82f6; color: #3b82f6;">BLUE TEAMING</span>
+    </div>
+    <div style="padding: 1rem;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text);">
+            <strong>Objective:</strong> Remediate the identified vulnerability to prevent AS-REP Roasting attacks.
+        </p>
+        
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-dim); margin-top: 10px;">
+            <ul style="list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 10px;">
+                    <strong style="color: #3b82f6;">1. Enforce Pre-Authentication:</strong><br>
+                    Ensure that the "Do not require Kerberos preauthentication" setting is <strong>disabled</strong> for all user accounts in Active Directory Users and Computers (ADUC). This forces the client to encrypt the timestamp with their password hash before the KDC issues a TGT.
+                </li>
+                <li style="margin-bottom: 10px;">
+                    <strong style="color: #3b82f6;">2. Strong Password Policies:</strong><br>
+                    Implement and enforce complex password policies (length, complexity, rotation). Even if a hash is captured, a strong password (e.g., 25+ characters) renders offline cracking attempts computationally infeasible.
+                </li>
+                <li>
+                    <strong style="color: #3b82f6;">3. Monitor for Event ID 4768:</strong><br>
+                    Configure SIEM to alert on a high volume of Kerberos TGT requests (Event ID 4768) originating from a single source, especially those with <code>PreAuthType: 0</code>, which may indicate an ongoing roasting attack.
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <div class="ad-card" style="margin-top: 3rem; margin-bottom: 2rem; border: 1px dashed rgba(216, 180, 254, 0.4);">
     <div class="ad-card-header" style="background: rgba(0,0,0,0.3);">
