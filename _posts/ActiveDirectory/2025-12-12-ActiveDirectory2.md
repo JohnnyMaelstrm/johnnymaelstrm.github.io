@@ -345,6 +345,7 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
         </div>
     </div>
 </div>
+
 <div class="ad-card" style="margin-bottom: 2rem; border-left: 3px solid #3b82f6;">
     <div class="ad-card-header">
         <span class="ad-card-title">:: DEFENSIVE RECOMMENDATIONS</span>
@@ -373,6 +374,33 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
         </div>
     </div>
 </div>
+
+<h2>Mission Summary: Phase II Complete</h2>
+<p style="margin-bottom: 1rem;">
+    Operations for Phase II have been successfully concluded. We transitioned from a standard domain user to a Local Administrator through targeted enumeration and protocol abuse.
+</p>
+<ul style="list-style: none; padding-left: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-dim);">
+    <li style="margin-bottom: 8px;">
+        <span style="color: var(--green); margin-right: 10px;">[✓]</span>
+        <strong>Network Mapping:</strong> Identified critical infrastructure (DC01, Clients).
+    </li>
+    <li style="margin-bottom: 8px;">
+        <span style="color: var(--green); margin-right: 10px;">[✓]</span>
+        <strong>Enumeration:</strong> Extracted domain objects via RID Cycling & LDAP.
+    </li>
+    <li style="margin-bottom: 8px;">
+        <span style="color: var(--green); margin-right: 10px;">[✓]</span>
+        <strong>Vulnerability Analysis:</strong> Identified AS-REP Roastable account via BloodHound.
+    </li>
+    <li style="margin-bottom: 8px;">
+        <span style="color: var(--green); margin-right: 10px;">[✓]</span>
+        <strong>Exploitation:</strong> Cracked the TGT hash for user <code>clee</code>.
+    </li>
+    <li>
+        <span style="color: var(--green); margin-right: 10px;">[✓]</span>
+        <strong>Foothold:</strong> Confirmed Local Admin access on 10.0.2.9.
+    </li>
+</ul>
 
 <div class="ad-card" style="margin-top: 3rem; margin-bottom: 2rem; border: 1px dashed rgba(216, 180, 254, 0.4);">
     <div class="ad-card-header" style="background: rgba(0,0,0,0.3);">
@@ -445,4 +473,5 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
         </div>
     </div>
 </div>
+
 </div>
