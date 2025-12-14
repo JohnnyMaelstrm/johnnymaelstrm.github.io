@@ -174,7 +174,7 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
         
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); background: rgba(0,0,0,0.3); padding: 10px; border-left: 2px solid #d8b4fe;">
             <span style="color: #d8b4fe;">[INTEL]:</span> 
-            WinRM is listening on all targets. This confirms that if we escalate privileges, we can obtain a shell using Evil-WinRM.
+            WinRM is listening on all targets. 
         </div>
     </div>
 </div>
