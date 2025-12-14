@@ -5,7 +5,7 @@ permalink: /activedirectory/phase2/
 icon: fas fa-network-wired
 order: 2
 date: 2025-12-12 13:27:00 +0300
-categories: [Active Directory, Lab-Setup]
+categories: [Active Directory, Phase II]
 tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhound, impacket, networking, nat, kerberoasting]
 ---
 
@@ -22,6 +22,7 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
         <p style="margin: 0; line-height: 1.6; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">
             <strong style="color: #d8b4fe;">PHASE II CONFIRMED:</strong> ENUMERATION & FOOTHOLD STARTED
             <br>
+            <span style="opacity: 0.8; font-size: 0.75rem;">From Anonymous User to Local Administrator</span><br>
             <span style="display: inline-block; margin-top: 8px;">
             > ACTIVE VERSION: <span style="background: #d8b4fe; color: #000; padding: 2px 6px; font-weight: bold;">CHAIN #2</span>
             </span>
@@ -291,9 +292,10 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
     </div>
 </div>
 
-<h2>The Attack Chain: AS-REP Roasting</h2>
-<p>
-    Following the enumeration, we pivot to exploitation. The previous scans revealed a list of domain users. We can now filter this data to generate a clean target list and attempt <strong>AS-REP Roasting</strong>, a technique that exploits users who have "Do not require Kerberos preauthentication" enabled.
+<div class="section-header" style="margin-top: 3rem;">:: EXPLOITATION: AS-REP ROASTING</div>
+
+<p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text); margin-bottom: 1.5rem;">
+    With enumeration complete and <code>clee</code> identified via BloodHound as vulnerable, we transition to active exploitation. AS-REP Roasting is a stealthy Kerberos attack -> no account lockouts, minimal detection surface, pure offline cracking. The attack chain: refine targets → capture hash → crack offline → verify access.
 </p>
 
 <div class="ad-card" style="margin-bottom: 2rem;">
@@ -377,10 +379,12 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
         </div>
     </div>
 </div>
-<h3>The Attack Chain: From Breach to Escalation</h3>
-<p>
-    Following the enumeration, we pivot to exploitation. We begin by targeting users with "Do not require Kerberos preauthentication" enabled to perform <strong>AS-REP Roasting</strong> and obtain valid credentials. Once authenticated, the attack chain evolves into <strong>Lateral Movement</strong> and <strong>Post-Exploitation</strong>, where we leverage RDP access and identify local service misconfigurations to escalate our privileges from a standard user to Local Administrator.
+<div class="section-header" style="margin-top: 3rem;">:: POST-EXPLOITATION: SYSTEM PROFILING</div>
+
+<p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text); margin-bottom: 1.5rem;">
+    Local admin access on CLIENT-2 achieved. Before attempting lateral movement to the Domain Controller, we systematically profile the compromised system - enumerating users, services, and configurations to identify potential persistence mechanisms and privilege escalation paths for Phase III.
 </p>
+
 <div class="ad-card" style="margin-bottom: 2rem;">
     <div class="ad-card-header">
         <span class="ad-card-title">:: LOCAL USER ENUMERATION <span style="color: #a1a1aa; font-weight: normal; margin-left: 8px;">[T1087.001]</span></span>
@@ -518,11 +522,16 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
         <span style="color: var(--green); margin-right: 10px;">[✓]</span>
         <strong>Exploitation:</strong> Cracked the TGT hash for user <code>clee</code>.
     </li>
+    <li style="margin-bottom: 8px;">
+        <span style="color: var(--green); margin-right: 10px;">[✓]</span>
+        <strong>Foothold:</strong> Confirmed Local Admin access on CLIENT-2 (10.0.2.9).
+    </li>
     <li>
         <span style="color: var(--green); margin-right: 10px;">[✓]</span>
-        <strong>Foothold:</strong> Confirmed Local Admin access on 10.0.2.9.
+        <strong>Post-Exploitation:</strong> Profiled compromised system and established RDP access.
     </li>
 </ul>
+
 
 <div class="ad-card" style="margin-top: 3rem; margin-bottom: 2rem; border: 1px dashed rgba(216, 180, 254, 0.4);">
     <div class="ad-card-header" style="background: rgba(0,0,0,0.3);">
