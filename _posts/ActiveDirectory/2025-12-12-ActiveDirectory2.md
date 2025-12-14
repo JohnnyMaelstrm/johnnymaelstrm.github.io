@@ -377,7 +377,10 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
         </div>
     </div>
 </div>
-
+<h3>The Attack Chain: From Breach to Escalation</h3>
+<p>
+    Following the enumeration, we pivot to exploitation. We begin by targeting users with "Do not require Kerberos preauthentication" enabled to perform <strong>AS-REP Roasting</strong> and obtain valid credentials. Once authenticated, the attack chain evolves into <strong>Lateral Movement</strong> and <strong>Post-Exploitation</strong>, where we leverage RDP access and identify local service misconfigurations to escalate our privileges from a standard user to Local Administrator.
+</p>
 <div class="ad-card" style="margin-bottom: 2rem;">
     <div class="ad-card-header">
         <span class="ad-card-title">:: LOCAL USER ENUMERATION <span style="color: #a1a1aa; font-weight: normal; margin-left: 8px;">[T1087.001]</span></span>
