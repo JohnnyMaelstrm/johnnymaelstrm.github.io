@@ -48,20 +48,52 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
                 <span style="color: var(--text-dim); font-size: 0.75rem;">Service Discovery</span>
             </div>
             <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+                <span style="color: #facc15;">[T1078]</span><br>
+                <span style="color: var(--text-dim); font-size: 0.75rem;">Valid Accounts</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
                 <span style="color: #facc15;">[T1087]</span><br>
                 <span style="color: var(--text-dim); font-size: 0.75rem;">Account Discovery</span>
             </div>
-             <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+            <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+                <span style="color: #facc15;">[T1087.001]</span><br>
+                <span style="color: var(--text-dim); font-size: 0.75rem;">Local Account</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+                <span style="color: #facc15;">[T1135]</span><br>
+                <span style="color: var(--text-dim); font-size: 0.75rem;">Network Share Discovery</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
                 <span style="color: #facc15;">[T1558.004]</span><br>
                 <span style="color: var(--text-dim); font-size: 0.75rem;">AS-REP Roasting</span>
             </div>
-             <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+            <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
                 <span style="color: #facc15;">[T1110]</span><br>
                 <span style="color: var(--text-dim); font-size: 0.75rem;">Brute Force</span>
             </div>
-             <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+            <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
                 <span style="color: #facc15;">[T1069]</span><br>
                 <span style="color: var(--text-dim); font-size: 0.75rem;">Group Discovery</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+                <span style="color: #facc15;">[T1021]</span><br>
+                <span style="color: var(--text-dim); font-size: 0.75rem;">Remote Services</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+                <span style="color: #facc15;">[T1021.001]</span><br>
+                <span style="color: var(--text-dim); font-size: 0.75rem;">RDP</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+                <span style="color: #facc15;">[T1033]</span><br>
+                <span style="color: var(--text-dim); font-size: 0.75rem;">System Owner/User</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+                <span style="color: #facc15;">[T1007]</span><br>
+                <span style="color: var(--text-dim); font-size: 0.75rem;">System Service Discovery</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+                <span style="color: #facc15;">[T1059.001]</span><br>
+                <span style="color: var(--text-dim); font-size: 0.75rem;">PowerShell</span>
             </div>
         </div>
     </div>
@@ -345,6 +377,93 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
         </div>
     </div>
 </div>
+
+<div class="ad-card" style="margin-bottom: 2rem;">
+    <div class="ad-card-header">
+        <span class="ad-card-title">:: LOCAL USER ENUMERATION <span style="color: #a1a1aa; font-weight: normal; margin-left: 8px;">[T1087.001]</span></span>
+        <span class="ad-badge">NetExec</span>
+    </div>
+    <div style="padding: 1rem;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text);">
+            <strong>Objective:</strong> Enumerate local users on the compromised system to identify additional accounts and administrative access.
+        </p>
+        
+        <img src="/assets/Active_Directory/Phase2/netexec_user_clee.png" alt="Local User Enumeration" style="width: 100%; border: 1px solid var(--border); margin-bottom: 0.5rem;">
+        
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); background: rgba(0,0,0,0.3); padding: 10px; border-left: 2px solid #d8b4fe;">
+            <span style="color: #d8b4fe;">[ANALYSIS]:</span> 
+            Using NetExec to enumerate local users on DC01. The output reveals 15 local user accounts including the built-in Administrator account and Key Distribution Center Service Account, providing insight into the local account structure.
+        </div>
+    </div>
+</div>
+
+<div class="ad-card" style="margin-bottom: 2rem;">
+    <div class="ad-card-header">
+        <span class="ad-card-title">:: LATERAL MOVEMENT PREPARATION <span style="color: #a1a1aa; font-weight: normal; margin-left: 8px;">[T1021.001]</span></span>
+        <span class="ad-badge" style="border-color: var(--green); color: var(--green);">RDP ACCESS</span>
+    </div>
+    <div style="padding: 1rem;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text);">
+            <strong>Objective:</strong> Establish remote desktop access to CLIENT-2 using compromised credentials.
+        </p>
+        
+        <img src="/assets/Active_Directory/Phase2/xfreerdp3_shell.png" alt="RDP to Client-2" style="width: 100%; border: 1px solid var(--border); margin-bottom: 0.5rem;">
+        
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); background: rgba(0,0,0,0.3); padding: 10px; border-left: 2px solid var(--green);">
+            <span style="color: var(--green);">[SUCCESS]:</span> 
+            Successfully established RDP connection to CLIENT-2 (10.0.2.9) using FreeRDP. The split-screen view shows both the Kali attack machine and the compromised Windows client, demonstrating active remote access for further enumeration and lateral movement operations.
+        </div>
+    </div>
+</div>
+
+<div class="ad-card" style="margin-bottom: 2rem;">
+    <div class="ad-card-header">
+        <span class="ad-card-title">:: PRIVILEGE ENUMERATION <span style="color: #a1a1aa; font-weight: normal; margin-left: 8px;">[T1033]</span></span>
+        <span class="ad-badge">whoami /all</span>
+    </div>
+    <div style="padding: 1rem;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text);">
+            <strong>Objective:</strong> Determine current user privileges, group memberships, and security context on the compromised system.
+        </p>
+        
+        <img src="/assets/Active_Directory/Phase2/whoami.png" alt="Whoami All Output" style="width: 100%; border: 1px solid var(--border); margin-bottom: 0.5rem;">
+        
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); background: rgba(0,0,0,0.3); padding: 10px; border-left: 2px solid #d8b4fe;">
+            <span style="color: #d8b4fe;">[INTEL]:</span> 
+            The <code>whoami /all</code> command reveals critical information:
+            <br>• User: <strong>hack-academy\clee</strong>
+            <br>• Group Memberships: BUILTIN\Remote Desktop Users, BUILTIN\Administrators, NT AUTHORITY\Authenticated Users
+            <br>• Privileges: Multiple system-level privileges available but mostly disabled
+            <br>• Notable: User claims unknown, Kerberos support for Dynamic Access Control is disabled
+        </div>
+    </div>
+</div>
+
+<div class="ad-card" style="margin-bottom: 2rem;">
+    <div class="ad-card-header">
+        <span class="ad-card-title">:: SERVICE ENUMERATION <span style="color: #a1a1aa; font-weight: normal; margin-left: 8px;">[T1007]</span></span>
+        <span class="ad-badge">PowerShell</span>
+    </div>
+    <div style="padding: 1rem;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text);">
+            <strong>Objective:</strong> Enumerate running services and their configurations to identify potential attack vectors and persistence mechanisms.
+        </p>
+        
+        <img src="/assets/Active_Directory/Phase2/PowerUp_1.png" alt="Service Enumeration Part 1" style="width: 100%; border: 1px solid var(--border); margin-bottom: 0.5rem;">
+        
+        <img src="/assets/Active_Directory/Phase2/enumerat_serv.png" alt="Service Enumeration Part 2" style="width: 100%; border: 1px solid var(--border); margin-bottom: 0.5rem;">
+        
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); background: rgba(0,0,0,0.3); padding: 10px; border-left: 2px solid #d8b4fe;">
+            <span style="color: #d8b4fe;">[ANALYSIS]:</span> 
+            PowerShell service enumeration reveals system services including:
+            <br>• <strong>DFWSIDService</strong>: Windows Defender service paths and configurations
+            <br>• <strong>ElevationService</strong>: Windows recovery elevation service
+            <br>• <strong>wampysqld64</strong>: WAMP MySQL database service running with NT AUTHORITY\Authenticated Users permissions
+            <br>These services provide insight into installed software and potential privilege escalation vectors.
+        </div>
+    </div>
+</div>
+
 
 <div class="ad-card" style="margin-bottom: 2rem; border-left: 3px solid #3b82f6;">
     <div class="ad-card-header">
