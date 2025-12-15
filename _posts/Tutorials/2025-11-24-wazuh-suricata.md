@@ -134,7 +134,7 @@ tags: [siem, wazuh, suricata, blue team, malware, threatactor]
       <span class="ad-card-title">:: ATTACKER TERMINAL (KALI)</span>
     </div>
     <div class="ad-card-body">
-      <img src="/assets/BlueTeam/hydra.png" alt="Hydra Brute Force Attack" style="width: 100%; border: 1px solid #333; border-radius: 4px;">
+      <img src="/assets/BlueTeam/hydra1.png" alt="Hydra Brute Force Attack" style="width: 100%; border: 1px solid #333; border-radius: 4px;">
       <code style="display:block; margin-top:10px; background:#111; padding:10px;">$ hydra -l Administrator -x 4:6:a rdp://TARGET_IP -t 4 -V</code>
     </div>
   </div>
