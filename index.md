@@ -2,7 +2,7 @@
 layout: page
 title: Home
 permalink: /
-credits_done: 178
+credits_done: 180
 credits_total: 240
 ---
 <link rel="stylesheet" href="/assets/css/mainpage.css">
