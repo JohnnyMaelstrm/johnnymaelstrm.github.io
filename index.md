@@ -116,7 +116,7 @@ credits_total: 240
     </p>
     <div class="timeline-metadata">
       <span class="timeline-keyword">Concepts:</span> Log Analysis, IDS/IPS Configuration, Incident Response. <br>
-      <span class="timeline-keyword">Tools:</span> Wazuh, Suricata, Mythic C2, Metasploit.
+      <span class="timeline-keyword">Tools:</span> Wazuh, Suricata, Hydra.
     </div>
   </li>
   
