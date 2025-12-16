@@ -107,7 +107,7 @@ credits_total: 240
   </li>
 
   <li class="timeline-item">
-    <div class="timeline-date">2025 · Planned (Q4 Goal)</div>
+    <div class="timeline-date">2025 · Q4 </div>
     <div class="timeline-title">
         <a href="/siem-wazuh-suricata/">SIEM Environment: Wazuh & Suricata</a>
     </div>
