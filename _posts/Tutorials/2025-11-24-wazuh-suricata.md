@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2025-12-15 08:27:00 +0300
+date: 2024-12-15 08:27:00 +0200
 title: "SIEM Environment: Wazuh & Suricata"
 permalink: /siem-wazuh-suricata/
 order: 1
@@ -10,18 +10,28 @@ tags: [siem, wazuh, suricata, blue team, malware, threatactor]
 
 <link rel="stylesheet" href="{{ '/assets/css/wazuh.css' | relative_url }}">
 
+<!-- Mermaid CDN -->
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ 
+    startOnLoad: true, 
+    theme: 'dark',
+    securityLevel: 'loose'
+  });
+</script>
+
 <div class="hacker-page">
 
   <h1>Project Report: Auto-Defense Lab</h1>
 
   <div class="intro-section" style="margin-bottom: 2.5rem; border-bottom: 1px dashed #444; padding-bottom: 1.5rem;">
     <p style="font-size: 1.1rem; line-height: 1.6; color: #e5e5e5;">
-      <strong style="color: #60a5fa;">>> MISSION:</strong> 
+      <strong style="color: #60a5fa;">&gt;&gt; MISSION:</strong> 
       To design and deploy an automated defense system (IPS) capable of detecting and neutralizing active threats in a mixed OS environment. The goal was to move beyond passive log monitoring to <strong>real-time remediation</strong>.
     </p>
     
     <div style="margin-top: 1.5rem;">
-      <strong style="color: #60a5fa;">>> KEY TAKEAWAYS:</strong>
+      <strong style="color: #60a5fa;">&gt;&gt; KEY TAKEAWAYS:</strong>
       <ul style="list-style: none; padding-left: 0; margin-top: 0.5rem; color: #a3a3a3;">
         <li style="margin-bottom: 0.5rem;">
           🔹 <strong>Performance Engineering:</strong> Learned that default configurations fail under stress. Troubleshooting the "Agent Buffer Flood" was a critical lesson in resource management.
@@ -51,24 +61,27 @@ tags: [siem, wazuh, suricata, blue team, malware, threatactor]
 
   <div class="section-header">1. Environment Setup</div>
   <p>The following infrastructure was deployed for the project to simulate a realistic attack scenario:</p>
-<div class="mermaid" style="text-align: center; margin: 2rem 0;">
-{% raw %}
+
+  <!-- Mermaid Diagram -->
+  <div style="background: #1a1a1a; padding: 1.5rem; border-radius: 6px; margin: 2rem 0;">
+    <pre class="mermaid">
 graph TD
-    classDef attacker fill:#f87171,stroke:#333,stroke-width:2px,color:black;
-    classDef victim fill:#60a5fa,stroke:#333,stroke-width:2px,color:black;
-    classDef siem fill:#22c55e,stroke:#333,stroke-width:2px,color:black;
+    classDef attacker fill:#f87171,stroke:#333,stroke-width:2px,color:#000;
+    classDef victim fill:#60a5fa,stroke:#333,stroke-width:2px,color:#000;
+    classDef siem fill:#22c55e,stroke:#333,stroke-width:2px,color:#000;
 
     A[Kali Linux<br/>Attacker]:::attacker
     B[Windows 10<br/>Agent + Firewall]:::victim
     C[Wazuh Server<br/>Manager + Analysis]:::siem
 
-    A -- "1. RDP Brute Force" --> B
-    B -- "2. Fwd Security Logs" --> C
-    C -- "3. Alert: Rule 60204" --> C
-    C -- "4. Active Response Cmd" --> B
-    B -- "5. Drop Connection" --> A
-{% endraw %}
-</div>
+    A -->|1. RDP Brute Force| B
+    B -->|2. Fwd Security Logs| C
+    C -->|3. Alert: Rule 60204| C
+    C -->|4. Active Response Cmd| B
+    B -->|5. Drop Connection| A
+    </pre>
+  </div>
+
   <div class="tech-table-wrapper">
     <table class="tool-table">
       <thead>
@@ -82,7 +95,7 @@ graph TD
         <tr>
           <td>Linux VM</td>
           <td><span class="highlight">Wazuh Manager</span></td>
-          <td>Central SIEM server for log correlation & analysis</td>
+          <td>Central SIEM server for log correlation &amp; analysis</td>
         </tr>
         <tr>
           <td>Windows 10</td>
@@ -156,7 +169,7 @@ graph TD
     </div>
   </div>
 
-  <div class="section-header">5. Detection & Correlation</div>
+  <div class="section-header">5. Detection &amp; Correlation</div>
   <p>
     Wazuh SIEM ingested the Windows Security logs in real-time. The correlation engine successfully identified 
     the pattern of multiple failed logins and triggered a high-severity alert.
@@ -202,14 +215,7 @@ graph TD
 
   <div style="margin-top: 3rem; padding: 1rem; background: rgba(34, 197, 94, 0.05); border: 1px solid #22c55e; border-radius: 6px; text-align: center;">
     <h3 style="color: #22c55e; margin: 0;">🛡️ System Secured.</h3>
-    <p style="margin: 0.5rem 0 0; color: #a3a3a3;">Detection, Correlation, and Prevention verified. Homelab done!</p>
+    <p style="margin: 0.5rem 0 0; color: #a3a3a3;">Detection, Correlation, and Prevention verified.</p>
   </div>
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ 
-    startOnLoad: true, 
-    theme: 'dark', // Tämä sopii sivusi tummaan teemaan
-    securityLevel: 'loose'
-  });
-</script>
+
 </div>
