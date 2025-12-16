@@ -134,7 +134,7 @@ tags: [siem, wazuh, suricata, blue team, malware, threatactor]
       <span class="ad-card-title">:: ATTACKER TERMINAL (KALI)</span>
     </div>
     <div class="ad-card-body">
-      <img src="/assets/BlueTeam/hydra1.png" alt="Hydra Brute Force Attack" style="width: 100%; border: 1px solid #333; border-radius: 4px;">
+      <img src="/assets/BlueTeam/hydra.png" alt="Hydra Brute Force Attack" style="width: 100%; border: 1px solid #333; border-radius: 4px;">
       <code style="display:block; margin-top:10px; background:#111; padding:10px;">$ hydra -l Administrator -x 4:6:a rdp://TARGET_IP -t 4 -V</code>
     </div>
   </div>
@@ -185,7 +185,7 @@ tags: [siem, wazuh, suricata, blue team, malware, threatactor]
 
   <div style="margin-top: 3rem; padding: 1rem; background: rgba(34, 197, 94, 0.05); border: 1px solid #22c55e; border-radius: 6px; text-align: center;">
     <h3 style="color: #22c55e; margin: 0;">🛡️ System Secured.</h3>
-    <p style="margin: 0.5rem 0 0; color: #a3a3a3;">Detection, Correlation, and Prevention verified.</p>
+    <p style="margin: 0.5rem 0 0; color: #a3a3a3;">Detection, Correlation, and Prevention verified. Homelab done!</p>
   </div>
 
 </div>
