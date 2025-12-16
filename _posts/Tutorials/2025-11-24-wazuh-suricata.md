@@ -51,7 +51,24 @@ tags: [siem, wazuh, suricata, blue team, malware, threatactor]
 
   <div class="section-header">1. Environment Setup</div>
   <p>The following infrastructure was deployed for the project to simulate a realistic attack scenario:</p>
+<div class="mermaid" style="text-align: center; margin: 2rem 0;">
+{% raw %}
+graph TD
+    classDef attacker fill:#f87171,stroke:#333,stroke-width:2px,color:black;
+    classDef victim fill:#60a5fa,stroke:#333,stroke-width:2px,color:black;
+    classDef siem fill:#22c55e,stroke:#333,stroke-width:2px,color:black;
 
+    A[Kali Linux<br/>Attacker]:::attacker
+    B[Windows 10<br/>Agent + Firewall]:::victim
+    C[Wazuh Server<br/>Manager + Analysis]:::siem
+
+    A -- "1. RDP Brute Force" --> B
+    B -- "2. Fwd Security Logs" --> C
+    C -- "3. Alert: Rule 60204" --> C
+    C -- "4. Active Response Cmd" --> B
+    B -- "5. Drop Connection" --> A
+{% endraw %}
+</div>
   <div class="tech-table-wrapper">
     <table class="tool-table">
       <thead>
@@ -70,7 +87,7 @@ tags: [siem, wazuh, suricata, blue team, malware, threatactor]
         <tr>
           <td>Windows 10</td>
           <td><span class="highlight">Endpoint</span></td>
-          <td>Victim machine (Agent + Suricata + Sysmon)</td>
+          <td>Victim machine (Agent + Suricata)</td>
         </tr>
         <tr>
           <td>Kali Linux</td>
@@ -187,5 +204,12 @@ tags: [siem, wazuh, suricata, blue team, malware, threatactor]
     <h3 style="color: #22c55e; margin: 0;">🛡️ System Secured.</h3>
     <p style="margin: 0.5rem 0 0; color: #a3a3a3;">Detection, Correlation, and Prevention verified. Homelab done!</p>
   </div>
-
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ 
+    startOnLoad: true, 
+    theme: 'dark', // Tämä sopii sivusi tummaan teemaan
+    securityLevel: 'loose'
+  });
+</script>
 </div>
