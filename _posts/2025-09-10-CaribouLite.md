@@ -161,6 +161,7 @@ h1, h2, h3 {
   font-weight: 600;
 }
 
+/* KORJATTU: Käytetään flexboxia listan asetteluun nuolien kanssa */
 .card-list {
   list-style: none;
   padding: 0;
@@ -168,16 +169,18 @@ h1, h2, h3 {
 }
 
 .card-list li {
-  padding-left: 1rem;
-  position: relative;
+  display: flex; /* Flex pitää nuolen ja tekstin erillään */
+  align-items: flex-start;
+  gap: 0.75rem; /* Väli nuolen ja tekstin välissä */
   margin-bottom: 0.5rem;
 }
 
 .card-list li::before {
   content: "→";
-  position: absolute;
-  left: 0;
   color: var(--accent-success);
+  font-weight: bold;
+  flex-shrink: 0; /* Estää nuolta litistymästä */
+  line-height: 1.6;
 }
 
 .section-title {
@@ -185,6 +188,7 @@ h1, h2, h3 {
   font-size: 1.2rem;
 }
 
+/* KORJATTU: Käytetään flexboxia Highlights-osion ruksien kanssa */
 .highlights-section {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
@@ -202,21 +206,26 @@ h1, h2, h3 {
 .highlights-section ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .highlights-section li {
-  padding: 0.5rem 0 0.5rem 1.5rem;
-  position: relative;
+  display: flex; /* Flexbox varmistaa että ikoni ei mene tekstin päälle */
+  align-items: flex-start;
+  gap: 1rem; /* Reilu väli ikonille */
+  padding: 0.5rem 0;
   color: var(--text-secondary);
   font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 .highlights-section li::before {
   content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--accent-success);
+  color: #10b981;
   font-weight: bold;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  flex-shrink: 0; /* Ikoni pysyy oikean kokoisena */
 }
 
 .doc-viewer {
@@ -382,7 +391,7 @@ h1, h2, h3 {
       <span class="meta-tag">RF Engineering</span>
       <span class="meta-tag">Debian 12 Bookworm</span>
     </div>
-    <h1 class="project-title">Software-Defined Radio (SDR) with CaribouLite</h1>
+    <h1 class="project-title">Raspberry Pi 4 & CaribouLite SDR</h1>
     <p class="project-summary">
       Engineering project implementing a standalone Software-Defined Radio node using Raspberry Pi 4 and CaribouLite HAT. Comprehensive testing of RX/TX capabilities, signal processing workflows, and driver configuration in a headless Linux environment. Project completed as part of TAMK Internship 2025.
     </p>
