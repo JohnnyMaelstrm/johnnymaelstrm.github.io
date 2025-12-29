@@ -404,6 +404,37 @@ tags: [active directory, lateral movement, privilege escalation, mimikatz, netex
     </div>
 </div>
 
+<div class="ad-card" style="margin-bottom: 2rem; border-left: 3px solid #3b82f6;">
+    <div class="ad-card-header">
+        <span class="ad-card-title">:: DEFENSIVE RECOMMENDATIONS</span>
+        <span class="ad-badge" style="border-color: #3b82f6; color: #3b82f6;">BLUE TEAMING</span>
+    </div>
+    <div style="padding: 1rem;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text);">
+            <strong>Objective:</strong> Mitigate Service Hijacking and prevent Credential Dumping & Lateral Movement.
+        </p>
+        
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-dim); margin-top: 10px;">
+            <ul style="list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 10px;">
+                    <strong style="color: #3b82f6;">1. Restrict Service Binary Permissions:</strong><br>
+                    Audit file system ACLs (Access Control Lists). Ensure that non-administrative groups (e.g., <code>Everyone</code>, <code>Authenticated Users</code>) do not have <strong>Write</strong> or <strong>Full Control</strong> permissions on service executables to prevent binary replacement attacks.
+                </li>
+                <li style="margin-bottom: 10px;">
+                    <strong style="color: #3b82f6;">2. Enable LSA Protection (RunAsPPL):</strong><br>
+                    Configure the <code>RunAsPPL</code> registry key to restrict the LSA process. This prevents non-protected processes (like Mimikatz) from injecting code into LSASS and dumping cleartext credentials or hashes from memory.
+                </li>
+                <li>
+                    <strong style="color: #3b82f6;">3. Deploy LAPS (Local Admin Password Solution):</strong><br>
+                    Implement LAPS to automatically randomize and rotate the local Administrator password on every workstation. This prevents <strong>Pass-the-Hash</strong> attacks where an attacker reuses a compromised local admin hash to pivot laterally across the network.
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
 <div class="ad-card" style="margin-top: 3rem; margin-bottom: 2rem; border: 1px dashed rgba(216, 180, 254, 0.4);">
     <div class="ad-card-header" style="background: rgba(0,0,0,0.3);">
         <span class="ad-card-title">:: OPERATION ROADMAP</span>
