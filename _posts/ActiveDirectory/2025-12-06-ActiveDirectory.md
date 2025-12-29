@@ -15,7 +15,7 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
     <div style="border: 1px solid #d8b4fe; margin-bottom: 2rem; background: rgba(0,0,0,0.2); box-shadow: 0 0 15px rgba(216, 180, 254, 0.05);">
         <div style="background: #d8b4fe; color: #000; padding: 4px 10px; font-weight: bold; font-size: 0.75rem; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace;">
             <span>:: SYSTEM_BROADCAST ::</span>
-            <span>[MSG_ID: 0X99]</span>
+            <span>[MSG_ID: 0X98]</span>
         </div>
         <div style="padding: 1rem; color: var(--text);">
             <p style="margin: 0; line-height: 1.6; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">
