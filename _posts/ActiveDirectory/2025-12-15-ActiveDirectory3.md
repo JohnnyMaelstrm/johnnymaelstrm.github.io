@@ -70,7 +70,7 @@ tags: [active directory, lateral movement, privilege escalation, mimikatz, netex
             </div>
             <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
                 <span style="color: #facc15;">[T1098]</span><br>
-                <span style="color: var(--text-dim); font-size: 0.75rem;">Account Manip</span>
+                <span style="color: var(--text-dim); font-size: 0.75rem;">Account Manipulation</span>
             </div>
         </div>
     </div>
@@ -407,7 +407,7 @@ tags: [active directory, lateral movement, privilege escalation, mimikatz, netex
 <div class="ad-card" style="margin-top: 3rem; margin-bottom: 2rem; border: 1px dashed rgba(216, 180, 254, 0.4);">
     <div class="ad-card-header" style="background: rgba(0,0,0,0.3);">
         <span class="ad-card-title">:: OPERATION ROADMAP</span>
-        <span class="ad-badge" style="background: transparent; border: 1px solid var(--text-dim); color: var(--text-dim);">STATUS: UPDATED</span>
+        <span class="ad-badge" style="background: transparent; border: 1px solid var(--text-dim); color: var(--text-dim);">STATUS: UPDATED 29.12.2025</span>
     </div>
 
     <div style="padding: 0 1rem;">

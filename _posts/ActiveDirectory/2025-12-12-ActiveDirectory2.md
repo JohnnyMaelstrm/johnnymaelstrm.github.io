@@ -562,19 +562,23 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
             </div>
         </div>
         
-        <div style="padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center;">
-            <span style="color: #3b82f6; margin-right: 15px; min-width: 85px; font-family: 'JetBrains Mono', monospace;">[ACTIVE]</span>
-            <div>
-                <strong style="display: block; color: var(--text); font-size: 1rem;">Phase III: Lateral Movement</strong>
-                <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text);">
-                    Current Objective: Utilize local administrative access to pivot laterally and compromise the Domain Controller.
-                    <br>
-                    <span style="color: var(--text-dim); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">
-                    > Credential Dumping | Identity Attacks | Network Pivoting
-                    </span>
-                </p>
-            </div>
-        </div>
+       <div style="padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center;">
+    <span style="color: #10b981; margin-right: 15px; min-width: 85px; font-family: 'JetBrains Mono', monospace;">[COMPLETE]</span>
+    <div>
+        <a href="/activedirectory/phase3/" style="text-decoration: none;">
+            <strong style="display: block; color: var(--text); font-size: 1rem; transition: color 0.3s;" onmouseover="this.style.color='#d8b4fe'" onmouseout="this.style.color='var(--text)'">
+                Phase III: Lateral Movement
+            </strong>
+        </a>
+        <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text);">
+            Objective Achieved: Local administrative access utilized to pivot laterally.
+            <br>
+            <span style="color: var(--text-dim); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">
+            >  Service Hijacking | Mimikatz | LSA Secrets | Persistence
+            </span>
+        </p>
+    </div>
+</div>
         
         <div style="padding: 1rem 0; display: flex; align-items: center; opacity: 0.5;">
             <span style="color: #f87171; margin-right: 15px; min-width: 85px; font-family: 'JetBrains Mono', monospace;">[LOCKED]</span>
@@ -585,24 +589,30 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
         </div>
     </div>
 </div>
-<div class="ad-card" style="margin-top: 3rem; border: 1px solid #d8b4fe; opacity: 0.8; cursor: default;">
-    <div class="ad-card-header" style="background: rgba(216, 180, 254, 0.1); border-bottom: 1px solid #d8b4fe;">
-        <span class="ad-card-title">:: MISSION UPDATE INCOMING</span>
-        <span class="ad-badge" style="background: #d8b4fe; color: black;">NEXT STAGE COOKING</span>
-    </div>
-    <div style="padding: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
-        <div>
-            <strong style="display: block; color: #d8b4fe; font-size: 1.2rem; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;">
-                PREPARING PHASE III
-            </strong>
-            <p style="margin: 0; font-size: 0.9rem; color: var(--text-dim); font-family: 'JetBrains Mono', monospace;">
-                DOCUMENTS BEING MADE...
-            </p>
+<a href="/activedirectory/phase3/" style="text-decoration: none;">
+    <div class="ad-card" 
+         style="margin-top: 3rem; border: 1px solid #d8b4fe; transition: all 0.3s ease; cursor: pointer;" 
+         onmouseover="this.style.background='rgba(216, 180, 254, 0.05)'" 
+         onmouseout="this.style.background='transparent'">
+         
+        <div class="ad-card-header" style="background: rgba(216, 180, 254, 0.1); border-bottom: 1px solid #d8b4fe;">
+            <span class="ad-card-title">:: MISSION UPDATE AVAILABLE</span>
+            <span class="ad-badge" style="background: #d8b4fe; color: black;">NEXT STAGE UNLOCKED</span>
         </div>
-        <div style="font-size: 2rem; color: #d8b4fe; padding-left: 20px; opacity: 0.5;">
-            <i class="fas fa-hourglass-half"></i> 
+        
+        <div style="padding: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+                <strong style="display: block; color: #d8b4fe; font-size: 1.2rem; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;">
+                     INITIATE PHASE III: LATERAL MOVEMENT AND PRIVILEGE ESCALATION
+                </strong>
+                <p style="margin: 0; font-size: 0.9rem; color: var(--text-dim); font-family: 'JetBrains Mono', monospace;">
+                    Foothold established.
+                </p>
+            </div>
+            <div style="font-size: 2rem; color: #d8b4fe; padding-left: 20px;">
+                <i class="fas fa-chevron-right"></i>
+            </div>
         </div>
     </div>
-</div>
+</a>
 
-</div>

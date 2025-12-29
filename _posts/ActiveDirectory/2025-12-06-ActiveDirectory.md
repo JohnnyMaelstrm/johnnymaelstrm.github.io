@@ -264,7 +264,7 @@ TcpTestSucceeded : True
                         Objective: Escalate privileges to Domain Admin via protocol abuse.
                         <br>
                         <span style="color: var(--text-dim); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">
-                        > Kerberoasting | Golden Tickets | DCSync
+                        >  Service Hijacking | Mimikatz | LSA Secrets | Persistence
                         </span>
                     </p>
                 </div>
