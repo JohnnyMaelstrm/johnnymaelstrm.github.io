@@ -223,6 +223,22 @@ credits_total: 240
     📥 Download PDF
   </a>
 </div>
+<div class="section-header">🛡 Honeypot</div>
+
+<div class="highlight-box">
+  <h3>🛡 Honeypot Attack Analysis</h3>
+  <p>
+    A month-long experiment running a Cowrie SSH honeypot on Linode that captured over 500,000 attack events from global threat actors. The project provided deep insights into botnet behavior, automated exploitation patterns, and eventually taught valuable lessons about resource management when the system hit the OOM wall.
+  </p>
+  
+  <a href="{{ '/honeypot-linode-oom-analysis/' | relative_url }}" style="text-decoration: none; display: flex; align-items: center; gap: 1rem; background: rgba(0,0,0,0.2); padding: 1rem; border: 1px solid var(--border); border-radius: 4px; margin: 1rem 0;">
+    <div style="font-size: 2rem;">🍯</div> 
+    <div>
+      <div style="color: var(--accent); font-weight: 600;">Read the full Honeypot Chronicles</div>
+      <div style="color: var(--text-dim); font-size: 0.8rem;">Threat Hunting • Attack Analysis • OOM Debugging</div>
+    </div>
+  </a>
+</div>
 
 <div class="section-header">🏅 Certifications</div>
 
