@@ -16,7 +16,7 @@ credits_total: 240
       <div class="tagline">Purple Team Mindset // Network Security Enthusiast</div>
       <p class="bio">Third-year IT engineering student at Tampere University of Applied Sciences specializing in telecommunications, computer networks, and cybersecurity.</p>
       <p class="bio bio-small">
-        Currently open for roles: ICT Trainee · Cybersecurity Trainee · SOC Specialist · Junior Networking · Threat Hunter ·
+        Currently open for roles: Junior Cybersecurity Consultant · Red Team Operator · SOC Specialist · Junior Networking · Threat Hunter ·
       </p>
     <div class="summary">
   Call-to-Action? Sure thing! Contact me on 
