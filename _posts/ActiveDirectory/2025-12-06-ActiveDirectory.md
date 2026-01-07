@@ -276,7 +276,7 @@ TcpTestSucceeded : True
         <div class="ad-card" style="margin-top: 3rem; border: 1px solid #d8b4fe; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='rgba(216, 180, 254, 0.05)'" onmouseout="this.style.background='transparent'">
             <div class="ad-card-header" style="background: rgba(216, 180, 254, 0.1); border-bottom: 1px solid #d8b4fe;">
                 <span class="ad-card-title">:: MISSION UPDATE AVAILABLE</span>
-                <span class="ad-badge" style="background: #d8b4fe; color: black;">NEXT STAGE UNLOCKED</span>
+                <span class="ad-badge" style="background: #d8b4fe; color: black;">NEXT STAGE UNLOCKED!</span>
             </div>
             <div style="padding: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
                 <div>
