@@ -68,7 +68,7 @@ tags: [ansible, automation, iac, linux, devsecops, red teaming, sliver, golang, 
   
   <p>This project demonstrates that in Red Teaming, automation is about more than just speed—it is about <strong>resilience and security</strong>. By combining DevOps principles with offensive security knowledge, I created a C2 infrastructure that is unique, hardened, and ready for operation at the push of a button.</p>
 
-<p><strong>Next Steps:</strong> The project roadmap includes deploying Nginx redirectors behind Cloudflare to further obscure the network infrastructure. Additionally, I will focus on modifying Sliver's C2 profiles at the code level. This results in a significantly more resilient and obfuscated infrastructure compared to standard "out-of-the-box" deployments. Stay tuned!</p>
+<p><strong>Next Steps:</strong> The project roadmap includes deploying Nginx redirectors behind Cloudflare to further obscure the network infrastructure. Additionally, I will focus on modifying Sliver's C2 profiles at the code level. This results in a significantly more resilient and obfuscated infrastructure compared to standard "out-of-the-box" deployments. Stay tuned for part 2!</p>
 
 </div>
 
