@@ -53,19 +53,25 @@ credits_total: 240
 <ul class="timeline">
 
   <li class="timeline-item">
-    <div class="timeline-date">2026 · Planned</div>
-    <div class="timeline-title">Evilginx: Reverse-Proxy Phishing</div>
-    <p class="timeline-desc">
-      Researching and building a controlled lab to understand and demonstrate session hijacking and Multi-Factor Authentication (MFA) bypass mechanisms via reverse-proxy phishing attacks.
-    </p>
-    <div class="timeline-metadata">
-      <span class="timeline-keyword">Focus:</span> Web Security, Credential Harvesting, Session Management. <br>
-      <span class="timeline-keyword">Tools:</span> Evilginx.
+    <div class="timeline-date">2026 · In Progress</div>
+    
+    <div class="timeline-title">
+      <a href="/redteam-infra-automation/">Automated Phishing Infra & MFA Research</a>
     </div>
-  </li>
+    
+    <p class="timeline-desc">
+      Implemented a fully automated deployment pipeline using Ansible to provision resilient Red Team infrastructure. 
+      Currently utilizing this environment to research MFA bypass mechanisms and session hijacking.
+    </p>
+    
+    <div class="timeline-metadata">
+      <span class="timeline-keyword">Focus:</span> Infrastructure as Code (IaC), MFA Bypass, OpSec. <br>
+      <span class="timeline-keyword">Tools:</span> Evilginx, Ansible, Linux.
+    </div>
+</li>
 
   <li class="timeline-item">
-    <div class="timeline-date" style="color: #a1a1aa;">2026 · Planned (Spring)</div>
+    <div class="timeline-date" style="color: #a1a1aa;">2026 · Spring</div>
     <div class="timeline-title">
         <span>Enterprise Sim: Game of Active Directory (GOAD)</span>
     </div>

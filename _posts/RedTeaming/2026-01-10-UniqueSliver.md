@@ -6,7 +6,7 @@ icon: fas fa-terminal
 order: 1
 date: 2026-01-10 11:00:00 +0300
 categories: [Red Teaming, Infrastructure]
-tags: [ansible, automation, iac, linux, devsecops, redteam, sliver, golang, opsec]
+tags: [ansible, automation, iac, linux, devsecops, red teaming, sliver, golang, opsec]
 ---
 
 <link rel="stylesheet" href="{{ '/assets/css/mythic.css' | relative_url }}">
@@ -68,7 +68,7 @@ tags: [ansible, automation, iac, linux, devsecops, redteam, sliver, golang, opse
   
   <p>This project demonstrates that in Red Teaming, automation is about more than just speed—it is about <strong>resilience and security</strong>. By combining DevOps principles with offensive security knowledge, I created a C2 infrastructure that is unique, hardened, and ready for operation at the push of a button.</p>
 
-  <p><strong>Next Steps:</strong> The project roadmap includes deploying Nginx redirectors behind Cloudflare to further obscure the network infrastructure.</p>
+<p><strong>Next Steps:</strong> The project roadmap includes deploying Nginx redirectors behind Cloudflare to further obscure the network infrastructure. Additionally, I will focus on modifying Sliver's C2 profiles at the code level. This results in a significantly more resilient and obfuscated infrastructure compared to standard "out-of-the-box" deployments. Stay tuned!</p>
 
 </div>
 
