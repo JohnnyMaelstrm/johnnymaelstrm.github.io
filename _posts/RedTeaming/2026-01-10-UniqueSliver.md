@@ -51,7 +51,7 @@ tags: [ansible, automation, iac, linux, devsecops, red teaming, sliver, golang, 
 
   <p><strong>The Mechanism:</strong></p>
   <ul>
-    <li><strong>Source Code Mutation:</strong> Before building, the playbook uses <code>sed</code> to inject random strings into the source code, renaming critical files (e.g., <code>core_oohhukam.db</code> instead of <code>sliver.db</code>).</li>
+    <li><strong>Source Code Mutation:</strong> Before building, the playbook uses <code>sed</code> to inject random strings into the source code, renaming critical files (e.g., <code>core_integrity.db</code> instead of <code>sliver.db</code>).</li>
     <li><strong>Service Randomization:</strong> The Systemd service name is randomized (e.g., <code>sys-yotipt.service</code>), blending in with legitimate system processes.</li>
     <li><strong>Result:</strong> Every deployment results in a completely unique binary hash (SHA256), blinding static analysis tools.</li>
   </ul>
@@ -72,9 +72,9 @@ tags: [ansible, automation, iac, linux, devsecops, red teaming, sliver, golang, 
 
   <h2>Conclusion & Roadmap</h2>
   
-  <p>This project demonstrates that effective Red Teaming infrastructure requires a blend of offensive knowledge and defensive DevOps principles. The result is a C2 server that is not only functional but resilient against forensic analysis and safe from compromise.</p>
+  <p>This project demonstrates that effective Red Teaming infrastructure requires a blend of offensive knowledge and defensive DevOps principles. The result is a customized C2-server that is not only functional but resilient against forensic analysis and safe from compromise. Highly interesting stuff!</p>
 
-  <p><strong>Next Steps:</strong> The project roadmap includes deploying <strong>Nginx redirectors</strong> to sit in front of the C2, completely hiding the server's true IP address. I will also be working on advanced profile customization to further blend traffic into corporate background noise.</p>
+  <p><strong>Next Steps:</strong> The project roadmap includes deploying <strong>Serverless C2-redirector</strong> to sit in front of the C2, completely hiding the server's true IP address. I will also be working on advanced C2-profile customization to further blend traffic into corporate background noise.</p>
 
 </div>
 
