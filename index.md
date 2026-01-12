@@ -52,6 +52,24 @@ credits_total: 240
   <div class="section-header">Timeline</div>
 <ul class="timeline">
 
+<li class="timeline-item">
+    <div class="timeline-date">2026 · In Progress</div>
+    
+    <div class="timeline-title">
+      <a href="/Sliver/">Automated Sliver C2 & System Hardening (IaC)</a>
+    </div>
+    
+    <p class="timeline-desc">
+      Built a custom, automated C2 pipeline optimized for ARM64 cloud instances. 
+      Instead of using default builds, my Ansible playbook mutates the source code on the fly to evade static analysis (polymorphism) and enforces strict <strong>Systemd sandboxing</strong> to run the service without root privileges.
+    </p>
+    
+    <div class="timeline-metadata">
+      <span class="timeline-keyword">Focus:</span> Polymorphism, Traffic Masquerading, DevSecOps, Redirector. <br>
+      <span class="timeline-keyword">Tools:</span> Ansible, Sliver C2, Go, Systemd.
+    </div>
+</li>
+
   <li class="timeline-item">
     <div class="timeline-date">2026 · In Progress</div>
     

@@ -155,7 +155,7 @@
 .timeline-item:nth-child(6) { animation-delay: 1.1s; }
 .timeline-item:nth-child(7) { animation-delay: 1.3s; }
 .timeline-item:nth-child(8) { animation-delay: 1.5s; }
-
+.timeline-item:nth-child(9) { animation-delay: 1.7s; }
 .timeline-item:last-child {
   padding-bottom: 0;
 }
