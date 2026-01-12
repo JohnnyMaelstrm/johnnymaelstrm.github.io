@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Custom Sliver C2-Framework"
+title: "Custom Hardened Sliver C2-Framework"
 permalink: /Sliver/
 icon: fas fa-terminal
 order: 1
@@ -55,7 +55,7 @@ tags: [ansible, automation, iac, linux, devsecops, red teaming, sliver, golang, 
 
   <h3>2. Serverless Edge Redirectors (Cloudflare Workers)</h3>
   <p>To prevent direct exposure of the C2 server's IP address, I implemented a <strong>Serverless Redirector</strong> using Cloudflare Workers. This layer acts as an intelligent proxy and the primary line of defense.</p>
-  
+
   
 
   <ul>
@@ -74,35 +74,25 @@ tags: [ansible, automation, iac, linux, devsecops, red teaming, sliver, golang, 
   </ul>
 
   <h3>4. ARM64 Compilation & Traffic Masquerading</h3>
-  <p>The server is optimized for ARM64 architecture, utilizing architecture-specific build tools and <code>-tags "cgo_sqlite"</code> for database stability. The C2-server is further hardened with <strong>HTTP Masquerading</strong>, where the backend server headers are spoofed to return <code>Server: cloudflare</code>, ensuring perfect header symmetry with the redirector layer to evade automated proxy detection.</p>
+  <p>The server is optimized for ARM64 architecture, utilizing architecture-specific build tools and <code>-tags "cgo_sqlite"</code> for database stability. The C2-server is further hardened with <strong>HTTP Masquerading</strong>, where the backend server headers are spoofed to return <code>Server: cloudflare</code>, ensuring perfect header symmetry with the redirector layer.</p>
 
   <h2>Technical Validation (Proof of Hardening)</h2>
-  <p>To verify the efficacy of the hardening measures, I performed the following technical checks directly on the production binary and environment:</p>
-  <pre><code># Verify the absence of a symbol table (Stripped binary)
-$ nm sliver-server
-nm: sliver-server: no symbols
-
-# Verify that the binary does not leak build-machine paths (Trimmed paths)
-$ strings sliver-server | grep "/opt/Ghost-Sliver"
-# [Result: Empty - Metadata leak 0%]
-
-# Verify polymorphic database creation
-$ ls /opt/Ghost-Sliver/sliver/.sliver/*.db
-core_oohhukam.db</code></pre>
-
-  <h2>Conclusion</h2>
-  <p>This project demonstrates that effective Red Teaming infrastructure requires a blend of offensive security research and defensive DevOps principles. By combining <strong>Infrastructure as Code</strong>, <strong>Source Mutation</strong>, and <strong>Serverless Edge Computing</strong>, I created a C2 environment that is resilient against both network-based heuristics and host-based forensic analysis. This setup provides a scalable, stealthy, and highly disposable foundation for modern offensive operations.</p>
-
-<h2>Technical Validation (Proof of Hardening)</h2>
-  <p>To verify the efficacy of the hardening measures, I performed the following technical checks directly on the production binary and environment. The screenshot below confirms the absence of debug symbols and build path metadata, along with the presence of the customized profile.</p>
+  <p>To verify the efficacy of the hardening measures, I performed technical checks on the production binary. The following evidence confirms the absence of symbols, path metadata, and the successful deployment of the polymorphic database.</p>
 
   <p align="center">
     <img src="{{ '/assets/RedTeam/PoC.png' | relative_url }}" 
          alt="Terminal Verification of Binary Hardening" 
          style="max-width:100%; height:auto; border:1px solid rgba(255,255,255,0.1);" />
   </p>
-  <p align="center"><em>Figure 1: Terminal verification showing the absence of symbols (nm) and path leaks (strings), confirming binary hardening.</em></p>
+  <p align="center"><em>Figure 1: Terminal verification showing no symbols (nm), zero path leaks (strings), and custom DB artifacts.</em></p>
 
+  <pre><code># Manual verification commands:
+$ nm sliver-server | grep "sliver" # Expected: no symbols
+$ strings sliver-server | grep "/opt/" # Expected: empty
+$ ls /opt/Ghost-Sliver/sliver/.sliver/*.db # Expected: core_[random].db</code></pre>
+
+  <h2>Conclusion</h2>
+  <p>This project demonstrates that effective Red Teaming infrastructure requires a blend of offensive security research and defensive DevOps principles. By combining <strong>Infrastructure as Code</strong>, <strong>Source Mutation</strong>, and <strong>Serverless Edge Computing</strong>, I created a C2 environment that is resilient against both network-based heuristics and host-based forensic analysis. This setup provides a scalable, stealthy, and highly disposable foundation for modern offensive operations.</p>
 
 </div>
 
