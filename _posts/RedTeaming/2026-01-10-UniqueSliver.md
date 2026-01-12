@@ -4,9 +4,9 @@ title: "Custom Sliver C2-Framework"
 permalink: /Sliver/
 icon: fas fa-terminal
 order: 1
-date: 2026-01-11 11:00:00 +0300
+date: 2026-01-12 20:00:00 +0300
 categories: [Red Teaming, Infrastructure]
-tags: [ansible, automation, iac, linux, devsecops, red teaming, sliver, golang, opsec]
+tags: [ansible, automation, iac, linux, devsecops, red teaming, sliver, golang, opsec, cloudflare]
 ---
 
 <link rel="stylesheet" href="{{ '/assets/css/mythic.css' | relative_url }}">
@@ -19,62 +19,79 @@ tags: [ansible, automation, iac, linux, devsecops, red teaming, sliver, golang, 
          style="max-width:90%; height:auto; border:1px solid rgba(255,255,255,0.1);" />
   </p>
 
-  <p align="center"><em>Sliver C2-Framework terminal running on a hardened ARM64 VPS</em></p>
+  <p align="center"><em>Customized Sliver C2-Framework running on a hardened ARM64 VPS with Serverless Redirectors</em></p>
 
   <h1>Automated & Hardened C2 Infrastructure</h1>
 
   <p>In modern Red Teaming, infrastructure must be disposable, reproducible, and stealthy. For this project, I engineered a fully automated <strong>Infrastructure as Code (IaC)</strong> pipeline using <strong>Ansible</strong> to deploy a highly customized <a href="https://github.com/BishopFox/sliver" target="_blank">Sliver C2</a> server.</p>
 
-  <p>The goal was to move away from default binaries (which are easily flagged by EDRs) and build a custom-compiled infrastructure optimized for cost-effective <strong>ARM64</strong> cloud instances. This required solving complex dependency challenges between Go, CGO, and Systemd security policies.</p>
+  <p>The objective was to move away from default binaries and build a custom-compiled infrastructure optimized for cost-effective <strong>ARM64</strong> cloud instances, protected by serverless edge redirectors to mask the backend origin and evade detection.</p>
   
-  <p><strong>Status:</strong> Operational<br>
-  <strong>Tech Stack:</strong> Ansible, Go (1.23+), Linux (Debian), Sliver, Systemd Hardening</p>
+  <p><strong>Status:</strong> Operational / Fully Hardened<br>
+  <strong>Tech Stack:</strong> Ansible, Go (1.23+), Cloudflare Workers, Linux (Debian), Sliver, Systemd Sandboxing</p>
 
   <div class="highlight-box">
     <h3>Project Highlights</h3>
-    <p>Unlike a standard installation, this pipeline modifies the C2 source code <em>before</em> compilation and locks down the operating system.</p>
+    <p>This pipeline orchestrates source code mutation <em>before</em> compilation and implements multi-layer network obfuscation.</p>
     <ul>
-      <li><strong>Polymorphism:</strong> Unique binary hashes and random artifact names for every deployment.</li>
-      <li><strong>Architecture:</strong> ARM64 Native Compilation with CGO support.</li>
-      <li><strong>Hardening:</strong> Service runs with restricted Linux Capabilities and Systemd sandboxing.</li>
+      <li><strong>Polymorphism:</strong> Automated source-code injection for unique binary hashes and randomized database artifacts.</li>
+      <li><strong>Stealth:</strong> Serverless Edge Redirectors (Cloudflare Workers) for origin IP masking and granular traffic filtering.</li>
+      <li><strong>Hardening:</strong> Static analysis resistance via <code>-trimpath</code> and strict Systemd process sandboxing.</li>
     </ul>
   </div>
 
   <h2>Technical Deep Dive</h2>
 
   <h3>1. Polymorphic Infrastructure (Anti-Forensics)</h3>
-  <p>Standard C2 installations leave predictable artifacts like <code>sliver.db</code> or default service names on the disk. My Ansible playbook acts as a pre-compiler modification engine:</p>
+  <p>Standard C2 installations leave predictable artifacts like <code>sliver.db</code>. My Ansible playbook acts as a pre-compiler modification engine to break static signatures and forensic patterns:</p>
 
-  <p align="center">
-    <img src="{{ '/assets/RedTeam/grep.png' | relative_url }}" alt="Anti-Forensics Proof" style="max-width:90%; height:auto;" />
-  </p>
+  
 
-  <p><strong>The Mechanism:</strong></p>
   <ul>
-    <li><strong>Source Code Mutation:</strong> Before building, the playbook uses <code>sed</code> to inject random strings into the source code, renaming critical files (e.g., <code>core_integrity.db</code> instead of <code>sliver.db</code>).</li>
-    <li><strong>Service Randomization:</strong> The Systemd service name is randomized (e.g., <code>sys-yotipt.service</code>), blending in with legitimate system processes.</li>
-    <li><strong>Result:</strong> Every deployment results in a completely unique binary hash (SHA256), blinding static analysis tools.</li>
+    <li><strong>Source Code Mutation:</strong> The playbook uses <code>sed</code> to inject random strings into the Go source code, renaming the core database (e.g., <code>core_oohhukam.db</code>) and internal structures.</li>
+    <li><strong>Service Randomization:</strong> The Systemd service is deployed with randomized names (e.g., <code>sys-yotipt.service</code>), blending into standard background system processes.</li>
+    <li><strong>Binary Stripping:</strong> All binaries are compiled with <code>-ldflags="-s -w"</code> and <code>-trimpath</code>, removing debug symbols and build-machine path metadata that could leak developer environment details.</li>
   </ul>
 
-  <h3>2. Operational Hardening via Systemd</h3>
-  <p>Security is not just about the implant; it's about the server itself. Instead of running the C2 as root, I implemented a strict <strong>Systemd Sandbox</strong> configuration.</p>
+  <h3>2. Serverless Edge Redirectors (Cloudflare Workers)</h3>
+  <p>To prevent direct exposure of the C2 server's IP address, I implemented a <strong>Serverless Redirector</strong> using Cloudflare Workers. This layer acts as an intelligent proxy and the primary line of defense.</p>
   
-  <p>The service runs under a low-privileged user (<code>sliver-svc</code>) with minimal capabilities:</p>
+  
+
   <ul>
-    <li><code>NoNewPrivileges=true</code>: Prevents privilege escalation.</li>
-    <li><code>PrivateTmp=true</code>: Isolates the process temp files.</li>
-    <li><code>CapabilityBoundingSet=CAP_NET_BIND_SERVICE</code>: Allows binding to port 80/443 without granting full root access.</li>
+    <li><strong>Traffic Blending:</strong> The redirector is configured to allow only specific paths (e.g., <code>/js/jquery.min.js</code>), mimicking a legitimate JavaScript CDN.</li>
+    <li><strong>Request Filtering:</strong> Any unauthorized access or scanning attempts are met with a <code>403 Forbidden</code> or a <code>302 Redirect</code> to a decoy site, preventing backend fingerprinting.</li>
+    <li><strong>Origin Masking:</strong> The implant only communicates with the edge domain, making it virtually impossible for blue teams to identify the backend VPS IP without edge-level logs.</li>
   </ul>
-  <p><em>Challenge solved:</em> Debugging the interaction between Go's runtime and Systemd's <code>ProtectHome</code> policies required precise configuration of environment variables and read/write paths to ensure the database could initialize within the sandbox.</p>
 
-  <h3>3. ARM64 Compilation & Traffic Masquerading</h3>
-  <p>To optimize for cloud costs, the server runs on ARM64. The pipeline handles the installation of architecture-specific build tools (GCC for ARM) and compiles the binary with <code>-tags "cgo_sqlite"</code> to ensure database stability. Additionally, the server is pre-configured with <strong>HTTP C2 profiles</strong> that mimic legitimate jQuery CDN traffic (headers, structure) to evade network heuristics.</p>
-
-  <h2>Conclusion & Roadmap</h2>
+  <h3>3. Operational Hardening via Systemd</h3>
+  <p>The C2 server runs in a highly restricted <strong>Systemd Sandbox</strong>. Instead of root privileges, the process is managed by a low-privileged user (<code>sliver-svc</code>) with zero interactive login capability.</p>
   
-  <p>This project demonstrates that effective Red Teaming infrastructure requires a blend of offensive knowledge and defensive DevOps principles. The result is a customized C2-server that is not only functional but resilient against forensic analysis and safe from compromise. Highly interesting stuff!</p>
+  <ul>
+    <li><code>NoNewPrivileges=true</code>: Enforces that the process and its children can never gain new privileges via suid bits.</li>
+    <li><code>PrivateTmp=true</code>: Provides an isolated, non-persistent <code>/tmp</code> namespace.</li>
+    <li><code>ProtectHome=true</code>: Ensures the service cannot access any user home directories, limiting the impact of a potential process compromise.</li>
+  </ul>
 
-  <p><strong>Next Steps:</strong> The project roadmap includes deploying <strong>Serverless C2-redirector</strong> to sit in front of the C2, completely hiding the server's true IP address. I will also be working on advanced C2-profile customization to further blend traffic into corporate background noise.</p>
+  <h3>4. ARM64 Compilation & Traffic Masquerading</h3>
+  <p>The server is optimized for ARM64 architecture, utilizing architecture-specific build tools and <code>-tags "cgo_sqlite"</code> for database stability. The C2-server is further hardened with <strong>HTTP Masquerading</strong>, where the backend server headers are spoofed to return <code>Server: cloudflare</code>, ensuring perfect header symmetry with the redirector layer to evade automated proxy detection.</p>
+
+  <h2>Technical Validation (Proof of Hardening)</h2>
+  <p>To verify the efficacy of the hardening measures, I performed the following technical checks directly on the production binary and environment:</p>
+  <pre><code># Verify the absence of a symbol table (Stripped binary)
+$ nm sliver-server
+nm: sliver-server: no symbols
+
+# Verify that the binary does not leak build-machine paths (Trimmed paths)
+$ strings sliver-server | grep "/opt/Ghost-Sliver"
+# [Result: Empty - Metadata leak 0%]
+
+# Verify polymorphic database creation
+$ ls /opt/Ghost-Sliver/sliver/.sliver/*.db
+core_oohhukam.db</code></pre>
+
+  <h2>Conclusion</h2>
+  <p>This project demonstrates that effective Red Teaming infrastructure requires a blend of offensive security research and defensive DevOps principles. By combining <strong>Infrastructure as Code</strong>, <strong>Source Mutation</strong>, and <strong>Serverless Edge Computing</strong>, I created a C2 environment that is resilient against both network-based heuristics and host-based forensic analysis. This setup provides a scalable, stealthy, and highly disposable foundation for modern offensive operations.</p>
 
 </div>
 
@@ -90,86 +107,23 @@ tags: [ansible, automation, iac, linux, devsecops, red teaming, sliver, golang, 
   padding: 0;
 }
 
-/* --- Paragraphs & Lists --- */
-.hacker-page p {
-  margin: 1rem 0;
-}
+.hacker-page p { margin: 1rem 0; }
+.hacker-page ul { list-style-type: square; margin-left: 1.5rem; margin-bottom: 1.5rem; }
+.hacker-page li { margin-bottom: 0.5rem; color: #d4d4d8; }
+.hacker-page a { color: #e4e4e7; text-decoration: underline; }
+.hacker-page a:hover { color: #bb1f1fff; }
 
-.hacker-page ul {
-  list-style-type: square;
-  margin-left: 1.5rem;
-  margin-bottom: 1.5rem;
-}
+.hacker-page h1 { font-size: 2rem; font-weight: 700; margin: 1.5rem 0 1rem; color: #bb1f1fff; }
+.hacker-page h2 { font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: #e4e4e7; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.5rem; }
+.hacker-page h3 { font-size: 1.2rem; font-weight: 600; margin: 1.5rem 0 0.8rem; color: #e4e4e7; }
 
-.hacker-page li {
-  margin-bottom: 0.5rem;
-  color: #d4d4d8;
-}
+.hacker-page pre { background: rgba(0,0,0,0.3); padding: 1rem; border-left: 3px solid #bb1f1fff; overflow-x: auto; margin: 1.5rem 0; }
+.hacker-page code { font-size: 0.9em; color: #ff5252; }
 
-.hacker-page a {
-  color: #e4e4e7;
-  text-decoration: underline;
-}
+.hacker-page .highlight-box { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); padding: 1.5rem; border-radius: 6px; margin: 2rem 0; }
 
-.hacker-page a:hover {
-  color: #bb1f1fff;
-}
-
-/* --- Headings --- */
-.hacker-page h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 1.5rem 0 1rem;
-  color: #bb1f1fff; /* Red accent matching your Thesis page */
-}
-
-.hacker-page h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 2rem 0 1rem;
-  color: #e4e4e7;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 0.5rem;
-}
-
-.hacker-page h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 1.5rem 0 0.8rem;
-  color: #e4e4e7;
-}
-
-/* --- Images --- */
-.hacker-page img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 1rem auto;
-  border-radius: 4px;
-}
-
-/* --- Highlight box --- */
-.hacker-page .highlight-box {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 1.5rem;
-  border-radius: 6px;
-  margin: 2rem 0;
-}
-
-/* --- Code snippets inline --- */
-.hacker-page code {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2px 5px;
-    border-radius: 3px;
-    font-size: 0.9em;
-    color: #ff5252;
-}
-
-/* --- Responsive --- */
 @media (max-width: 600px) {
   .hacker-page h1 { font-size: 1.5rem; }
   .hacker-page h2 { font-size: 1.2rem; }
-  .hacker-page h3 { font-size: 1rem; }
 }
 </style>
