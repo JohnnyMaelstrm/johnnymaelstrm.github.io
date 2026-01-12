@@ -45,8 +45,6 @@ tags: [ansible, automation, iac, linux, devsecops, red teaming, sliver, golang, 
   <h3>1. Polymorphic Infrastructure (Anti-Forensics)</h3>
   <p>Standard C2 installations leave predictable artifacts like <code>sliver.db</code>. My Ansible playbook acts as a pre-compiler modification engine to break static signatures and forensic patterns:</p>
 
-  
-
   <ul>
     <li><strong>Source Code Mutation:</strong> The playbook uses <code>sed</code> to inject random strings into the Go source code, renaming the core database (e.g., <code>core_oohhukam.db</code>) and internal structures.</li>
     <li><strong>Service Randomization:</strong> The Systemd service is deployed with randomized names (e.g., <code>sys-yotipt.service</code>), blending into standard background system processes.</li>
@@ -55,8 +53,6 @@ tags: [ansible, automation, iac, linux, devsecops, red teaming, sliver, golang, 
 
   <h3>2. Serverless Edge Redirectors (Cloudflare Workers)</h3>
   <p>To prevent direct exposure of the C2 server's IP address, I implemented a <strong>Serverless Redirector</strong> using Cloudflare Workers. This layer acts as an intelligent proxy and the primary line of defense.</p>
-  
-  
 
   <ul>
     <li><strong>Traffic Blending:</strong> The redirector is configured to allow only specific paths (e.g., <code>/js/jquery.min.js</code>), mimicking a legitimate JavaScript CDN.</li>
@@ -74,35 +70,65 @@ tags: [ansible, automation, iac, linux, devsecops, red teaming, sliver, golang, 
   </ul>
 
   <h3>4. ARM64 Compilation & Traffic Masquerading</h3>
-  <p>The server is optimized for ARM64 architecture, utilizing architecture-specific build tools and <code>-tags "cgo_sqlite"</code> for database stability. The C2-server is further hardened with <strong>HTTP Masquerading</strong>, where the backend server headers are spoofed to return <code>Server: cloudflare</code>, ensuring perfect header symmetry with the redirector layer to evade automated proxy detection.</p>
+  <p>The server is optimized for ARM64 architecture, utilizing architecture-specific build tools and <code>-tags "cgo_sqlite"</code> for database stability. The C2-server is further hardened with <strong>HTTP Masquerading</strong>, where the backend server headers are spoofed to return <code>Server: cloudflare</code>, ensuring perfect header symmetry with the redirector layer.</p>
+
+  <h2>MITRE ATT&CK® Mapping</h2>
+  <div class="highlight-box" style="padding: 0; overflow: hidden; border-color: rgba(255, 82, 82, 0.3);">
+    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85em;">
+      <thead style="background: rgba(255, 82, 82, 0.1);">
+        <tr>
+          <th style="padding: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">Tactic</th>
+          <th style="padding: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">Technique ID</th>
+          <th style="padding: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">Implementation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">Resource Development</td>
+          <td style="padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">T1583.003</td>
+          <td style="padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">Automated VPS provisioning & configuration via Ansible.</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">Defense Evasion</td>
+          <td style="padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">T1027.002</td>
+          <td style="padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">Binary stripping and -trimpath to remove build metadata.</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">Defense Evasion</td>
+          <td style="padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">T1564.001</td>
+          <td style="padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">Renaming of critical DB and service artifacts (Polymorphism).</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">Command and Control</td>
+          <td style="padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">T1071.001</td>
+          <td style="padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">Application Layer Masquerading via jQuery CDN traffic.</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px;">Command and Control</td>
+          <td style="padding: 10px;">T1090.002</td>
+          <td style="padding: 10px;">External Proxying through Serverless Edge Redirectors.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <h2>Technical Validation (Proof of Hardening)</h2>
-  <p>To verify the efficacy of the hardening measures, I performed the following technical checks directly on the production binary and environment:</p>
-  <pre><code># Verify the absence of a symbol table (Stripped binary)
-$ nm sliver-server
-nm: sliver-server: no symbols
-
-# Verify that the binary does not leak build-machine paths (Trimmed paths)
-$ strings sliver-server | grep "/opt/Ghost-Sliver"
-# [Result: Empty - Metadata leak 0%]
-
-# Verify polymorphic database creation
-$ ls /opt/Ghost-Sliver/sliver/.sliver/*.db
-core_oohhukam.db</code></pre>
-
-  <h2>Conclusion</h2>
-  <p>This project demonstrates that effective Red Teaming infrastructure requires a blend of offensive security research and defensive DevOps principles. By combining <strong>Infrastructure as Code</strong>, <strong>Source Mutation</strong>, and <strong>Serverless Edge Computing</strong>, I created a C2 environment that is resilient against both network-based heuristics and host-based forensic analysis. This setup provides a scalable, stealthy, and highly disposable foundation for modern offensive operations.</p>
-
-<h2>Technical Validation (Proof of Hardening)</h2>
-  <p>To verify the efficacy of the hardening measures, I performed the following technical checks directly on the production binary and environment. The screenshot below confirms the absence of debug symbols and build path metadata, along with the presence of the customized profile.</p>
+  <p>To verify the efficacy of the hardening measures, I performed technical checks on the production binary. The following evidence confirms the absence of symbols, path metadata, and the successful deployment of the polymorphic database.</p>
 
   <p align="center">
     <img src="{{ '/assets/RedTeam/PoC.png' | relative_url }}" 
          alt="Terminal Verification of Binary Hardening" 
          style="max-width:100%; height:auto; border:1px solid rgba(255,255,255,0.1);" />
   </p>
-  <p align="center"><em>Figure 1: Terminal verification showing the absence of symbols (nm) and path leaks (strings), confirming binary hardening.</em></p>
+  <p align="center"><em>Figure 1: Terminal verification showing no symbols (nm), zero path leaks (strings), and custom DB artifacts.</em></p>
 
+  <pre><code># Manual verification commands:
+$ nm sliver-server | grep "sliver" # Expected: no symbols
+$ strings sliver-server | grep "/opt/" # Expected: empty
+$ ls /opt/Ghost-Sliver/sliver/.sliver/*.db # Expected: core_[random].db</code></pre>
+
+  <h2>Conclusion</h2>
+  <p>This project demonstrates that effective Red Teaming infrastructure requires a blend of offensive security research and defensive DevOps principles. By combining <strong>Infrastructure as Code</strong>, <strong>Source Mutation</strong>, and <strong>Serverless Edge Computing</strong>, I created a C2 environment that is resilient against both network-based heuristics and host-based forensic analysis. This setup provides a scalable, stealthy, and highly disposable foundation for modern offensive operations.</p>
 
 </div>
 
