@@ -19,7 +19,7 @@ tags: [ansible, automation, iac, linux, devsecops, red teaming, sliver, golang, 
          style="max-width:90%; height:auto; border:1px solid rgba(255,255,255,0.1);" />
   </p>
 
-  <p align="center"><em>Customized Sliver C2-Framework running on a hardened ARM64 VPS with Serverless Redirectors</em></p>
+  <p align="center"><em>Customized Sliver C2-Framework running on a hardened VPS with Serverless Redirector</em></p>
 
   <h1>Automated & Hardened C2 Infrastructure</h1>
 
@@ -92,6 +92,17 @@ core_oohhukam.db</code></pre>
 
   <h2>Conclusion</h2>
   <p>This project demonstrates that effective Red Teaming infrastructure requires a blend of offensive security research and defensive DevOps principles. By combining <strong>Infrastructure as Code</strong>, <strong>Source Mutation</strong>, and <strong>Serverless Edge Computing</strong>, I created a C2 environment that is resilient against both network-based heuristics and host-based forensic analysis. This setup provides a scalable, stealthy, and highly disposable foundation for modern offensive operations.</p>
+
+<h2>Technical Validation (Proof of Hardening)</h2>
+  <p>To verify the efficacy of the hardening measures, I performed the following technical checks directly on the production binary and environment. The screenshot below confirms the absence of debug symbols and build path metadata, along with the presence of the customized profile.</p>
+
+  <p align="center">
+    <img src="{{ '/assets/RedTeam/PoC.png' | relative_url }}" 
+         alt="Terminal Verification of Binary Hardening" 
+         style="max-width:100%; height:auto; border:1px solid rgba(255,255,255,0.1);" />
+  </p>
+  <p align="center"><em>Figure 1: Terminal verification showing the absence of symbols (nm) and path leaks (strings), confirming binary hardening.</em></p>
+
 
 </div>
 
