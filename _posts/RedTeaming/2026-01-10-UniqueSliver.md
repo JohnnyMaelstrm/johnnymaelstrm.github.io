@@ -128,7 +128,13 @@ $ strings sliver-server | grep "/opt/" # Expected: empty
 $ ls /opt/Ghost-Sliver/sliver/.sliver/*.db # Expected: core_[random].db</code></pre>
 
   <h2>Conclusion</h2>
-  <p>This project demonstrates that effective Red Teaming infrastructure requires a blend of offensive security research and defensive DevOps principles. By combining <strong>Infrastructure as Code</strong>, <strong>Source Mutation</strong>, and <strong>Serverless Edge Computing</strong>, I created a C2 environment that is resilient against both network-based heuristics and host-based forensic analysis. This setup provides a scalable, stealthy, and highly disposable foundation for modern offensive operations.</p>
+  <p>This project demonstrates that effective Red Teaming infrastructure requires a blend of offensive security research and defensive DevOps principles. By combining <strong>Infrastructure as Code</strong>, <strong>Source Mutation</strong>, and <strong>Serverless Edge Computing</strong>, I created a C2 environment that is resilient against both network-based heuristics and host-based forensic analysis.</p>
+
+  <div class="highlight-box" style="border-left: 3px solid #bb1f1fff;">
+    <h3> Continue to Part II</h3>
+    <p>The infrastructure is built, but now it needs a gatekeeper. In the next part, I deploy a Smart Serverless Redirector to make the backend completely invisible.</p>
+    <p><a href="/Redirector/"><strong>Read Part II: The Serverless C2 Redirector &rarr;</strong></a></p>
+  </div>
 
 </div>
 
