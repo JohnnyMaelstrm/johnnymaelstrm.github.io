@@ -61,12 +61,12 @@ credits_total: 240
     
     <p class="timeline-desc">
       Built a custom, automated C2 pipeline optimized for ARM64 cloud instances. 
-      Instead of using default builds, my Ansible playbook mutates the source code on the fly to evade static analysis (polymorphism) and enforces strict <strong>Systemd sandboxing</strong> to run the service without root privileges. This is a currently VERSION 2!
+      Instead of using default builds, my Ansible playbook mutates the source code on the fly to evade static analysis (polymorphism) and enforces strict <strong>Systemd sandboxing</strong> to run the service without root privileges. This is a currently VERSION 2! The V3 is going to use Terraform and Ligolo-ng, instead of Cloudflare Workers.
     </p>
     
     <div class="timeline-metadata">
       <span class="timeline-keyword">Focus:</span> Polymorphism, Traffic Masquerading, DevSecOps, Redirector. <br>
-      <span class="timeline-keyword">Tools:</span> Ansible, Sliver C2, Go, Systemd.
+      <span class="timeline-keyword">Tools:</span> Terraform, Ansible, Ligolo-ng, Sliver C2, Cloudflare Workers, Go, Systemd.
     </div>
 </li>
 
