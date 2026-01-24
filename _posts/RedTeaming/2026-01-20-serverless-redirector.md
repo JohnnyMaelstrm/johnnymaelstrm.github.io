@@ -108,8 +108,8 @@ if (!ALLOWED_PATHS.includes(url.pathname)) {
   <h2>Conclusion</h2>
   <p>By moving the redirection logic to the network edge, I have effectively decoupled the C2 infrastructure from its public footprint. The backend IP remains hidden, and the traffic profile blends seamlessly with normal web browsing activity. This architecture forces defenders to analyze headers and payload content rather than relying on simple IP or domain reputation blocklists.</p>
 <div class="highlight-box" style="border-left: 3px solid #bb1f1fff;">
-    <h3> Continue to Part III</h3>
-    <p> In the rapidly shifting landscape of cybersecurity, continuous adaptation is key. I am currently engineering Version 3 of this whole infrastructure, transitioning to Terraform for advanced orchestration and implementing Ligolo-ng(Layer 3) to replace the previous serverless redirector layer(Layer 7)</p>
+    <h3> Working on the Part III</h3>
+    <p> In the rapidly shifting landscape of cybersecurity, continuous adaptation is key. I am currently engineering Version 3 of this whole infrastructure, transitioning to Terraform for advanced orchestration and implementing Ligolo-ng(Layer 3) to replace the previous serverless redirector layer(Layer 7). Stay tuned!</p>
     
   </div>
 </div>
