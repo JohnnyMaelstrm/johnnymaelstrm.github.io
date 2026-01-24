@@ -25,7 +25,7 @@ tags: [ansible, automation, iac, linux, devsecops, red teaming, sliver, golang, 
 
   <p>In modern Red Teaming, infrastructure must be disposable, reproducible, and stealthy. For this project, I engineered a fully automated <strong>Infrastructure as Code (IaC)</strong> pipeline using <strong>Ansible</strong> to deploy a highly customized <a href="https://github.com/BishopFox/sliver" target="_blank">Sliver C2</a> server.</p>
 
-  <p>The objective was to move away from default binaries and build a custom-compiled infrastructure optimized for cost-effective <strong>ARM64</strong> cloud instances, protected by serverless edge redirectors to mask the backend origin and evade detection.</p>
+  <p>The objective was to move away from default binaries and build a custom-compiled infrastructure optimized for cost-effective <strong>ARM64</strong> cloud instances, protected by serverless edge redirectors to mask the backend origin and evade detection. This is a VERSION 2 of my project and the V3 will move towards Terraform and the Cloudflare worker will be replaced by tool called Ligolo-ng.</p>
   
   <p><strong>Status:</strong> Operational / Fully Hardened<br>
   <strong>Tech Stack:</strong> Ansible, Go (1.23+), Cloudflare Workers, Linux (Debian), Sliver, Systemd Sandboxing</p>
