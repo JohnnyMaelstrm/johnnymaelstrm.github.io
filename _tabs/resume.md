@@ -78,7 +78,9 @@ order: 5
 
 /* DOWNLOAD BUTTON */
 .download-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   margin-top: 1.5rem;
   padding: 0.8rem 2rem;
   border: 1px solid var(--date-color);
@@ -240,7 +242,7 @@ order: 5
 <div class="page-header">
   <h1>Jaakko Oja</h1>
   <p class="summary">
-    Third-year ICT student specializing in Telecommunications, Networking and Cybersecurity. Red Teamer with a Purple Team mindset by combining offensive knowledge with defensive monitoring. Currently building home-lab environments to simulate enterprise attacks.
+    Motivated 3rd-year ICT student with a strong Purple Team mindset, specializing in <strong>Infrastructure as Code (IaC)</strong>, <strong>Red Team Automation</strong>, and <strong>DevSecOps</strong>. Engineering hardened C2 infrastructures and automating deployments with Ansible & Terraform.
   </p>
   
   <div class="contact-bar">
@@ -252,30 +254,36 @@ order: 5
   </div>
 
   <a href="/assets/pdf/Jaakko_oja.pdf" class="download-btn" target="_blank">
-    <i class="fas fa-file-pdf"></i> Download Resume (PDF)
+    <i class="fas fa-file-pdf"></i> Download Full Resume (PDF)
   </a>
   
 </div>
 
-<div class="section-header">Technical Projects & Labs</div>
+<div class="section-header">Featured Technical Projects</div>
 <div class="card-grid">
     <div class="entry-card">
-        <span class="title">Active Directory Penetration Testing (OSCP Focus)</span>
-        <span class="institution">Independent Training Lab</span>
-        <span class="dates">2025</span>
-        <p class="description">Building and exploiting a controlled environment aligned with <strong>Offensive Security (OSCP)</strong> standards. Focusing on <strong>manual exploitation techniques</strong>, lateral movement, and privilege escalation to master the core methodology required for certification.</p>
+        <span class="title">Automated Red Team Infra (IaC)</span>
+        <span class="institution">Ansible, Sliver C2 & Terraform</span>
+        <span class="dates">2026</span>
+        <p class="description">Engineered a fully automated pipeline to provision hardened <strong>Sliver C2</strong> servers. Implemented <strong>polymorphic compilation</strong> to evade static analysis and strict Systemd sandboxing for process isolation.</p>
     </div>
     <div class="entry-card">
-        <span class="title">SIEM & Threat Detection (Wazuh)</span>
-        <span class="institution">Blue Team Operations</span>
-        <span class="dates">2025</span>
-        <p class="description">Implementing <strong>Wazuh and Suricata</strong> to monitor network traffic and system logs.</p>
+        <span class="title">Smart Serverless Redirector</span>
+        <span class="institution">Cloudflare Workers & JavaScript</span>
+        <span class="dates">2026</span>
+        <p class="description">Developed an intelligent <strong>Edge Redirector</strong> to mask backend IPs. Filters traffic, redirects scanners to decoys, and masquerades C2 traffic as legitimate CDN requests.</p>
     </div>
     <div class="entry-card">
-        <span class="title">Thesis: C2 Frameworks (Mythic)</span>
+        <span class="title">Thesis: C2 Frameworks (Grade 5/5)</span>
         <span class="institution">Tampere University of Applied Sciences</span>
         <span class="dates">2025</span>
         <p class="description">Researched modern adversary tradecraft. Demonstrated <strong>fileless malware execution</strong> on Linux using <code>memfd_create</code> to bypass disk-based detection mechanisms.</p>
+    </div>
+    <div class="entry-card">
+        <span class="title">Active Directory Kill-Chain</span>
+        <span class="institution">Home Lab Environment</span>
+        <span class="dates">Ongoing</span>
+        <p class="description">Simulating full kill-chain attacks. Executed identity-based attacks including Kerberoasting, Golden Tickets, and AS-REP Roasting using <strong>NetExec, Impacket and BloodHound</strong>.</p>
     </div>
 </div>
 
@@ -285,16 +293,14 @@ order: 5
         <span class="title">Intern (SDR Project)</span>
         <span class="institution">Tampere University of Applied Sciences</span>
         <span class="dates">Summer 2025</span>
-        <p class="description">Led a technical research project on <strong>Software-Defined Radio</strong>. Configured Raspberry Pi hardware and utilized tools like SDR++ and SDRAngel to produce comprehensive technical documentation.</p>
+        <p class="description">Technical implementation of <strong>Software-Defined Radio</strong> analysis station using Raspberry Pi and CaribouLite. Authored comprehensive technical documentation integrated into curriculum.</p>
     </div>
     <div class="entry-card">
     <span class="title">Shift Supervisor & Field Manager</span>
     <span class="institution">Securitas Oy</span>
-    <span class="dates">2018 - 2023</span>
+    <span class="dates">2021 - 2023</span>
     <p class="description">
-        Directed security operations and <strong>incident response</strong> protocols. 
-        Acted as the primary point of contact for threat assessment, authored detailed incident reports for <strong>compliance</strong>, 
-        and led field teams through high-pressure crisis scenarios.
+        Led field teams in high-pressure situations. Acted as primary point of contact for critical security incidents, responsible for reporting and crisis de-escalation.
     </p>
 </div>
 </div>
@@ -305,68 +311,39 @@ order: 5
         <span class="degree">Bachelor of Engineering, ICT</span>
         <span class="institution">Tampere University of Applied Sciences</span>
         <span class="dates">2023 - 2027</span>
-        <p class="description">Focus: Computer Networks, Cybersecurity, Telecommunications. Thesis: Offensive Security & C2 Frameworks.</p>
-    </div>
-    <div class="entry-card">
-        <span class="degree">Further Vocational Qualification</span>
-        <span class="institution">Turun aikuiskoulutuskeskus</span>
-        <span class="dates">2018 - 2019</span>
-        <p class="description">Safety and Security Operations.</p>
+        <p class="description">Focus: Cybersecurity & Networks. Thesis Grade: 5/5.</p>
     </div>
 </div>
 
-<div class="section-header">Offensive | Defensive Security</div>
+<div class="section-header">Offensive Security & Automation</div>
 <div class="skill-grid">
-  <div class="skill-item highlight">Metasploit Framework</div>
-  <div class="skill-item highlight">C2 Operations (Mythic)</div>
-  <div class="skill-item">Burp Suite (Web App Testing)</div>
-  <div class="skill-item">Nmap & Reconnaissance</div>
-  <div class="skill-item">HackTheBox (CTF Practice)</div>
-  <div class="skill-item">AV/EDR Evasion Techniques</div>
+  <div class="skill-item highlight">Infrastructure as Code (IaC)</div>
+  <div class="skill-item highlight">Ansible & Terraform</div>
+  <div class="skill-item highlight">C2 Operations (Sliver/Mythic)</div>
+  <div class="skill-item">Active Directory Exploitation</div>
+  <div class="skill-item">Evilginx2 (Phishing Infra)</div>
+  <div class="skill-item">OPSEC & Traffic Masquerading</div>
   <div class="skill-item">Privilege Escalation (Win/Lin)</div>
-  <div class="skill-item">Netcat & Reverse Shells</div>
-  <div class="skill-item">Password Cracking & Hashes</div>
-  <div class="skill-item highlight">Wazuh, SecurityOnion, Suricata</div>
+  <div class="skill-item">BloodHound & NetExec</div>
 </div>
 
-<div class="section-header">Operating Systems & Infrastructure</div>
+<div class="section-header">Defensive Security & Networking</div>
 <div class="skill-grid">
-  <div class="skill-item highlight">Windows Administration</div>
-  <div class="skill-item highlight">Git & GitHub</div>
-  <div class="skill-item highlight">Linux Server Mgmt (Debian)</div>
-  <div class="skill-item">Virtualization (VMware/VBox)</div>
-  <div class="skill-item">Container Basics (Docker)</div>
-  <div class="skill-item">Azure Fundamentals</div>
-</div>
-
-<div class="section-header">Networking & Defense</div>
-<div class="skill-grid">
-  <div class="skill-item highlight">Routing & Switching (L2/L3)</div>
-  <div class="skill-item">Wireshark & Protocol Analysis</div>
-  <div class="skill-item">TCP/IP, DNS, DHCP, VLANs, VPN</div>
-  <div class="skill-item">Network Security & Troubleshoot</div>
+  <div class="skill-item highlight">Wazuh & Suricata (SIEM/IDS)</div>
+  <div class="skill-item highlight">Linux Hardening & Systemd</div>
+  <div class="skill-item">Cisco Routing & Switching</div>
+  <div class="skill-item">Cloudflare Workers (JS)</div>
+  <div class="skill-item">TCP/IP, VLANs, VPN, DNS</div>
   <div class="skill-item">Software-Defined Radio (SDR)</div>
-</div>
-
-<div class="section-header">Development & Scripting</div>
-<div class="skill-grid">
-  <div class="skill-item">C++ / C# Programming</div>
-  <div class="skill-item">PowerShell</div>
-  <div class="skill-item">Python (Security Scripting)</div>
-  <div class="skill-item">SQL & Database Queries</div>
-  <div class="skill-item">Bash/Linux Scripting</div>
-  <div class="skill-item">VS Code</div>
 </div>
 
 <div class="section-header">Certifications</div>
 <div class="cert-list">
-  <div class="cert-badge">CyberOps Associate</div>
-  <div class="cert-badge">Cisco Ethical Hacker</div>
-  <div class="cert-badge">CCNA: Switching, Routing & Wireless</div>
   <div class="cert-badge">CCNA: Enterprise Networking & Security</div>
+  <div class="cert-badge">Cisco CyberOps Associate</div>
+  <div class="cert-badge">Cisco Ethical Hacker</div>
+  <div class="cert-badge">Microsoft: Cybersecurity Architect</div>
   <div class="cert-badge">Microsoft: Azure Fundamentals</div>
-  <div class="cert-badge">Cybersecurity Architect</div>
-  <div class="cert-badge">Introduction to Cybersecurity</div>
 </div>
 
 <div class="section-header">Languages</div>
