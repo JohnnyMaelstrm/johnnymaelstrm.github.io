@@ -2,7 +2,7 @@
 layout: page
 title: Home
 permalink: /
-credits_done: 182
+credits_done: 187
 credits_total: 240
 ---
 <link rel="stylesheet" href="/assets/css/mainpage.css">
@@ -61,7 +61,7 @@ credits_total: 240
     
     <p class="timeline-desc">
       Built a custom, automated C2 pipeline optimized for ARM64 cloud instances. 
-      Instead of using default builds, my Ansible playbook mutates the source code on the fly to evade static analysis (polymorphism) and enforces strict <strong>Systemd sandboxing</strong> to run the service without root privileges.
+      Instead of using default builds, my Ansible playbook mutates the source code on the fly to evade static analysis (polymorphism) and enforces strict <strong>Systemd sandboxing</strong> to run the service without root privileges. This is a currently VERSION 2!
     </p>
     
     <div class="timeline-metadata">
