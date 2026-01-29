@@ -80,7 +80,20 @@ tags: [ansible, evilginx2, automation, iac, linux, devsecops, red teaming]
   <h2>Credits & Disclaimer</h2>
   <p>This project automates <strong>Evilginx2</strong>, developed by <a href="https://github.com/kgretzky" target="_blank">Kuba Gretzky</a>. It is a tool for authorized security testing and educational purposes only.</p>
 
-  <p><strong>Roadmap (Phase 2):</strong> Development of custom YAML phishlets for modern MFA providers. Stay tuned!</p>
+ <h2>Full Documentation</h2>
+<div class="highlight-box" style="text-align: center;">
+  <p>Want to dive deeper into the project? Below is the full report!</p>
+  <a href="{{ '/assets/RedTeam/Evilginx2.pdf' | relative_url }}" 
+     class="pdf-download-btn" 
+     target="_blank" 
+     style="display: inline-block; margin-top: 1rem;">
+    📄 Read the Complete Technical Report
+  </a>
+  <p style="margin-top: 1rem; font-size: 0.9rem; color: #a1a1aa;">
+    Includes: Infrastructure validation, MFA bypass attempts, and key learnings!
+  </p>
+</div>
+
 
 </div>
 
@@ -130,4 +143,32 @@ tags: [ansible, evilginx2, automation, iac, linux, devsecops, red teaming]
   text-decoration: underline;
 }
 .hacker-page a:hover { color: #bb1f1fff; }
+
+.hacker-page a {
+  color: #e4e4e7;
+  text-decoration: underline;
+}
+.hacker-page a:hover { color: #bb1f1fff; }
+
+/* LISÄÄ TÄMÄ */
+.pdf-download-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, #bb1f1fff 0%, #8b0000 100%);
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(187, 31, 31, 0.3);
+}
+
+.pdf-download-btn:hover {
+  background: linear-gradient(135deg, #d62828 0%, #bb1f1fff 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(187, 31, 31, 0.5);
+  color: #ffffff !important;
+}
 </style>
