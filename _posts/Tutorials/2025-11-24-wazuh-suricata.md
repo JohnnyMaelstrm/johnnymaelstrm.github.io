@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2024-12-15 08:27:00 +0200
+date: 2025-12-15 09:27:00 +0200
 title: "SIEM Environment: Wazuh & Suricata"
 permalink: /siem-wazuh-suricata/
 order: 1
