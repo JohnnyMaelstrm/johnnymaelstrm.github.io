@@ -89,7 +89,7 @@ credits_total: 240
 </li>
 
   <li class="timeline-item">
-    <div class="timeline-date" style="color: #a1a1aa;">2026 · In Progress</div>
+    <div class="timeline-date">2026 · In Progress</div>
     <div class="timeline-title">
         <span>Enterprise Sim: Game of Active Directory (GOAD)</span>
     </div>
@@ -98,7 +98,7 @@ credits_total: 240
     </p>
     <div class="timeline-metadata">
         <span class="timeline-keyword">Focus:</span> Multi-Forest Pivoting, Domain Trusts, Advanced Lateral Movement. <br>
-        <span class="timeline-keyword">Tools:</span> Impacket, BloodHound, NetExec.
+        <span class="timeline-keyword">Tools:</span> Nmap, Impacket, BloodHound, NetExec.
     </div>
 </li>
 
