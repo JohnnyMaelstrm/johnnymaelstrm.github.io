@@ -89,7 +89,7 @@ credits_total: 240
 </li>
 
   <li class="timeline-item">
-    <div class="timeline-date" style="color: #a1a1aa;">2026 · Spring</div>
+    <div class="timeline-date" style="color: #a1a1aa;">2026 · In Progress</div>
     <div class="timeline-title">
         <span>Enterprise Sim: Game of Active Directory (GOAD)</span>
     </div>
@@ -131,7 +131,7 @@ credits_total: 240
   </li>
 
   <li class="timeline-item">
-    <div class="timeline-date">2025 · Q4 </div>
+    <div class="timeline-date">2025 · Completed </div>
     <div class="timeline-title">
         <a href="/siem-wazuh-suricata/">SIEM Environment: Wazuh & Suricata</a>
     </div>
