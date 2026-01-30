@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2024-12-15 08:27:00 +0200
+date: 2025-12-15 08:27:00 +0200
 title: "SIEM Environment: Wazuh & Suricata"
 permalink: /siem-wazuh-suricata/
 order: 1
@@ -156,7 +156,7 @@ graph TD
 
   <div class="section-header">4. Red Team Ops: Brute Force</div>
   <p>
-    Using <strong>Kali Linux</strong>, I launched a dictionary attack against the Windows RDP port (3389) using <strong>Hydra</strong>.
+    Using <strong>Kali Linux</strong>, I launched a dictionary attack against the Windows RDP port (3389) using a tool called <strong>Hydra</strong>.
   </p>
 
   <div class="ad-card">
@@ -215,7 +215,7 @@ graph TD
 
   <div style="margin-top: 3rem; padding: 1rem; background: rgba(34, 197, 94, 0.05); border: 1px solid #22c55e; border-radius: 6px; text-align: center;">
     <h3 style="color: #22c55e; margin: 0;">🛡️ System Secured.</h3>
-    <p style="margin: 0.5rem 0 0; color: #a3a3a3;">Detection, Correlation, and Prevention verified.</p>
+    <p style="margin: 0.5rem 0 0; color: #a3a3a3;">Detection, Correlation, and Prevention verified!</p>
   </div>
 
 </div>
