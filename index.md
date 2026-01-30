@@ -2,7 +2,7 @@
 layout: page
 title: Home
 permalink: /
-credits_done: 188
+credits_done: 193
 credits_total: 240
 ---
 <link rel="stylesheet" href="/assets/css/mainpage.css">
@@ -71,7 +71,7 @@ credits_total: 240
 </li>
 
   <li class="timeline-item">
-    <div class="timeline-date">2026 · Finished</div>
+    <div class="timeline-date">2026 · Completed</div>
     
     <div class="timeline-title">
       <a href="/redteam-infra-automation/">Automated Phishing Infra & MFA Research</a>
