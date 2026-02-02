@@ -1,7 +1,7 @@
 ---
 icon: fas fa-info-circle
 order: 4
-credits_done: 182  
+credits_done: 193  
 credits_total: 240 
 ---
 <link rel="stylesheet" href="{{ '/assets/css/about.css' | relative_url }}">
@@ -54,7 +54,10 @@ credits_total: 240
 </p>
 
 <p>
-    I have a deep commitment to <strong>specimen fishing</strong>, specializing in carp angling. As one of the few dedicated carp anglers in Finland, I hold a <span style="color: var(--accent);">personal record for a fish weighing over 17kg</span>. This dedication extends to an international scale, as I plan to attend the <strong>Carp Den Bosch 2026 expo</strong> in the Netherlands this coming January. It is the world's largest carp fishing event, gathering enthusiasts from around the globe.
+    I have a deep commitment to <strong>specimen fishing</strong>, specializing in carp angling. As one of the few dedicated carp anglers in Finland, I hold a <span style="color: var(--accent);">personal record for a fish weighing over 17kg</span>. This dedication extends to an international scale, as I attented the <strong>Carp Den Bosch 2026 expo</strong> in the Netherlands this January. It is the world's largest carp fishing event, gathering enthusiasts from around the globe. 
+  </p>  
+  <p>
+    Leuk om jullie bekende gezichten weer te zien! Veel visgeluk voor het komende seizoen! 🎣
 </p>
 
 <p>
