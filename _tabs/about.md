@@ -13,7 +13,7 @@ credits_total: 240
     <div class="hero-text">
       <h1>Jaakko Oja</h1> <div class="status-line">
         <div class="status-dot"></div>
-        <span> Ready for Challenges </span>
+        <span> Hired! </span>
       </div>
 
       <div class="bio">
@@ -94,13 +94,14 @@ credits_total: 240
     
     <div>
         <span class="prompt">root@jaakko:~$</span>
-        <span class="cmd">./contact_me.sh --subject="Junior Security Role"</span>
+        <span class="cmd">./contact_me.sh --subject="Networking & Collaboration"</span>
     </div>
     <br>
     <div style="color: var(--text-dim);">
         > Initializing connection...<br>
-        > Status: <span style="color: var(--green-dim);">Seeking Junior/Associate Security Roles</span><br>
-        > Interest: Cybersecurity, C2 Frameworks, Internships<br>
+        > Status: <span style="color: var(--green-dim);">Offensive Security Analyst - Red Team @ Accenture Nordics</span><br>
+        > Interest: Offensive Cybersecurity, C2 Frameworks, Red Teaming<br>
+        > Next Hop: May 2026 Deployments...<br>
         > Contact: <a href="https://www.linkedin.com/in/jaakkooja/" style="color: var(--accent); text-decoration: underline;">LinkedIn Profile</a><span class="cursor"></span>
     </div>
 </div>

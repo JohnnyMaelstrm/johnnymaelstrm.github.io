@@ -13,13 +13,13 @@ credits_total: 240
     <img src="/assets/img/favicons/roundpic.png" alt="Jaakko Oja" class="profile-pic">
     <div class="hero-text">
       <h1>Jaakko Oja</h1>
-      <div class="tagline">Purple Team Mindset // Network Security Enthusiast</div>
+      <div class="tagline">Offensive Security Analyst | Red Teaming | Adversary Simulation</div>
       <p class="bio">Third-year IT engineering student at Tampere University of Applied Sciences specializing in telecommunications, computer networks, and cybersecurity.</p>
       <p class="bio bio-small">
-        Currently open for roles: Junior Cybersecurity Consultant · Red Team Operator · SOC Specialist · Junior Networking · Threat Hunter ·
+        Incoming: <strong>Offensive Security Analyst - Red Team</strong> @ <strong>Accenture Nordics - Cyber Attack Simulation</strong> (May 2026)
       </p>
     <div class="summary">
-  Call-to-Action? Sure thing! Contact me on 
+  Let's connect on 
   <a href="https://www.linkedin.com/in/jaakkooja/" target="_blank">LinkedIn</a> 
   or by email:
   <span id="emailBtn" class="email-copy-wrapper">
@@ -29,7 +29,7 @@ credits_total: 240
 </div>
       <div class="status-line">
         <span class="status-dot"></span>
-        <span> Available for opportunities · Tampere, Finland </span>
+        <span> Hired & Preparing for Red Team Operations · Tampere, Finland </span>
       </div>
     </div>
     
