@@ -13,7 +13,7 @@ credits_total: 240
     <img src="/assets/img/favicons/roundpic.png" alt="Jaakko Oja" class="profile-pic">
     <div class="hero-text">
       <h1>Jaakko Oja</h1>
-      <div class="tagline">Offensive Security Analyst | Red Teaming | Adversary Simulation</div>
+      <div class="tagline">Offensive Security Analyst - Red Team | Adversary Simulation</div>
       <p class="bio">Third-year IT engineering student at Tampere University of Applied Sciences specializing in telecommunications, computer networks, and cybersecurity.</p>
       <p class="bio bio-small">
         Incoming: <strong>Offensive Security Analyst - Red Team</strong> @ <strong>Accenture Nordics - Cyber Attack Simulation</strong> (May 2026)
