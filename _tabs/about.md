@@ -99,7 +99,7 @@ credits_total: 240
     <br>
     <div style="color: var(--text-dim);">
         > Initializing connection...<br>
-        > Status: <span style="color: var(--green-dim);">Offensive Security Analyst - Red Team @ Accenture Nordics</span><br>
+        > Status: <span style="color: var(--green-dim);">Offensive Security Analyst - Red Team @ Cyber Attack Simulation | Accenture Nordics</span><br>
         > Interest: Offensive Cybersecurity, C2 Frameworks, Red Teaming<br>
         > Next Hop: Cyber Attack Simulation Team @ Accenture Nordics...<br>
         > Contact: <a href="https://www.linkedin.com/in/jaakkooja/" style="color: var(--accent); text-decoration: underline;">LinkedIn Profile</a><span class="cursor"></span>
