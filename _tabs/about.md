@@ -25,16 +25,16 @@ credits_total: 240
           After several years managing operational security and handling crises in the field, I decided to shift my focus entirely to the digital side of protection. My background in high-pressure environments and strategic risk management gives me a unique perspective: cybersecurity isn't just about code; it's about <strong>processes, people, and resilience.</strong>
         </p>
 
-        <p>I am highly motivated by roles related to:</p>
-        <ul class="tech-focus-list">
-          <li>Purple Teaming</li>
-          <li>Ethical Hacking</li>
-          <li>SOC Operations</li>
-          <li>Network Engineering</li>
-        </ul>
+       <p>My professional focus and expertise lie in:</p>
+          <ul class="tech-focus-list">
+          <li>Red Teaming & Adversary Simulation</li>
+          <li>C2 Infrastructure Engineering</li>
+          <li>Active Directory Exploitation</li>
+          <li>Purple Team Operations</li>
+          </ul>
 
         <p>
-          I sharpen my skills through Cisco courses and hands-on hacking exercises. I’m eager to put this knowledge into practice through real-world challenges. To stay sharp, I actively follow industry news, solve <a href="https://ctf.hackthebox.com/user/profile/649858">CTF challenges</a>, and work on personal projects available on <a href="https://github.com/JohnnyMaelstrm">GitHub</a>.
+          I sharpen my skills through Cisco courses and hands-on hacking labs. I’m eager to put this knowledge into practice through real-world challenges. To stay sharp, I actively follow industry news, solve <a href="https://ctf.hackthebox.com/user/profile/649858">CTF challenges</a>, and work on personal projects available on <a href="https://github.com/JohnnyMaelstrm">GitHub</a>.
         </p>
 
         <p>

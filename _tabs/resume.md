@@ -242,8 +242,11 @@ order: 5
 <div class="page-header">
   <h1>Jaakko Oja</h1>
   <p class="summary">
-    Motivated 3rd-year ICT student with a strong Purple Team mindset, specializing in <strong>Infrastructure as Code (IaC)</strong>, <strong>Red Team Automation</strong>, and <strong>DevSecOps</strong>. Engineering hardened C2 infrastructures and automating deployments with Ansible & Terraform.
+    <strong>Offensive Security Analyst - Red Team</strong> at <strong>Cyber Attack Simulation | Accenture Nordics</strong>. 
+    Specializing in <strong>Adversary Simulation</strong>, <strong>Infrastructure as Code (IaC)</strong>, and <strong>Red Team Automation</strong>. 
+    Expertise in engineering hardened C2 infrastructures!
   </p>
+</div>
   
   <div class="contact-bar">
       <a href="https://linkedin.com/in/jaakkooja" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
