@@ -140,7 +140,7 @@ tags: [netexec, watering hole, kerberoasting, pass-the-hash, impacket, mitre att
   <h2>Phase 4: Lateral Movement & Privilege Escalation</h2>
 
   <h3>The Action</h3>
-  <p>With <code>r.haggard</code>'s access, I was able to abuse Write permissions on other objects (specifically resetting passwords using <code>bloodyAD</code>) or finding credentials on accessible shares.</p>
+  <p>With <code>r.haggard</code>'s access, I intended to use <strong>BloodHound</strong> to map the privilege escalation path. The Python ingestor ran successfully and collected the AD data, but the BloodHound GUI failed to render the attack paths correctly during this engagement. Based on manual analysis, I identified that <code>r.haggard</code> had Write permissions over <code>h.potch</code>, which I abused using <code>bloodyAD</code> to reset their password.</p>
 
   <p align="center">
     <img src="{{ '/assets/Active_Directory/BuildingMagic/bloodyAD.png' | relative_url }}" 
@@ -148,15 +148,13 @@ tags: [netexec, watering hole, kerberoasting, pass-the-hash, impacket, mitre att
          style="max-width:90%; height:auto; border:1px solid rgba(255,255,255,0.1);" />
   </p>
 
-  <p>Eventually, I compromised the account <code>a.flatch</code>. NetExec confirmed this account had "Pwn3d!" status, indicating Local Administrator privileges on the Domain Controller.</p>
+  <p>With <code>h.potch</code>'s credentials confirmed via NetExec, I logged in using <strong>Evil-WinRM</strong> and dumped the SAM and SYSTEM hives to extract local hashes. This revealed the hash for <code>a.flatch</code>. NetExec confirmed this account had "Pwn3d!" status, indicating Local Administrator privileges on the Domain Controller.</p>
 
   <p align="center">
     <img src="{{ '/assets/Active_Directory/BuildingMagic/impacket2.png' | relative_url }}" 
          alt="Pwn3d Confirmation" 
          style="max-width:90%; height:auto; border:1px solid rgba(255,255,255,0.1);" />
   </p>
-
-  <p>I manually dumped the SAM and SYSTEM hives to extract local secrets.</p>
 
   <p align="center">
     <img src="{{ '/assets/Active_Directory/BuildingMagic/evil2.png' | relative_url }}" 
