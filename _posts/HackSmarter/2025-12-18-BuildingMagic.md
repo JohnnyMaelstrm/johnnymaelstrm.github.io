@@ -23,7 +23,9 @@ tags: [netexec, watering hole, kerberoasting, pass-the-hash, impacket, mitre att
 
   <h1>Anatomy of an Active Directory Compromise</h1>
 
-  <p>In this engagement, I targeted the "BuildingMagic" Active Directory lab by HackSmarter. The objective was to simulate a real-world internal threat scenario, starting with zero access and pivoting through the network to achieve total Domain Compromise. This report details the kill chain, emphasizing not just the tools used, but the tactical reasoning behind every step. Pst, there is a little IP-address change. The machine stopped responding at some point...</p>
+  <p>In this engagement, I targeted the "BuildingMagic" Active Directory lab by HackSmarter. The objective was to simulate a real-world internal threat scenario, starting with zero access and pivoting through the network to achieve total Domain Compromise. This report details the kill chain, emphasizing not just the tools used, but the tactical reasoning behind every step.</p>
+  
+  <p><em>Note: During the engagement, the target IP address changed due to a lab reset. This is reflected in the screenshots.</em></p>
 
   <p><strong>Status:</strong> Domain Compromised<br>
   <strong>Tools Used:</strong> NetExec, Responder, Hashcat, Impacket, BloodHound, Hashgrab, bloodyAD</p>
@@ -58,7 +60,15 @@ tags: [netexec, watering hole, kerberoasting, pass-the-hash, impacket, mitre att
          style="max-width:90%; height:auto; border:1px solid rgba(255,255,255,0.1);" />
   </p>
 
-  <p>Further password spraying revealed credentials for <code>r.widdleton</code> and eventually <code>h.potch</code>. With valid credentials, I used <strong>NetExec</strong> to enumerate SMB shares. I discovered a share named <code>File-Share</code> that was readable and <strong>writable</strong>.</p>
+  <p>Further password spraying revealed credentials for <code>r.widdleton</code> and eventually <code>h.potch</code>. I also cracked some initial hashes found during enumeration.</p>
+
+  <p align="center">
+    <img src="{{ '/assets/Active_Directory/BuildingMagic/first_hashcat.png' | relative_url }}" 
+         alt="MD5 Crack" 
+         style="max-width:90%; height:auto; border:1px solid rgba(255,255,255,0.1);" />
+  </p>
+
+  <p>With valid credentials, I used <strong>NetExec</strong> to enumerate SMB shares. I discovered a share named <code>File-Share</code> that was readable and <strong>writable</strong>.</p>
 
   <p align="center">
     <img src="{{ '/assets/Active_Directory/BuildingMagic/nxc2.png' | relative_url }}" 
@@ -104,7 +114,15 @@ tags: [netexec, watering hole, kerberoasting, pass-the-hash, impacket, mitre att
   <h2>Phase 3: Enumeration & Kerberoasting</h2>
 
   <h3>The Action</h3>
-  <p>With <code>h.grangon</code>'s credentials, I verified my access and gathered user information using <strong>Evil-WinRM</strong>.</p>
+  <p>With <code>h.grangon</code>'s credentials, I verified my access using WinRM.</p>
+
+  <p align="center">
+    <img src="{{ '/assets/Active_Directory/BuildingMagic/nxc_winrm.png' | relative_url }}" 
+         alt="WinRM Validation" 
+         style="max-width:90%; height:auto; border:1px solid rgba(255,255,255,0.1);" />
+  </p>
+
+  <p>I then gathered user information using <strong>Evil-WinRM</strong>.</p>
 
   <p align="center">
     <img src="{{ '/assets/Active_Directory/BuildingMagic/evil1.png' | relative_url }}" 
@@ -148,17 +166,19 @@ tags: [netexec, watering hole, kerberoasting, pass-the-hash, impacket, mitre att
          style="max-width:90%; height:auto; border:1px solid rgba(255,255,255,0.1);" />
   </p>
 
-  <p>With <code>h.potch</code>'s credentials confirmed via NetExec, I logged in using <strong>Evil-WinRM</strong> and dumped the SAM and SYSTEM hives to extract local hashes. This revealed the hash for <code>a.flatch</code>. NetExec confirmed this account had "Pwn3d!" status, indicating Local Administrator privileges on the Domain Controller.</p>
-
-  <p align="center">
-    <img src="{{ '/assets/Active_Directory/BuildingMagic/impacket2.png' | relative_url }}" 
-         alt="Pwn3d Confirmation" 
-         style="max-width:90%; height:auto; border:1px solid rgba(255,255,255,0.1);" />
-  </p>
+  <p>With <code>h.potch</code>'s credentials confirmed via NetExec, I logged in using <strong>Evil-WinRM</strong> and dumped the SAM and SYSTEM hives to extract local hashes.</p>
 
   <p align="center">
     <img src="{{ '/assets/Active_Directory/BuildingMagic/evil2.png' | relative_url }}" 
          alt="Dumping Hives" 
+         style="max-width:90%; height:auto; border:1px solid rgba(255,255,255,0.1);" />
+  </p>
+
+  <p>The SAM dump revealed the NTLM hash for <code>a.flatch</code>. NetExec confirmed this account had "Pwn3d!" status, indicating Local Administrator privileges on the Domain Controller.</p>
+
+  <p align="center">
+    <img src="{{ '/assets/Active_Directory/BuildingMagic/impacket2.png' | relative_url }}" 
+         alt="Pwn3d Confirmation" 
          style="max-width:90%; height:auto; border:1px solid rgba(255,255,255,0.1);" />
   </p>
 
