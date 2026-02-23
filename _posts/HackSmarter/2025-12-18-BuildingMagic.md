@@ -204,10 +204,10 @@ tags: [netexec, watering hole, kerberoasting, pass-the-hash, impacket, mitre att
 <h2>Proof of Completion</h2>
   <div style="position: relative; padding-bottom: 75%; height: 0; overflow: hidden; margin-bottom: 2rem; border: 1px solid rgba(255, 255, 255, 0.1);">
     <iframe src="{{ '/assets/Active_Directory/BuildingMagic/challenge_lab_certificate.pdf' | relative_url }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">
-      Tämä selain ei tue PDF-tiedostojen näyttämistä. Voit ladata sertifikaatin <a href="{{ '/assets/Active_Directory/BuildingMagic/challenge_lab_certificate.pdf' | relative_url }}">tästä</a>.
+      Click <a href="{{ '/assets/Active_Directory/BuildingMagic/challenge_lab_certificate.pdf' | relative_url }}">HERE!</a>.
     </iframe>
   </div>
-  <h2>MITRE ATT&CK® Mapping</h2>
+  
   <h2>MITRE ATT&CK® Mapping</h2>
   <div class="highlight-box" style="padding: 0; overflow: hidden; border-color: rgba(255, 82, 82, 0.3);">
     <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85em;">
