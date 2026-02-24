@@ -127,7 +127,7 @@ tags: [active directory, lab, virtualbox, hacking, pentesting, netexec, bloodhou
             <span class="ad-card-title">:: NETWORK TOPOLOGY</span>
             <span class="ad-badge" style="background: #d8b4fe; color: black;">VISUALIZATION</span>
         </div>
-        <img src="/assets/Active_Directory/topology1.png" alt="Active Directory Network Topology" style="width: 100%; display: block; border-radius: 0 0 4px 4px;">
+        <img src="{{ '/assets/Active_Directory/topology1.png' | relative_url }}" alt="Active Directory Network Topology" style="width: 100%; display: block; border-radius: 0 0 4px 4px;">
         <div style="padding: 8px; font-size: 0.75rem; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; text-align: center; border-top: 1px solid rgba(255,255,255,0.1);">
             FIGURE 1.0: Virtualized Attack Surface Configuration. The Lab is configured in VirtualBox.
         </div>
@@ -162,7 +162,7 @@ TcpTestSucceeded : True
             <span style="color: #a3e635;">[ATTACKER VM]</span> Connectivity Check (NetExec)
         </div>
         <div class="ad-card" style="padding: 0; border: 1px solid var(--border); overflow: hidden;">
-            <img src="/assets/Active_Directory/netexec2.png" alt="NetExec SMB Scan Results" style="width: 100%; display: block;">
+            <img src="{{ '/assets/Active_Directory/netexec2.png' | relative_url }}" alt="NetExec SMB Scan Results" style="width: 100%; display: block;">
         </div>
     </div>
 
@@ -219,7 +219,7 @@ TcpTestSucceeded : True
             <p style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--text);">
                 Verifying the installation of <strong>NetExec</strong> on the attack box (Kali Linux). The tool is initialized and ready for SMB protocol database interactions.
             </p>
-            <img src="/assets/Active_Directory/netexec.png" alt="NetExec Terminal Output" style="width: 100%; border: 1px solid var(--border); border-radius: 4px; opacity: 0.9;">
+            <img src="{{ '/assets/Active_Directory/netexec.png' | relative_url }}" alt="NetExec Terminal Output" style="width: 100%; border: 1px solid var(--border); border-radius: 4px; opacity: 0.9;">
             <div style="margin-top: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim);">
                 <span style="color: var(--green-dim);">root@kali:~$</span> nxc --version <br>
                 <span style="color: var(--accent);">Codename: SmoothOperator</span>
@@ -272,7 +272,7 @@ TcpTestSucceeded : True
         </div>
     </div>
 
-    <a href="/activedirectory/phase2/" style="text-decoration: none;">
+    <a href="{{ '/activedirectory/phase2/' | relative_url }}" style="text-decoration: none;">
         <div class="ad-card" style="margin-top: 3rem; border: 1px solid #d8b4fe; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='rgba(216, 180, 254, 0.05)'" onmouseout="this.style.background='transparent'">
             <div class="ad-card-header" style="background: rgba(216, 180, 254, 0.1); border-bottom: 1px solid #d8b4fe;">
                 <span class="ad-card-title">:: MISSION UPDATE AVAILABLE</span>
