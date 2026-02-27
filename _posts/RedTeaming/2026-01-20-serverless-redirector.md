@@ -106,12 +106,28 @@ if (!ALLOWED_PATHS.includes(url.pathname)) {
   </ul>
 
   <h2>Conclusion</h2>
-  <p>By moving the redirection logic to the network edge, I have effectively decoupled the C2 infrastructure from its public footprint. The backend IP remains hidden, and the traffic profile blends seamlessly with normal web browsing activity. This architecture forces defenders to analyze headers and payload content rather than relying on simple IP or domain reputation blocklists.</p>
+<p>
+By moving the redirection logic to a Layer 3 tunnel, I have effectively decoupled the C2 infrastructure from its public footprint. Unlike the previous serverless approach, this architecture provides full protocol flexibility—allowing TCP, UDP, and ICMP to flow through the redirector while the backend IP remains entirely hidden from the public internet. This setup forces defenders to move beyond simple IP reputation and analyze complex traffic patterns, significantly increasing the cost of detection.
+</p>
+
 <div class="highlight-box" style="border-left: 3px solid #bb1f1fff;">
-    <h3> Working on the Part III</h3>
-    <p> In the rapidly shifting landscape of cybersecurity, continuous adaptation is key. I am currently engineering Version 3 of this whole infrastructure, transitioning to Terraform for advanced orchestration and implementing Ligolo-ng(Layer 3) to replace the previous serverless redirector layer(Layer 7). Stay tuned!</p>
-    
-  </div>
+<h3>Now Live: Version 3 - The "Rootless" Infrastructure</h3>
+<p>
+The project has evolved. In Version 3, I’ve moved away from Layer 7 serverless workers and implemented a robust Layer 3 tunneling solution using <strong>Ligolo-ng</strong>.
+</p>
+<ul>
+<li>
+<strong>Rootless Execution:</strong> Leveraged Linux Capabilities (<code>CAP_NET_ADMIN</code>) to manage networking without requiring full root privileges.
+</li>
+<li>
+<strong>Infrastructure as Code:</strong> Fully automated deployment via Ansible, with Terraform orchestration for a disposable redirector fleet.
+</li>
+<li>
+<strong>Hardened Resilience:</strong> Implemented self-healing tunnels and kernel-enforced sandboxing via AppArmor and Systemd.
+</li>
+</ul>
+
+<p><a href="/Ghost-Sliver-V3/"><strong>Read Part III: Rootless C2 & Layer 3 Tunneling &rarr;</strong></a></p>
 </div>
 
 <style>
