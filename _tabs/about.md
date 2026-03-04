@@ -1,7 +1,7 @@
 ---
 icon: fas fa-info-circle
 order: 4
-credits_done: 193  
+credits_done: 196  
 credits_total: 240 
 ---
 <link rel="stylesheet" href="{{ '/assets/css/about.css' | relative_url }}">
@@ -101,7 +101,7 @@ credits_total: 240
         > Initializing connection...<br>
         > Status: <span style="color: var(--green-dim);">Offensive Security Analyst - Red Team @ Cyber Attack Simulation | Accenture Nordics</span><br>
         > Interest: Offensive Cybersecurity, C2 Frameworks, Red Teaming<br>
-        > Next Hop: Cyber Attack Simulation Team @ Accenture Nordics...<br>
+        > Next Hop: Cyber Attack Simulation Team @ Accenture Nordics<br>
         > Contact: <a href="https://www.linkedin.com/in/jaakkooja/" style="color: var(--accent); text-decoration: underline;">LinkedIn Profile</a><span class="cursor"></span>
     </div>
 </div>

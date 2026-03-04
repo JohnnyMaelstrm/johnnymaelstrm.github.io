@@ -2,7 +2,7 @@
 layout: page
 title: Home
 permalink: /
-credits_done: 193
+credits_done: 196
 credits_total: 240
 ---
 <link rel="stylesheet" href="/assets/css/mainpage.css">
@@ -56,7 +56,7 @@ credits_total: 240
     <div class="timeline-date">2026 · In Progress</div>
     
     <div class="timeline-title">
-      <a href="/Sliver/">Automated Sliver C2 & System Hardening (IaC)</a>
+      <a href="/Sliver/">Custom Sliver C2(IaC)</a>
     </div>
     
     <p class="timeline-desc">
