@@ -2,7 +2,7 @@
 layout: page
 title: Home
 permalink: /
-credits_done: 196
+credits_done: 197
 credits_total: 240
 ---
 <link rel="stylesheet" href="/assets/css/mainpage.css">
@@ -98,7 +98,7 @@ credits_total: 240
     </p>
     <div class="timeline-metadata">
         <span class="timeline-keyword">Focus:</span> Multi-Forest Pivoting, Domain Trusts, Advanced Lateral Movement. <br>
-        <span class="timeline-keyword">Tools:</span> Nmap, Impacket, BloodHound, NetExec.
+        <span class="timeline-keyword">Tools:</span> Nmap, Impacket, BloodHound, NetExec, BloodyAD.
     </div>
 </li>
 
