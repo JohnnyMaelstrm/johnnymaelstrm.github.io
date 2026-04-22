@@ -15,7 +15,9 @@ credits_total: 240
       <h1>Jaakko Oja</h1>
       <div class="tagline">Offensive Security Analyst - Red Team | Adversary Simulation</div>
       <p class="bio">Third-year IT engineering student at Tampere University of Applied Sciences specializing in telecommunications, computer networks, and cybersecurity.</p>
-     
+      <p class="bio bio-small">
+        Incoming: <strong>Offensive Security Analyst - Red Team</strong> @ <strong>Accenture Nordics - Cyber Attack Simulation</strong> (May 2026)
+      </p>
     <div class="summary">
   Let's connect on 
   <a href="https://www.linkedin.com/in/jaakkooja/" target="_blank">LinkedIn</a> 
@@ -27,7 +29,7 @@ credits_total: 240
 </div>
       <div class="status-line">
         <span class="status-dot"></span>
-        <span> Hired for Red Team Operations · Tampere, Finland </span>
+        <span> Hired & Preparing for Red Team Operations · Tampere, Finland </span>
       </div>
     </div>
     
@@ -319,6 +321,14 @@ credits_total: 240
            alt="Cybersecurity Architect" />
     </a>
     <div class="certification-name">Cybersecurity Architect</div>
+</div>
+
+<div class="certification-item">
+    <a href="https://www.credly.com/badges/5e82daa7-7f74-43b3-9425-ae168c8b8111/public_url" target="_blank">
+      <img src="https://images.credly.com/images/f7387386-553c-4be5-b3f3-077f78152f31/Network_Security.png" 
+           alt="Network Security" />
+    </a>
+    <div class="certification-name">Network Security</div>
 </div>
 
   <div class="certification-item">
