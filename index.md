@@ -2,7 +2,7 @@
 layout: page
 title: Home
 permalink: /
-credits_done: 197
+credits_done: 212
 credits_total: 240
 ---
 <link rel="stylesheet" href="/assets/css/mainpage.css">
@@ -15,9 +15,7 @@ credits_total: 240
       <h1>Jaakko Oja</h1>
       <div class="tagline">Offensive Security Analyst - Red Team | Adversary Simulation</div>
       <p class="bio">Third-year IT engineering student at Tampere University of Applied Sciences specializing in telecommunications, computer networks, and cybersecurity.</p>
-      <p class="bio bio-small">
-        Incoming: <strong>Offensive Security Analyst - Red Team</strong> @ <strong>Accenture Nordics - Cyber Attack Simulation</strong> (May 2026)
-      </p>
+     
     <div class="summary">
   Let's connect on 
   <a href="https://www.linkedin.com/in/jaakkooja/" target="_blank">LinkedIn</a> 
@@ -29,7 +27,7 @@ credits_total: 240
 </div>
       <div class="status-line">
         <span class="status-dot"></span>
-        <span> Hired & Preparing for Red Team Operations · Tampere, Finland </span>
+        <span> Hired for Red Team Operations · Tampere, Finland </span>
       </div>
     </div>
     
