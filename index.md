@@ -13,11 +13,9 @@ credits_total: 240
     <img src="/assets/img/favicons/roundpic.png" alt="Jaakko Oja" class="profile-pic">
     <div class="hero-text">
       <h1>Jaakko Oja</h1>
-      <div class="tagline">Offensive Security Analyst - Red Team | Adversary Simulation</div>
-      <p class="bio">Third-year IT engineering student at Tampere University of Applied Sciences specializing in telecommunications, computer networks, and cybersecurity.</p>
-      <p class="bio bio-small">
-        Incoming: <strong>Offensive Security Analyst - Red Team</strong> @ <strong>Accenture Nordics - Cyber Attack Simulation</strong> (May 2026)
-      </p>
+      <div class="tagline">Offensive Security Analyst - Red Team | Cyber Attack Simulation @ Accenture Nordics</div>
+      <p class="bio">Transitioning from a 3rd-year IT Engineering student to a full-time breaker of things. Passionate about simulating real-world cyber attacks, C2's, and continuous learning.</p>
+      
     <div class="summary">
   Let's connect on 
   <a href="https://www.linkedin.com/in/jaakkooja/" target="_blank">LinkedIn</a> 
@@ -28,9 +26,9 @@ credits_total: 240
 </span>
 </div>
       <div class="status-line">
-        <span class="status-dot"></span>
-        <span> Hired & Preparing for Red Team Operations · Tampere, Finland </span>
-      </div>
+  <span class="status-dot pulsating"></span>
+  <span class="status-text">Working on some awesome projects @ Accenture Nordics!</span>
+</div>
     </div>
     
   </div>

@@ -49,12 +49,9 @@ credits_total: 240
 
   <div class="section-header">Outside of the Terminal</div>
   
-<p>
-    Outside of technology, I focus on physical and mental recovery: <strong>hitting the gym and taking long forest walks</strong> are my way to recharge. 
-</p>
 
 <p>
-    I have a deep commitment to <strong>specimen fishing</strong>, specializing in carp angling. As one of the few dedicated carp anglers in Finland, I hold a <span style="color: var(--accent);">personal record for a fish weighing over 17kg (sharp 17.64kg)</span>. This dedication extends to an international scale, as I attented the <strong>Carp Den Bosch 2026 expo</strong> in the Netherlands this January. It is the world's largest carp fishing event, gathering enthusiasts from around the globe. 
+    Outside of technology, I focus on physical and mental recovery: I have a deep commitment to <strong>specimen fishing</strong>, specializing in carp angling. As one of the few dedicated carp anglers in Finland, I hold a <span style="color: var(--accent);">personal record for a fish weighing over 17kg (sharp 17.64kg)</span>. This dedication extends to an international scale, as I attented the <strong>Carp Den Bosch 2026 expo</strong> in the Netherlands this January. It is the world's largest carp fishing event, gathering enthusiasts from around the globe. 
   </p>  
   <p>
     Leuk om jullie bekende gezichten weer te zien! Veel visgeluk voor het komende seizoen! 🎣
@@ -76,7 +73,7 @@ credits_total: 240
 
     <figure class="gallery-item">
         <img src="assets/Other/kala1.jpeg" alt="Common Carp Catch" width="300">
-        <figcaption><sub>Personal Best: 17.6kg Common Carp, Secret Spot in Finland (2025).</sub></figcaption>
+        <figcaption><sub>Personal Best: 17.64kg Common Carp, Secret Spot in Finland (2025).</sub></figcaption>
     </figure>
 
     <figure class="gallery-item">
@@ -101,7 +98,6 @@ credits_total: 240
         > Initializing connection...<br>
         > Status: <span style="color: var(--green-dim);">Offensive Security Analyst - Red Team @ Cyber Attack Simulation | Accenture Nordics</span><br>
         > Interest: Offensive Cybersecurity, C2 Frameworks, Red Teaming<br>
-        > Next Hop: Cyber Attack Simulation Team @ Accenture Nordics...<br>
         > Contact: <a href="https://www.linkedin.com/in/jaakkooja/" style="color: var(--accent); text-decoration: underline;">LinkedIn Profile</a><span class="cursor"></span>
     </div>
 </div>
