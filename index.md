@@ -14,7 +14,8 @@ credits_total: 240
     <div class="hero-text">
       <h1>Jaakko Oja</h1>
       <div class="tagline">Offensive Security Analyst - Red Team | Cyber Attack Simulation @ Accenture Nordics</div>
-      <p class="bio">Transitioning from a 3rd-year IT Engineering student into full-time Offensive Security. Passionate about simulating the real-world cyber attacks, C2's, and continuous learning.</p>
+      <p class="bio">Offensive Security Analyst focused on adversary simulation and realistic attack scenarios. 
+  Interested in how real-world attacks are executed in practice, including C2 Frameworks and post-exploitation techniques.</p>
       
     <div class="summary">
   Let's connect on 
