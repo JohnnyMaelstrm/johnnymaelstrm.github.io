@@ -14,8 +14,7 @@ credits_total: 240
     <div class="hero-text">
       <h1>Jaakko Oja</h1>
       <div class="tagline">Offensive Security Analyst - Red Team | Cyber Attack Simulation @ Accenture Nordics</div>
-      <p class="bio">Offensive Security Analyst - Red Team focused on adversary simulation and realistic attack scenarios. 
-  Interested in how real-world attacks are executed in practice, including C2 Frameworks and physical Red Teaming engagements.</p>
+      <p class="bio">Focused on adversary simulation and realistic attack scenarios. Interested in how real-world attacks are executed in practice, including C2 Frameworks and physical Red Teaming engagements.</p>
       
     <div class="summary">
   Let's connect on 
