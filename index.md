@@ -2,7 +2,7 @@
 layout: page
 title: Home
 permalink: /
-credits_done: 222
+credits_done: 225
 credits_total: 240
 ---
 <link rel="stylesheet" href="/assets/css/mainpage.css">
@@ -13,7 +13,7 @@ credits_total: 240
     <img src="/assets/img/favicons/roundpic.png" alt="Jaakko Oja" class="profile-pic">
     <div class="hero-text">
       <h1>Jaakko Oja</h1>
-      <div class="tagline">Offensive Security Analyst - Red Team | Cyber Attack Simulation @ Accenture Nordics</div>
+      <div class="tagline">Offensive Security Analyst - Red Team | CRTO | Cyber Attack Simulation @ Accenture Nordics</div>
       <p class="bio">Focused on adversary simulation and realistic attack scenarios. Interested in how real-world attacks are executed in practice, including C2 frameworks and malware development. Planning future research on offensive security in aerospace and satellite systems.</p>
       
     <div class="summary">
@@ -263,6 +263,14 @@ credits_total: 240
 </div>
 
 <div class="section-header">🏅 Certifications</div>
+
+<div class="certification-item">
+    <a href="https://eu.api.accredible.com/v1/frontend/credential_website_embed_image/badge/23115699" target="_blank">
+      <img src="https://eu.artifacts.credential.net/y05pqi6l/badge/29507d38a8a9ec381937f9bc028e1a7f/tiny.png" 
+           alt="CRTO" />
+    </a>
+    <div class="certification-name">CRTO — Certified Red Team Operator</div>
+  </div>
 
 <div class="certifications-grid">
   <div class="certification-item">
